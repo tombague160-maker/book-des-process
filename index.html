@@ -1517,6 +1517,8 @@ a.xcard:hover { text-decoration: none; }
 .step .sn { box-shadow: 0 0 0 4px var(--sereo-coral-tint); }
 /* Filigrane de connexion : corail franc */
 .login::before { opacity: 1; }
+.b-empty.b-off { display: flex; gap: 8px; align-items: flex-start; border-style: solid; background: var(--bg); color: var(--label-2); }
+.b-empty.b-off svg { color: var(--sereo-coral-ink); flex: none; margin-top: 2px; }
 </style>
 </head>
 <body>
@@ -3847,7 +3849,20 @@ function progress(items) {
   return { done: counted.filter((i) => i.status === "done").length, total: counted.length, blocked: day.filter((i) => i.status === "blocked").length, left: day.filter((i) => i.status === "todo" || i.status === "doing").length, urgent: day.filter((i) => i.urgent && i.status !== "done" && i.status !== "na").length };
 }
 
-let DAYST = { day: null, row: null, consignes: [], loading: null, error: null };
+let DAYST = { day: null, row: null, consignes: [], loading: null, error: null, nextQ: null };
+/* Jour où reviennent les tâches quotidiennes quand aucune n'est prévue aujourd'hui (week-end, par exemple).
+   Ne change rien aux tâches ni à leurs règles : sert seulement à l'expliquer à l'écran. */
+const WD_NAME = ["", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"];
+function nextDailyDay(routines, day) {
+  const set = new Set();
+  (routines || []).filter((r) => r.active !== false && targets(r)).forEach((r) => (r.tasks || []).forEach((t) => {
+    if (t.active !== false && catOf(t) === "quotidienne") (t.days || []).forEach((d) => set.add(d));
+  }));
+  const wd = weekday(day);
+  if (!set.size || set.has(wd)) return null;
+  for (let k = 1; k <= 7; k++) { const d = ((wd - 1 + k) % 7) + 1; if (set.has(d)) return k === 1 ? "demain" : WD_NAME[d]; }
+  return null;
+}
 function findItem(id) { return DAYST.row ? DAYST.row.items.find((i) => i.id === id) : null; }
 async function loadToday(force) {
   const day = isoDay();
@@ -3857,6 +3872,7 @@ async function loadToday(force) {
     try {
       const [routines, consignes, taches] = await Promise.all([DB.routines(), DB.consignes(), DB.taches(day).catch(() => [])]);
       DAYST.consignes = activeConsignes(consignes, day);
+      DAYST.nextQ = nextDailyDay(routines, day); // affichage seulement : jour où les tâches quotidiennes reviennent
       let row = await DB.getDay(day);
       if (!row) { const prevRow = await DB.prevDay(day).catch(() => null); row = await DB.insertDay({ day, user_name: myName() || S.userName || "", items: buildItems(routines, consignes, day, taches, prevRow) }); }
       else { // une tâche ponctuelle (ou urgente) ajoutée après le début de la journée s'ajoute ; une tâche retirée et pas commencée disparaît
@@ -4194,6 +4210,7 @@ function itemBadges(it, full, hideDemo, noStatus, inBoard) {
 const STAGE = { debut: ["Je démarre ma journée", "sunrise"], journee: ["J'avance sur mes priorités", "sun"], fin: ["Je prépare la suite", "moon"] };
 function capLine(items, p, nx) {
   if (!items.length) return "Aucune routine n'est prévue pour toi aujourd'hui.";
+  if (!p.total && DAYST.nextQ) return `Pas de routine aujourd'hui : elle reprend ${DAYST.nextQ}.`;
   const bl = p.blocked ? ` ${p.blocked === 1 ? "Une tâche reste bloquée" : p.blocked + " tâches restent bloquées"} : tu peux retrouver le détail dans ton parcours.` : "";
   if (nx) return `Voici ta prochaine action. ${p.left === 1 ? "C'est la dernière de ta journée." : p.left + " actions restent à faire aujourd'hui."}` + bl;
   if (!p.left && !p.blocked) return "Ta routine du jour est terminée.";
@@ -4212,6 +4229,11 @@ function statusLine(it, lock) {
 /* Bilan affiché quand il n'y a plus de prochaine action : ce qui est fait, ce qui bloque, ce qui attend */
 function bilanHtml(items, p) {
   const all = !p.left && !p.blocked, na = items.filter((i) => i.status === "na").length;
+  if (!p.total && DAYST.nextQ) return `<section class="now bilan done-all" aria-labelledby="nowH">
+      <p class="now-label">${ic("moon", "sm")} Pas de routine aujourd'hui</p>
+      <h2 id="nowH">Tes tâches quotidiennes reviennent ${esc(DAYST.nextQ)}.</h2>
+      <p class="obj">Tu peux avancer sur tes tâches régulières ou ponctuelles, ou parcourir les procédures.</p>
+    </section>`;
   const bl = items.filter((i) => i.status === "blocked");
   return `<section class="now bilan ${all ? "done-all" : "waiting"}" aria-labelledby="nowH" aria-live="polite">
       <p class="now-label">${ic(all ? "check" : "ban", "sm")} Bilan de ta journée</p>
@@ -4275,7 +4297,8 @@ function boardHtml(items, nx, hideDemo) {
     if (k === "quotidienne") {
       const urg = common.filter((i) => i.urgent);
       const groups = (urg.length ? [["urgent", "Priorités urgentes", "alert", urg, []]] : []).concat(MOMENTS.map(([m, l, i2]) => [m, l, i2, common.filter((i) => !i.urgent && (i.moment || "journee") === m), pers.filter((a) => (a.moment || "journee") === m)]));
-      body = lockNote(common) + groups.map(([m, l, i2, g, pl]) => { const c = g.length + pl.length, d = g.filter((x) => x.status === "done").length + pl.filter((x) => x.statut === "fait").length;
+      const off = !common.length && !pers.length && DAYST.nextQ;
+      body = off ? `<p class="b-empty b-off">${ic("moon", "sm")}<span>Pas de tâche quotidienne aujourd'hui. Elles reviennent ${esc(DAYST.nextQ)}.</span></p>` : lockNote(common) + groups.map(([m, l, i2, g, pl]) => { const c = g.length + pl.length, d = g.filter((x) => x.status === "done").length + pl.filter((x) => x.statut === "fait").length;
         return `<section class="bmom m-${m}" aria-labelledby="bm-${m}"><h3 id="bm-${m}">${ic(i2, "sm")}<span>${l}</span>${c ? `<span class="bm-n">${d}/${c}</span>` : ""}</h3>${c ? `<ul class="tcards">${cards(g, pl)}</ul>` : `<p class="b-empty">Rien de prévu à ce moment.</p>`}</section>`; }).join("");
     } else {
       const old = common.filter(doneBefore), open = colSort(common.filter((i) => !doneBefore(i)));
