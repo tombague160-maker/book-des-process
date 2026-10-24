@@ -1519,6 +1519,181 @@ a.xcard:hover { text-decoration: none; }
 .login::before { opacity: 1; }
 .b-empty.b-off { display: flex; gap: 8px; align-items: flex-start; border-style: solid; background: var(--bg); color: var(--label-2); }
 .b-empty.b-off svg { color: var(--sereo-coral-ink); flex: none; margin-top: 2px; }
+
+/* =====================================================================================
+   Actualités (24/10) : fil de l'équipe et gestion par les responsables.
+   Une « à la une » large, puis des cartes photo. Le corail signale ce qui est nouveau.
+   ===================================================================================== */
+.badge.news { background: var(--sereo-coral); color: var(--sereo-ink); }
+.nav a .badge.news { margin-left: auto; }
+.news-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
+.news-head h1 { font-size: 2.25rem; line-height: 1.1; letter-spacing: -.02em; }
+.news-head .eyebrow { margin-bottom: 6px; }
+.news-sub { display: flex; align-items: center; gap: 6px; color: var(--label-2); font-size: .9375rem; margin: -6px 0 16px; }
+.news-sub svg { color: var(--sereo-coral-ink); }
+.news-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.news-filters .chip[aria-pressed="true"] { background: var(--sereo-sage-ink); }
+
+.news-card { display: grid; grid-template-rows: auto 1fr; background: var(--bg); border-radius: 22px; overflow: hidden; color: var(--label); text-decoration: none; box-shadow: 0 0 0 1px var(--sep), var(--shadow-1); transition: transform 180ms var(--ease-out), box-shadow 220ms var(--ease-out); }
+a.news-card:hover { text-decoration: none; }
+@media (hover: hover) and (pointer: fine) { a.news-card:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px var(--sep), var(--shadow-2); } }
+a.news-card:focus-visible { outline: 3px solid rgba(var(--brand-rgb), .45); outline-offset: 3px; }
+.news-card.is-hidden { opacity: .72; }
+.news-ph { display: block; aspect-ratio: 16 / 9; background: var(--sereo-sage-tint); overflow: hidden; }
+.news-img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.news-noph { display: grid; place-items: center; background: linear-gradient(135deg, var(--sereo-sage-tint) 0%, #fff 55%, var(--sereo-coral-tint) 100%); color: var(--sereo-sage-ink); }
+.news-noph svg { width: 44px; height: 44px; opacity: .8; }
+.news-body { display: grid; align-content: start; gap: 8px; padding: 16px 18px 20px; }
+.news-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: .8125rem; color: var(--label-3); font-weight: 500; }
+.news-new { display: inline-flex; align-items: center; padding: 3px 9px; border-radius: 999px; background: var(--sereo-coral); color: var(--sereo-ink); font-size: .75rem; font-weight: 700; }
+.news-t { font-size: 1.1875rem; font-weight: 700; line-height: 1.3; letter-spacing: -.01em; }
+.news-x { color: var(--label-2); font-size: .9375rem; line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.news-ag { display: inline-flex; align-items: center; gap: 6px; justify-self: start; margin-top: 2px; padding: 5px 10px 5px 8px; border-radius: 999px; background: var(--sereo-sage-tint); color: var(--sereo-sage-ink); font-size: .8125rem; font-weight: 600; }
+.news-ag svg { width: 14px; height: 14px; }
+
+.news-hero { grid-template-rows: none; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); margin-bottom: 22px; border-radius: 26px; }
+.news-hero .news-ph { aspect-ratio: auto; min-height: 320px; }
+.news-hero .news-body { padding: 28px 30px; align-content: center; gap: 12px; }
+.news-hero .news-t { font-size: 1.75rem; line-height: 1.2; letter-spacing: -.02em; }
+.news-hero .news-x { -webkit-line-clamp: 5; font-size: 1rem; }
+.news-hero.no-ph { grid-template-columns: minmax(0, 1fr); background: linear-gradient(120deg, #fff 0%, #fff 60%, var(--sereo-coral-tint) 100%); box-shadow: inset 5px 0 0 var(--sereo-coral), 0 0 0 1px var(--sep), var(--shadow-1); }
+.news-hero.no-ph .news-body { padding: 30px 34px; max-width: 760px; }
+.news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 20px; }
+.news-empty { justify-items: center; text-align: center; padding: 48px 24px; }
+.news-empty-i { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 20px; background: var(--sereo-coral-tint); color: var(--sereo-coral-ink); }
+.news-empty-i svg { width: 30px; height: 30px; }
+
+.news-detail { max-width: 820px; }
+.news-detail header { display: grid; gap: 12px; margin-bottom: 22px; }
+.news-detail h1 { font-size: 2.375rem; line-height: 1.12; letter-spacing: -.025em; }
+.news-cover { margin: 0 0 26px; border-radius: 24px; overflow: hidden; background: var(--sereo-sage-tint); box-shadow: var(--shadow-1); }
+.news-cover img { display: block; width: 100%; max-height: 520px; object-fit: cover; }
+.news-text { font-size: 1.0625rem; line-height: 1.75; color: var(--label); display: grid; gap: 14px; max-width: 68ch; }
+.news-text a { word-break: break-word; }
+.news-more { margin-top: 48px; }
+
+.rowi.aa-row, .rowi.aa-row:has(> .btns) { display: grid; grid-template-columns: 96px minmax(0, 1fr) auto; }
+.aa-th { display: block; width: 96px; height: 64px; border-radius: 12px; overflow: hidden; background: var(--sereo-sage-tint); }
+.aa-img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.aa-img.news-noph { display: grid; }
+.aa-img.news-noph svg { width: 24px; height: 24px; }
+
+.ae-grid { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 28px; align-items: start; }
+.ae-form { display: grid; gap: 18px; }
+.ae-prev { position: sticky; top: 90px; display: grid; gap: 10px; }
+.ae-prev .news-card { box-shadow: 0 0 0 1px var(--sep), var(--shadow-2); }
+.ae-drop { border-radius: 18px; border: 2px dashed rgba(var(--brand-rgb), .35); background: var(--sereo-paper); transition: border-color 160ms ease, background-color 160ms ease; }
+.ae-drop.over { border-color: var(--sereo-sage-ink); background: var(--sereo-sage-tint); }
+.ae-ph-off { display: grid; justify-items: center; gap: 6px; text-align: center; padding: 30px 20px; cursor: pointer; }
+.ae-ph-off b { color: var(--sereo-sage-ink); font-size: 1rem; }
+.ae-ph-i { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 16px; background: var(--bg); color: var(--sereo-sage-ink); box-shadow: var(--shadow-1); }
+.ae-ph-on { display: grid; gap: 12px; padding: 12px; }
+.ae-ph-on img { display: block; width: 100%; max-height: 300px; object-fit: cover; border-radius: 12px; }
+.ae-busy { display: flex; align-items: center; gap: 8px; padding: 0 16px 14px; }
+.ae-drop:focus-within { box-shadow: 0 0 0 4px rgba(var(--brand-rgb), .16); }
+.ae-ag { border: 0; padding: 0; margin: 0; }
+.ag-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 6px; }
+.ag-chip { position: relative; cursor: pointer; }
+.ag-chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.ag-chip span { display: inline-flex; align-items: center; gap: 7px; min-height: 42px; padding: 0 16px; border-radius: 999px; background: var(--bg); color: var(--label); font-weight: 600; font-size: .9375rem; box-shadow: inset 0 0 0 1.5px var(--sep-strong); transition: background-color 140ms ease, color 140ms ease, box-shadow 140ms ease; }
+.ag-chip span svg { color: var(--sereo-sage-ink); }
+.ag-chip input:checked + span { background: var(--sereo-sage-ink); color: #fff; box-shadow: none; }
+.ag-chip input:checked + span svg { color: #fff; }
+.ag-chip input:focus-visible + span { outline: 3px solid rgba(var(--brand-rgb), .45); outline-offset: 2px; }
+.ae-pub { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; padding: 12px 14px; border-radius: 14px; background: var(--sereo-paper); }
+.ae-pub input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--sereo-sage-ink); flex: none; }
+
+.aa-safe { display: flex; gap: 8px; align-items: flex-start; margin-top: 16px; }
+.aa-safe svg { color: var(--sereo-sage-ink); flex: none; margin-top: 2px; }
+.aa-trash summary { display: flex; align-items: center; gap: 8px; }
+.ae-hist { margin-top: 36px; }
+.ae-draft { background: var(--sereo-coral-tint); }
+.ae-draft > svg { color: var(--sereo-coral-ink); }
+.acc-ag { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; align-items: center; }
+.acc-ag .ag-chips { margin: 0; }
+#accForm .ag-chips { gap: 6px; }
+#accForm .ag-chip span { min-height: 38px; padding: 0 12px; font-size: .875rem; }
+
+@media (max-width: 1020px) { .ae-grid { grid-template-columns: minmax(0, 1fr); } .ae-prev { position: static; max-width: 420px; } }
+@media (max-width: 760px) {
+  .news-hero { grid-template-columns: minmax(0, 1fr); }
+  .news-hero .news-ph { min-height: 0; aspect-ratio: 16 / 9; }
+  .news-hero .news-body { padding: 18px 18px 22px; }
+  .news-hero .news-t { font-size: 1.375rem; }
+  .news-head h1 { font-size: 1.875rem; }
+  .news-detail h1 { font-size: 1.75rem; }
+  .news-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .rowi.aa-row, .rowi.aa-row:has(> .btns) { grid-template-columns: 64px minmax(0, 1fr); }
+  .rowi.aa-row > .btns { grid-column: 1 / -1; }
+  .aa-th { width: 64px; height: 48px; }
+}
+@media (prefers-reduced-motion: reduce) { .news-card, .ae-drop, .ag-chip span { transition: none; } a.news-card:hover { transform: none; } }
+
+/* =====================================================================================
+   Mes notes (24/10) : un carnet. Liste à gauche, feuille à droite ; sur téléphone, l'une puis l'autre.
+   ===================================================================================== */
+.nb { display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 24px; align-items: start; }
+.nb-side { position: sticky; top: 84px; display: grid; gap: 12px; max-height: calc(100vh - 110px); grid-template-rows: auto auto minmax(0, 1fr) auto; }
+.nb-head { display: grid; gap: 12px; }
+.nb-head h1 { font-size: 2rem; letter-spacing: -.02em; }
+.nb-new { justify-content: center; min-height: 46px; font-size: 1rem; }
+.nb-search { display: flex; align-items: center; gap: 8px; background: var(--bg); border-radius: 14px; padding: 0 12px; min-height: 42px; box-shadow: inset 0 0 0 1px var(--sep-strong); color: var(--label-3); }
+.nb-search:focus-within { box-shadow: inset 0 0 0 2px var(--sereo-sage-ink); }
+.nb-search input { border: 0; background: transparent; flex: 1; min-width: 0; font: inherit; color: var(--label); padding: 10px 0; outline: none; }
+.nb-list { overflow-y: auto; display: grid; gap: 8px; align-content: start; padding: 2px 4px 8px 2px; margin: 0 -4px 0 -2px; }
+.nb-grp { display: flex; align-items: center; gap: 6px; font-size: .75rem; font-weight: 700; color: var(--label-3); margin: 6px 4px 0; }
+.nb-grp svg { color: var(--sereo-coral-ink); }
+.nb-card { display: grid; gap: 4px; padding: 12px 14px; border-radius: 16px; background: var(--bg); color: var(--label); text-decoration: none; box-shadow: 0 0 0 1px var(--sep); transition: box-shadow 160ms ease, background-color 160ms ease; }
+.nb-card:hover { text-decoration: none; box-shadow: 0 0 0 1px var(--sep-strong), var(--shadow-1); }
+.nb-card.on { background: var(--sereo-sage-tint); box-shadow: inset 4px 0 0 var(--sereo-coral), 0 0 0 1px rgba(var(--brand-rgb), .18); }
+.nb-ct { display: flex; align-items: center; gap: 6px; min-width: 0; }
+.nb-ct b { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.nb-pin { color: var(--sereo-coral-ink); display: inline-flex; flex: none; }
+.nb-cx { font-size: .875rem; color: var(--label-2); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.nb-cd { font-size: .75rem; color: var(--label-3); }
+.nb-none { color: var(--label-2); font-size: .9375rem; padding: 14px 6px; }
+.nb-priv { display: flex; gap: 8px; align-items: flex-start; font-size: .8125rem; color: var(--label-3); margin: 0 4px; }
+.nb-priv svg { flex: none; margin-top: 2px; color: var(--sereo-sage-ink); }
+.nb-paper { background: var(--bg); border-radius: 26px; box-shadow: 0 0 0 1px var(--sep), var(--shadow-2); padding: 22px 40px 28px; min-height: calc(100vh - 140px); display: flex; flex-direction: column; }
+.nb-tools { display: flex; align-items: center; gap: 8px; min-height: 40px; margin: 0 -16px 10px; }
+.nb-back { display: none; }
+.nb-status { flex: 1; display: inline-flex; align-items: center; gap: 6px; font-size: .8125rem; color: var(--label-3); min-width: 0; transition: opacity 600ms ease; }
+.nb-status.s-saved { color: var(--sereo-sage-ink); }
+.nb-status.s-saved.fade { opacity: .45; }
+.nb-status.s-offline, .nb-status.s-error, .nb-status.s-off { color: var(--sereo-coral-ink); font-weight: 600; }
+.nb-pinbtn.on { background: var(--sereo-coral-tint); color: var(--sereo-coral-ink); }
+.nb-title { border: 0; outline: none; background: transparent; font: inherit; font-size: 1.875rem; font-weight: 700; letter-spacing: -.02em; line-height: 1.25; color: var(--label); padding: 4px 0 10px; width: 100%; }
+.nb-title::placeholder, .nb-text::placeholder { color: var(--label-3); opacity: .75; }
+.nb-text { flex: 1; border: 0; outline: none; resize: none; font: inherit; font-size: 1.0625rem; line-height: 30px; color: var(--label); width: 100%; min-height: 260px; padding: 0;
+  background-image: linear-gradient(to bottom, transparent 29px, rgba(var(--brand-rgb), .08) 29px); background-size: 100% 30px; background-attachment: local; }
+.nb-meta { font-size: .8125rem; color: var(--label-3); margin-top: 18px; padding-top: 12px; box-shadow: inset 0 1px 0 var(--sep); }
+.nb-undo { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); z-index: 60; display: flex; align-items: center; gap: 12px; padding: 10px 12px 10px 16px; border-radius: 16px; background: var(--sereo-ink); color: #fff; box-shadow: var(--shadow-3); font-weight: 500; }
+.nb-undo .btn { background: rgba(255, 255, 255, .14); color: #fff; }
+@media (max-width: 860px) {
+  .nb { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .nb-side { position: static; max-height: none; }
+  .nb.editing .nb-side { display: none; }
+  .nb:not(.editing) .nb-paper { display: none; }
+  .nb-back { display: inline-flex; margin-left: -6px; }
+  .nb-paper { padding: 14px 18px 22px; border-radius: 20px; min-height: calc(100vh - 190px); }
+  .nb-tools { margin: 0 -6px 6px; }
+  .nb-status { order: 3; flex-basis: 100%; }
+  .nb-tools { flex-wrap: wrap; }
+  .nb-back { flex: 1; justify-content: flex-start; }
+  .nb-title { font-size: 1.5rem; }
+  .nb-undo { bottom: calc(76px + env(safe-area-inset-bottom, 0px)); width: calc(100% - 32px); justify-content: space-between; }
+}
+@media (prefers-reduced-motion: reduce) { .nb-card, .nb-status { transition: none; } }
+.sv-kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.sv-k { display: grid; gap: 2px; padding: 12px; border-radius: 14px; background: var(--sereo-sage-tint); }
+.sv-k b { font-size: 1.5rem; color: var(--sereo-sage-ink); }
+.sv-k span { font-size: .8125rem; color: var(--label-2); }
+.sv-h { font-size: 1rem; margin: 16px 0 8px; }
+.sv-days { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+.sv-days li { display: grid; grid-template-columns: 110px minmax(0, 1fr) 48px; gap: 10px; align-items: center; font-size: .875rem; }
+.sv-bar { height: 8px; border-radius: 99px; background: var(--fill); overflow: hidden; }
+.sv-bar i { display: block; height: 100%; background: var(--sereo-sage-ink); border-radius: 99px; }
+.sv-days b { text-align: right; }
 </style>
 </head>
 <body>
@@ -1603,6 +1778,9 @@ const ICONS = {
   moon: '<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>',
   day: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="m9 15 2 2 4-4"/>',
   admin: '<path d="M12 2.5 4 5.5v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10v-6z"/><path d="m9 12 2 2 4-4"/>',
+  notebook: '<path d="M6.5 3.5h11a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2h-11z"/><path d="M6.5 3.5v17"/><path d="M4 7.5h2.5M4 12h2.5M4 16.5h2.5"/><path d="M10.5 8.5h5.5M10.5 12h5.5"/>',
+  news: '<path d="M4 5.5h12.5v13a2 2 0 0 0 2 2H6a2 2 0 0 1-2-2z"/><path d="M16.5 9H20v9.5a2 2 0 0 1-4 0"/><path d="M7.5 9h5.5M7.5 12.5h5.5M7.5 16h3.5"/>',
+  image: '<rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="9" cy="10" r="1.8"/><path d="m21 16-5-5-9 9"/>',
   school: '<rect x="2.5" y="4.5" width="19" height="13" rx="2.5"/><path d="m10 8.5 4.5 2.5-4.5 2.5z"/><path d="M8 21h8"/>'
 };
 const ic = (n, cls = "") => `<svg class="i ${cls}" viewBox="0 0 24 24" aria-hidden="true">${ICONS[n] || ""}</svg>`;
@@ -1611,13 +1789,17 @@ const ic = (n, cls = "") => `<svg class="i ${cls}" viewBox="0 0 24 24" aria-hidd
 const LS_KEY = "gds-book-app-v1";
 const DEFAULT_STATE = {
   role: "salarie", favs: [], recent: [], reports: [], content: {}, chapters: {}, newChapters: [],
-  imports: [], verified: {}, aiOff: false, homeVariant: "A", userName: "", checks: {}, demo: null, metier: "", tourSeen: false, formVues: [], formTab: "", formQuiz: {}, demoInt: null, demoAvis: []
+  imports: [], verified: {}, aiOff: false, homeVariant: "A", userName: "", checks: {}, demo: null, metier: "", tourSeen: false, formVues: [], formTab: "", formQuiz: {}, demoInt: null, demoAvis: [], actusVues: []
 };
 let S = clone(DEFAULT_STATE);
 /* En mode partagé, seules les préférences de l'appareil (favoris, récents, cases cochées) restent locales.
    Elles sont rangées par compte : sur un appareil partagé, chacun retrouve les siennes et ne voit pas celles des autres. */
 const PREFS_KEY = LS_KEY + "-prefs";
-const PREF_FIELDS = ["favs", "recent", "checks", "tourSeen", "formTab"];
+const PREF_FIELDS = ["favs", "recent", "checks", "tourSeen", "formTab", "actusVues"];
+/* Préférences personnelles synchronisées (table preferences_perso) : étapes cochées, favoris, récents,
+   actualités lues… gardées par compte, retrouvées sur tous les appareils. Le navigateur garde une copie
+   (marquée « à envoyer » tant que le serveur ne l'a pas reçue) : rien n'est perdu hors connexion. */
+var PSYNC = { timer: null, last: null, off: false, busy: false, base: null, lastPull: 0 };
 let PREV_LOGIN = ""; try { PREV_LOGIN = localStorage.getItem("gds-last-login") || ""; } catch (e) { /* */ }
 const prefsKey = () => (typeof SESSION !== "undefined" && SESSION && SESSION.user ? PREFS_KEY + ":" + SESSION.user.id : null);
 function load() {
@@ -1640,11 +1822,89 @@ function loadPrefs(login) {
 }
 function save() {
   try {
-    if (typeof REMOTE !== "undefined" && REMOTE) { const key = prefsKey(); if (key) { const o = {}; PREF_FIELDS.forEach((k) => { o[k] = S[k]; }); localStorage.setItem(key, JSON.stringify(o)); } }
+    if (typeof REMOTE !== "undefined" && REMOTE) { const key = prefsKey(); if (key) { const o = {}; PREF_FIELDS.forEach((k) => { o[k] = S[k]; }); const snap = JSON.stringify(o);
+      if (snap !== PSYNC.last) { o._dirty = true; o._at = Date.now(); o._base = PSYNC.base; localStorage.setItem(key, JSON.stringify(o)); prefsSchedule(); } } }
     else localStorage.setItem(LS_KEY, JSON.stringify(S));
   } catch (e) { /* ignore */ }
 }
 const isAdmin = () => S.role === "admin";
+const prefsPick = () => { const o = {}; PREF_FIELDS.forEach((k) => { o[k] = clone(S[k]); }); return o; };
+function prefsLocal(patch) { const key = prefsKey(); if (!key) return {}; try { const o = JSON.parse(localStorage.getItem(key) || "{}") || {}; if (patch) { Object.assign(o, patch); localStorage.setItem(key, JSON.stringify(o)); } return o; } catch (e) { return {}; } }
+function prefsSchedule() { if (PSYNC.off) return; clearTimeout(PSYNC.timer); PSYNC.timer = setTimeout(prefsPush, 1200); }
+/* Fusion : on part de la version du serveur et on n'applique que ce qui a changé sur cet appareil
+   depuis la dernière synchronisation (base). Deux appareils ouverts ne s'écrasent donc pas. */
+function prefsMerge(base, cur, srv) {
+  const out = {};
+  PREF_FIELDS.forEach((k) => {
+    const b = base ? base[k] : undefined, c = cur[k], sv = srv ? srv[k] : undefined;
+    if (JSON.stringify(b) === JSON.stringify(c)) { out[k] = sv !== undefined ? clone(sv) : clone(c); return; }
+    if (Array.isArray(c)) {
+      const bb = Array.isArray(b) ? b : [], ss = Array.isArray(sv) ? sv : [];
+      const rem = new Set(bb.filter((x) => !c.includes(x))), add = c.filter((x) => !bb.includes(x));
+      let r = add.concat(ss.filter((x) => !rem.has(x) && !add.includes(x)));
+      if (k === "recent") r = c.filter((x) => !rem.has(x)).concat(ss.filter((x) => !rem.has(x) && !c.includes(x))).slice(0, 8);
+      out[k] = r; return;
+    }
+    if (c && typeof c === "object") {
+      const bb = b && typeof b === "object" ? b : {}, r = Object.assign({}, sv && typeof sv === "object" ? sv : {});
+      new Set([...Object.keys(bb), ...Object.keys(c)]).forEach((x) => { if (JSON.stringify(bb[x]) !== JSON.stringify(c[x])) { if (c[x] === undefined) delete r[x]; else r[x] = clone(c[x]); } });
+      out[k] = r; return;
+    }
+    out[k] = b === undefined && sv !== undefined ? clone(sv) : clone(c); // première synchronisation : le serveur garde ses réglages simples
+  });
+  return out;
+}
+function prefsApply(o) { PREF_FIELDS.forEach((k) => { S[k] = o[k] !== undefined ? clone(o[k]) : clone(DEFAULT_STATE[k]); }); }
+function prefsStore(base, dirty) { PSYNC.base = clone(base); PSYNC.last = JSON.stringify(prefsPick()); prefsLocal(Object.assign(prefsPick(), { _dirty: !!dirty, _at: Date.now(), _base: base })); }
+const prefsFetch = () => Promise.race([sbq(SB.from("preferences_perso").select("donnees,updated_at").eq("user_id", SESSION.user.id).maybeSingle(), "préférences"), new Promise((ok, ko) => setTimeout(() => ko(new Error("délai dépassé")), 6000))]);
+const prefsGone = (e) => !!(e && (e.code === "42P01" || e.code === "PGRST205"));
+async function prefsPush() {
+  if (!REMOTE || PSYNC.off || !SESSION) return;
+  if (PSYNC.busy) { prefsSchedule(); return; }
+  PSYNC.busy = true; clearTimeout(PSYNC.timer);
+  const start = prefsPick();
+  try {
+    const row = await prefsFetch();
+    const merged = prefsMerge(PSYNC.base, start, row ? row.donnees : null);
+    await sbq(SB.from("preferences_perso").upsert({ user_id: SESSION.user.id, donnees: merged }, { onConflict: "user_id" }), "préférences");
+    const now = prefsPick(), late = JSON.stringify(now) !== JSON.stringify(start);
+    const shown = late ? prefsMerge(start, now, merged) : merged; // ce qui a été changé pendant l'envoi est gardé
+    const changedHere = JSON.stringify(shown) !== JSON.stringify(now);
+    prefsApply(shown); prefsStore(merged, late);
+    if (changedHere) prefsRefreshView();
+    if (late) prefsSchedule();
+  } catch (e) { if (prefsGone(e)) PSYNC.off = true; else PSYNC.timer = setTimeout(prefsPush, 20000); }
+  PSYNC.busy = false;
+}
+async function prefsPull() { // après la connexion
+  if (!REMOTE || !SESSION) return;
+  let row;
+  try { row = await prefsFetch(); } catch (e) { if (prefsGone(e)) PSYNC.off = true; return; }
+  const loc = prefsLocal();
+  PSYNC.lastPull = Date.now();
+  if (row && !loc._dirty && loc._base !== undefined) { prefsApply(row.donnees || {}); prefsStore(row.donnees || {}, false); return; }
+  // modifications de cet appareil pas encore envoyées (ou première synchronisation) : fusion puis envoi
+  PSYNC.base = loc._base || null;
+  await prefsPush();
+}
+async function prefsRefresh() { // en revenant sur l'application : récupérer ce qui a été fait sur un autre appareil
+  if (!REMOTE || PSYNC.off || !SESSION || PSYNC.busy || Date.now() - (PSYNC.lastPull || 0) < 8000) return;
+  PSYNC.lastPull = Date.now();
+  if (prefsLocal()._dirty) { prefsPush(); return; }
+  let row; try { row = await prefsFetch(); } catch (e) { return; }
+  if (!row || JSON.stringify(row.donnees) === JSON.stringify(PSYNC.base) || prefsLocal()._dirty) return;
+  const before = JSON.stringify(prefsPick());
+  prefsApply(prefsMerge(PSYNC.base, prefsPick(), row.donnees)); prefsStore(row.donnees, false);
+  if (JSON.stringify(prefsPick()) !== before) prefsRefreshView();
+}
+function prefsRefreshView() {
+  try { renderNavCounts(); if (typeof actuBadges === "function") actuBadges(); } catch (e) { /* */ }
+  const n = parseHash().name;
+  if (["fiche", "favoris", "procedures", "themes", "theme"].includes(n) && !document.querySelector(".overlay") && !(document.activeElement && /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) && document.activeElement.type !== "checkbox")) { const y = scrollY; route(); window.scrollTo(0, y); }
+}
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") prefsRefresh(); });
+window.addEventListener("focus", () => prefsRefresh());
+window.addEventListener("online", () => { if (REMOTE && SESSION && prefsLocal()._dirty) prefsPush(); });
 
 /* ===================== Contenu (book + modifications publiées) ===================== */
 const BASE = {}; const ORDER = [];
@@ -2100,7 +2360,7 @@ function openProfile() {
   if (REMOTE) return modal(`<h2 id="mtitle">Mon compte</h2>
     <div class="radio-cards"><label style="cursor:default"><span><b>${esc(myName())}</b><br><span class="small muted">Identifiant : ${esc(account())} · ${esc(roleLabel())}</span><br><span class="small muted">${isAdmin() ? "Responsable : gère les routines, les consignes, les procédures et les comptes." : "Collaborateur : ta journée, les procédures, l'assistant, les favoris et les signalements."}</span></span></label></div>
     <details class="toc-m" style="display:block" id="pwBox"><summary>${ic("lock", "sm")} Changer mon mot de passe</summary><form class="form" id="myPw" novalidate style="padding-bottom:12px">${passwordForm("mp")}<div><button class="btn primary" type="submit">Enregistrer le mot de passe</button></div></form></details>
-    <div class="btns">${isAdmin() ? `<a class="btn" href="#/admin" data-close>${ic("admin")} Administration</a><a class="btn" href="#/admin/comptes" data-close>${ic("users")} Gérer les comptes</a>` : ""}<a class="btn" href="#/journal" data-close>${ic("history")} Mes journées précédentes</a><a class="btn" href="#/avis" data-close>${ic("bulb")} Donner mon avis</a><button class="btn danger" type="button" id="logoutBtn">Se déconnecter</button><button class="btn ghost" type="button" data-close>Fermer</button></div>`, (m) => {
+    <div class="btns">${isAdmin() ? `<a class="btn" href="#/admin" data-close>${ic("admin")} Administration</a><a class="btn" href="#/admin/comptes" data-close>${ic("users")} Gestion des collaborateurs</a>` : ""}<a class="btn" href="#/notes" data-close>${ic("notebook")} Mes notes</a><a class="btn" href="#/journal" data-close>${ic("history")} Mes journées précédentes</a><a class="btn" href="#/avis" data-close>${ic("bulb")} Donner mon avis</a><button class="btn danger" type="button" id="logoutBtn">Se déconnecter</button><button class="btn ghost" type="button" data-close>Fermer</button></div>`, (m) => {
     $$("[data-close]", m).forEach((b) => b.addEventListener("click", closeModal));
     $("#logoutBtn", m).onclick = logout;
     $("#myPw", m).onsubmit = async (e) => {
@@ -2124,7 +2384,9 @@ function openProfile() {
 function renderNav(r) {
   const cur = r.name;
   const navMain = [
+    ["#/actualites", "news", "Actualités", cur === "actualites" || cur === "actualite", `<span class="badge news" data-actu-n></span>`],
     ["#/", "day", "Ma journée", cur === "home" || cur === "tache" || cur === "journal" || cur === "guide"],
+    ["#/notes", "notebook", "Mes notes", cur === "notes"],
     ["#/procedures", "book", "Procédures", cur === "procedures" || cur === "themes" || cur === "theme" || cur === "fiche" || cur === "recherche"],
     ["#/assistant", "sparkles", "Assistant", cur === "assistant"],
     ["#/formation", "school", "Formation", cur === "formation"],
@@ -2138,10 +2400,10 @@ function renderNav(r) {
   const curCh = r.name === "theme" ? r.arg : r.name === "fiche" && getFiche(r.arg) ? getFiche(r.arg).ch : null;
   showThemes(THEMES_OPEN != null ? THEMES_OPEN : ["procedures", "themes", "theme", "fiche", "recherche"].includes(cur));
   $("#navThemes").innerHTML = chapters().map((c) => `<a href="#/theme/${c.id}" ${curCh === c.id ? 'aria-current="page"' : ""}><span class="n">${esc(c.id)}</span>${ic(c.icon || "book", "sm")}<span>${esc(c.title)}</span></a>`).join("");
-  const tabs = [["#/", "day", "Ma journée", cur === "home" || cur === "tache" || cur === "journal" || cur === "guide"], ["#/procedures", "book", "Procédures", cur === "procedures" || cur === "themes" || cur === "theme" || cur === "fiche" || cur === "recherche"], ["#/assistant", "sparkles", "Assistant", cur === "assistant"], ["#/formation", "school", "Formation", cur === "formation"], ["#/demandes", "inbox", "Demandes", cur === "demandes" || cur === "demande"]];
+  const tabs = [["#/actualites", "news", "Actus", cur === "actualites" || cur === "actualite"], ["#/", "day", "Ma journée", cur === "home" || cur === "tache" || cur === "journal" || cur === "guide"], ["#/notes", "notebook", "Notes", cur === "notes"], ["#/procedures", "book", "Procédures", cur === "procedures" || cur === "themes" || cur === "theme" || cur === "fiche" || cur === "recherche"], ["#/assistant", "sparkles", "Assistant", cur === "assistant"], ["#/formation", "school", "Formation", cur === "formation"], ["#/demandes", "inbox", "Demandes", cur === "demandes" || cur === "demande"]];
   if (isAdmin()) tabs.push(["#/admin", "admin", "Admin", cur.startsWith("admin")]);
-  $("#tabbar").innerHTML = tabs.map(([h, i, l, on]) => `<a href="${h}" ${on ? 'aria-current="page"' : ""}>${ic(i)}<span>${l}</span>${h === "#/demandes" ? `<i class="tk-dot" data-tk-dot hidden></i>` : h === "#/admin" ? `<i class="tk-dot" data-adm-dot hidden></i>` : ""}</a>`).join("");
-  ensureTickets(); ensureAdminCounts(); ticketBadges();
+  $("#tabbar").innerHTML = tabs.map(([h, i, l, on]) => `<a href="${h}" ${on ? 'aria-current="page"' : ""}>${ic(i)}<span>${l}</span>${h === "#/actualites" ? `<i class="tk-dot" data-actu-dot hidden></i>` : h === "#/demandes" ? `<i class="tk-dot" data-tk-dot hidden></i>` : h === "#/admin" ? `<i class="tk-dot" data-adm-dot hidden></i>` : ""}</a>`).join("");
+  ensureTickets(); ensureAdminCounts(); ticketBadges(); ensureActus(); actuBadges();
   if (typeof tourHit === "function") tourHit(); // la découverte garde son repère quand la navigation est redessinée
   const ts = $("#topSearch");
   if (cur === "procedures" || cur === "themes" || cur === "recherche") ts.innerHTML = "";
@@ -2555,6 +2817,7 @@ function lateTaskBanner(view, taskId) {
 let lastRoute = "";
 function route() {
   const r = parseHash();
+  if (["fiche", "favoris"].includes(r.name) && typeof prefsRefresh === "function") prefsRefresh();
   renderNav(r);
   const main = $("#main");
   $(".main").classList.toggle("is-home", r.name === "home"); // « Ma journée » : bandeau bleu sur toute la largeur
@@ -2576,6 +2839,9 @@ function route() {
   else if (r.name === "formation") { html = viewFormation(r.params); mount = (x) => formationMount(x, r.params); }
   else if (r.name === "integration") { html = viewIntegration(); mount = (x) => integrationMount(x, r.params); }
   else if (r.name === "avis") { html = viewAvis(); mount = avisMount; }
+  else if (r.name === "notes") { const nid = dec(r.arg || ""); html = viewNotes(nid); mount = (x) => notesMount(x, nid); }
+  else if (r.name === "actualites") { html = viewActus(); mount = actusMount; }
+  else if (r.name === "actualite") { const aid = dec(r.arg || ""); html = viewActu(aid); mount = (x) => actuMount(x, aid); }
   else if (r.name.startsWith("admin")) { if (!isAdmin()) html = viewDenied(); else { const v = viewAdmin(r); html = v.html; mount = v.mount; } }
   else html = viewNotFound();
   main.innerHTML = `<div class="view">${html}</div>`;
@@ -2583,7 +2849,7 @@ function route() {
   const key = location.hash.split("?s=")[0];
   if (key !== lastRoute && !r.params.s) { window.scrollTo(0, 0); if (r.name !== "procedures" && r.name !== "themes" && r.name !== "recherche" && r.name !== "assistant") main.focus({ preventScroll: true }); }
   lastRoute = key;
-  const titles = { home: "Ma journée", tache: "Tâche", guide: "Me guider", journal: "Mes journées", procedures: "Procédures", themes: "Procédures", favoris: "Mes favoris", demandes: "Mes demandes", demande: "Demande d'aide", assistant: "Assistant", recherche: "Recherche", formation: "Formation", integration: "Ma première semaine", avis: "Ton avis" };
+  const titles = { home: "Ma journée", tache: "Tâche", guide: "Me guider", journal: "Mes journées", procedures: "Procédures", themes: "Procédures", favoris: "Mes favoris", demandes: "Mes demandes", demande: "Demande d'aide", assistant: "Assistant", recherche: "Recherche", formation: "Formation", integration: "Ma première semaine", avis: "Ton avis", notes: "Mes notes", actualites: "Actualités", actualite: "Actualité" };
   document.title = (r.name === "fiche" && getFiche(r.arg) ? r.arg + " " + getFiche(r.arg).title : r.name === "theme" && chapter(r.arg) ? chapter(r.arg).title : r.name === "formation" && r.arg === "video" && fvById(r.rest[0]) ? fvById(r.rest[0]).t : titles[r.name] || "Administration") + " · Book des Process";
 }
 
@@ -2777,10 +3043,10 @@ function answerFiche(q, fid, res) {
 /* ===================== Administration ===================== */
 /* Huit entrées sur une ligne. « Retours » et « Le book » regroupent des pages voisines : leurs
    sous-onglets n'apparaissent que lorsqu'on y est. */
-const ADMIN_TABS = [["", "admin", "Tableau de bord"], ["equipe", "users", "Équipe du jour"], ["routines", "checklist", "Routines"], ["ponctuelles", "calendar", "Tâches ponctuelles"], ["consignes", "info", "Consignes"],
+const ADMIN_TABS = [["", "admin", "Tableau de bord"], ["equipe", "users", "Équipe du jour"], ["routines", "checklist", "Routines"], ["ponctuelles", "calendar", "Tâches ponctuelles"], ["consignes", "info", "Consignes"], ["actualites", "news", "Actualités"],
   ["demandes", "inbox", "Demandes", [["demandes", "Demandes de l'équipe"], ["questions", "Questions sans réponse"], ["signalements", "Signalements"], ["avis", "Avis et idées"]]],
   ["fiches", "book", "Le book", [["fiches", "Procédures"], ["themes", "Thèmes"], ["documents", "Documents"], ["verification", "Points à vérifier"], ["historique", "Historique"]]],
-  ["formation", "school", "Formation", [["formation", "Tutos et quiz"], ["integration", "Intégration"]]], ["comptes", "userCheck", "Comptes"]];
+  ["formation", "school", "Formation", [["formation", "Tutos et quiz"], ["integration", "Intégration"]]], ["comptes", "userCheck", "Collaborateurs"]];
 function adminTabs(cur) {
   const group = ADMIN_TABS.find((t) => t[3] && t[3].some(([k]) => k === cur));
   const t = adminTodo(), keys = ["demandes", "questions", "signalements", "avis"];
@@ -2800,6 +3066,8 @@ function viewAdmin(r) {
   else if (sub === "routine") { html = head(r.arg === "new" ? "Nouvelle routine" : "Modifier la routine") + viewRoutineEditor(r.arg); mount = (x) => routineEditorMount(x, r.arg); }
   else if (sub === "ponctuelles") { html = head("Tâches ponctuelles", "Une action à faire un jour précis, pour une personne, un métier ou toute l'équipe. Cochez « Priorité urgente » pour qu'elle passe avant la routine.") + adminTabs("ponctuelles") + adminOneOffs(); mount = oneOffsMount; }
   else if (sub === "ponctuelle") { html = head(r.arg === "new" ? "Nouvelle tâche ponctuelle" : "Modifier la tâche ponctuelle") + viewOneOffEditor(); mount = (x) => oneOffEditorMount(x, r.arg); }
+  else if (sub === "actualites") { html = head("Actualités", "Publiez les nouvelles de l'équipe avec une photo, pour toutes les agences ou seulement certaines. Elles apparaissent tout en haut du menu.") + adminTabs("actualites") + adminActus(); mount = adminActusMount; }
+  else if (sub === "actualite") { html = head(r.arg === "new" ? "Créer une actualité" : "Modifier l'actualité") + viewActuEditor(); mount = (x) => actuEditorMount(x, r.arg); }
   else if (sub === "consignes") { html = head("Consignes de l'équipe", "Urgences, changements de procédure et points de vigilance, avec une date de fin pour qu'ils ne restent pas affichés.") + adminTabs("consignes") + adminConsignes(); mount = consignesMount; }
   else if (sub === "consigne") { html = head(r.arg === "new" ? "Nouvelle consigne" : "Modifier la consigne") + viewConsigneEditor(); mount = (x) => consigneEditorMount(x, r.arg); }
   else if (sub === "demandes") { html = head("Demandes de l'équipe", "Les demandes d'aide envoyées depuis l'application. Répondez, demandez une précision ou apportez la solution : le collaborateur suit tout dans « Mes demandes ».") + adminTabs("demandes") + adminTickets(r.params); mount = (x) => adminTicketsMount(x, r.params); }
@@ -2808,7 +3076,7 @@ function viewAdmin(r) {
   else if (sub === "formation") { html = head("Formation", "Les tutos vidéo regardés par chaque personne.") + adminTabs("formation") + adminFormation(); mount = adminFormationMount; }
   else if (sub === "integration") { html = head("Intégration", "Le parcours « Ma première semaine » des nouvelles personnes.") + adminTabs("integration") + adminIntegration(r); mount = (x) => adminIntegrationMount(x, r); }
   else if (sub === "avis") { html = head("Avis et idées", "La question du mois et les idées envoyées par l'équipe.") + adminTabs("avis") + adminAvis(); mount = (x) => adminAvisMount(x, r.params); }
-  else if (sub === "comptes") { html = head("Comptes", "Créez un compte pour chaque personne, puis transmettez-lui son identifiant et son mot de passe.") + adminTabs("comptes") + adminAccounts(); mount = accountsMount; }
+  else if (sub === "comptes") { html = head("Gestion des collaborateurs", "Créez un compte pour chaque personne, transmettez-lui son identifiant et son mot de passe, puis gérez ses accès. Vous n'avez jamais besoin de connaître son mot de passe : vous pouvez en définir un nouveau à tout moment.") + adminTabs("comptes") + adminAccounts(); mount = accountsMount; }
   else if (sub === "themes") { html = head("Thèmes", "Le menu de gauche et les cartes de l'accueil reprennent ces thèmes.") + adminTabs("themes") + adminThemes(); mount = themesAdminMount; }
   else if (sub === "documents") { html = head("Documents", "Ajoutez un document : son contenu est extrait, puis vérifié avant toute publication.") + adminTabs("documents") + adminDocs(); mount = docsMount; }
   else if (sub === "verification") { html = head("Points à vérifier", "Points relevés lors de l'analyse du book. Rien n'a été inventé : ces éléments sont à compléter ou à arbitrer par la Direction.") + adminTabs("verification") + adminVerif(); mount = verifMount; }
@@ -3221,6 +3489,7 @@ function adminAccounts() {
       <div class="fld"><label for="acLogin">Identifiant</label><input id="acLogin" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="marie.dupont" required><span class="hint">Ce que la personne tape pour se connecter. Proposé automatiquement à partir du nom.</span></div>
       <div class="fld"><label for="acPw">Mot de passe</label><input id="acPw" autocomplete="off" spellcheck="false" required style="font-family:ui-monospace,Menlo,monospace;font-size:.9375rem"><button class="btn sm" type="button" id="acGen" style="justify-self:start">${ic("history", "sm")} Générer un autre</button><span class="hint">8 caractères minimum. « Générer » propose un mot de passe facile à retenir.</span></div>
       <div class="fld"><label for="acMetier">Métier (facultatif)</label><input id="acMetier" list="acMetiers" autocomplete="off" placeholder="Ex. : Assistante d'agence"><datalist id="acMetiers">${Array.from(new Set((ACC.users || []).map((u) => u.metier).filter(Boolean))).sort().map((m) => `<option value="${esc(m)}">`).join("")}</datalist><span class="hint">Sert à attribuer une routine à tout un métier.</span></div>
+      <fieldset class="fld ae-ag" id="acAgence"><legend class="lbl">Agence</legend>${agenceChoice("acAg", "")}<span class="hint">« Toutes les agences » : la personne voit toutes les actualités. Une agence : celles de son agence et celles prévues pour toutes.</span></fieldset>
       <fieldset class="fld" style="border:0;padding:0;margin:0"><legend class="lbl" style="margin-bottom:6px">Accès</legend><div class="radio-cards">
         <label><input type="radio" name="acRole" value="lecteur" checked> <span><b>Collaborateur</b><br><span class="small muted">Sa journée, les procédures, l'assistant, les signalements. Ne modifie rien.</span></span></label>
         <label><input type="radio" name="acRole" value="admin"> <span><b>Responsable (administrateur)</b><br><span class="small muted">Peut aussi gérer les routines, les consignes, les procédures et les comptes.</span></span></label></div></fieldset>
@@ -3237,18 +3506,19 @@ function accountsList() {
   return `<div class="rows">${users.map((u) => `<div class="rowi ${u.disabled ? "done-row" : ""}" data-uid="${esc(u.id)}"><div style="min-width:0">
       <div class="t">${esc(u.name || u.login)}${u.me ? ' <span class="badge">Vous</span>' : ""}</div>
       <div class="d">Identifiant : <b style="color:var(--label)">${esc(u.login)}</b> · ${u.lastSignIn ? "dernière connexion le " + fmtDateTime(u.lastSignIn) : "jamais connecté"}</div>
-      <div class="m">${u.disabled ? '<span class="badge danger">Désactivé</span>' : (u.role || u.savedRole) === "admin" ? '<span class="badge">Responsable</span>' : '<span class="badge grey">Collaborateur</span>'}${u.metier ? `<span class="badge grey">${ic("users", "sm")} ${esc(u.metier)}</span>` : ""}${u.mustChange ? '<span class="badge warn">Doit choisir son mot de passe</span>' : ""}</div>
+      <div class="m">${u.disabled ? '<span class="badge danger">Désactivé</span>' : (u.role || u.savedRole) === "admin" ? '<span class="badge">Responsable</span>' : '<span class="badge grey">Collaborateur</span>'}${u.metier ? `<span class="badge grey">${ic("users", "sm")} ${esc(u.metier)}</span>` : ""}${ACC.agOff ? "" : `<span class="badge grey">${ic("mappin", "sm")} ${esc((ACC.agences || {})[u.id] ? agenceLabel(ACC.agences[u.id]) : "Toutes les agences")}</span>`}${u.mustChange ? '<span class="badge warn">Doit choisir son mot de passe</span>' : ""}</div>
       <div class="acc-met" hidden><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><label class="sr-only" for="mt-${esc(u.id)}">Métier</label><input class="inp" id="mt-${esc(u.id)}" list="acMetiers" style="flex:1;min-width:160px" value="${esc(u.metier || "")}" placeholder="Métier"><button class="btn sm primary" type="button" data-act="setmetier">Enregistrer</button></div></div>
+      <div class="acc-ag" hidden role="group" aria-label="Agence de ${esc(u.name || u.login)}">${agenceChoice("ag-" + u.id, (ACC.agences || {})[u.id])}<button class="btn sm primary" type="button" data-act="setagence">Enregistrer</button></div>
       <div class="acc-pw" hidden><div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap"><label class="sr-only" for="pw-${esc(u.id)}">Nouveau mot de passe</label><input class="inp" id="pw-${esc(u.id)}" style="flex:1;min-width:160px;font-family:ui-monospace,Menlo,monospace" value="${esc(genPassword())}"><button class="btn sm primary" type="button" data-act="password">Enregistrer</button></div><span class="hint">Donnez ce nouveau mot de passe à la personne.</span></div>
     </div>
-    <div class="btns"><button class="btn sm" type="button" data-act="showmet">${ic("users", "sm")} Métier</button>${u.me ? "" : `
+    <div class="btns"><button class="btn sm" type="button" data-act="showmet">${ic("users", "sm")} Métier</button><button class="btn sm" type="button" data-act="showag">${ic("mappin", "sm")} Agence</button>${u.me ? "" : `<button class="btn sm" type="button" data-act="suivi">${ic("checklist", "sm")} Suivi</button>`}${u.me ? "" : `
       <button class="btn sm" type="button" data-act="showpw">${ic("lock", "sm")} Mot de passe</button>
       ${u.disabled ? `<button class="btn sm" type="button" data-act="enable">Réactiver</button>` : `<label class="sr-only" for="rl-${esc(u.id)}">Accès</label><select class="inp" id="rl-${esc(u.id)}" data-act="role" style="width:auto;min-height:34px"><option value="lecteur" ${u.role !== "admin" ? "selected" : ""}>Collaborateur</option><option value="admin" ${u.role === "admin" ? "selected" : ""}>Responsable</option></select>
       <button class="btn sm danger" type="button" data-act="disable">Désactiver</button>`}
       <button class="ico-btn danger" type="button" data-act="delete" aria-label="Supprimer le compte de ${esc(u.name || u.login)}" title="Supprimer">${ic("trash", "sm")}</button>`}</div></div>`).join("")}</div>`;
 }
 async function refreshAccounts(root) {
-  try { const d = await SYNC.accounts("list"); ACC.users = d.users.map((u) => Object.assign(u, { login: u.email ? loginOf(u.email) : u.login })); ACC.error = null; }
+  try { const [d, ag] = await Promise.all([SYNC.accounts("list"), ADB.agences().catch(() => null)]); ACC.users = d.users.map((u) => Object.assign(u, { login: u.email ? loginOf(u.email) : u.login })); ACC.error = null; ACC.agences = {}; ACC.agOff = !ag; (ag || []).forEach((x) => { ACC.agences[x.user_id] = x.agence; }); }
   catch (e) { ACC.error = e.message; }
   const box = $("#accList", root); if (box) box.innerHTML = accountsList();
 }
@@ -3275,6 +3545,7 @@ function accountsMount(root) {
     const btn = $("#acBtn", root); btn.disabled = true; btn.textContent = "Création…";
     try {
       const r = await SYNC.accounts("create", body);
+      const agEl = $("input[name=acAg]:checked", root), ag = agEl ? agEl.value : ""; if (ag && r && r.id) { try { await ADB.setAgence(r.id, ag); } catch (x) { toast("Compte créé, mais l'agence n'a pas pu être enregistrée : choisissez-la dans la liste.", "alert"); } }
       ACC.created = { name: body.name, login: normLoginLocal(login.value), password: body.password }; ACC.users = null;
       toast("Compte créé", "users"); route();
     } catch (x) { btn.disabled = false; btn.innerHTML = ic("plus") + " Créer le compte"; fail(x.message); }
@@ -3289,6 +3560,9 @@ function accountsMount(root) {
     const b = e.target.closest("button[data-act]"); if (!b) return;
     const row = b.closest("[data-uid]"), a = b.dataset.act, who = row.querySelector(".t").firstChild.textContent;
     if (a === "showmet") { const p = row.querySelector(".acc-met"); p.hidden = !p.hidden; if (!p.hidden) p.querySelector("input").focus(); return; }
+    if (a === "suivi") { const u = (ACC.users || []).find((x) => x.id === row.dataset.uid); if (u) openSuivi(u); return; }
+    if (a === "showag") { if (ACC.agOff) return toast("Les agences ne sont pas encore activées sur le serveur.", "alert"); const p = row.querySelector(".acc-ag"); p.hidden = !p.hidden; if (!p.hidden) (p.querySelector("input:checked") || p.querySelector("input")).focus(); return; }
+    if (a === "setagence") { const ch = row.querySelector(".acc-ag input:checked"), v = ch ? ch.value : ""; row.style.opacity = ".5"; return ADB.setAgence(row.dataset.uid, v || null).then(() => { toast(v ? `${who} : agence de ${agenceLabel(v)}` : `Agence retirée pour ${who}`, "check"); if (row.dataset.uid === MY.id) ACTU.mine = v || null; return refreshAccounts(root); }, () => { row.style.opacity = ""; toast("L'agence n'a pas pu être enregistrée.", "alert"); }); }
     if (a === "setmetier") return act(row, "metier", { metier: row.querySelector(".acc-met input").value.trim() }, `Métier de ${who} enregistré`);
     if (a === "showpw") { const p = row.querySelector(".acc-pw"); p.hidden = !p.hidden; if (!p.hidden) p.querySelector("input").select(); return; }
     if (a === "password") { const v = row.querySelector(".acc-pw input").value; if (v.length < 8) return toast("8 caractères minimum pour le mot de passe.", "alert"); return act(row, "password", { password: v }, `Mot de passe de ${who} changé`); }
@@ -3524,6 +3798,7 @@ async function enter(session) {
     S.role = row.role === "admin" ? "admin" : "salarie"; S.metier = row.metier || "";
     if (umeta().must_change) { const okp = await forcePasswordView(); if (!okp) return; loadingView("Chargement du book…"); }
     try { await seedIfEmpty(); } catch (e) { console.error("seed", e); window.BOOK_SEED_ERR = String(e && e.message || e); }
+    try { await prefsPull(); } catch (e) { /* préférences : on garde celles de l'appareil */ }
     await loadAll();
   } catch (e) {
     document.getElementById("app").innerHTML = `<main class="login"><div class="login-card"><img class="login-logo" src="${ASSETS.logo_full}" alt="" width="240" height="52"><h1 style="font-size:1.5rem">Le book n'a pas pu être chargé</h1><p class="muted">Vérifiez votre connexion internet, puis réessayez.</p><button class="btn primary" type="button" onclick="location.reload()">Réessayer</button></div></main>`;
@@ -4103,6 +4378,9 @@ async function persoDelete(a) {
 /* Changement de compte : on vide tout ce qui appartient au compte précédent */
 function resetUserCaches() {
   persoReset();
+  NOTES = { list: null, loading: null, error: null, status: "", timer: null, retry: null, flushing: false }; NOTE_Q = "";
+  PSYNC.last = null; PSYNC.off = false; PSYNC.base = null; PSYNC.lastPull = 0;
+  ACTU = { list: null, loading: null, error: null, mine: undefined };
   DAYST = { day: null, row: null, consignes: [], loading: null, error: null };
   try { QZ.uid = null; QZ.p = null; QZ.res = {}; } catch (e) { /* quiz pas encore initialisé */ }
 }
@@ -4860,6 +5138,554 @@ async function applyRoutineToday(r) {
 }
 
 /* ---------- Consignes ---------- */
+/* ===================== Actualités =====================
+   Les responsables publient des actualités (titre, description, photo) pour toutes les agences
+   ou pour certaines. Chacun voit celles de son agence : le tri est fait par le serveur (règles d'accès).
+   Une actualité ouverte n'est plus marquée « Nouveau » sur cet appareil. */
+const AGENCES = [["besancon", "Besançon"], ["dole", "Dole"], ["champagnole", "Champagnole"]];
+const agenceChoice = (name, sel) => `<div class="ag-chips" role="radiogroup">` + [["", "Toutes les agences", "users"]].concat(AGENCES.map(([k, l]) => [k, l, "mappin"])).map(([k, l, i]) => `<label class="ag-chip"><input type="radio" name="${esc(name)}" value="${k}" ${(sel || "") === k ? "checked" : ""}><span>${ic(i, "sm")} ${esc(l)}</span></label>`).join("") + `</div>`;
+const agenceLabel = (k) => (AGENCES.find((a) => a[0] === k) || [])[1] || "";
+const agencesLabel = (list) => (list && list.length ? list.map(agenceLabel).filter(Boolean).join(", ") : "Toutes les agences");
+let ACTU = { list: null, loading: null, error: null, mine: undefined };
+const ACTU_NEW_DAYS = 30;
+const ADB = {
+  async list() {
+    if (!REMOTE) return clone(demoStore().actus || []).sort((a, b) => (a.created < b.created ? 1 : -1));
+    return sbq(SB.from("actualites").select("*").order("created", { ascending: false }).limit(120), "actualites");
+  },
+  async save(a) {
+    const row = { titre: a.titre, description: a.description || "", photo: a.photo || null, agences: a.agences || [], publie: a.publie !== false };
+    if (!REMOTE) {
+      const st = demoStore(); st.actus = st.actus || []; const now = new Date().toISOString(); const i = st.actus.findIndex((x) => x.id === a.id);
+      const full = Object.assign({ id: a.id || "a" + uid(), created: a.created || now, created_by: a.created_by || S.userName || "Responsable" }, row, { updated: now });
+      if (i >= 0) st.actus[i] = full; else st.actus.push(full); save(); return clone(full);
+    }
+    if (a.id) { const rows = await sbq(SB.from("actualites").update(row).eq("id", a.id).select("*"), "actualite"); if (!rows || !rows.length) throw new Error("introuvable"); return rows[0]; }
+    const rows = await sbq(SB.from("actualites").insert(row).select("*"), "actualite new"); return rows[0];
+  },
+  async remove(id) {
+    if (!REMOTE) { const st = demoStore(); st.actus = (st.actus || []).filter((x) => x.id !== id); save(); return; }
+    await sbq(SB.from("actualites").delete().eq("id", id), "actualite suppr");
+  },
+  async history(id) { // responsables : versions modifiées et actualités supprimées
+    if (!REMOTE) return [];
+    let q = SB.from("actualites_historique").select("*").order("fait_le", { ascending: false }).limit(200);
+    if (id) q = q.eq("actualite_id", id);
+    return sbq(q, "historique actualites");
+  },
+  async restore(hid) {
+    if (!REMOTE) throw new Error("Disponible dans la version en ligne.");
+    return sbq(SB.rpc("actualite_restaurer", { p_hid: hid }), "restaurer actualite");
+  },
+  async agences() { // responsables : l'agence de chaque compte
+    if (!REMOTE) return [];
+    return sbq(SB.from("agences_comptes").select("user_id, agence"), "agences");
+  },
+  async myAgence() {
+    if (!REMOTE) return null;
+    const r = await sbq(SB.from("agences_comptes").select("agence").eq("user_id", MY.id).maybeSingle(), "mon agence");
+    return r ? r.agence : null;
+  },
+  async setAgence(userId, agence) {
+    if (!REMOTE) return;
+    if (!agence) return sbq(SB.from("agences_comptes").delete().eq("user_id", userId), "agence suppr");
+    return sbq(SB.from("agences_comptes").upsert({ user_id: userId, agence, updated: new Date().toISOString() }, { onConflict: "user_id" }), "agence");
+  }
+};
+const actuOff = (e) => { const c = e && e.code, m = String((e && e.message) || ""); return c === "42P01" || c === "PGRST205" || c === "PGRST204" || /actualites|agences_comptes/.test(m) && /exist|schema cache/i.test(m); };
+function loadActus(force) {
+  if (ACTU.loading && !force) return ACTU.loading;
+  ACTU.loading = (async () => {
+    try {
+      const [list, mine] = await Promise.all([ADB.list(), ACTU.mine === undefined ? ADB.myAgence().catch(() => null) : Promise.resolve(ACTU.mine)]);
+      ACTU.list = list; ACTU.mine = mine; ACTU.error = null;
+    } catch (e) { ACTU.error = actuOff(e) ? "off" : "net"; if (!ACTU.list) ACTU.list = null; }
+    ACTU.loading = null; actuBadges(); return ACTU.list;
+  })();
+  return ACTU.loading;
+}
+function ensureActus() { if (!ACTU.list && !ACTU.loading && !ACTU.error) loadActus(); }
+const actuVisible = (a) => a && a.publie !== false;
+const isActuNew = (a) => actuVisible(a) && !(S.actusVues || []).includes(a.id) && Date.now() - new Date(a.created).getTime() < ACTU_NEW_DAYS * 864e5;
+function actuUnread() { return (ACTU.list || []).filter(isActuNew).length; }
+function actuBadges() {
+  const n = actuUnread();
+  $$("[data-actu-n]").forEach((b) => { b.textContent = n || ""; b.setAttribute("aria-label", n ? `${n} ${n > 1 ? "nouvelles" : "nouvelle"}` : ""); });
+  $$("[data-actu-dot]").forEach((b) => { b.hidden = !n; });
+}
+function markActuSeen(id) {
+  S.actusVues = S.actusVues || [];
+  if (!S.actusVues.includes(id)) { S.actusVues.push(id); if (S.actusVues.length > 300) S.actusVues = S.actusVues.slice(-300); save(); actuBadges(); }
+}
+function actuWhen(ts) {
+  const d = dayOfIso(ts); if (!d) return "";
+  if (d === isoDay()) return "Aujourd'hui";
+  if (d === addDays(isoDay(), -1)) return "Hier";
+  try { const dt = new Date(ts); return dt.toLocaleDateString("fr-FR", dt.getFullYear() === new Date().getFullYear() ? { day: "numeric", month: "long" } : { day: "numeric", month: "long", year: "numeric" }); } catch (e) { return ""; }
+}
+const actuExcerpt = (t, n) => { t = String(t || "").replace(/\s+/g, " ").trim(); return t.length > n ? t.slice(0, n).replace(/\s+\S*$/, "") + "…" : t; };
+function actuText(t) { // paragraphes et retours à la ligne ; liens web cliquables
+  return String(t || "").trim().split(/\n{2,}/).map((p) => `<p>${esc(p).replace(/(https?:\/\/[^\s<]+[^\s<.,;:!?)»])/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>').replace(/\n/g, "<br>")}</p>`).join("");
+}
+function actuAgChips(list) {
+  return `<span class="news-ag">${ic("mappin", "sm")}<span>${esc(agencesLabel(list))}</span></span>`;
+}
+function actuPhotoHtml(a, cls) {
+  return a.photo ? `<img class="${cls}" src="${a.photo}" alt="" loading="lazy" decoding="async">` : `<span class="${cls} news-noph" aria-hidden="true">${ic("news")}</span>`;
+}
+function actuCard(a, hero) {
+  const nw = isActuNew(a);
+  return `<a class="news-card ${hero ? "news-hero" : ""} ${hero && !a.photo ? "no-ph" : ""} ${actuVisible(a) ? "" : "is-hidden"}" href="#/actualite/${encodeURIComponent(a.id)}">
+      ${hero && !a.photo ? "" : `<span class="news-ph">${actuPhotoHtml(a, "news-img")}</span>`}
+      <span class="news-body">
+        <span class="news-meta">${nw ? '<span class="news-new">Nouveau</span>' : ""}${!actuVisible(a) ? '<span class="badge grey">Masquée</span>' : ""}<span>${esc(actuWhen(a.created))}</span></span>
+        <span class="news-t">${esc(a.titre)}</span>
+        ${a.description ? `<span class="news-x">${esc(actuExcerpt(a.description, hero ? 260 : 150))}</span>` : ""}
+        ${actuAgChips(a.agences)}
+      </span></a>`;
+}
+let ACTU_FILTER = "";
+function viewActus() {
+  return `<header class="news-head"><div><p class="eyebrow">Ce qui se passe dans les agences</p><h1>Actualités</h1></div>
+      ${isAdmin() ? `<a class="btn primary" href="#/admin/actualite/new">${ic("plus")} Créer une actualité</a>` : ""}</header>
+    <div id="newsBox"><div class="news-grid"><div class="skel" style="height:280px"></div><div class="skel" style="height:280px"></div></div></div>`;
+}
+function renderActus(root) {
+  const box = $("#newsBox", root); if (!box) return;
+  if (ACTU.error && !ACTU.list) {
+    box.innerHTML = ACTU.error === "off"
+      ? `<div class="empty"><h3>${ic("news")} Bientôt disponible</h3><p>Les actualités ne sont pas encore activées sur le serveur. Préviens ton responsable.</p></div>`
+      : `<div class="empty"><h3>${ic("alert")} Les actualités n'ont pas pu être chargées</h3><p>Vérifie ta connexion internet, puis réessaie.</p><button class="btn" type="button" data-news-retry>Réessayer</button></div>`;
+    return;
+  }
+  let list = (ACTU.list || []).filter((a) => isAdmin() || actuVisible(a));
+  const used = AGENCES.filter(([k]) => list.some((a) => (a.agences || []).includes(k)));
+  const showFilter = isAdmin() && used.length > 0;
+  if (showFilter && ACTU_FILTER) list = list.filter((a) => !(a.agences || []).length || a.agences.includes(ACTU_FILTER));
+  const filters = showFilter ? `<div class="news-filters" role="group" aria-label="Afficher les actualités de">${[["", "Toutes"]].concat(AGENCES).map(([k, l]) => `<button type="button" class="chip ${ACTU_FILTER === k ? "on" : ""}" aria-pressed="${ACTU_FILTER === k}" data-news-f="${k}">${esc(l)}</button>`).join("")}</div>` : "";
+  const mine = ACTU.mine ? `<p class="news-sub">${ic("mappin", "sm")} Agence de ${esc(agenceLabel(ACTU.mine))} · actualités de ton agence et de toutes les agences</p>` : "";
+  if (!list.length) {
+    box.innerHTML = mine + filters + `<div class="empty news-empty"><span class="news-empty-i" aria-hidden="true">${ic("news")}</span><h3>Aucune actualité pour le moment</h3><p>${isAdmin() ? "Publiez la première : une photo, quelques lignes, et toute l'équipe est au courant." : "Les nouvelles de ton agence apparaîtront ici."}</p>${isAdmin() ? `<a class="btn primary" href="#/admin/actualite/new">${ic("plus")} Créer une actualité</a>` : ""}</div>`;
+    return;
+  }
+  const [first, ...rest] = list;
+  box.innerHTML = mine + filters + actuCard(first, true) + (rest.length ? `<div class="news-grid">${rest.map((a) => actuCard(a)).join("")}</div>` : "");
+}
+function actusMount(root) {
+  renderActus(root);
+  loadActus(true).then(() => renderActus(root));
+  root.addEventListener("click", (e) => {
+    const f = e.target.closest("[data-news-f]"); if (f) { ACTU_FILTER = f.dataset.newsF; renderActus(root); return; }
+    if (e.target.closest("[data-news-retry]")) { ACTU.error = null; $("#newsBox", root).innerHTML = `<div class="skel" style="height:280px"></div>`; loadActus(true).then(() => renderActus(root)); }
+  });
+}
+function viewActu(id) { return `<div id="newsOne" data-id="${esc(id)}"><div class="skel" style="height:360px"></div></div>`; }
+function renderActu(root, id) {
+  const box = $("#newsOne", root); if (!box) return;
+  const a = (ACTU.list || []).find((x) => x.id === id);
+  if (!a) { box.innerHTML = ACTU.list || ACTU.error ? `<nav class="crumbs"><a href="#/actualites">${ic("left", "sm")} Actualités</a></nav><div class="empty"><h3>Actualité introuvable</h3><p>Elle a peut-être été retirée, ou elle concerne une autre agence.</p><a class="btn" href="#/actualites">Voir les actualités</a></div>` : box.innerHTML; return; }
+  if (actuVisible(a)) markActuSeen(a.id);
+  const others = (ACTU.list || []).filter((x) => x.id !== a.id && (isAdmin() || actuVisible(x))).slice(0, 3);
+  document.title = a.titre + " · Book des Process";
+  box.innerHTML = `<nav class="crumbs"><a href="#/actualites">${ic("left", "sm")} Actualités</a></nav>
+    <article class="news-detail">
+      ${!actuVisible(a) ? `<div class="notice warn" style="margin-bottom:16px">${ic("eye")}<div><b>Actualité masquée</b><span>L'équipe ne la voit pas. Modifiez-la pour la publier.</span></div></div>` : ""}
+      <header><p class="news-meta"><span>${esc(actuWhen(a.created))}</span>${a.created_by ? `<span>· ${esc(a.created_by)}</span>` : ""}</p>
+        <h1>${esc(a.titre)}</h1>${actuAgChips(a.agences)}</header>
+      ${a.photo ? `<figure class="news-cover"><img src="${a.photo}" alt=""></figure>` : ""}
+      <div class="news-text">${actuText(a.description)}</div>
+      ${isAdmin() ? `<div class="btns" style="margin-top:24px"><a class="btn" href="#/admin/actualite/${encodeURIComponent(a.id)}">${ic("pencil", "sm")} Modifier</a></div>` : ""}
+    </article>
+    ${others.length ? `<section class="section news-more"><div class="section-h"><h2>Autres actualités</h2><a class="small" href="#/actualites">Tout voir</a></div><div class="news-grid">${others.map((x) => actuCard(x)).join("")}</div></section>` : ""}`;
+}
+function actuMount(root, id) {
+  renderActu(root, id);
+  loadActus(true).then(() => renderActu(root, id));
+}
+
+/* ----- Administration : liste ----- */
+function adminActus() { return `<div class="btns" style="margin-bottom:16px"><a class="btn primary" href="#/admin/actualite/new">${ic("plus")} Créer une actualité</a><a class="btn ghost" href="#/actualites">${ic("eye", "sm")} Voir comme l'équipe</a></div><div id="aaBox"><div class="skel"></div></div>`; }
+async function adminActusMount(root) {
+  const box = $("#aaBox", root);
+  await loadActus(true);
+  if (ACTU.error) { box.innerHTML = ACTU.error === "off" ? `<div class="notice warn">${ic("alert")}<div><b>Les actualités ne sont pas encore activées sur le serveur.</b><span>Le script « 5-actualites.sql » doit être exécuté dans Supabase.</span></div></div>` : `<p class="muted">Les actualités n'ont pas pu être chargées.</p>`; return; }
+  const list = ACTU.list || [];
+  let hist = []; try { hist = await ADB.history(); } catch (e) { hist = null; }
+  const live = new Set(list.map((a) => a.id)), seen = new Set();
+  const gone = (hist || []).filter((h) => h.action === "suppression" && !live.has(h.actualite_id) && !seen.has(h.actualite_id) && seen.add(h.actualite_id));
+  const keep = `<p class="small muted aa-safe">${ic("shield", "sm")}<span>Rien n'est perdu : chaque modification et chaque suppression est conservée${REMOTE ? "" : " (dans la version en ligne)"}, et la sauvegarde de chaque lundi contient toutes les actualités.</span></p>`;
+  const trash = gone.length ? `<details class="tlog aa-trash" style="margin-top:18px"><summary>${ic("trash", "sm")} Actualités supprimées (${gone.length})</summary><div class="rows" style="margin-top:10px">${gone.map((h) => { const d = h.donnees || {};
+      return `<div class="rowi aa-row"><span class="aa-th">${actuPhotoHtml(d, "aa-img")}</span><div style="min-width:0"><div class="t">${esc(d.titre || "Sans titre")}</div><div class="d">${esc(actuExcerpt(d.description, 120))}</div>
+        <div class="m"><span class="badge grey">${ic("mappin", "sm")} ${esc(agencesLabel(d.agences))}</span><span class="small muted">Supprimée le ${esc(fmtDateTime(h.fait_le))}${h.fait_par ? " · " + esc(h.fait_par) : ""}</span></div></div>
+        <div class="btns"><button class="btn sm" type="button" data-restore="${h.hid}">${ic("undo", "sm")} Restaurer</button></div></div>`; }).join("")}</div></details>` : "";
+  if (!list.length) { box.innerHTML = `<div class="empty"><h3>${ic("news")} Aucune actualité</h3><p>Créez la première : elle apparaîtra dans « Actualités », tout en haut du menu de l'équipe.</p></div>` + trash + keep; bindRestore(root); return; }
+  box.innerHTML = `<div class="rows">${list.map((a) => `<div class="rowi aa-row ${actuVisible(a) ? "" : "done-row"}">
+      <a class="aa-th" href="#/actualite/${encodeURIComponent(a.id)}" aria-hidden="true" tabindex="-1">${actuPhotoHtml(a, "aa-img")}</a>
+      <div style="min-width:0"><div class="t">${esc(a.titre)}</div><div class="d">${esc(actuExcerpt(a.description, 140))}</div>
+        <div class="m">${actuVisible(a) ? '<span class="badge ok">Publiée</span>' : '<span class="badge grey">Masquée</span>'}<span class="badge grey">${ic("mappin", "sm")} ${esc(agencesLabel(a.agences))}</span><span class="small muted">${esc(fmtDateTime(a.created))}${a.created_by ? " · " + esc(a.created_by) : ""}</span></div></div>
+      <div class="btns"><a class="btn sm" href="#/admin/actualite/${encodeURIComponent(a.id)}">${ic("pencil", "sm")} Modifier</a></div></div>`).join("")}</div>` + trash + keep;
+  bindRestore(root);
+}
+function bindRestore(root) {
+  $$("[data-restore]", root).forEach((b) => (b.onclick = async () => {
+    if (!b.dataset.armed) { b.dataset.armed = "1"; b.innerHTML = `${ic("undo", "sm")} Confirmer`; return; }
+    b.disabled = true;
+    try { const id = await ADB.restore(+b.dataset.restore); await loadActus(true); toast("Actualité rétablie", "check"); const to = "#/admin/actualite/" + encodeURIComponent(id); if (location.hash === to) route(); else location.hash = to; }
+    catch (e) { b.disabled = false; toast("Le rétablissement a échoué. Vérifiez votre connexion, puis réessayez.", "alert"); }
+  }));
+}
+
+/* ----- Versions précédentes d'une actualité ----- */
+async function actuHistory(box, id) {
+  const sec = $("#aeHist", box); if (!sec || !REMOTE) { if (sec) sec.remove(); return; }
+  let h = []; try { h = (await ADB.history(id)).filter((x) => x.action === "modification"); } catch (e) { sec.innerHTML = `<p class="small muted">L'historique n'a pas pu être chargé.</p>`; return; }
+  if (!h.length) { sec.innerHTML = `<div class="section-h"><h2>Versions précédentes</h2></div><p class="small muted">Aucune modification pour l'instant. À chaque enregistrement, la version précédente sera conservée ici.</p>`; return; }
+  sec.innerHTML = `<div class="section-h"><h2>Versions précédentes</h2><span class="small muted">${h.length} ${h.length > 1 ? "versions conservées" : "version conservée"}</span></div>
+    <div class="rows">${h.map((x) => { const d = x.donnees || {};
+      return `<div class="rowi aa-row"><span class="aa-th">${actuPhotoHtml(d, "aa-img")}</span><div style="min-width:0"><div class="t">${esc(d.titre || "Sans titre")}</div><div class="d">${esc(actuExcerpt(d.description, 120))}</div>
+        <div class="m"><span class="badge grey">${ic("mappin", "sm")} ${esc(agencesLabel(d.agences))}</span>${d.publie === false ? '<span class="badge grey">Masquée</span>' : ""}<span class="small muted">Remplacée le ${esc(fmtDateTime(x.fait_le))}${x.fait_par ? " · " + esc(x.fait_par) : ""}</span></div></div>
+        <div class="btns"><button class="btn sm" type="button" data-restore="${x.hid}">${ic("undo", "sm")} Rétablir cette version</button></div></div>`; }).join("")}</div>`;
+  bindRestore(sec);
+}
+/* ----- Administration : créer ou modifier ----- */
+async function actuPhoto(file) {
+  if (!file) throw new Error("Aucun fichier.");
+  if (file.type && !/^image\//.test(file.type)) throw new Error("Choisissez une image (JPG, PNG ou WEBP).");
+  if (file.size > 25 * 1024 * 1024) throw new Error("Cette photo dépasse 25 Mo. Choisissez une photo plus légère.");
+  const url = URL.createObjectURL(file);
+  try {
+    const img = await new Promise((ok, ko) => { const i = new Image(); i.onload = () => ok(i); i.onerror = () => ko(new Error("Cette image n'a pas pu être lue. Essayez une photo JPG ou PNG.")); i.src = url; });
+    for (const [max, q] of [[1600, 0.82], [1280, 0.78], [1024, 0.72], [800, 0.66]]) {
+      const k = Math.min(1, max / Math.max(img.naturalWidth || 1, img.naturalHeight || 1));
+      const c = document.createElement("canvas"); c.width = Math.max(1, Math.round(img.naturalWidth * k)); c.height = Math.max(1, Math.round(img.naturalHeight * k));
+      const g = c.getContext("2d"); g.fillStyle = "#fff"; g.fillRect(0, 0, c.width, c.height); g.drawImage(img, 0, 0, c.width, c.height);
+      let d = c.toDataURL("image/webp", q); if (!d.startsWith("data:image/webp")) d = c.toDataURL("image/jpeg", q);
+      if (d.length <= 1400000) return d;
+    }
+    throw new Error("Cette photo est trop lourde, même réduite. Choisissez-en une autre.");
+  } finally { URL.revokeObjectURL(url); }
+}
+function viewActuEditor() { return `<div id="aeBox"><div class="skel"></div></div>`; }
+async function actuEditorMount(root, id) {
+  const box = $("#aeBox", root);
+  await loadActus(true);
+  if (ACTU.error === "off") { box.innerHTML = `<div class="notice warn">${ic("alert")}<div><b>Les actualités ne sont pas encore activées sur le serveur.</b><span>Le script « 5-actualites.sql » doit être exécuté dans Supabase.</span></div></div>`; return; }
+  const found = (ACTU.list || []).find((a) => a.id === id);
+  if (id !== "new" && !found) { box.innerHTML = viewNotFound(); return; }
+  const a = found ? clone(found) : { titre: "", description: "", photo: null, agences: [], publie: true };
+  box.innerHTML = `<nav class="crumbs"><a href="#/admin/actualites">${ic("left", "sm")} Actualités</a></nav>
+    <div class="ae-grid">
+      <form class="form panel ae-form" id="aeForm" novalidate>
+        <div class="fld"><label for="aeT">Titre de l'actualité</label><input id="aeT" maxlength="140" value="${esc(a.titre)}" placeholder="Ex. : Bienvenue à Julie, nouvelle assistante à Dole" autocomplete="off"><span class="hint ae-count" data-for="aeT"></span></div>
+        <div class="fld"><label for="aeD">Description</label><textarea id="aeD" rows="7" maxlength="5000" placeholder="Racontez en quelques lignes. Laissez une ligne vide pour commencer un nouveau paragraphe.">${esc(a.description || "")}</textarea><span class="hint ae-count" data-for="aeD"></span></div>
+        <div class="fld"><span class="lbl" id="aePhL">Photo (facultatif)</span>
+          <div class="ae-drop" id="aeDrop" aria-labelledby="aePhL">
+            <input type="file" id="aeFile" accept="image/*" class="sr-only">
+            <div class="ae-ph-on" ${a.photo ? "" : "hidden"}><img id="aeImg" alt="Aperçu de la photo" ${a.photo ? `src="${a.photo}"` : ""}>
+              <div class="btns"><label class="btn sm" for="aeFile">${ic("image", "sm")} Remplacer</label><button class="btn sm ghost" type="button" id="aeRm">${ic("trash", "sm")} Retirer</button></div></div>
+            <label class="ae-ph-off" for="aeFile" ${a.photo ? "hidden" : ""}><span class="ae-ph-i" aria-hidden="true">${ic("image")}</span><b>Ajouter une photo</b><span class="small muted">Glissez-la ici ou cliquez pour la choisir. JPG, PNG ou WEBP : elle est réduite automatiquement.</span></label>
+            <p class="ae-busy small muted" hidden><span class="typing" aria-hidden="true"><i></i><i></i><i></i></span> Préparation de la photo…</p>
+          </div></div>
+        <fieldset class="fld ae-ag"><legend class="lbl">Agences qui la voient</legend>
+          <div class="ag-chips" role="group">
+            <label class="ag-chip"><input type="checkbox" value="" data-ag-all ${(a.agences || []).length ? "" : "checked"}><span>${ic("users", "sm")} Toutes les agences</span></label>
+            ${AGENCES.map(([k, l]) => `<label class="ag-chip"><input type="checkbox" value="${k}" ${(a.agences || []).includes(k) ? "checked" : ""}><span>${ic("mappin", "sm")} ${esc(l)}</span></label>`).join("")}
+          </div><span class="hint">Choisissez une ou plusieurs agences. « Toutes les agences » : toute l'équipe la voit.</span></fieldset>
+        <label class="ae-pub"><input type="checkbox" id="aePub" ${a.publie !== false ? "checked" : ""}><span><b>Visible par l'équipe</b><br><span class="small muted">Décochez pour la garder de côté sans la montrer.</span></span></label>
+        <p class="login-err" id="aeErr" role="alert" hidden></p>
+        <div class="btns"><button class="btn primary" type="submit" id="aeSave">${ic("check")} ${found ? "Enregistrer" : "Publier l'actualité"}</button>${found ? `<button class="btn danger" type="button" id="aeDel">${ic("trash", "sm")} Supprimer</button>` : ""}<a class="btn ghost" href="#/admin/actualites">Annuler</a></div>
+      </form>
+      <aside class="ae-prev" aria-label="Aperçu"><p class="lbl">Aperçu pour l'équipe</p><div id="aePrev"></div></aside>
+    </div>
+    ${found ? `<section class="section ae-hist" id="aeHist"></section>` : ""}`;
+  const T = $("#aeT", box), D = $("#aeD", box), file = $("#aeFile", box), drop = $("#aeDrop", box), err = $("#aeErr", box);
+  let setPhotoHook = null;
+  const agBoxes = $$(".ag-chip input", box), allBox = $("[data-ag-all]", box);
+  const readAg = () => agBoxes.filter((x) => x.value && x.checked).map((x) => x.value);
+  const counts = () => $$(".ae-count", box).forEach((s) => { const el = $("#" + s.dataset.for, box), mx = +el.getAttribute("maxlength"), n = el.value.length; s.textContent = n > mx * 0.8 ? `${n} / ${mx}` : ""; });
+  const preview = () => {
+    const p = { id: "preview", titre: T.value.trim() || "Titre de l'actualité", description: D.value.trim() || "La description apparaîtra ici.", photo: a.photo, agences: readAg(), publie: $("#aePub", box).checked, created: a.created || new Date().toISOString() };
+    $("#aePrev", box).innerHTML = actuCard(p).replace(/<a class="news-card/, '<div class="news-card').replace(/<\/a>$/, "</div>").replace(/href="[^"]*"/, "");
+    counts();
+  };
+  const setPhoto = (d) => { a.photo = d; if (setPhotoHook) setPhotoHook(); $(".ae-ph-on", box).hidden = !d; $(".ae-ph-off", box).hidden = !!d; const im = $("#aeImg", box); if (d) im.src = d; else im.removeAttribute("src"); preview(); };
+  const take = async (f) => {
+    if (!f) return; err.hidden = true; const busy = $(".ae-busy", box); busy.hidden = false;
+    try { setPhoto(await actuPhoto(f)); } catch (x) { err.hidden = false; err.textContent = x.message; }
+    busy.hidden = true; file.value = "";
+  };
+  file.onchange = () => take(file.files && file.files[0]);
+  ["dragenter", "dragover"].forEach((ev) => drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.add("over"); }));
+  ["dragleave", "drop"].forEach((ev) => drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.remove("over"); }));
+  drop.addEventListener("drop", (e) => take(e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]));
+  $("#aeRm", box).onclick = () => setPhoto(null);
+  agBoxes.forEach((x) => x.addEventListener("change", () => {
+    if (x === allBox) { if (allBox.checked) agBoxes.forEach((y) => { if (y !== allBox) y.checked = false; }); else if (!readAg().length) allBox.checked = true; }
+    else allBox.checked = !readAg().length;
+    preview();
+  }));
+  [T, D].forEach((x) => x.addEventListener("input", preview));
+  $("#aePub", box).addEventListener("change", preview);
+  preview();
+  /* Brouillon gardé sur cet appareil pendant la saisie : rien n'est perdu si la page se ferme ou si l'envoi échoue */
+  const dKey = "gds-actu-brouillon:" + (MY.id || "demo") + ":" + (found ? a.id : "new");
+  const snap = () => ({ titre: T.value, description: D.value, agences: readAg(), publie: $("#aePub", box).checked, photo: a.photo || null });
+  const same = (x, y) => JSON.stringify(x) === JSON.stringify(y);
+  const base = snap();
+  let dT = null;
+  const keepDraft = () => { clearTimeout(dT); dT = setTimeout(() => { const v = snap(); if (same(v, base)) { try { localStorage.removeItem(dKey); } catch (e) { /* */ } return; }
+    try { localStorage.setItem(dKey, JSON.stringify(Object.assign({ at: Date.now() }, v))); } catch (e) { try { localStorage.setItem(dKey, JSON.stringify(Object.assign({ at: Date.now() }, v, { photo: null, photoLost: !!v.photo }))); } catch (e2) { /* stockage plein */ } } }, 400); };
+  const dropDraft = () => { clearTimeout(dT); try { localStorage.removeItem(dKey); } catch (e) { /* */ } };
+  let saved0 = null; try { saved0 = JSON.parse(localStorage.getItem(dKey) || "null"); } catch (e) { saved0 = null; }
+  if (saved0 && !same({ titre: saved0.titre, description: saved0.description, agences: saved0.agences, publie: saved0.publie, photo: saved0.photo }, base)) {
+    const n = document.createElement("div"); n.className = "notice ae-draft"; n.setAttribute("role", "status");
+    n.innerHTML = `${ic("history")}<div><b>Un brouillon non publié a été retrouvé</b><span>Saisi ${esc(actuWhen(new Date(saved0.at).toISOString()).toLowerCase())} à ${esc(hhmm(new Date(saved0.at).toISOString()))}${saved0.photoLost ? " (sans la photo, trop lourde pour être gardée)" : ""}.</span><div class="btns" style="margin-top:8px"><button class="btn sm primary" type="button" data-draft="use">Reprendre le brouillon</button><button class="btn sm ghost" type="button" data-draft="drop">Ignorer</button></div></div>`;
+    $("#aeForm", box).prepend(n);
+    n.addEventListener("click", (e) => { const b = e.target.closest("[data-draft]"); if (!b) return;
+      if (b.dataset.draft === "use") { T.value = saved0.titre || ""; D.value = saved0.description || ""; $("#aePub", box).checked = saved0.publie !== false; agBoxes.forEach((x) => { x.checked = x.value ? (saved0.agences || []).includes(x.value) : !(saved0.agences || []).length; }); if (saved0.photo) setPhoto(saved0.photo); preview(); toast("Brouillon repris", "check"); }
+      else dropDraft();
+      n.remove(); });
+  }
+  [T, D].forEach((x) => x.addEventListener("input", keepDraft));
+  $("#aePub", box).addEventListener("change", keepDraft); agBoxes.forEach((x) => x.addEventListener("change", keepDraft));
+  const photoSet = setPhoto; // la photo choisie ou retirée compte aussi dans le brouillon
+  setPhotoHook = () => keepDraft();
+  if (found) actuHistory(box, a.id);
+  let sending = false;
+  const del = $("#aeDel", box);
+  if (del) del.onclick = async () => {
+    if (!del.dataset.armed) { del.dataset.armed = "1"; del.innerHTML = `${ic("trash", "sm")} Confirmer la suppression`; toast("Cliquez à nouveau pour supprimer. Elle restera récupérable dans « Actualités supprimées ».", "alert"); return; }
+    if (sending) return; sending = true; del.disabled = true;
+    try { await ADB.remove(a.id); dropDraft(); ACTU.list = (ACTU.list || []).filter((x) => x.id !== a.id); toast("Actualité supprimée", "trash"); actuBadges(); location.hash = "#/admin/actualites"; }
+    catch (x) { sending = false; del.disabled = false; err.hidden = false; err.textContent = "La suppression a échoué. Vérifiez votre connexion, puis réessayez."; }
+  };
+  $("#aeForm", box).onsubmit = async (e) => {
+    e.preventDefault(); err.hidden = true;
+    const d = Object.assign(a, { titre: T.value.trim(), description: D.value.trim(), agences: readAg(), publie: $("#aePub", box).checked });
+    if (!d.titre) { err.hidden = false; err.textContent = "Donnez un titre à l'actualité."; T.focus(); return; }
+    if (sending) return; sending = true; const b = $("#aeSave", box); b.disabled = true;
+    try {
+      const saved = await ADB.save(d);
+      dropDraft();
+      ACTU.list = [saved].concat((ACTU.list || []).filter((x) => x.id !== saved.id)).sort((x, y) => (x.created < y.created ? 1 : -1));
+      markActuSeen(saved.id);
+      toast(found ? "Actualité enregistrée" : "Actualité publiée", "check");
+      location.hash = "#/actualite/" + encodeURIComponent(saved.id);
+    } catch (x) { sending = false; b.disabled = false; err.hidden = false; err.textContent = actuOff(x) ? "Les actualités ne sont pas encore activées sur le serveur." : "L'enregistrement a échoué. Vérifiez votre connexion, puis réessayez."; }
+  };
+}
+
+/* ===================== Mes notes =====================
+   Notes strictement personnelles (table notes : seul l'auteur y accède, l'administrateur non plus).
+   Sauvegarde automatique après une courte pause de saisie. Chaque modification est d'abord gardée
+   sur l'appareil (file d'attente) : si internet coupe, rien n'est perdu et l'envoi reprend tout seul. */
+const NOTE_SAVE_MS = 700;
+let NOTES = { list: null, loading: null, error: null, status: "", timer: null, retry: null, flushing: false };
+const newNoteId = () => (window.crypto && crypto.randomUUID ? crypto.randomUUID() : "10000000-1000-4000-8000-100000000000".replace(/[018]/g, (c) => (c ^ (Math.random() * 16) >> (c / 4)).toString(16)));
+const NDB = {
+  async list() {
+    if (!REMOTE) return clone((demoStore().notes || []));
+    return sbq(SB.from("notes").select("id,title,content,is_pinned,created_at,updated_at").order("updated_at", { ascending: false }), "notes");
+  },
+  async save(n) {
+    const row = { id: n.id, title: n.title || "", content: n.content || "", is_pinned: !!n.is_pinned };
+    if (!REMOTE) { const st = demoStore(); st.notes = st.notes || []; const now = new Date().toISOString(); const i = st.notes.findIndex((x) => x.id === n.id); const old = st.notes[i];
+      const full = Object.assign({ created_at: old ? old.created_at : now }, row, { updated_at: old && old.title === row.title && old.content === row.content ? old.updated_at : now });
+      if (i >= 0) st.notes[i] = full; else st.notes.push(full); save(); return clone(full); }
+    const rows = await sbq(SB.from("notes").upsert(row, { onConflict: "id" }).select("id,title,content,is_pinned,created_at,updated_at"), "note");
+    return rows && rows[0];
+  },
+  async remove(id) {
+    if (!REMOTE) { const st = demoStore(); st.notes = (st.notes || []).filter((x) => x.id !== id); save(); return; }
+    await sbq(SB.from("notes").delete().eq("id", id), "note suppr");
+  }
+};
+const notesOff = (e) => { const c = e && e.code, m = String((e && e.message) || ""); return c === "42P01" || c === "PGRST205" || /notes/.test(m) && /exist|schema cache/i.test(m); };
+/* File d'attente gardée sur l'appareil, par compte : { id: { op: "save" | "delete", note, at } } */
+const nqKey = () => "gds-notes-attente:" + (MY.id || "demo");
+function nqGet() { try { return JSON.parse(localStorage.getItem(nqKey()) || "{}") || {}; } catch (e) { return {}; } }
+function nqSet(q) { try { if (Object.keys(q).length) localStorage.setItem(nqKey(), JSON.stringify(q)); else localStorage.removeItem(nqKey()); return true; } catch (e) { return false; } }
+function nqPut(id, op, note) { const q = nqGet(); q[id] = { op, note: note ? clone(note) : null, at: Date.now() }; return nqSet(q); }
+const noteSort = (a, b) => (b.is_pinned ? 1 : 0) - (a.is_pinned ? 1 : 0) || String(b.updated_at).localeCompare(String(a.updated_at));
+function notesMerge(server) { // le serveur, plus les changements pas encore envoyés depuis cet appareil
+  const q = nqGet(), map = {};
+  (server || []).forEach((n) => { map[n.id] = n; });
+  Object.entries(q).forEach(([id, x]) => { if (x.op === "delete") delete map[id]; else if (x.note) map[id] = Object.assign({}, map[id] || {}, x.note); });
+  return Object.values(map).sort(noteSort);
+}
+function loadNotes() {
+  if (NOTES.loading) return NOTES.loading;
+  NOTES.loading = (async () => {
+    try { NOTES.list = notesMerge(await NDB.list()); NOTES.error = null; }
+    catch (e) { NOTES.error = notesOff(e) ? "off" : "net"; if (!NOTES.list) NOTES.list = notesMerge([]); }
+    NOTES.loading = null; flushNotes(); return NOTES.list;
+  })();
+  return NOTES.loading;
+}
+function setNoteStatus(s) {
+  NOTES.status = s;
+  const el = $("#nbStatus"); if (!el) return;
+  const map = { saving: ["", "Enregistrement…"], saved: ["check", "Enregistré"], offline: ["alert", "Pas de connexion : la note est gardée sur cet appareil et sera enregistrée dès le retour d'internet."], error: ["alert", "L'enregistrement a échoué. Ta note est gardée sur cet appareil : nouvel essai automatique."], off: ["alert", "Les notes ne sont pas encore activées sur le serveur. Ta note est gardée sur cet appareil."], "": ["", ""] };
+  const [i, t] = map[s] || map[""];
+  el.className = "nb-status s-" + (s || "idle"); el.innerHTML = (i ? ic(i, "sm") : "") + `<span>${esc(t)}</span>`;
+  if (s === "saved") { clearTimeout(el._t); el._t = setTimeout(() => { if (NOTES.status === "saved") { el.classList.add("fade"); } }, 2500); }
+}
+async function flushNotes() {
+  if (NOTES.flushing) return; NOTES.flushing = true; clearTimeout(NOTES.retry);
+  let failed = null;
+  try {
+    for (const [id, x] of Object.entries(nqGet())) {
+      try {
+        if (x.op === "delete") await NDB.remove(id);
+        else { const saved = await NDB.save(x.note); if (saved && NOTES.list) { const i = NOTES.list.findIndex((n) => n.id === id); if (i >= 0) NOTES.list[i] = Object.assign({}, NOTES.list[i], { created_at: saved.created_at, updated_at: saved.updated_at }); } }
+        const q = nqGet(); if (q[id] && q[id].at === x.at) { delete q[id]; nqSet(q); } // pas re-modifiée pendant l'envoi
+      } catch (e) { failed = e; break; }
+    }
+  } finally { NOTES.flushing = false; }
+  if (failed) { setNoteStatus(notesOff(failed) ? "off" : (!navigator.onLine || /fetch|network/i.test(String(failed.message)) ? "offline" : "error")); NOTES.retry = setTimeout(flushNotes, 15000); return false; }
+  if (Object.keys(nqGet()).length) { setTimeout(flushNotes, 50); return true; } // une modification arrivée pendant l'envoi
+  if (NOTES.status === "saving" || NOTES.status === "offline" || NOTES.status === "error") setNoteStatus("saved");
+  return true;
+}
+window.addEventListener("online", () => { if (Object.keys(nqGet()).length) flushNotes(); });
+function noteWhen(ts) {
+  const d = dayOfIso(ts); if (!d) return "";
+  if (d === isoDay()) return "à " + hhmm(ts);
+  if (d === addDays(isoDay(), -1)) return "hier";
+  return actuWhen(ts);
+}
+const noteLabel = (n) => (n.title || "").trim() || (n.content || "").trim().split(/\n/)[0].slice(0, 80) || "Note sans titre";
+const noteNorm = (t) => String(t || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+let NOTE_Q = "", NOTE_UNDO = null;
+function noteCard(n, cur) {
+  const body = (n.title || "").trim() ? (n.content || "") : (n.content || "").split(/\n/).slice(1).join(" ");
+  return `<a class="nb-card ${cur ? "on" : ""}" href="#/notes/${encodeURIComponent(n.id)}" role="listitem" ${cur ? 'aria-current="true"' : ""}>
+      <span class="nb-ct">${n.is_pinned ? `<span class="nb-pin" title="Épinglée">${ic("pin", "sm")}<span class="sr-only">Épinglée : </span></span>` : ""}<b>${esc(noteLabel(n))}</b></span>
+      ${body.trim() ? `<span class="nb-cx">${esc(actuExcerpt(body, 110))}</span>` : ""}
+      <span class="nb-cd">${esc(noteWhen(n.updated_at || n.created_at))}</span></a>`;
+}
+function notesListHtml(curId) {
+  const all = NOTES.list || [];
+  const q = noteNorm(NOTE_Q.trim());
+  const list = q ? all.filter((n) => noteNorm(n.title + " " + n.content).includes(q)) : all;
+  if (!all.length) return `<p class="nb-none">Aucune note pour l'instant. Écris ta première note : elle est enregistrée toute seule.</p>`;
+  if (!list.length) return `<p class="nb-none">Aucune note ne contient « ${esc(NOTE_Q.trim())} ».</p>`;
+  const pinned = list.filter((n) => n.is_pinned), rest = list.filter((n) => !n.is_pinned);
+  return (pinned.length ? `<p class="nb-grp">${ic("pin", "sm")} Épinglées</p>` + pinned.map((n) => noteCard(n, n.id === curId)).join("") + (rest.length ? `<p class="nb-grp">Autres notes</p>` : "") : "") + rest.map((n) => noteCard(n, n.id === curId)).join("");
+}
+function viewNotes(arg) {
+  return `<div class="nb ${arg ? "editing" : ""}" id="nb" data-arg="${esc(arg || "")}">
+      <aside class="nb-side" aria-label="Liste de mes notes">
+        <header class="nb-head"><h1>Mes notes</h1><a class="btn primary nb-new" href="#/notes/nouvelle" id="nbNew">${ic("plus")} Nouvelle note</a></header>
+        <div class="nb-search">${ic("search", "sm")}<label class="sr-only" for="nbQ">Rechercher dans mes notes</label><input id="nbQ" type="search" placeholder="Rechercher dans mes notes" value="${esc(NOTE_Q)}" autocomplete="off"></div>
+        <div class="nb-list" id="nbList" role="list"><div class="skel" style="height:64px"></div><div class="skel" style="height:64px"></div></div>
+        <p class="nb-priv">${ic("lock", "sm")}<span>Tes notes sont privées : toi seul peux les lire, même l'administrateur n'y a pas accès.</span></p>
+      </aside>
+      <section class="nb-paper" id="nbPaper" aria-label="Note"></section>
+    </div>`;
+}
+function notesMount(root, arg) {
+  const nb = $("#nb", root), listEl = $("#nbList", root), paper = $("#nbPaper", root);
+  const desktop = () => matchMedia("(min-width: 861px)").matches;
+  let cur = null, dirty = false, tmr = null;
+  const renderList = () => { listEl.innerHTML = notesListHtml(cur && cur.id); };
+  const status0 = () => setNoteStatus(Object.keys(nqGet()).length ? (navigator.onLine ? "saving" : "offline") : "");
+  const persist = () => { // garder tout de suite sur l'appareil, envoyer après une courte pause
+    if (!cur) return;
+    const empty = !(cur.title || "").trim() && !(cur.content || "").trim();
+    if (empty && !cur._saved) return; // une note vide jamais commencée n'est pas créée
+    cur.updated_at = new Date().toISOString(); cur._saved = true;
+    const i = NOTES.list.findIndex((n) => n.id === cur.id); const plain = Object.assign({}, cur); delete plain._saved;
+    if (i >= 0) NOTES.list[i] = plain; else NOTES.list.unshift(plain);
+    NOTES.list.sort(noteSort);
+    nqPut(cur.id, "save", plain); dirty = true; setNoteStatus("saving");
+    clearTimeout(tmr); tmr = setTimeout(() => { dirty = false; flushNotes(); }, NOTE_SAVE_MS);
+    renderList();
+    if (location.hash !== "#/notes/" + encodeURIComponent(cur.id)) history.replaceState(null, "", "#/notes/" + encodeURIComponent(cur.id)); // l'adresse suit la note, sans recharger
+  };
+  const openNote = (n, focus) => {
+    cur = n ? Object.assign({ _saved: true }, n) : { id: newNoteId(), title: "", content: "", is_pinned: false, created_at: new Date().toISOString(), updated_at: new Date().toISOString(), _saved: false };
+    paper.innerHTML = `<div class="nb-tools">
+        <a class="btn ghost sm nb-back" href="#/notes">${ic("left", "sm")} Mes notes</a>
+        <span class="nb-status" id="nbStatus" role="status" aria-live="polite"></span>
+        <button class="ico-btn nb-pinbtn ${cur.is_pinned ? "on" : ""}" type="button" id="nbPin" aria-pressed="${!!cur.is_pinned}" title="${cur.is_pinned ? "Désépingler" : "Épingler en haut de la liste"}">${ic("pin")}<span class="sr-only">${cur.is_pinned ? "Désépingler" : "Épingler"}</span></button>
+        <button class="ico-btn danger" type="button" id="nbDel" title="Supprimer la note" ${cur._saved ? "" : "hidden"}>${ic("trash")}<span class="sr-only">Supprimer la note</span></button>
+      </div>
+      <label class="sr-only" for="nbT">Titre (facultatif)</label><input class="nb-title" id="nbT" maxlength="200" placeholder="Titre (facultatif)" value="${esc(cur.title)}" autocomplete="off">
+      <label class="sr-only" for="nbX">Texte de la note</label><textarea class="nb-text" id="nbX" maxlength="50000" placeholder="Écris ta note ici… Elle s'enregistre toute seule.">${esc(cur.content)}</textarea>
+      <p class="nb-meta" id="nbMeta">${cur._saved ? `Créée ${esc(noteWhen(cur.created_at))}${cur.updated_at !== cur.created_at ? " · modifiée " + esc(noteWhen(cur.updated_at)) : ""}` : "Nouvelle note"}</p>`;
+    const T = $("#nbT", paper), X = $("#nbX", paper);
+    const grow = () => { X.style.height = "auto"; X.style.height = Math.max(X.scrollHeight, 260) + "px"; };
+    grow();
+    T.addEventListener("input", () => { cur.title = T.value; persist(); $("#nbDel", paper).hidden = !cur._saved; });
+    X.addEventListener("input", () => { cur.content = X.value; grow(); persist(); $("#nbDel", paper).hidden = !cur._saved; });
+    T.addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); X.focus(); } });
+    $("#nbPin", paper).onclick = () => { cur.is_pinned = !cur.is_pinned; const b = $("#nbPin", paper); b.classList.toggle("on", cur.is_pinned); b.setAttribute("aria-pressed", String(cur.is_pinned)); b.title = cur.is_pinned ? "Désépingler" : "Épingler en haut de la liste";
+      if (cur._saved || cur.title || cur.content) { const u = cur.updated_at; persist(); cur.updated_at = u; const i = NOTES.list.findIndex((n) => n.id === cur.id); if (i >= 0) NOTES.list[i].updated_at = u; NOTES.list.sort(noteSort); renderList(); }
+      toast(cur.is_pinned ? "Note épinglée en haut de la liste" : "Note désépinglée", "pin"); };
+    $("#nbDel", paper).onclick = () => {
+      const gone = Object.assign({}, cur); delete gone._saved;
+      clearTimeout(tmr); NOTES.list = NOTES.list.filter((n) => n.id !== gone.id); nqPut(gone.id, "delete", null); flushNotes();
+      NOTE_UNDO = gone; showUndo(); cur = null;
+      if (desktop()) { history.replaceState(null, "", "#/notes"); openNote(null, true); } else location.hash = "#/notes";
+      renderList();
+    };
+    status0();
+    if (focus) setTimeout(() => ((cur.title || cur.content) ? X : (n ? X : X)).focus(), 30);
+  };
+  const showUndo = () => {
+    const old = $("#nbUndo"); if (old) old.remove();
+    if (!NOTE_UNDO) return;
+    const bar = document.createElement("div"); bar.className = "nb-undo"; bar.id = "nbUndo"; bar.setAttribute("role", "status");
+    bar.innerHTML = `${ic("trash", "sm")}<span>Note supprimée</span><button class="btn sm" type="button">${ic("undo", "sm")} Annuler</button>`;
+    document.body.appendChild(bar);
+    $("button", bar).onclick = () => { const n = NOTE_UNDO; NOTE_UNDO = null; bar.remove(); NOTES.list.push(n); NOTES.list.sort(noteSort); nqPut(n.id, "save", n); flushNotes(); toast("Note rétablie", "check"); location.hash = "#/notes/" + encodeURIComponent(n.id); };
+    setTimeout(() => { if (bar.isConnected) { bar.remove(); NOTE_UNDO = null; } }, 9000);
+  };
+  const start = () => {
+    if (!document.contains(nb)) return;
+    renderList();
+    const a = nb.dataset.arg;
+    if (a && a !== "nouvelle") { const n = (NOTES.list || []).find((x) => x.id === a); if (n) openNote(n, desktop()); else { paper.innerHTML = `<div class="empty" style="margin:20px"><h3>Note introuvable</h3><p>Elle a peut-être été supprimée.</p><a class="btn" href="#/notes">Mes notes</a></div>`; } }
+    else if (a === "nouvelle" || desktop()) openNote(null, true);
+    if (NOTES.error === "off") setNoteStatus("off");
+  };
+  $("#nbQ", root).addEventListener("input", (e) => { NOTE_Q = e.target.value; renderList(); });
+  // Quitter la page : envoyer tout de suite ce qui attend
+  const leave = () => { if (dirty) { clearTimeout(tmr); dirty = false; flushNotes(); } window.removeEventListener("hashchange", leave); };
+  window.addEventListener("hashchange", leave);
+  if (NOTES.list) start();
+  loadNotes().then(() => { if (!cur || !cur._saved) start(); else renderList(); });
+}
+window.addEventListener("pagehide", () => { if (typeof REMOTE !== "undefined" && REMOTE && typeof SB !== "undefined" && SB && Object.keys(nqGet()).length) flushNotes(); });
+
+/* ----- Gestion des collaborateurs : suivi professionnel d'une personne -----
+   Ma journée (14 derniers jours), tutos regardés, quiz. Les notes personnelles n'y figurent jamais. */
+function openSuivi(u) {
+  modal(`<h2 id="mtitle">Suivi de ${esc(u.name || u.login)}</h2>
+    <p class="small muted" style="margin:-4px 0 12px">${ic("lock", "sm")} Les notes personnelles ne sont pas visibles : elles restent privées.</p>
+    <div id="svBox"><div class="skel" style="height:160px"></div></div>
+    <div class="btns" style="margin-top:14px"><a class="btn" href="#/admin/equipe" data-close>${ic("users", "sm")} Équipe du jour</a><a class="btn" href="#/admin/formation" data-close>${ic("school", "sm")} Formation</a><button class="btn ghost" type="button" data-close>Fermer</button></div>`, async (m) => {
+    $$("[data-close]", m).forEach((b) => b.addEventListener("click", closeModal));
+    const box = $("#svBox", m), since = addDays(isoDay(), -13);
+    const safe = (p) => p.catch(() => null);
+    const [days, vues, quiz] = await Promise.all([
+      safe(sbq(SB.from("days").select("day,items").eq("user_id", u.id).gte("day", since).order("day", { ascending: false }), "suivi journées")),
+      safe(sbq(SB.from("formation_vues").select("video_id,seen_at").eq("user_id", u.id), "suivi tutos")),
+      safe(sbq(SB.from("quiz_resultats").select("video_id,score,total").eq("user_id", u.id), "suivi quiz"))]);
+    if (!box.isConnected) return;
+    const dayRows = (days || []).map((d) => { const p = progress(d.items || []); return `<li><span>${esc(new Date(d.day + "T12:00:00").toLocaleDateString("fr-FR", { weekday: "short", day: "numeric", month: "short" }))}</span><span class="sv-bar" aria-hidden="true"><i style="width:${p.total ? Math.round((p.done / p.total) * 100) : 0}%"></i></span><b>${p.done}/${p.total}</b></li>`; }).join("");
+    const seen = new Set((vues || []).map((v) => v.video_id).filter((id) => typeof fvById !== "function" || fvById(id)));
+    const qOk = (quiz || []).filter((q) => typeof qzOk === "function" ? qzOk(q) : q.score === q.total).length;
+    box.innerHTML = `<div class="sv-kpis">
+        <div class="sv-k"><b>${days ? days.length : "—"}</b><span>journée${days && days.length > 1 ? "s" : ""} ouverte${days && days.length > 1 ? "s" : ""} (14 j)</span></div>
+        <div class="sv-k"><b>${vues ? seen.size : "—"}</b><span>tuto${seen.size > 1 ? "s" : ""} regardé${seen.size > 1 ? "s" : ""}</span></div>
+        <div class="sv-k"><b>${quiz ? qOk + "/" + quiz.length : "—"}</b><span>quiz réussis</span></div></div>
+      <h3 class="sv-h">Ma journée : tâches terminées</h3>
+      ${days == null ? `<p class="small muted">Les journées n'ont pas pu être chargées.</p>` : dayRows ? `<ul class="sv-days">${dayRows}</ul>` : `<p class="small muted">Aucune journée ces 14 derniers jours.</p>`}`;
+  });
+}
+
 function adminConsignes() { return `<div class="btns" style="margin-bottom:16px"><a class="btn primary" href="#/admin/consigne/new">${ic("plus")} Nouvelle consigne</a></div><div id="csBox"><div class="skel"></div></div>`; }
 async function consignesMount(root) {
   const box = $("#csBox", root), today = isoDay();
