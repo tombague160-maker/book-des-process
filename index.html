@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <!-- Sécurité : le navigateur n'exécute que le code de cette page et de la bibliothèque Supabase (jsDelivr), et n'envoie les données qu'à la base Supabase. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://i.ytimg.com https://qxecizqtupjvotcrdmkf.supabase.co; connect-src 'self' https://qxecizqtupjvotcrdmkf.supabase.co wss://qxecizqtupjvotcrdmkf.supabase.co; frame-src https://www.youtube-nocookie.com; media-src 'self' blob: https://qxecizqtupjvotcrdmkf.supabase.co; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'; manifest-src 'self'; worker-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://i.ytimg.com https://qxecizqtupjvotcrdmkf.supabase.co; connect-src 'self' https://qxecizqtupjvotcrdmkf.supabase.co wss://qxecizqtupjvotcrdmkf.supabase.co; frame-src https://www.youtube-nocookie.com; media-src 'self' blob: https://qxecizqtupjvotcrdmkf.supabase.co; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'; manifest-src 'self'; worker-src 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <title>Book des Process · Séréo</title>
 <meta name="robots" content="noindex, nofollow">
@@ -1694,6 +1694,71 @@ a.news-card:focus-visible { outline: 3px solid rgba(var(--brand-rgb), .45); outl
 .sv-bar { height: 8px; border-radius: 99px; background: var(--fill); overflow: hidden; }
 .sv-bar i { display: block; height: 100%; background: var(--sereo-sage-ink); border-radius: 99px; }
 .sv-days b { text-align: right; }
+
+/* =====================================================================================
+   Lu par / annuaire / statistiques / réactions / impression / hors connexion (25/10)
+   ===================================================================================== */
+.read-badge { border: 0; cursor: pointer; font: inherit; font-size: .75rem; font-weight: 600; }
+.read-badge:hover { filter: brightness(.96); }
+.reads-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.reads-cols h3 { display: flex; align-items: center; gap: 6px; font-size: .9375rem; margin-bottom: 8px; }
+.reads-cols ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; max-height: 320px; overflow: auto; }
+.reads-cols li { display: grid; padding: 8px 10px; border-radius: 10px; background: var(--grouped); }
+@media (max-width: 560px) { .reads-cols { grid-template-columns: 1fr; } }
+.ct-tools { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 8px; }
+.ct-tools .nb-search { flex: 1 1 280px; }
+.ct-tools .news-filters { margin: 0; }
+.ct-sec { margin-top: 22px; }
+.ct-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+.ct-card { background: var(--bg); border-radius: 18px; padding: 16px 18px; box-shadow: 0 0 0 1px var(--sep), var(--shadow-1); display: grid; gap: 10px; align-content: start; }
+.ct-card header { display: flex; justify-content: space-between; gap: 10px; }
+.ct-card h3 { font-size: 1.0625rem; line-height: 1.3; }
+.ct-note { font-size: .9375rem; color: var(--label-2); }
+.ct-addr { display: flex; gap: 6px; font-size: .875rem; color: var(--label-2); }
+.ct-addr svg { flex: none; margin-top: 2px; color: var(--sereo-coral-ink); }
+.ct-act { display: flex; flex-wrap: wrap; gap: 8px; }
+.ct-act .btn.primary { font-variant-numeric: tabular-nums; }
+.st-kpis { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-bottom: 18px; }
+.st-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.st-grid .panel { display: grid; gap: 10px; align-content: start; }
+.st-grid h2 { font-size: 1.0625rem; }
+.st-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.st-list li { display: grid; grid-template-columns: minmax(0, 1fr) 90px 36px; gap: 10px; align-items: center; font-size: .875rem; }
+.st-list li a { color: var(--label); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.st-list li b { text-align: right; }
+.st-never { max-height: 260px; overflow: auto; }
+@media (max-width: 900px) { .st-grid { grid-template-columns: 1fr; } .st-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.news-social { margin-top: 30px; padding-top: 22px; box-shadow: inset 0 1px 0 var(--sep); display: grid; gap: 22px; }
+.rx { display: flex; flex-wrap: wrap; gap: 8px; }
+.rx-b { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 14px; border-radius: 999px; border: 0; background: var(--fill); font: inherit; font-size: 1.0625rem; cursor: pointer; color: var(--label); }
+.rx-b b { font-size: .875rem; }
+.rx-b.on { background: var(--sereo-coral-tint); box-shadow: inset 0 0 0 1.5px var(--sereo-coral); }
+.cm h2 { font-size: 1.125rem; margin-bottom: 10px; }
+.cm-list { list-style: none; margin: 0 0 12px; padding: 0; display: grid; gap: 10px; }
+.cm-list li { background: var(--grouped); border-radius: 14px; padding: 10px 14px; }
+.cm-h { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; margin-bottom: 2px; }
+.cm-h .linkbtn { margin-left: auto; }
+.cm-list p { white-space: pre-wrap; overflow-wrap: anywhere; }
+.cm-form { display: flex; gap: 10px; align-items: flex-end; }
+.cm-form textarea { flex: 1; min-height: 46px; border-radius: 14px; border: 0; background: var(--fill); padding: 12px 14px; font: inherit; resize: vertical; }
+@media (max-width: 560px) { .cm-form { flex-direction: column; align-items: stretch; } }
+.offbar { position: fixed; z-index: 70; left: 50%; transform: translateX(-50%); top: 10px; display: flex; gap: 10px; align-items: center; max-width: min(720px, calc(100% - 24px)); padding: 10px 12px 10px 14px; border-radius: 14px; background: var(--sereo-coral-tint); color: var(--sereo-ink); box-shadow: 0 0 0 1px rgba(168, 79, 57, .25), var(--shadow-2); font-size: .875rem; }
+.offbar svg { color: var(--sereo-coral-ink); flex: none; }
+@media (max-width: 700px) { .offbar { left: 10px; right: 10px; transform: none; max-width: none; top: auto; bottom: calc(70px + env(safe-area-inset-bottom, 0px)); } }
+.print-head { display: none; }
+@media (max-width: 600px) { .f-actions { gap: 6px; } .f-actions #printBtn { flex: 0 0 40px; padding: 0; justify-content: center; } .fields td, .fields th { overflow-wrap: anywhere; word-break: break-word; } table.fields { table-layout: fixed; width: 100%; } }
+@media print {
+  @page { margin: 16mm 14mm; }
+  body { background: #fff !important; }
+  .linkbtn, .content button, .side, .topbar, .tabbar, .toasts, .f-actions, .crumbs, .toc, .toc-m, .f-adm, .admin-bar, .offbar, .nb-undo, #favBtn, .situ, .fiche-foot, .f-next, .day-foot, .ask-fiche, [data-report], .copy-btn { display: none !important; }
+  .app, .main { display: block !important; padding: 0 !important; margin: 0 !important; }
+  .content { padding: 0 !important; max-width: none !important; }
+  .print-head { display: flex !important; justify-content: space-between; align-items: center; gap: 16px; padding-bottom: 10px; margin-bottom: 16px; border-bottom: 2px solid var(--sereo-coral); font-size: 10pt; color: #444; }
+  .print-head img { height: 40px; width: auto; }
+  .step, .co, .tbl-wrap, figure, .blk { break-inside: avoid; }
+  a { color: inherit !important; text-decoration: none !important; }
+  .f-badge { box-shadow: none !important; }
+}
 </style>
 </head>
 <body>
@@ -2360,7 +2425,7 @@ function openProfile() {
   if (REMOTE) return modal(`<h2 id="mtitle">Mon compte</h2>
     <div class="radio-cards"><label style="cursor:default"><span><b>${esc(myName())}</b><br><span class="small muted">Identifiant : ${esc(account())} · ${esc(roleLabel())}</span><br><span class="small muted">${isAdmin() ? "Responsable : gère les routines, les consignes, les procédures et les comptes." : "Collaborateur : ta journée, les procédures, l'assistant, les favoris et les signalements."}</span></span></label></div>
     <details class="toc-m" style="display:block" id="pwBox"><summary>${ic("lock", "sm")} Changer mon mot de passe</summary><form class="form" id="myPw" novalidate style="padding-bottom:12px">${passwordForm("mp")}<div><button class="btn primary" type="submit">Enregistrer le mot de passe</button></div></form></details>
-    <div class="btns">${isAdmin() ? `<a class="btn" href="#/admin" data-close>${ic("admin")} Administration</a><a class="btn" href="#/admin/comptes" data-close>${ic("users")} Gestion des collaborateurs</a>` : ""}<a class="btn" href="#/notes" data-close>${ic("notebook")} Mes notes</a><a class="btn" href="#/journal" data-close>${ic("history")} Mes journées précédentes</a><a class="btn" href="#/avis" data-close>${ic("bulb")} Donner mon avis</a><button class="btn danger" type="button" id="logoutBtn">Se déconnecter</button><button class="btn ghost" type="button" data-close>Fermer</button></div>`, (m) => {
+    <div class="btns">${isAdmin() ? `<a class="btn" href="#/admin" data-close>${ic("admin")} Administration</a><a class="btn" href="#/admin/comptes" data-close>${ic("users")} Gestion des collaborateurs</a>` : ""}<a class="btn" href="#/notes" data-close>${ic("notebook")} Mes notes</a><a class="btn" href="#/annuaire" data-close>${ic("phone")} Annuaire</a><a class="btn" href="#/journal" data-close>${ic("history")} Mes journées précédentes</a><a class="btn" href="#/avis" data-close>${ic("bulb")} Donner mon avis</a><button class="btn danger" type="button" id="logoutBtn">Se déconnecter</button><button class="btn ghost" type="button" data-close>Fermer</button></div>`, (m) => {
     $$("[data-close]", m).forEach((b) => b.addEventListener("click", closeModal));
     $("#logoutBtn", m).onclick = logout;
     $("#myPw", m).onsubmit = async (e) => {
@@ -2392,6 +2457,7 @@ function renderNav(r) {
     ["#/formation", "school", "Formation", cur === "formation"],
     ...(typeof INT !== "undefined" && INT.row && !INT.row.done_at ? [["#/integration", "checklist", "Ma première semaine", cur === "integration"]] : []),
     ["#/demandes", "inbox", "Mes demandes", cur === "demandes" || cur === "demande", `<span class="badge warn" data-tk-mine></span>`],
+    ["#/annuaire", "phone", "Annuaire", cur === "annuaire"],
     ["#/favoris", "star", "Mes favoris", cur === "favoris", `<span class="badge" id="favCount">${S.favs.filter((id) => canSee(id)).length || ""}</span>`],
     ["#/avis", "bulb", "Ton avis", cur === "avis"]
   ];
@@ -2687,6 +2753,7 @@ function viewFiche(id, params, preview) {
       ${preview ? "" : `<div class="f-actions">
         <button class="btn ${isFav(id) ? "fav-on" : ""}" type="button" id="favBtn" aria-pressed="${isFav(id)}">${ic("star")}<span class="lbl-fav l-wide">${isFav(id) ? "Dans mes favoris" : "Ajouter aux favoris"}</span><span class="l-narrow" aria-hidden="true">Favori</span></button>
         <button class="btn" type="button" data-report="">${ic("flag")} Signaler<span class="l-wide">&nbsp;un problème</span></button>
+        <button class="btn" type="button" id="printBtn" aria-label="Imprimer ou enregistrer en PDF" title="Imprimer ou enregistrer en PDF">${ic("file")}<span class="l-wide">Imprimer / PDF</span></button>
         <a class="btn ghost" href="#/assistant?f=${encodeURIComponent(id)}">${ic("sparkles")} <span class="l-wide">Poser une question sur cette fiche</span><span class="l-narrow" aria-hidden="true">Question</span></a>
       </div>`}
       ${guideHtml(f, id, preview)}
@@ -2706,7 +2773,8 @@ function viewFiche(id, params, preview) {
 }
 function ficheMount(root, id, params) {
   const f = getFiche(id); if (!f || (!isAdmin() && (meta(id).archived || meta(id).access !== "all"))) return;
-  pushRecent(id);
+  pushRecent(id); logView(id);
+  const pb = $("#printBtn", root); if (pb) pb.onclick = () => printFiche(id);
   const fb = $("#favBtn", root); if (fb) fb.onclick = () => toggleFav(id, fb);
   $$("[data-report]", root).forEach((b) => (b.onclick = () => openReport(id, b.dataset.report || null)));
   $$("[data-copy]", root).forEach((b) => (b.onclick = () => {
@@ -2780,6 +2848,7 @@ function viewResults(params) {
 }
 function resultsMount(root, params) {
   attachSearch(root); mountSituations(root);
+  if (params.q) { try { const r = search(params.q.trim()), cf = confidence(r); logSearch(params.q, cf === "none" || cf === "weak" ? 0 : r.results.length); } catch (e) { /* */ } }
   const mb = $("[data-miss]", root); if (mb) mb.onclick = () => openReport(null, "missing", `Recherche sans réponse : « ${params.q} »`);
   $$("[data-chf]", root).forEach((b) => (b.onclick = () => { $$("[data-chf]", root).forEach((x) => x.setAttribute("aria-pressed", x === b)); $$("#resList > div", root).forEach((d) => (d.hidden = b.dataset.chf && d.dataset.ch !== b.dataset.chf)); }));
 }
@@ -2839,6 +2908,7 @@ function route() {
   else if (r.name === "formation") { html = viewFormation(r.params); mount = (x) => formationMount(x, r.params); }
   else if (r.name === "integration") { html = viewIntegration(); mount = (x) => integrationMount(x, r.params); }
   else if (r.name === "avis") { html = viewAvis(); mount = avisMount; }
+  else if (r.name === "annuaire") { html = viewAnnuaire(); mount = annuaireMount; }
   else if (r.name === "notes") { const nid = dec(r.arg || ""); html = viewNotes(nid); mount = (x) => notesMount(x, nid); }
   else if (r.name === "actualites") { html = viewActus(); mount = actusMount; }
   else if (r.name === "actualite") { const aid = dec(r.arg || ""); html = viewActu(aid); mount = (x) => actuMount(x, aid); }
@@ -2849,7 +2919,7 @@ function route() {
   const key = location.hash.split("?s=")[0];
   if (key !== lastRoute && !r.params.s) { window.scrollTo(0, 0); if (r.name !== "procedures" && r.name !== "themes" && r.name !== "recherche" && r.name !== "assistant") main.focus({ preventScroll: true }); }
   lastRoute = key;
-  const titles = { home: "Ma journée", tache: "Tâche", guide: "Me guider", journal: "Mes journées", procedures: "Procédures", themes: "Procédures", favoris: "Mes favoris", demandes: "Mes demandes", demande: "Demande d'aide", assistant: "Assistant", recherche: "Recherche", formation: "Formation", integration: "Ma première semaine", avis: "Ton avis", notes: "Mes notes", actualites: "Actualités", actualite: "Actualité" };
+  const titles = { home: "Ma journée", tache: "Tâche", guide: "Me guider", journal: "Mes journées", procedures: "Procédures", themes: "Procédures", favoris: "Mes favoris", demandes: "Mes demandes", demande: "Demande d'aide", assistant: "Assistant", recherche: "Recherche", formation: "Formation", integration: "Ma première semaine", avis: "Ton avis", notes: "Mes notes", annuaire: "Annuaire", actualites: "Actualités", actualite: "Actualité" };
   document.title = (r.name === "fiche" && getFiche(r.arg) ? r.arg + " " + getFiche(r.arg).title : r.name === "theme" && chapter(r.arg) ? chapter(r.arg).title : r.name === "formation" && r.arg === "video" && fvById(r.rest[0]) ? fvById(r.rest[0]).t : titles[r.name] || "Administration") + " · Book des Process";
 }
 
@@ -3045,7 +3115,7 @@ function answerFiche(q, fid, res) {
    sous-onglets n'apparaissent que lorsqu'on y est. */
 const ADMIN_TABS = [["", "admin", "Tableau de bord"], ["equipe", "users", "Équipe du jour"], ["routines", "checklist", "Routines"], ["ponctuelles", "calendar", "Tâches ponctuelles"], ["consignes", "info", "Consignes"], ["actualites", "news", "Actualités"],
   ["demandes", "inbox", "Demandes", [["demandes", "Demandes de l'équipe"], ["questions", "Questions sans réponse"], ["signalements", "Signalements"], ["avis", "Avis et idées"]]],
-  ["fiches", "book", "Le book", [["fiches", "Procédures"], ["themes", "Thèmes"], ["documents", "Documents"], ["verification", "Points à vérifier"], ["historique", "Historique"]]],
+  ["fiches", "book", "Le book", [["fiches", "Procédures"], ["statistiques", "Statistiques"], ["themes", "Thèmes"], ["documents", "Documents"], ["verification", "Points à vérifier"], ["historique", "Historique"]]],
   ["formation", "school", "Formation", [["formation", "Tutos et quiz"], ["integration", "Intégration"]]], ["comptes", "userCheck", "Collaborateurs"]];
 function adminTabs(cur) {
   const group = ADMIN_TABS.find((t) => t[3] && t[3].some(([k]) => k === cur));
@@ -3077,6 +3147,7 @@ function viewAdmin(r) {
   else if (sub === "integration") { html = head("Intégration", "Le parcours « Ma première semaine » des nouvelles personnes.") + adminTabs("integration") + adminIntegration(r); mount = (x) => adminIntegrationMount(x, r); }
   else if (sub === "avis") { html = head("Avis et idées", "La question du mois et les idées envoyées par l'équipe.") + adminTabs("avis") + adminAvis(); mount = (x) => adminAvisMount(x, r.params); }
   else if (sub === "comptes") { html = head("Gestion des collaborateurs", "Créez un compte pour chaque personne, transmettez-lui son identifiant et son mot de passe, puis gérez ses accès. Vous n'avez jamais besoin de connaître son mot de passe : vous pouvez en définir un nouveau à tout moment.") + adminTabs("comptes") + adminAccounts(); mount = accountsMount; }
+  else if (sub === "statistiques") { html = head("Statistiques", "Ce que l'équipe consulte et cherche : pour savoir quelles fiches améliorer en priorité.") + adminTabs("statistiques") + adminStats(); mount = adminStatsMount; }
   else if (sub === "themes") { html = head("Thèmes", "Le menu de gauche et les cartes de l'accueil reprennent ces thèmes.") + adminTabs("themes") + adminThemes(); mount = themesAdminMount; }
   else if (sub === "documents") { html = head("Documents", "Ajoutez un document : son contenu est extrait, puis vérifié avant toute publication.") + adminTabs("documents") + adminDocs(); mount = docsMount; }
   else if (sub === "verification") { html = head("Points à vérifier", "Points relevés lors de l'analyse du book. Rien n'a été inventé : ces éléments sont à compléter ou à arbitrer par la Direction.") + adminTabs("verification") + adminVerif(); mount = verifMount; }
@@ -3688,13 +3759,9 @@ async function loadAll() {
     sbq(SB.from("fiches").select("id,position,data,archived,access,rev,updated,updated_by").order("position"), "fiches"),
     sbq(SB.from("settings").select("key,value"), "settings")
   ]);
-  metaRows.forEach((r) => { BOOK[r.key] = r.value; });
-  BOOK.fiches = ficheRows.map((r) => r.data);
-  reindex();
-  const prev = S.content; S.content = {};
-  ficheRows.forEach((r) => { S.content[r.id] = { published: null, draft: null, versions: [], events: [], archived: r.archived, access: r.access, updated: r.updated, updatedBy: r.updated_by, rev: r.rev, exists: true }; });
-  Object.assign(S, { chapters: {}, newChapters: [], aiOff: false, homeVariant: "A", verified: {}, imports: [] });
-  setRows.forEach((r) => { S[r.key] = r.value; });
+  const prev = S.content;
+  applyBookRows({ metaRows, ficheRows, setRows });
+  offSave({ metaRows, ficheRows, setRows }); // consultation sans internet
   if (isAdmin()) {
     const [adm, reps] = await Promise.all([
       sbq(SB.from("fiches_admin").select("id,original,draft,versions,events"), "fiches_admin"),
@@ -3705,6 +3772,17 @@ async function loadAll() {
   } else S.reports = [];
   IDX = null; LAST_LOAD = Date.now();
   void prev;
+}
+function applyBookRows(rows, offline) {
+  const { metaRows, ficheRows, setRows } = rows;
+  metaRows.forEach((r) => { BOOK[r.key] = r.value; });
+  BOOK.fiches = ficheRows.map((r) => r.data);
+  reindex();
+  S.content = {};
+  ficheRows.forEach((r) => { S.content[r.id] = { published: null, draft: null, versions: [], events: [], archived: r.archived, access: r.access, updated: r.updated, updatedBy: r.updated_by, rev: r.rev, exists: true }; });
+  Object.assign(S, { chapters: {}, newChapters: [], aiOff: false, homeVariant: "A", verified: {}, imports: [] });
+  setRows.forEach((r) => { S[r.key] = r.value; });
+  if (offline) { S.reports = []; IDX = null; }
 }
 let reloadTimer = null;
 function scheduleReload(silent) {
@@ -3801,10 +3879,11 @@ async function enter(session) {
     try { await prefsPull(); } catch (e) { /* préférences : on garde celles de l'appareil */ }
     await loadAll();
   } catch (e) {
+    if ((!navigator.onLine || /fetch|network|Failed/i.test(String(e && e.message))) && await offEnter(session)) return;
     document.getElementById("app").innerHTML = `<main class="login"><div class="login-card"><img class="login-logo" src="${ASSETS.logo_full}" alt="" width="240" height="52"><h1 style="font-size:1.5rem">Le book n'a pas pu être chargé</h1><p class="muted">Vérifiez votre connexion internet, puis réessayez.</p><button class="btn primary" type="button" onclick="location.reload()">Réessayer</button></div></main>`;
     return;
   }
-  shell(); route(); subscribe();
+  OFFLINE = false; shell(); route(); subscribe();
   if (window.BOOK_SEEDED) toast(`Contenu du book installé : ${window.BOOK_SEEDED} fiches`, "check");
   else if (window.BOOK_SEED_ERR) toast("Le contenu du book n'a pas pu être installé. Rechargez la page pour réessayer.", "alert");
   else if (!BOOK.fiches.length) toast(isAdmin() ? "Le book est vide pour le moment." : "Le book n'est pas encore disponible. Réessayez plus tard.", "clock");
@@ -3866,6 +3945,7 @@ function forcePasswordView() {
   });
 }
 async function logout() {
+  await offClear(); // la copie hors connexion ne reste pas sur un appareil partagé
   try { if (RT) SB.removeChannel(RT); await SB.auth.signOut(); } catch (e) { /* */ }
   location.hash = ""; location.reload();
 }
@@ -3878,7 +3958,8 @@ async function bootRemote() {
   loadingView("Connexion…");
   const { data } = await SB.auth.getSession();
   let msg = ""; try { msg = sessionStorage.getItem("gds-msg") || ""; sessionStorage.removeItem("gds-msg"); } catch (e) { /* */ }
-  if (data && data.session) enter(data.session); else loginView(msg);
+  registerSW();
+  if (data && data.session) enter(data.session); else if (!navigator.onLine && await offEnter(null)) { /* hors connexion */ } else loginView(msg);
   // Déconnexion depuis un autre onglet : on recharge la page pour ne rien garder du compte précédent
   SB.auth.onAuthStateChange((ev, ses) => {
     // Un autre compte s'est connecté dans un autre onglet : on recharge pour ne rien mélanger
@@ -4545,6 +4626,7 @@ function dayHtml() {
 
   const order = ["urgence", "changement", "vigilance"];
   const cs = DAYST.consignes.slice().sort((a, b) => order.indexOf(a.kind) - order.indexOf(b.kind) || (a.end_date < b.end_date ? -1 : 1));
+  if (cs.length) setTimeout(() => markRead("consigne", cs.slice(0, 3).map((c) => c.id)), 400);
   const prio = cs.length ? `<section class="section" aria-labelledby="prH"><div class="section-h"><h2 id="prH">Consignes du responsable</h2>${cs.length > 3 ? `<button class="linkbtn" type="button" data-allprio aria-expanded="false" aria-controls="morePrio">Tout voir (${cs.length})</button>` : ""}</div>
       <div class="prios">${cs.slice(0, 3).map(prioCard).join("")}</div><div class="prios" id="morePrio" hidden>${cs.slice(3).map(prioCard).join("")}</div></section>` : "";
 
@@ -4652,7 +4734,7 @@ function bindDay(root) {
     else if (op === "start") { applyOp(id, OPS_T.start, null, !!go); if (go) location.hash = "#/tache/" + encodeURIComponent(id); }
   }));
   const ap = $("[data-allprio]", root);
-  if (ap) ap.onclick = () => { const m = $("#morePrio", root); m.hidden = !m.hidden; ap.setAttribute("aria-expanded", String(!m.hidden)); ap.textContent = m.hidden ? `Tout voir (${DAYST.consignes.length})` : "Réduire"; };
+  if (ap) ap.onclick = () => { const m = $("#morePrio", root); m.hidden = !m.hidden; if (!m.hidden) markRead("consigne", DAYST.consignes.map((c) => c.id)); ap.setAttribute("aria-expanded", String(!m.hidden)); ap.textContent = m.hidden ? `Tout voir (${DAYST.consignes.length})` : "Réduire"; };
   const af = $("#dayAsk", root); if (af) af.onsubmit = (e) => { e.preventDefault(); const q = $("#dayQ", root).value.trim(); location.hash = "#/assistant" + (q ? "?q=" + encodeURIComponent(q) : ""); };
   const tb = $("[data-tour]", root); if (tb) tb.onclick = () => startTour(true);
   bindBoard($("#boardSec", root));
@@ -5284,7 +5366,7 @@ function renderActu(root, id) {
   const box = $("#newsOne", root); if (!box) return;
   const a = (ACTU.list || []).find((x) => x.id === id);
   if (!a) { box.innerHTML = ACTU.list || ACTU.error ? `<nav class="crumbs"><a href="#/actualites">${ic("left", "sm")} Actualités</a></nav><div class="empty"><h3>Actualité introuvable</h3><p>Elle a peut-être été retirée, ou elle concerne une autre agence.</p><a class="btn" href="#/actualites">Voir les actualités</a></div>` : box.innerHTML; return; }
-  if (actuVisible(a)) markActuSeen(a.id);
+  if (actuVisible(a)) { markActuSeen(a.id); markRead("actualite", [a.id]); }
   const others = (ACTU.list || []).filter((x) => x.id !== a.id && (isAdmin() || actuVisible(x))).slice(0, 3);
   document.title = a.titre + " · Book des Process";
   box.innerHTML = `<nav class="crumbs"><a href="#/actualites">${ic("left", "sm")} Actualités</a></nav>
@@ -5295,12 +5377,13 @@ function renderActu(root, id) {
       ${a.photo ? `<figure class="news-cover"><img src="${a.photo}" alt=""></figure>` : ""}
       <div class="news-text">${actuText(a.description)}</div>
       ${isAdmin() ? `<div class="btns" style="margin-top:24px"><a class="btn" href="#/admin/actualite/${encodeURIComponent(a.id)}">${ic("pencil", "sm")} Modifier</a></div>` : ""}
+      ${actuVisible(a) ? `<div id="newsSocial" class="news-social"></div>` : ""}
     </article>
     ${others.length ? `<section class="section news-more"><div class="section-h"><h2>Autres actualités</h2><a class="small" href="#/actualites">Tout voir</a></div><div class="news-grid">${others.map((x) => actuCard(x)).join("")}</div></section>` : ""}`;
 }
 function actuMount(root, id) {
   renderActu(root, id);
-  loadActus(true).then(() => renderActu(root, id));
+  loadActus(true).then(() => { renderActu(root, id); const a = (ACTU.list || []).find((x) => x.id === id); if (a && actuVisible(a)) actuSocial(root, a); });
 }
 
 /* ----- Administration : liste ----- */
@@ -5322,9 +5405,10 @@ async function adminActusMount(root) {
   box.innerHTML = `<div class="rows">${list.map((a) => `<div class="rowi aa-row ${actuVisible(a) ? "" : "done-row"}">
       <a class="aa-th" href="#/actualite/${encodeURIComponent(a.id)}" aria-hidden="true" tabindex="-1">${actuPhotoHtml(a, "aa-img")}</a>
       <div style="min-width:0"><div class="t">${esc(a.titre)}</div><div class="d">${esc(actuExcerpt(a.description, 140))}</div>
-        <div class="m">${actuVisible(a) ? '<span class="badge ok">Publiée</span>' : '<span class="badge grey">Masquée</span>'}<span class="badge grey">${ic("mappin", "sm")} ${esc(agencesLabel(a.agences))}</span><span class="small muted">${esc(fmtDateTime(a.created))}${a.created_by ? " · " + esc(a.created_by) : ""}</span></div></div>
+        <div class="m">${actuVisible(a) ? '<span class="badge ok">Publiée</span>' : '<span class="badge grey">Masquée</span>'}${actuVisible(a) ? `<span data-read-slot="${esc(a.id)}"></span>` : ""}<span class="badge grey">${ic("mappin", "sm")} ${esc(agencesLabel(a.agences))}</span><span class="small muted">${esc(fmtDateTime(a.created))}${a.created_by ? " · " + esc(a.created_by) : ""}</span></div></div>
       <div class="btns"><a class="btn sm" href="#/admin/actualite/${encodeURIComponent(a.id)}">${ic("pencil", "sm")} Modifier</a></div></div>`).join("")}</div>` + trash + keep;
   bindRestore(root);
+  decorateReads(box, "actualite", list.filter(actuVisible));
 }
 function bindRestore(root) {
   $$("[data-restore]", root).forEach((b) => (b.onclick = async () => {
@@ -5686,6 +5770,262 @@ function openSuivi(u) {
   });
 }
 
+/* ===================== Accusés de lecture =====================
+   Une consigne affichée dans « Ma journée », une actualité ouverte : c'est noté (une fois).
+   Les responsables voient « lu par 8 personnes sur 12 » et qui ne l'a pas encore vue. */
+const LUS = new Set();
+async function markRead(objet, ids) {
+  if (!REMOTE || !SESSION) return;
+  const todo = (ids || []).filter((id) => id && !LUS.has(objet + ":" + id));
+  if (!todo.length) return;
+  todo.forEach((id) => LUS.add(objet + ":" + id));
+  try { await sbq(SB.from("lectures").upsert(todo.map((id) => ({ user_id: SESSION.user.id, objet, objet_id: String(id) })), { onConflict: "user_id,objet,objet_id", ignoreDuplicates: true }), "lectures"); }
+  catch (e) { todo.forEach((id) => LUS.delete(objet + ":" + id)); }
+}
+const LDB = { async of(objet) { if (!REMOTE) return []; return sbq(SB.from("lectures").select("user_id,objet_id,lu_le").eq("objet", objet), "lectures équipe"); } };
+/* Qui est concerné ? Les collaborateurs actifs (les responsables ne sont pas comptés). */
+function concernedBy(item, kind, users, agences) {
+  const team = (users || []).filter((u) => u.role !== "admin");
+  if (kind === "actualite") { const ag = item.agences || []; return ag.length ? team.filter((u) => !agences[u.id] || ag.includes(agences[u.id])) : team; }
+  const t = item.target_type || "all";
+  if (t === "user") return team.filter((u) => u.id === item.target_value);
+  if (t === "metier") return team.filter((u) => u.metier && norm(u.metier) === norm(item.target_value || ""));
+  return team;
+}
+function readBadge(item, kind, users, reads, agences) {
+  const who = concernedBy(item, kind, users, agences); if (!who.length) return "";
+  const seen = new Set(reads.filter((r) => r.objet_id === String(item.id)).map((r) => r.user_id));
+  const n = who.filter((u) => seen.has(u.id)).length, all = n === who.length;
+  return `<button class="badge ${all ? "ok" : "grey"} read-badge" type="button" data-reads="${esc(kind)}:${esc(item.id)}" title="Voir qui l'a lu">${ic(all ? "check" : "eye", "sm")} Lu par ${n} / ${who.length}</button>`;
+}
+function openReads(item, kind, users, reads, agences, title) {
+  const who = concernedBy(item, kind, users, agences).slice().sort(byName);
+  const at = {}; reads.filter((r) => r.objet_id === String(item.id)).forEach((r) => { at[r.user_id] = r.lu_le; });
+  const yes = who.filter((u) => at[u.id]), no = who.filter((u) => !at[u.id]);
+  modal(`<h2 id="mtitle">${esc(title)}</h2>
+    <p class="small muted" style="margin:-4px 0 12px">${kind === "actualite" ? "Une actualité compte comme lue quand la personne l'a ouverte." : "Une consigne compte comme vue quand elle s'est affichée dans « Ma journée » de la personne."}</p>
+    <div class="reads-cols"><section><h3>${ic("check", "sm")} Déjà lu (${yes.length})</h3><ul>${yes.map((u) => `<li><b>${esc(u.name)}</b><span class="small muted">${esc(fmtDateTime(at[u.id]))}</span></li>`).join("") || `<li class="small muted">Personne pour l'instant.</li>`}</ul></section>
+    <section><h3>${ic("clock", "sm")} Pas encore (${no.length})</h3><ul>${no.map((u) => `<li><b>${esc(u.name)}</b></li>`).join("") || `<li class="small muted">Tout le monde l'a lu.</li>`}</ul></section></div>
+    <div class="btns" style="margin-top:14px"><button class="btn ghost" type="button" data-close>Fermer</button></div>`, (m) => { $$("[data-close]", m).forEach((b) => b.addEventListener("click", closeModal)); });
+}
+async function decorateReads(root, kind, list) {
+  if (!REMOTE || !list || !list.length) return;
+  const [users, reads, ag] = await Promise.all([teamUsers(), LDB.of(kind).catch(() => null), kind === "actualite" ? ADB.agences().catch(() => []) : Promise.resolve([])]);
+  if (!users || !reads || !document.contains(root)) return;
+  const agences = {}; (ag || []).forEach((x) => { agences[x.user_id] = x.agence; });
+  $$("[data-read-slot]", root).forEach((slot) => { const it = list.find((x) => String(x.id) === slot.dataset.readSlot); if (it) slot.innerHTML = readBadge(it, kind, users, reads, agences); });
+  root.addEventListener("click", (e) => { const b = e.target.closest("[data-reads]"); if (!b) return; e.preventDefault(); const id = b.dataset.reads.split(":").slice(1).join(":"); const it = list.find((x) => String(x.id) === id); if (it) openReads(it, kind, users, reads, agences, (kind === "actualite" ? "Lecture : " : "Consigne vue : ") + (it.titre || it.title)); });
+}
+
+/* ===================== Annuaire ===================== */
+const CONTACT_CATS = ["Agence", "Astreinte", "Urgences", "Partenaires", "Téléassistance", "Mairies et CCAS", "Caisses de retraite", "Fournisseurs", "Autre"];
+let ANNU = { list: null, error: null, q: "", ag: null };
+const CDB = {
+  async list() { if (!REMOTE) return clone(demoStore().contacts || []); return sbq(SB.from("contacts").select("*").order("categorie").order("nom"), "contacts"); },
+  async save(c) {
+    const row = { nom: c.nom, categorie: c.categorie || "Autre", agence: c.agence || null, telephone: c.telephone || "", email: c.email || "", adresse: c.adresse || "", note: c.note || "" };
+    if (!REMOTE) { const st = demoStore(); st.contacts = st.contacts || []; const id = c.id || "k" + uid(); const i = st.contacts.findIndex((x) => x.id === id); const full = Object.assign({ id }, row); if (i >= 0) st.contacts[i] = full; else st.contacts.push(full); save(); return full; }
+    if (c.id) { const r = await sbq(SB.from("contacts").update(row).eq("id", c.id).select("*"), "contact"); return r[0]; }
+    const r = await sbq(SB.from("contacts").insert(row).select("*"), "contact new"); return r[0];
+  },
+  async remove(id) { if (!REMOTE) { const st = demoStore(); st.contacts = (st.contacts || []).filter((x) => x.id !== id); save(); return; } await sbq(SB.from("contacts").delete().eq("id", id), "contact suppr"); }
+};
+const telHref = (t) => "tel:" + String(t || "").replace(/[^\d+]/g, "");
+function contactCard(c) {
+  return `<article class="ct-card"><header><div><h3>${esc(c.nom)}</h3><p class="small muted">${esc(c.categorie)} · ${esc(c.agence ? agenceLabel(c.agence) : "Toutes les agences")}</p></div>
+      ${isAdmin() ? `<div class="ct-adm"><button class="ico-btn" type="button" data-ct-edit="${esc(c.id)}" title="Modifier">${ic("pencil", "sm")}<span class="sr-only">Modifier ${esc(c.nom)}</span></button></div>` : ""}</header>
+      ${c.note ? `<p class="ct-note">${esc(c.note)}</p>` : ""}
+      ${c.adresse ? `<p class="ct-addr">${ic("mappin", "sm")}<span>${esc(c.adresse)}</span></p>` : ""}
+      <div class="ct-act">${c.telephone ? `<a class="btn primary sm" href="${esc(telHref(c.telephone))}">${ic("phone", "sm")} ${esc(c.telephone)}</a>` : ""}${c.email ? `<a class="btn sm" href="mailto:${esc(c.email)}">${ic("mail", "sm")} Écrire</a>` : ""}</div></article>`;
+}
+function viewAnnuaire() {
+  return `<header class="news-head"><div><h1>Annuaire</h1><p class="lead">Les contacts utiles de chaque agence. Touche un numéro pour appeler.</p></div>${isAdmin() ? `<button class="btn primary" type="button" data-ct-new>${ic("plus")} Ajouter un contact</button>` : ""}</header>
+    <div class="ct-tools"><div class="nb-search">${ic("search", "sm")}<label class="sr-only" for="ctQ">Rechercher un contact</label><input id="ctQ" type="search" placeholder="Rechercher un nom, un numéro…" value="${esc(ANNU.q)}" autocomplete="off"></div><div class="news-filters" id="ctAg" role="group" aria-label="Agence"></div></div>
+    <div id="ctBox"><div class="skel" style="height:140px"></div></div>`;
+}
+function renderAnnuaire(root) {
+  const box = $("#ctBox", root); if (!box) return;
+  if (ANNU.ag === null) ANNU.ag = (typeof ACTU !== "undefined" && ACTU.mine) || "";
+  $("#ctAg", root).innerHTML = [["", "Toutes"]].concat(AGENCES).map(([k, l]) => `<button type="button" class="chip" aria-pressed="${ANNU.ag === k}" data-ct-ag="${k}">${esc(l)}</button>`).join("");
+  if (ANNU.error && !ANNU.list) { box.innerHTML = ANNU.error === "off" ? `<div class="empty"><h3>${ic("phone")} Bientôt disponible</h3><p>L'annuaire n'est pas encore activé sur le serveur.</p></div>` : `<div class="empty"><h3>${ic("alert")} L'annuaire n'a pas pu être chargé</h3><p>Vérifie ta connexion internet, puis réessaie.</p></div>`; return; }
+  const q = noteNorm(ANNU.q.trim());
+  const list = (ANNU.list || []).filter((c) => (!ANNU.ag || !c.agence || c.agence === ANNU.ag) && (!q || noteNorm([c.nom, c.categorie, c.telephone, c.email, c.adresse, c.note].join(" ")).includes(q)));
+  if (!(ANNU.list || []).length) { box.innerHTML = `<div class="empty news-empty"><span class="news-empty-i" aria-hidden="true">${ic("phone")}</span><h3>L'annuaire est vide</h3><p>${isAdmin() ? "Ajoutez les numéros utiles : astreinte, partenaires, téléassistance, mairies…" : "Ton responsable va bientôt ajouter les numéros utiles."}</p>${isAdmin() ? `<button class="btn primary" type="button" data-ct-new>${ic("plus")} Ajouter un contact</button>` : ""}</div>`; return; }
+  if (!list.length) { box.innerHTML = `<p class="nb-none">Aucun contact ne correspond.</p>`; return; }
+  const cats = CONTACT_CATS.concat(Array.from(new Set(list.map((c) => c.categorie))).filter((c) => !CONTACT_CATS.includes(c)).sort());
+  box.innerHTML = cats.map((cat) => { const l = list.filter((c) => c.categorie === cat); return l.length ? `<section class="section ct-sec"><div class="section-h"><h2>${esc(cat)}</h2><span class="small muted">${l.length}</span></div><div class="ct-grid">${l.map(contactCard).join("")}</div></section>` : ""; }).join("");
+}
+async function loadAnnuaire() { try { ANNU.list = await CDB.list(); ANNU.error = null; } catch (e) { ANNU.error = (e && (e.code === "42P01" || e.code === "PGRST205")) ? "off" : "net"; } }
+function annuaireMount(root) {
+  renderAnnuaire(root);
+  loadAnnuaire().then(() => renderAnnuaire(root));
+  $("#ctQ", root).addEventListener("input", (e) => { ANNU.q = e.target.value; renderAnnuaire(root); });
+  root.addEventListener("click", (e) => {
+    const a = e.target.closest("[data-ct-ag]"); if (a) { ANNU.ag = a.dataset.ctAg; renderAnnuaire(root); return; }
+    if (e.target.closest("[data-ct-new]")) return contactForm(root, null);
+    const ed = e.target.closest("[data-ct-edit]"); if (ed) return contactForm(root, (ANNU.list || []).find((c) => String(c.id) === ed.dataset.ctEdit));
+  });
+}
+function contactForm(root, c) {
+  const x = c ? clone(c) : { nom: "", categorie: "Partenaires", agence: ANNU.ag || null, telephone: "", email: "", adresse: "", note: "" };
+  modal(`<h2 id="mtitle">${c ? "Modifier le contact" : "Ajouter un contact"}</h2>
+    <form class="form" id="ctForm" novalidate style="display:grid;gap:12px">
+      <div class="fld"><label for="ctN">Nom</label><input id="ctN" maxlength="120" value="${esc(x.nom)}" placeholder="Ex. : Astreinte Besançon, Arkéa, Mairie de Dole"></div>
+      <div class="grid2"><div class="fld"><label for="ctC">Catégorie</label><input id="ctC" list="ctCats" maxlength="60" value="${esc(x.categorie)}"><datalist id="ctCats">${CONTACT_CATS.map((k) => `<option value="${esc(k)}">`).join("")}</datalist></div>
+        <div class="fld"><label for="ctT">Téléphone</label><input id="ctT" type="tel" maxlength="40" value="${esc(x.telephone)}" placeholder="03 81 00 00 00"></div></div>
+      <fieldset class="fld ae-ag"><legend class="lbl">Agence</legend>${agenceChoice("ctA", x.agence || "")}</fieldset>
+      <div class="fld"><label for="ctE">E-mail (facultatif)</label><input id="ctE" type="email" maxlength="160" value="${esc(x.email)}"></div>
+      <div class="fld"><label for="ctAd">Adresse (facultatif)</label><input id="ctAd" maxlength="300" value="${esc(x.adresse)}"></div>
+      <div class="fld"><label for="ctNo">À savoir (facultatif)</label><textarea id="ctNo" rows="2" maxlength="600" placeholder="Ex. : joignable de 8 h à 18 h, demander le service facturation">${esc(x.note)}</textarea></div>
+      <p class="login-err" id="ctErr" role="alert" hidden></p>
+      <div class="btns"><button class="btn primary" type="submit">${ic("check")} Enregistrer</button>${c ? `<button class="btn danger" type="button" id="ctDel">${ic("trash", "sm")} Supprimer</button>` : ""}<button class="btn ghost" type="button" data-close>Annuler</button></div>
+    </form>`, (m) => {
+    $$("[data-close]", m).forEach((b) => b.addEventListener("click", closeModal));
+    const err = $("#ctErr", m), fail = (t) => { err.hidden = false; err.textContent = t; };
+    const del = $("#ctDel", m);
+    if (del) del.onclick = async () => { if (!del.dataset.armed) { del.dataset.armed = "1"; del.textContent = "Confirmer la suppression"; return; } del.disabled = true; try { await CDB.remove(c.id); ANNU.list = ANNU.list.filter((k) => k.id !== c.id); closeModal(); toast("Contact supprimé", "trash"); renderAnnuaire(root); } catch (e2) { del.disabled = false; fail("La suppression a échoué. Vérifiez votre connexion."); } };
+    $("#ctForm", m).onsubmit = async (e) => {
+      e.preventDefault();
+      const ag = $("input[name=ctA]:checked", m);
+      const d = Object.assign(x, { nom: $("#ctN", m).value.trim(), categorie: $("#ctC", m).value.trim() || "Autre", telephone: $("#ctT", m).value.trim(), email: $("#ctE", m).value.trim(), adresse: $("#ctAd", m).value.trim(), note: $("#ctNo", m).value.trim(), agence: ag && ag.value ? ag.value : null });
+      if (!d.nom) return fail("Indiquez le nom du contact.");
+      if (!d.telephone && !d.email) return fail("Indiquez au moins un téléphone ou un e-mail.");
+      const b = $("#ctForm button[type=submit]", m); b.disabled = true;
+      try { const s2 = await CDB.save(d); ANNU.list = (ANNU.list || []).filter((k) => k.id !== s2.id).concat([s2]).sort((p, q) => p.categorie.localeCompare(q.categorie, "fr") || p.nom.localeCompare(q.nom, "fr")); closeModal(); toast(c ? "Contact enregistré" : "Contact ajouté", "check"); renderAnnuaire(root); }
+      catch (e2) { b.disabled = false; fail("L'enregistrement a échoué. Vérifiez votre connexion, puis réessayez."); }
+    };
+  });
+}
+
+/* ===================== Statistiques (responsables) =====================
+   Totaux seulement : fiches consultées, recherches, recherches sans résultat, fiches jamais ouvertes. */
+const VUS = new Set(), CHERCHES = new Set();
+function logView(id) {
+  if (!REMOTE || !SESSION || !id || VUS.has(id)) return; VUS.add(id);
+  sbq(SB.from("consultations").insert({ user_id: SESSION.user.id, fiche: id }), "consultation").catch(() => VUS.delete(id));
+}
+function logSearch(q, n) {
+  q = String(q || "").trim().slice(0, 200); if (!REMOTE || !SESSION || q.length < 2) return;
+  const k = noteNorm(q); if (CHERCHES.has(k)) return; CHERCHES.add(k);
+  sbq(SB.from("recherches").insert({ user_id: SESSION.user.id, q, resultats: n | 0 }), "recherche").catch(() => CHERCHES.delete(k));
+}
+let STATS_DAYS = 30;
+function adminStats() { return `<div class="news-filters" role="group" aria-label="Période" id="stP">${[[7, "7 jours"], [30, "30 jours"], [90, "3 mois"]].map(([d, l]) => `<button type="button" class="chip" data-st-d="${d}" aria-pressed="${STATS_DAYS === d}">${l}</button>`).join("")}</div><div id="stBox"><div class="skel" style="height:200px"></div></div>`; }
+async function adminStatsMount(root) {
+  root.addEventListener("click", (e) => { const b = e.target.closest("[data-st-d]"); if (b) { STATS_DAYS = +b.dataset.stD; route(); } });
+  const box = $("#stBox", root);
+  const since = new Date(Date.now() - STATS_DAYS * 864e5).toISOString();
+  let views, searches;
+  try { [views, searches] = await Promise.all([sbq(SB.from("consultations").select("fiche,user_id,le").gte("le", since).limit(20000), "stats vues"), sbq(SB.from("recherches").select("q,resultats,le").gte("le", since).limit(20000), "stats recherches")]); }
+  catch (e) { box.innerHTML = (e && (e.code === "42P01" || e.code === "PGRST205")) ? `<div class="notice warn">${ic("alert")}<div><b>Les statistiques ne sont pas encore activées sur le serveur.</b></div></div>` : `<p class="muted">Les statistiques n'ont pas pu être chargées.</p>`; return; }
+  if (!document.contains(box)) return;
+  const cnt = {}; views.forEach((v) => { cnt[v.fiche] = (cnt[v.fiche] || 0) + 1; });
+  const top = Object.entries(cnt).filter(([id]) => getFiche(id)).sort((a, b) => b[1] - a[1]).slice(0, 10);
+  const max = top.length ? top[0][1] : 1;
+  const qn = {}; searches.forEach((s) => { const k = noteNorm(s.q.trim()); if (!qn[k]) qn[k] = { q: s.q.trim(), n: 0, zero: 0 }; qn[k].n++; if (!s.resultats) qn[k].zero++; });
+  const qs = Object.values(qn);
+  const zero = qs.filter((x) => x.zero > 0).sort((a, b) => b.zero - a.zero).slice(0, 12);
+  const freq = qs.slice().sort((a, b) => b.n - a.n).slice(0, 12);
+  const never = allIds().filter((id) => getFiche(id) && !meta(id).archived && !cnt[id]);
+  const people = new Set(views.map((v) => v.user_id)).size;
+  const row = (l, n, m, href) => `<li><a href="${href}">${l}</a><span class="sv-bar" aria-hidden="true"><i style="width:${Math.round((n / m) * 100)}%"></i></span><b>${n}</b></li>`;
+  box.innerHTML = `<p class="small muted" style="margin:10px 0 14px">${ic("lock", "sm")} Totaux de l'équipe seulement : on ne voit pas qui a consulté quoi.</p>
+    <div class="sv-kpis st-kpis"><div class="sv-k"><b>${views.length}</b><span>consultations de fiches</span></div><div class="sv-k"><b>${people}</b><span>personne${people > 1 ? "s" : ""} active${people > 1 ? "s" : ""}</span></div><div class="sv-k"><b>${searches.length}</b><span>recherches</span></div><div class="sv-k"><b>${zero.reduce((s, x) => s + x.zero, 0)}</b><span>recherches sans résultat</span></div></div>
+    <div class="st-grid">
+      <section class="panel"><h2>Fiches les plus consultées</h2>${top.length ? `<ul class="st-list">${top.map(([id, n]) => row(`<b>${esc(id)}</b> ${esc(getFiche(id).title)}`, n, max, "#/fiche/" + id)).join("")}</ul>` : `<p class="small muted">Aucune consultation sur la période.</p>`}</section>
+      <section class="panel"><h2>Recherches sans résultat</h2><p class="small muted">Ce que l'équipe cherche sans le trouver : des fiches à créer ou des mots-clés à ajouter.</p>${zero.length ? `<ul class="st-list">${zero.map((x) => row(esc(x.q), x.zero, zero[0].zero, "#/recherche?q=" + encodeURIComponent(x.q))).join("")}</ul>` : `<p class="small muted">Aucune sur la période.</p>`}</section>
+      <section class="panel"><h2>Recherches les plus fréquentes</h2>${freq.length ? `<ul class="st-list">${freq.map((x) => row(esc(x.q), x.n, freq[0].n, "#/recherche?q=" + encodeURIComponent(x.q))).join("")}</ul>` : `<p class="small muted">Aucune recherche sur la période.</p>`}</section>
+      <section class="panel"><h2>Fiches jamais ouvertes (${never.length})</h2><p class="small muted">Sur la période. Trop techniques, mal nommées ou inutiles ?</p>${never.length ? `<div class="chips st-never">${never.slice(0, 40).map((id) => `<a class="chip" href="#/fiche/${id}">${esc(id)} ${esc(getFiche(id).title)}</a>`).join("")}${never.length > 40 ? `<span class="small muted">… et ${never.length - 40} autres</span>` : ""}</div>` : `<p class="small muted">Toutes les fiches ont été ouvertes au moins une fois.</p>`}</section>
+    </div>`;
+}
+
+/* ===================== Réactions et commentaires des actualités ===================== */
+const REACTS = [["bravo", "👏", "Bravo"], ["merci", "🙏", "Merci"], ["top", "👍", "Top"], ["coeur", "❤️", "J'aime"]];
+const RDB = {
+  async load(id) {
+    if (!REMOTE) return { reacts: [], comments: [] };
+    const [reacts, comments] = await Promise.all([sbq(SB.from("actualites_reactions").select("user_id,emoji").eq("actualite_id", id), "réactions"), sbq(SB.from("actualites_commentaires").select("id,user_id,auteur,texte,created").eq("actualite_id", id).order("created"), "commentaires")]);
+    return { reacts, comments };
+  }
+};
+async function actuSocial(box, a) {
+  const host = $("#newsSocial", box); if (!host || !REMOTE) { if (host) host.remove(); return; }
+  let d; try { d = await RDB.load(a.id); } catch (e) { host.innerHTML = (e && (e.code === "42P01" || e.code === "PGRST205")) ? "" : `<p class="small muted">Les réactions n'ont pas pu être chargées.</p>`; return; }
+  if (!document.contains(host)) return;
+  const me = SESSION.user.id;
+  const draw = () => {
+    host.innerHTML = `<div class="rx" role="group" aria-label="Réagir">${REACTS.map(([k, e, l]) => { const n = d.reacts.filter((r) => r.emoji === k).length, mine = d.reacts.some((r) => r.emoji === k && r.user_id === me);
+        return `<button type="button" class="rx-b ${mine ? "on" : ""}" aria-pressed="${mine}" data-rx="${k}" title="${esc(l)}"><span aria-hidden="true">${e}</span><span class="sr-only">${esc(l)}</span>${n ? `<b>${n}</b>` : ""}</button>`; }).join("")}</div>
+      <section class="cm"><h2>Commentaires${d.comments.length ? ` (${d.comments.length})` : ""}</h2>
+        ${d.comments.length ? `<ul class="cm-list">${d.comments.map((c) => `<li><div class="cm-h"><b>${esc(c.auteur || "Collaborateur")}</b><span class="small muted">${esc(noteWhen(c.created))}</span>${c.user_id === me || isAdmin() ? `<button class="linkbtn small" type="button" data-cm-del="${esc(c.id)}">Supprimer</button>` : ""}</div><p>${esc(c.texte)}</p></li>`).join("")}</ul>` : `<p class="small muted">Sois le premier à réagir.</p>`}
+        <form class="cm-form" id="cmForm"><label class="sr-only" for="cmT">Ton commentaire</label><textarea id="cmT" rows="2" maxlength="1000" placeholder="Écrire un commentaire…"></textarea><button class="btn primary" type="submit">${ic("send", "sm")} Publier</button></form>
+        <p class="small muted">Visible par les personnes qui voient cette actualité.</p></section>`;
+    $("#cmForm", host).onsubmit = async (e) => {
+      e.preventDefault(); const t = $("#cmT", host), v = t.value.trim(); if (!v) return t.focus();
+      const b = $("#cmForm button", host); b.disabled = true;
+      try { const r = await sbq(SB.from("actualites_commentaires").insert({ actualite_id: a.id, user_id: me, texte: v }).select("id,user_id,auteur,texte,created"), "commentaire"); d.comments.push(r[0]); draw(); toast("Commentaire publié", "check"); }
+      catch (x) { b.disabled = false; toast("Le commentaire n'a pas pu être publié. Vérifie ta connexion.", "alert"); }
+    };
+  };
+  draw();
+  host.addEventListener("click", async (e) => {
+    const r = e.target.closest("[data-rx]");
+    if (r) { const k = r.dataset.rx, mine = d.reacts.some((x) => x.emoji === k && x.user_id === me); r.disabled = true;
+      try { if (mine) { await sbq(SB.from("actualites_reactions").delete().eq("actualite_id", a.id).eq("user_id", me).eq("emoji", k), "réaction"); d.reacts = d.reacts.filter((x) => !(x.emoji === k && x.user_id === me)); }
+        else { await sbq(SB.from("actualites_reactions").upsert({ actualite_id: a.id, user_id: me, emoji: k }, { onConflict: "actualite_id,user_id,emoji", ignoreDuplicates: true }), "réaction"); d.reacts.push({ user_id: me, emoji: k }); } }
+      catch (x) { toast("La réaction n'a pas pu être enregistrée.", "alert"); }
+      draw(); return; }
+    const del = e.target.closest("[data-cm-del]");
+    if (del) { if (!del.dataset.armed) { del.dataset.armed = "1"; del.textContent = "Confirmer"; return; }
+      try { await sbq(SB.from("actualites_commentaires").delete().eq("id", del.dataset.cmDel), "commentaire suppr"); d.comments = d.comments.filter((c) => c.id !== del.dataset.cmDel); draw(); } catch (x) { toast("La suppression a échoué.", "alert"); } }
+  });
+}
+
+/* ===================== Imprimer une fiche (ou l'enregistrer en PDF) ===================== */
+function printFiche(id) {
+  const f = getFiche(id); if (!f) return;
+  const opened = $$("details:not([open])"); opened.forEach((d) => d.setAttribute("open", ""));
+  document.body.dataset.print = id;
+  const head = document.createElement("div"); head.className = "print-head";
+  head.innerHTML = `<img src="${ASSETS.logo_full}" alt="Séréo" width="220" height="48"><span>Fiche ${esc(id)} · imprimée le ${esc(new Date().toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" }))}</span>`;
+  const main = $("#main"); main.prepend(head);
+  const done = () => { head.remove(); opened.forEach((d) => d.removeAttribute("open")); delete document.body.dataset.print; window.removeEventListener("afterprint", done); };
+  window.addEventListener("afterprint", done);
+  setTimeout(() => { try { window.print(); } catch (e) { done(); } }, 60);
+}
+
+/* ===================== Consultation sans internet =====================
+   Les procédures chargées sont gardées sur l'appareil (par compte). Sans internet, l'application
+   s'ouvre quand même en lecture : procédures, favoris, notes déjà présentes. Supprimé à la déconnexion. */
+let OFFLINE = false;
+const OFFK = "book-hors-ligne";
+function offDb() { return new Promise((ok, ko) => { try { const r = indexedDB.open(OFFK, 1); r.onupgradeneeded = () => r.result.createObjectStore("cache"); r.onsuccess = () => ok(r.result); r.onerror = () => ko(r.error); } catch (e) { ko(e); } }); }
+async function offPut(key, val) { const db = await offDb(); return new Promise((ok, ko) => { const t = db.transaction("cache", "readwrite"); t.objectStore("cache").put(val, key); t.oncomplete = () => ok(); t.onerror = () => ko(t.error); }); }
+async function offGet(key) { const db = await offDb(); return new Promise((ok, ko) => { const t = db.transaction("cache", "readonly"); const r = t.objectStore("cache").get(key); r.onsuccess = () => ok(r.result || null); r.onerror = () => ko(r.error); }); }
+async function offClear() { try { const db = await offDb(); await new Promise((ok) => { const t = db.transaction("cache", "readwrite"); t.objectStore("cache").clear(); t.oncomplete = ok; t.onerror = ok; }); } catch (e) { /* */ } }
+async function offSave(rows) {
+  if (!REMOTE || !SESSION) return;
+  try { await offPut("dernier", { uid: SESSION.user.id, email: SESSION.user.email, umeta: SESSION.user.user_metadata || {}, role: S.role, metier: S.metier, at: Date.now(), rows }); } catch (e) { /* stockage indisponible */ }
+}
+async function offEnter(session) { // retourne true si l'application a pu s'ouvrir hors connexion
+  let c = null; try { c = await offGet("dernier"); } catch (e) { return false; }
+  if (!c || (session && session.user && session.user.id !== c.uid)) return false;
+  OFFLINE = true;
+  SESSION = session || { user: { id: c.uid, email: c.email, user_metadata: c.umeta } };
+  resetUserCaches(); loadPrefs(normLogin(loginOf(c.email)));
+  S.role = c.role === "admin" ? "admin" : "salarie"; S.metier = c.metier || "";
+  applyBookRows(c.rows, true);
+  shell(); if (!location.hash || location.hash === "#/" || location.hash === "#") location.hash = "#/procedures"; route();
+  const bar = document.createElement("div"); bar.className = "offbar"; bar.setAttribute("role", "status");
+  bar.innerHTML = `${ic("alert", "sm")}<span><b>Hors connexion.</b> Procédures enregistrées ${esc(noteWhen(new Date(c.at).toISOString()))}. Ma journée, les demandes et les actualités reviendront avec internet.</span><button class="btn sm" type="button">Réessayer</button>`;
+  document.body.appendChild(bar); $("button", bar).onclick = () => location.reload();
+  window.addEventListener("online", () => { $("span", bar).innerHTML = "<b>Internet est revenu.</b> Recharge pour tout retrouver."; });
+  return true;
+}
+function registerSW() {
+  try { if (REMOTE && "serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "127.0.0.1" || location.hostname === "localhost")) navigator.serviceWorker.register("sw.js").catch(() => {}); } catch (e) { /* */ }
+}
+
 function adminConsignes() { return `<div class="btns" style="margin-bottom:16px"><a class="btn primary" href="#/admin/consigne/new">${ic("plus")} Nouvelle consigne</a></div><div id="csBox"><div class="skel"></div></div>`; }
 async function consignesMount(root) {
   const box = $("#csBox", root), today = isoDay();
@@ -5695,12 +6035,13 @@ async function consignesMount(root) {
     const old = list.filter((c) => !(c.active !== false && c.end_date >= today));
     const row = (c) => { const k = KINDS[c.kind] || KINDS.vigilance; const on = c.active !== false && c.start_date <= today && c.end_date >= today;
       return `<div class="rowi ${on ? "" : "done-row"}"><div style="min-width:0"><div class="t">${esc(c.title)}</div><div class="d">${esc(c.body || "")}</div>
-        <div class="m"><span class="badge ${k[2]}">${ic(k[1], "sm")} ${k[0]}</span>${c.urgent_task ? '<span class="badge danger">Passe avant la routine</span>' : ""}<span class="small muted">${esc(targetLabel(c, users))} · du ${esc(fmtDate(c.start_date + "T12:00:00"))} au ${esc(fmtDate(c.end_date + "T12:00:00"))}${c.active === false ? " · retirée" : c.end_date < today ? " · expirée" : c.start_date > today ? " · à venir" : ""}</span></div></div>
+        <div class="m"><span class="badge ${k[2]}">${ic(k[1], "sm")} ${k[0]}</span><span data-read-slot="${esc(c.id)}"></span>${c.urgent_task ? '<span class="badge danger">Passe avant la routine</span>' : ""}<span class="small muted">${esc(targetLabel(c, users))} · du ${esc(fmtDate(c.start_date + "T12:00:00"))} au ${esc(fmtDate(c.end_date + "T12:00:00"))}${c.active === false ? " · retirée" : c.end_date < today ? " · expirée" : c.start_date > today ? " · à venir" : ""}</span></div></div>
         <div class="btns"><a class="btn sm" href="#/admin/consigne/${esc(c.id)}">${ic("pencil", "sm")} Modifier</a></div></div>`; };
     const nAll = live.filter((c) => c.start_date <= today && (c.target_type || "all") === "all").length;
     box.innerHTML = `${nAll > 3 ? `<div class="notice warn" style="margin-bottom:14px">${ic("alert")}<div><b>${nAll} consignes visibles par toute l'équipe aujourd'hui.</b><span>L'accueil en montre 3 ; les autres sont derrière « Tout voir ». Pour rester lisible, gardez peu de consignes.</span></div></div>` : ""}
       <section class="section"><div class="section-h"><h2>En cours et à venir</h2></div>${live.length ? `<div class="rows">${live.map(row).join("")}</div>` : `<p class="muted small">Aucune consigne en cours.</p>`}</section>
       ${old.length ? `<details class="tlog" style="margin-top:18px"><summary>Consignes expirées ou retirées (${old.length})</summary><div class="rows" style="margin-top:10px">${old.map(row).join("")}</div></details>` : ""}`;
+    decorateReads(box, "consigne", list);
   } catch (e) { box.innerHTML = `<p class="muted">Les consignes n'ont pas pu être chargées.</p>`; }
 }
 function viewConsigneEditor() { return `<div id="ceBox"><div class="skel"></div></div>`; }
