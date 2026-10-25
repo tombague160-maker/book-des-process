@@ -803,6 +803,49 @@ button, .btn, .chip, .tabbar a, .nav a, .tick, .sit-tabs button, .tabs a, .help-
 .help-btn[aria-current="page"] { background: var(--blue); color: #fff; }
 .help-btn .tk-dot { position: absolute; top: 1px; right: 1px; margin: 0; box-shadow: 0 0 0 2px #fff; }
 .help-btn .tk-dot[hidden] { display: none; }
+/* Thèmes illustrés (25/10) : l'illustration est la vedette de la carte */
+.themes { grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr)); gap: 20px; }
+.theme-card { padding: 0; overflow: hidden; align-items: stretch; }
+.theme-card > div { padding: 18px 22px 20px; }
+.tc-art { display: grid; place-items: center; aspect-ratio: 4 / 3; background: radial-gradient(120% 90% at 50% 100%, var(--sereo-sage-tint-2) 0%, var(--sereo-sage-tint) 45%, var(--sereo-paper) 100%); overflow: hidden; }
+.tc-art img { width: 80%; height: 90%; object-fit: contain; object-position: center; margin: 0; transition: transform 380ms var(--ease-out); }
+.tc-art img.tc-icon { width: 34%; height: auto; margin: 0; }
+@media (hover: hover) and (pointer: fine) { .theme-card:hover .tc-art img { transform: translateY(-6px) scale(1.035); } }
+.theme-card .tn { color: var(--sereo-coral-ink); }
+.theme-card h3 { font-size: 1.3125rem; }
+.tc-annex { grid-column: 1 / -1; display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; align-items: center; gap: 16px; padding: 16px 22px; }
+.tc-annex > div { padding: 0; }
+.tc-annex img { width: 56px; height: 46px; object-fit: contain; margin: 0; }
+.tc-annex h3 { margin: 0; padding: 0; box-shadow: none; font-size: 1.0625rem; }
+.tc-annex p { font-size: .875rem; }
+.tc-annex .cnt { margin: 0; padding: 0; white-space: nowrap; display: inline-flex; flex-direction: row; align-items: center; }
+.th-art { width: 240px; aspect-ratio: 1; justify-self: end; border-radius: 50%; background: radial-gradient(circle at 50% 60%, var(--sereo-sage-tint-2), var(--sereo-sage-tint) 55%, transparent 72%); display: grid; place-items: center; }
+.th-art img { width: 100%; height: 100%; object-fit: contain; }
+.theme-head:has(.th-art) { grid-template-columns: minmax(0, 1fr) 240px; }
+.hero-art { width: 280px; aspect-ratio: 1; justify-self: end; display: grid; place-items: center; border-radius: 50%; background: radial-gradient(circle at 50% 62%, rgba(255, 255, 255, .9), rgba(255, 255, 255, 0) 70%); }
+.hero-art img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: normal !important; filter: drop-shadow(0 14px 22px rgba(38, 48, 47, .10)); }
+.hero:has(.hero-art) { grid-template-columns: minmax(0, 1fr) 280px; }
+@media (prefers-reduced-motion: reduce) { .tc-art img { transition: none; } .theme-card:hover .tc-art img { transform: none; } }
+@media (max-width: 860px) { .hero-art { display: none; } .hero:has(.hero-art) { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 700px) { .theme-head:has(.th-art) { grid-template-columns: minmax(0, 1fr) 120px; gap: 16px; } .th-art { width: 120px; } }
+@media (max-width: 480px) {
+  .themes { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; border-radius: 0; box-shadow: none; overflow: visible; }
+  .theme-card { display: flex; flex-direction: column; gap: 0; padding: 0; border-radius: var(--r-lg); box-shadow: 0 0 0 1px var(--sep), var(--shadow-1); align-items: stretch; }
+  .theme-card + .theme-card { box-shadow: 0 0 0 1px var(--sep), var(--shadow-1); }
+  .theme-card > div { padding: 10px 12px 12px; }
+  .tc-art { aspect-ratio: 1 / 1; }
+  .tc-art img { width: 86%; height: 86%; margin: 0; }
+  .theme-card h3 { font-size: .9375rem; line-height: 1.25; }
+  .theme-card .cnt { font-size: .8125rem; }
+  .theme-card img { width: auto; height: auto; }
+
+  .tc-annex { display: grid; grid-template-columns: 44px minmax(0, 1fr); padding: 12px 14px; }
+  .tc-annex img { width: 44px; height: 36px; }
+  .tc-annex .cnt { grid-column: 2; padding: 0; }
+  .tc-annex > div { padding: 0; text-align: left; }
+  .tc-annex h3 { font-size: 1rem; }
+  .theme-head:has(.th-art) { grid-template-columns: minmax(0, 1fr) 96px; } .th-art { width: 96px; }
+}
 /* Accompagnement : réponses rédigées en conseils */
 .ans { line-height: 1.55; }
 .ans-lead { font-size: 1.03rem; }
@@ -2095,6 +2138,9 @@ function isIncomplete(f) { return !!(f.gaps && f.gaps.length) && (!f.blocks || f
 function lastUpdate(id) { const m = meta(id); return m.updated || BOOK.source.imported; }
 function conflictsFor(id) { return (BOOK.conflicts || []).filter((c) => c.fiches.includes(id)); }
 function chIcon(c) { return c ? (ASSETS["ch" + c.id] || ASSETS.ch01) : ASSETS.ch01; }
+/* Illustrations des thèmes (3D, 640 × 640, fichiers à côté de la page) */
+const THEME_ILLU = { "01": 1, "02": 1, "03": 1, "04": 1, "05": 1, "06": 1, "07": 1, "08": 1, "09": 1, "10": 1, "11": 1, "12": 1 };
+function chIllu(c) { return c && THEME_ILLU[c.id] ? `img/themes/${c.id}.webp` : null; }
 
 /* Liens « fiche 04.6 », « annexe A2 » dans le texte */
 function linkify(text) {
@@ -2619,15 +2665,15 @@ function viewHome() {
         ${searchBox({ id: "qhome", big: true, label: "Décris ta situation ou cherche une procédure", placeholder: "Décris ta situation : « un client n'est pas content »…" })}
         <div class="try"><span>Par exemple :</span>${TRY.map((t) => `<button type="button" data-try="${esc(t)}">${esc(t)}</button>`).join("")}</div>
       </div>
-      <img src="${ASSETS.hero}" alt="" width="220">
+      <span class="hero-art" aria-hidden="true"><img src="img/themes/01.webp" alt="" width="640" height="640"></span>
     </section>`,
     favs: "", // favoris retirés de l'interface le 25/10/2026 (données conservées)
     recent: recentStrip(),
-    themes: `<section class="section"><div class="section-h"><h2>Les thèmes</h2></div><div class="themes">${chapters().map(themeCard).join("")}</div></section>`,
+    themes: `<section class="section"><div class="section-h"><h2>Les thèmes</h2><span class="small muted">${chapters().filter((c) => c.id !== "A").length} thèmes, ${allIds().filter((id) => canSee(id) && !meta(id).archived).length} procédures</span></div><div class="themes">${chapters().map(themeCard).join("")}</div></section>`,
     sits: sitHubSection(),
     updates: updatesSection()
   };
-  const orders = { A: ["hero", "sits", "recent", "themes", "updates"], B: ["hero", "themes", "favs", "recent", "sits", "updates"], C: ["hero", "sits", "favs", "recent", "themes", "updates"] };
+  const orders = { A: ["hero", "themes", "sits", "recent", "updates"], B: ["hero", "themes", "favs", "recent", "sits", "updates"], C: ["hero", "sits", "favs", "recent", "themes", "updates"] };
   const order = orders[S.homeVariant] || orders.A;
   const vb = isAdmin() && false ? `<div class="variant-bar" role="group" aria-label="Disposition de l'accueil">${ic("eye", "sm")} Disposition de l'accueil (visible par les administrateurs) :
     ${[["A", "Recherche d'abord — recommandée"], ["B", "Thèmes d'abord"], ["C", "Situations d'abord"]].map(([k, l]) => `<button class="chip" style="min-height:32px" type="button" data-variant="${k}" aria-pressed="${S.homeVariant === k}">${k} · ${l}</button>`).join("")}</div>` : "";
@@ -2639,9 +2685,11 @@ function homeMount(root) {
   $$("[data-variant]", root).forEach((b) => (b.onclick = () => { const v = b.dataset.variant; saveSetting("homeVariant", () => { S.homeVariant = v; }, null, null, route); }));
   mountSitHub(root);
 }
-function themeCard(c) {
-  const n = fichesOf(c.id).length;
-  return `<a class="theme-card" href="#/theme/${c.id}"><img src="${chIcon(c)}" alt="" loading="lazy"><div><span class="tn">${c.id === "A" ? "Annexes" : "Thème " + esc(c.id)}</span><h3>${esc(c.title)}</h3><p>${esc(c.desc)}</p><div class="cnt">${n} ${n > 1 ? "fiches" : "fiche"}${ic("right", "sm")}</div></div></a>`;
+function themeCard(c, i) {
+  const n = fichesOf(c.id).length, il = chIllu(c), lazy = i >= 6 ? ' loading="lazy"' : "";
+  const cnt = `<div class="cnt">${n} ${n > 1 ? "fiches" : "fiche"} ${ic("right", "sm")}</div>`;
+  if (c.id === "A") return `<a class="theme-card tc-annex" href="#/theme/${c.id}"><img src="${chIcon(c)}" alt="" loading="lazy" width="48" height="40"><div><span class="tn">Annexes</span><h3>${esc(c.title)}</h3><p>${esc(c.desc)}</p></div>${cnt}</a>`;
+  return `<a class="theme-card" href="#/theme/${c.id}"><span class="tc-art">${il ? `<img src="${il}" alt=""${lazy} decoding="async" width="640" height="640">` : `<img class="tc-icon" src="${chIcon(c)}" alt="" loading="lazy">`}</span><div><span class="tn">Thème ${esc(c.id)}</span><h3>${esc(c.title)}</h3><p>${esc(c.desc)}</p>${cnt}</div></a>`;
 }
 function favStrip() {
   const ids = S.favs.filter((id) => getFiche(id) && canSee(id) && !meta(id).archived);
@@ -2706,7 +2754,7 @@ function viewTheme(id) {
   } else list = `<div class="flist">${ids.map((x) => ficheRow(x)).join("")}</div>`;
   if (!ids.length) list = `<div class="empty"><h3>Aucune procédure publiée dans ce thème</h3><p>Les fiches de ce thème ne sont pas encore disponibles.</p></div>`;
   return `<nav class="crumbs" aria-label="Fil d'Ariane"><a href="#/procedures">Procédures</a>${ic("right", "sm")}<span>${esc(c.title)}</span></nav>
-    <header class="theme-head"><div><span class="eyebrow">${c.id === "A" ? "Annexes" : "Thème " + esc(c.id)}${c.pages ? ` · pages ${esc(c.pages)} du book` : c.src ? ` · ${esc(c.src)}` : ""}</span><h1>${esc(c.title)}</h1><p class="lead">${esc(c.desc)}</p></div><img src="${chIcon(c)}" alt=""></header>
+    <header class="theme-head"><div><span class="eyebrow">${c.id === "A" ? "Annexes" : "Thème " + esc(c.id)}${c.pages ? ` · pages ${esc(c.pages)} du book` : c.src ? ` · ${esc(c.src)}` : ""}</span><h1>${esc(c.title)}</h1><p class="lead">${esc(c.desc)}</p></div>${chIllu(c) ? `<span class="th-art"><img src="${chIllu(c)}" alt="" width="640" height="640" decoding="async"></span>` : `<img src="${chIcon(c)}" alt="">`}</header>
     <div class="filter">${`<form class="search" role="search" data-filter style="flex:1 1 260px;max-width:420px"><label class="sr-only" for="qf">Filtrer dans ce thème</label><div class="search-field">${ic("search")}<input id="qf" type="search" placeholder="Filtrer dans « ${esc(c.title)} »" autocomplete="off"></div></form>`}<span class="small muted">${ids.length} ${ids.length > 1 ? "procédures" : "procédure"}</span></div>
     <div id="themeList">${list}</div>`;
 }
@@ -3792,7 +3840,7 @@ function fichesAdminMount(root) {
 const ICON_CHOICES = ["compass", "inbox", "calendar", "home", "euro", "users", "contract", "userCheck", "receipt", "phone", "shield", "clip", "book", "file", "star"];
 function adminThemes() {
   return `<div style="display:grid;gap:12px">${chapters().map((c) => `<form class="panel" data-th="${c.id}" style="grid-template-columns:auto minmax(0,1fr);align-items:start">
-      <img src="${chIcon(c)}" alt="" width="72">
+      <img src="${chIllu(c) || chIcon(c)}" alt="" width="72" height="72" style="object-fit:contain">
       <div class="form"><div class="grid2"><div class="fld"><label for="tt-${c.id}">Intitulé (court)</label><input id="tt-${c.id}" name="title" value="${esc(c.title)}" maxlength="40" required></div>
         <div class="fld"><label for="ti-${c.id}">Icône</label><select id="ti-${c.id}" name="icon">${ICON_CHOICES.map((i) => `<option ${c.icon === i ? "selected" : ""}>${i}</option>`).join("")}</select></div></div>
         <div class="fld"><label for="td-${c.id}">Présentation</label><input id="td-${c.id}" name="desc" value="${esc(c.desc)}"></div>
