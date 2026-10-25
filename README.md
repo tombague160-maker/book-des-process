@@ -6,10 +6,8 @@ Application interne : procédures, « Ma journée », formation, demandes et adm
 - Les données (procédures, comptes, tâches) sont dans Supabase et protégées par des règles d'accès : ce dépôt ne contient que l'interface et la clé publique.
 - Mise en ligne : GitHub Pages, branche `main`, dossier racine.
 
-## Branche `prochaine-version` (pas en ligne)
+## Version en ligne (26 octobre 2026)
 
-Cette branche contient la prochaine version de l'application : Actualités, Mes notes, données personnelles synchronisées et gestion des collaborateurs. **Elle n'est pas en ligne** : le site publie uniquement la branche `main`.
+`main` contient la version complète : accusés de lecture, annuaire, statistiques, impression PDF, réactions et commentaires, consultation sans internet (`sw.js`), interface simplifiée, accompagnement dans les procédures, illustrations des thèmes (`img/themes/`) et captures Ximi masquées (`img/ximi/`). Le script de base n° 7 est exécuté.
 
-Pour la mettre en ligne :
-1. Exécuter dans Supabase les scripts `5-actualites.sql` et `6-notes-et-donnees-perso.sql` (ils sont dans le projet privé `book-des-process-complet`).
-2. Fusionner cette branche dans `main`.
+Tout serveur qui reprend ce dépôt doit publier **tous** les fichiers de `main` (pas seulement `index.html`) : `sw.js`, `img/`, `fonts/`, icônes et `manifest.webmanifest`.
