@@ -1755,44 +1755,52 @@ a.news-card:focus-visible { outline: 3px solid rgba(var(--brand-rgb), .45); outl
 /* =====================================================================================
    Mes notes (24/10) : un carnet. Liste à gauche, feuille à droite ; sur téléphone, l'une puis l'autre.
    ===================================================================================== */
-.nb { display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 24px; align-items: start; }
-.nb-side { position: sticky; top: 84px; display: grid; gap: 12px; max-height: calc(100vh - 110px); grid-template-rows: auto auto minmax(0, 1fr) auto; }
+.nb { display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: 28px; align-items: start; }
+.nb > * { min-width: 0; }
+.nb-side { position: sticky; top: 84px; display: grid; gap: 12px; max-height: calc(100vh - 110px); grid-template-rows: auto auto minmax(0, 1fr) auto; grid-template-columns: minmax(0, 1fr); min-width: 0; }
+.nb-side > *, .nb-list > * { min-width: 0; }
 .nb-head { display: grid; gap: 12px; }
 .nb-head h1 { font-size: 2rem; letter-spacing: -.02em; }
 .nb-new { justify-content: center; min-height: 46px; font-size: 1rem; }
 .nb-search { display: flex; align-items: center; gap: 8px; background: var(--bg); border-radius: 14px; padding: 0 12px; min-height: 42px; box-shadow: inset 0 0 0 1px var(--sep-strong); color: var(--label-3); }
 .nb-search:focus-within { box-shadow: inset 0 0 0 2px var(--sereo-sage-ink); }
 .nb-search input { border: 0; background: transparent; flex: 1; min-width: 0; font: inherit; color: var(--label); padding: 10px 0; outline: none; }
-.nb-list { overflow-y: auto; display: grid; gap: 8px; align-content: start; padding: 2px 4px 8px 2px; margin: 0 -4px 0 -2px; }
+.nb-list { overflow-y: auto; overflow-x: hidden; display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; align-content: start; padding: 2px 4px 8px 2px; margin: 0 -4px 0 -2px; overscroll-behavior: contain; }
 .nb-grp { display: flex; align-items: center; gap: 6px; font-size: .75rem; font-weight: 700; color: var(--label-3); margin: 6px 4px 0; }
 .nb-grp svg { color: var(--sereo-coral-ink); }
-.nb-card { display: grid; gap: 4px; padding: 12px 14px; border-radius: 16px; background: var(--bg); color: var(--label); text-decoration: none; box-shadow: 0 0 0 1px var(--sep); transition: box-shadow 160ms ease, background-color 160ms ease; }
+.nb-card { display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; gap: 4px; padding: 12px 14px; border-radius: 16px; background: var(--bg); color: var(--label); text-decoration: none; box-shadow: 0 0 0 1px var(--sep); transition: box-shadow 160ms ease, background-color 160ms ease; }
 .nb-card:hover { text-decoration: none; box-shadow: 0 0 0 1px var(--sep-strong), var(--shadow-1); }
 .nb-card.on { background: var(--sereo-sage-tint); box-shadow: inset 4px 0 0 var(--sereo-coral), 0 0 0 1px rgba(var(--brand-rgb), .18); }
 .nb-ct { display: flex; align-items: center; gap: 6px; min-width: 0; }
 .nb-ct b { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .nb-pin { color: var(--sereo-coral-ink); display: inline-flex; flex: none; }
-.nb-cx { font-size: .875rem; color: var(--label-2); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.nb-cx { font-size: .875rem; color: var(--label-2); overflow-wrap: anywhere; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .nb-cd { font-size: .75rem; color: var(--label-3); }
 .nb-none { color: var(--label-2); font-size: .9375rem; padding: 14px 6px; }
 .nb-priv { display: flex; gap: 8px; align-items: flex-start; font-size: .8125rem; color: var(--label-3); margin: 0 4px; }
 .nb-priv svg { flex: none; margin-top: 2px; color: var(--sereo-sage-ink); }
-.nb-paper { background: var(--bg); border-radius: 26px; box-shadow: 0 0 0 1px var(--sep), var(--shadow-2); padding: 22px 40px 28px; min-height: calc(100vh - 140px); display: flex; flex-direction: column; }
-.nb-tools { display: flex; align-items: center; gap: 8px; min-height: 40px; margin: 0 -16px 10px; }
+.nb-paper { background: var(--bg); border-radius: 26px; box-shadow: 0 0 0 1px var(--sep), var(--shadow-2); padding: 18px 40px 28px; min-width: 0; min-height: calc(100vh - 140px); display: flex; flex-direction: column; }
+.nb-tools { display: flex; align-items: center; gap: 8px; min-height: 44px; margin: 0 -16px 10px; padding-bottom: 10px; box-shadow: inset 0 -1px 0 var(--sep); }
+.nb-act { display: inline-flex; align-items: center; gap: 6px; min-height: 38px; padding: 0 12px; border-radius: 999px; border: 0; background: var(--fill); color: var(--label); font: inherit; font-size: .875rem; font-weight: 600; cursor: pointer; }
+.nb-act:hover { background: var(--fill-2); }
+.nb-act.on { background: var(--sereo-coral-tint); color: var(--sereo-coral-ink); }
+.nb-act.danger { color: var(--red); }
+.nb-act.danger:hover { background: var(--red-tint); }
 .nb-back { display: none; }
 .nb-status { flex: 1; display: inline-flex; align-items: center; gap: 6px; font-size: .8125rem; color: var(--label-3); min-width: 0; transition: opacity 600ms ease; }
 .nb-status.s-saved { color: var(--sereo-sage-ink); }
+.nb-status.s-idle-saved { color: var(--sereo-sage-ink); opacity: .7; }
 .nb-status.s-saved.fade { opacity: .45; }
 .nb-status.s-offline, .nb-status.s-error, .nb-status.s-off { color: var(--sereo-coral-ink); font-weight: 600; }
 .nb-pinbtn.on { background: var(--sereo-coral-tint); color: var(--sereo-coral-ink); }
-.nb-title { border: 0; outline: none; background: transparent; font: inherit; font-size: 1.875rem; font-weight: 700; letter-spacing: -.02em; line-height: 1.25; color: var(--label); padding: 4px 0 10px; width: 100%; }
+.nb-title { border: 0; outline: none; background: transparent; font: inherit; font-size: 1.75rem; min-width: 0; resize: none; overflow: hidden; display: block; font-weight: 700; letter-spacing: -.02em; line-height: 1.25; color: var(--label); padding: 4px 0 10px; width: 100%; }
 .nb-title::placeholder, .nb-text::placeholder { color: var(--label-3); opacity: .75; }
 .nb-text { flex: 1; border: 0; outline: none; resize: none; font: inherit; font-size: 1.0625rem; line-height: 30px; color: var(--label); width: 100%; min-height: 260px; padding: 0;
   background-image: linear-gradient(to bottom, transparent 29px, rgba(var(--brand-rgb), .08) 29px); background-size: 100% 30px; background-attachment: local; }
 .nb-meta { font-size: .8125rem; color: var(--label-3); margin-top: 18px; padding-top: 12px; box-shadow: inset 0 1px 0 var(--sep); }
 .nb-undo { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); z-index: 60; display: flex; align-items: center; gap: 12px; padding: 10px 12px 10px 16px; border-radius: 16px; background: var(--sereo-ink); color: #fff; box-shadow: var(--shadow-3); font-weight: 500; }
 .nb-undo .btn { background: rgba(255, 255, 255, .14); color: #fff; }
-@media (max-width: 860px) {
+@media (max-width: 1099px) {
   .nb { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .nb-side { position: static; max-height: none; }
   .nb.editing .nb-side { display: none; }
@@ -1802,10 +1810,12 @@ a.news-card:focus-visible { outline: 3px solid rgba(var(--brand-rgb), .45); outl
   .nb-tools { margin: 0 -6px 6px; }
   .nb-status { order: 3; flex-basis: 100%; }
   .nb-tools { flex-wrap: wrap; }
+  .nb-list { padding-bottom: 20px; }
   .nb-back { flex: 1; justify-content: flex-start; }
   .nb-title { font-size: 1.5rem; }
   .nb-undo { bottom: calc(76px + env(safe-area-inset-bottom, 0px)); width: calc(100% - 32px); justify-content: space-between; }
 }
+@media (max-width: 600px) { .nb-act span.l { display: none; } .nb-act { padding: 0 11px; min-height: 40px; } }
 @media (prefers-reduced-motion: reduce) { .nb-card, .nb-status { transition: none; } }
 .sv-kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
 .sv-k { display: grid; gap: 2px; padding: 12px; border-radius: 14px; background: var(--sereo-sage-tint); }
@@ -6209,7 +6219,7 @@ function loadNotes() {
 function setNoteStatus(s) {
   NOTES.status = s;
   const el = $("#nbStatus"); if (!el) return;
-  const map = { saving: ["", "Enregistrement…"], saved: ["check", "Enregistré"], offline: ["alert", "Pas de connexion : la note est gardée sur cet appareil et sera enregistrée dès le retour d'internet."], error: ["alert", "L'enregistrement a échoué. Ta note est gardée sur cet appareil : nouvel essai automatique."], off: ["alert", "Les notes ne sont pas encore activées sur le serveur. Ta note est gardée sur cet appareil."], "": ["", ""] };
+  const map = { saving: ["", "Enregistrement…"], saved: ["check", "Enregistré"], offline: ["alert", "Pas de connexion : la note est gardée sur cet appareil et sera enregistrée dès le retour d'internet."], error: ["alert", "L'enregistrement a échoué. Ta note est gardée sur cet appareil : nouvel essai automatique."], off: ["alert", "Les notes ne sont pas encore activées sur le serveur. Ta note est gardée sur cet appareil."], "idle-saved": ["check", "Enregistrée"], new: ["pencil", "Nouvelle note : elle s'enregistre toute seule"], "": ["", ""] };
   const [i, t] = map[s] || map[""];
   el.className = "nb-status s-" + (s || "idle"); el.innerHTML = (i ? ic(i, "sm") : "") + `<span>${esc(t)}</span>`;
   if (s === "saved") { clearTimeout(el._t); el._t = setTimeout(() => { if (NOTES.status === "saved") { el.classList.add("fade"); } }, 2500); }
@@ -6234,8 +6244,8 @@ async function flushNotes() {
 window.addEventListener("online", () => { if (Object.keys(nqGet()).length) flushNotes(); });
 function noteWhen(ts) {
   const d = dayOfIso(ts); if (!d) return "";
-  if (d === isoDay()) return "à " + hhmm(ts);
-  if (d === addDays(isoDay(), -1)) return "hier";
+  if (d === isoDay()) return "aujourd'hui à " + hhmm(ts);
+  if (d === addDays(isoDay(), -1)) return "hier à " + hhmm(ts);
   return actuWhen(ts);
 }
 const noteLabel = (n) => (n.title || "").trim() || (n.content || "").trim().split(/\n/)[0].slice(0, 80) || "Note sans titre";
@@ -6270,10 +6280,10 @@ function viewNotes(arg) {
 }
 function notesMount(root, arg) {
   const nb = $("#nb", root), listEl = $("#nbList", root), paper = $("#nbPaper", root);
-  const desktop = () => matchMedia("(min-width: 861px)").matches;
+  const desktop = () => matchMedia("(min-width: 1100px)").matches;
   let cur = null, dirty = false, tmr = null;
   const renderList = () => { listEl.innerHTML = notesListHtml(cur && cur.id); };
-  const status0 = () => setNoteStatus(Object.keys(nqGet()).length ? (navigator.onLine ? "saving" : "offline") : "");
+  const status0 = () => setNoteStatus(Object.keys(nqGet()).length ? (navigator.onLine ? "saving" : "offline") : cur && cur._saved ? "idle-saved" : "new");
   const persist = () => { // garder tout de suite sur l'appareil, envoyer après une courte pause
     if (!cur) return;
     const empty = !(cur.title || "").trim() && !(cur.content || "").trim();
@@ -6290,21 +6300,22 @@ function notesMount(root, arg) {
   const openNote = (n, focus) => {
     cur = n ? Object.assign({ _saved: true }, n) : { id: newNoteId(), title: "", content: "", is_pinned: false, created_at: new Date().toISOString(), updated_at: new Date().toISOString(), _saved: false };
     paper.innerHTML = `<div class="nb-tools">
-        <a class="btn ghost sm nb-back" href="#/notes">${ic("left", "sm")} Mes notes</a>
+        <a class="btn ghost sm nb-back" href="#/notes">${ic("left", "sm")} Toutes mes notes</a>
         <span class="nb-status" id="nbStatus" role="status" aria-live="polite"></span>
-        <button class="ico-btn nb-pinbtn ${cur.is_pinned ? "on" : ""}" type="button" id="nbPin" aria-pressed="${!!cur.is_pinned}" title="${cur.is_pinned ? "Désépingler" : "Épingler en haut de la liste"}">${ic("pin")}<span class="sr-only">${cur.is_pinned ? "Désépingler" : "Épingler"}</span></button>
-        <button class="ico-btn danger" type="button" id="nbDel" title="Supprimer la note" ${cur._saved ? "" : "hidden"}>${ic("trash")}<span class="sr-only">Supprimer la note</span></button>
+        <button class="nb-act nb-pinbtn ${cur.is_pinned ? "on" : ""}" type="button" id="nbPin" aria-pressed="${!!cur.is_pinned}" title="${cur.is_pinned ? "Désépingler" : "Épingler en haut de la liste"}">${ic("pin", "sm")}<span class="l">${cur.is_pinned ? "Épinglée" : "Épingler"}</span></button>
+        <button class="nb-act danger" type="button" id="nbDel" title="Supprimer la note" aria-label="Supprimer la note" ${cur._saved ? "" : "hidden"}>${ic("trash", "sm")}<span class="l">Supprimer</span></button>
       </div>
-      <label class="sr-only" for="nbT">Titre (facultatif)</label><input class="nb-title" id="nbT" maxlength="200" placeholder="Titre (facultatif)" value="${esc(cur.title)}" autocomplete="off">
+      <label class="sr-only" for="nbT">Titre (facultatif)</label><textarea class="nb-title" id="nbT" rows="1" maxlength="200" placeholder="Titre (facultatif)" autocomplete="off" enterkeyhint="next">${esc(cur.title)}</textarea>
       <label class="sr-only" for="nbX">Texte de la note</label><textarea class="nb-text" id="nbX" maxlength="50000" placeholder="Écris ta note ici… Elle s'enregistre toute seule.">${esc(cur.content)}</textarea>
       <p class="nb-meta" id="nbMeta">${cur._saved ? `Créée ${esc(noteWhen(cur.created_at))}${cur.updated_at !== cur.created_at ? " · modifiée " + esc(noteWhen(cur.updated_at)) : ""}` : "Nouvelle note"}</p>`;
     const T = $("#nbT", paper), X = $("#nbX", paper);
     const grow = () => { X.style.height = "auto"; X.style.height = Math.max(X.scrollHeight, 260) + "px"; };
-    grow();
-    T.addEventListener("input", () => { cur.title = T.value; persist(); $("#nbDel", paper).hidden = !cur._saved; });
+    const growT = () => { T.style.height = "auto"; T.style.height = T.scrollHeight + "px"; };
+    grow(); growT(); requestAnimationFrame(growT);
+    T.addEventListener("input", () => { if (/\n/.test(T.value)) T.value = T.value.replace(/\s*\n+\s*/g, " "); cur.title = T.value; growT(); persist(); $("#nbDel", paper).hidden = !cur._saved; });
     X.addEventListener("input", () => { cur.content = X.value; grow(); persist(); $("#nbDel", paper).hidden = !cur._saved; });
     T.addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); X.focus(); } });
-    $("#nbPin", paper).onclick = () => { cur.is_pinned = !cur.is_pinned; const b = $("#nbPin", paper); b.classList.toggle("on", cur.is_pinned); b.setAttribute("aria-pressed", String(cur.is_pinned)); b.title = cur.is_pinned ? "Désépingler" : "Épingler en haut de la liste";
+    $("#nbPin", paper).onclick = () => { cur.is_pinned = !cur.is_pinned; const b = $("#nbPin", paper); b.classList.toggle("on", cur.is_pinned); b.setAttribute("aria-pressed", String(cur.is_pinned)); b.title = cur.is_pinned ? "Désépingler" : "Épingler en haut de la liste"; const bl = $(".l", b); if (bl) bl.textContent = cur.is_pinned ? "Épinglée" : "Épingler";
       if (cur._saved || cur.title || cur.content) { const u = cur.updated_at; persist(); cur.updated_at = u; const i = NOTES.list.findIndex((n) => n.id === cur.id); if (i >= 0) NOTES.list[i].updated_at = u; NOTES.list.sort(noteSort); renderList(); }
       toast(cur.is_pinned ? "Note épinglée en haut de la liste" : "Note désépinglée", "pin"); };
     $("#nbDel", paper).onclick = () => {
