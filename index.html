@@ -846,6 +846,49 @@ button, .btn, .chip, .tabbar a, .nav a, .tick, .sit-tabs button, .tabs a, .help-
   .tc-annex h3 { font-size: 1rem; }
   .theme-head:has(.th-art) { grid-template-columns: minmax(0, 1fr) 96px; } .th-art { width: 96px; }
 }
+/* Fiche « étape par étape » (25/10) */
+.f-actions .f-guide { order: -1; }
+.f-brief { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap: 10px; margin: 16px 0 6px; }
+.f-brief > div { background: var(--grouped); border-radius: var(--r); padding: 10px 12px; box-shadow: inset 0 0 0 1px var(--sep); min-width: 0; }
+.f-brief dt { font-size: .75rem; font-weight: 700; color: var(--blue); display: flex; gap: 6px; align-items: center; margin-bottom: 4px; }
+.f-brief dd { margin: 0; font-size: .9375rem; color: var(--label); }
+.f-brief dd p { margin: 0; }
+.f-side { position: sticky; top: 90px; display: grid; gap: 18px; align-content: start; }
+.f-side .toc { position: static; }
+.side-brief { grid-template-columns: minmax(0, 1fr); margin: 0; gap: 8px; }
+.side-brief dd { font-size: .875rem; }
+.fiche.has-side-brief .main-brief { display: none; }
+@media (max-width: 1100px) { .f-side { display: none; } .fiche.has-side-brief .main-brief { display: grid; } }
+.detail-h { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.detail-h > svg { color: var(--sereo-coral); }
+.fiche .detail-h:has(.linkbtn) { justify-content: flex-start; }
+.fiche .detail-h > .linkbtn { margin-left: auto; font-size: .875rem; font-weight: 600; }
+.pc-next { display: flex; align-items: center; gap: 14px; padding: 16px 18px; margin: 22px 0 6px; border-radius: var(--r-lg); background: var(--blue); color: #fff; text-decoration: none; }
+.pc-next:hover { text-decoration: none; background: var(--blue-press); }
+.pc-next small { display: block; opacity: .8; font-size: .8125rem; }
+.pc-next b { font-size: 1.0625rem; }
+.pc-next > svg:last-child { margin-left: auto; flex: none; }
+.step-prog { font-size: .8125rem; font-weight: 600; color: var(--green); background: var(--green-tint); border-radius: 999px; padding: 3px 10px; display: inline-flex; gap: 10px; align-items: center; }
+.step-prog .linkbtn { font-size: .8125rem; }
+button.sn { border: 0; padding: 0; cursor: pointer; position: relative; font: inherit; font-weight: 600; font-size: .875rem; }
+button.sn svg { display: none; }
+button.sn:hover { box-shadow: 0 0 0 4px var(--sereo-sage-tint-2); }
+.step.ticked button.sn { background: var(--green); }
+.step.ticked button.sn .sn-n { display: none; }
+.step.ticked button.sn svg { display: block; color: #fff; }
+.step.ticked .sb { opacity: .55; }
+.step.ticked .sb h3 { text-decoration: line-through; text-decoration-thickness: 1px; }
+.from-search { display: flex; gap: 12px; align-items: flex-start; padding: 12px 16px; border-radius: var(--r-lg); background: var(--sereo-sage-tint); margin: 10px 0 4px; }
+.from-search > svg { color: var(--blue); flex: none; margin-top: 2px; }
+.from-search > div { display: grid; gap: 8px; min-width: 0; }
+.from-search p { margin: 0; }
+.fs-route { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.fs-route a { display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px 5px 5px; border-radius: 999px; background: var(--bg); color: var(--label); font-size: .8125rem; font-weight: 500; box-shadow: 0 0 0 1px var(--sep); text-decoration: none; }
+.fs-route .n { width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; background: var(--fill-2); font-weight: 700; font-size: .75rem; flex: none; }
+.fs-route li.on a { box-shadow: 0 0 0 2px var(--blue); font-weight: 700; }
+.fs-route li.on .n { background: var(--blue); color: #fff; }
+.fs-route li.done .n { background: var(--green); color: #fff; }
+@media (max-width: 600px) { .f-actions { display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; } .f-actions .f-guide { grid-column: 1 / -1; } .f-actions .btn:not(.f-guide) { min-width: 0; padding: 0 6px; font-size: .875rem; gap: 5px; } }
 /* Accompagnement : réponses rédigées en conseils */
 .ans { line-height: 1.55; }
 .ans-lead { font-size: 1.03rem; }
@@ -2639,9 +2682,8 @@ function attachSearch(root) {
         sits.slice(0, 3).forEach(([txt, ids]) => { const vis = ids.filter((i) => canSee(i)); items.push(vis.length === 1 ? `#/fiche/${vis[0]}` : `#/recherche?q=${encodeURIComponent(txt)}`); h += `<div role="option" id="${inp.id}-o${items.length - 1}" data-i="${items.length - 1}" aria-selected="false"><span class="s-num">${ic("right", "sm")}</span><span class="s-t">${esc(txt)}</span><span class="s-c" style="margin-left:auto">${vis.join(" · ")}</span></div>`; });
       }
       items.push(`#/recherche?q=${encodeURIComponent(q)}`);
-      h += `<div role="option" id="${inp.id}-o${items.length - 1}" data-i="${items.length - 1}" aria-selected="false" class="s-all">${isQuestion(q) && !S.aiOff ? `${ic("sparkles", "sm")} Voir la réponse et les procédures` : `${ic("search", "sm")} Voir tous les résultats pour « ${esc(q)} »`}</div>`;
-      if (!S.aiOff && !isQuestion(q)) { items.push(`#/recherche?q=${encodeURIComponent(q)}&rep=1`);
-        h += `<div role="option" id="${inp.id}-o${items.length - 1}" data-i="${items.length - 1}" aria-selected="false" class="s-all">${ic("sparkles", "sm")} Obtenir une réponse à « ${esc(q)} »</div>`; }
+      h += `<div role="option" id="${inp.id}-o${items.length - 1}" data-i="${items.length - 1}" aria-selected="false" class="s-all">${ic("search", "sm")} Voir tous les résultats pour « ${esc(q)} »</div>`;
+
       list.innerHTML = h; list.hidden = false; inp.setAttribute("aria-expanded", "true"); sel = -1;
       $$("[role=option]", list).forEach((o) => { o.onmousedown = (e) => { e.preventDefault(); go(items[+o.dataset.i]); }; });
     };
@@ -2858,7 +2900,9 @@ function viewFiche(id, params, preview) {
   if (!preview && !isAdmin() && m.access !== "all") return viewDenied();
   if (!preview && !isAdmin() && m.archived) return `<div class="empty"><h3>${ic("archive")} Cette procédure a été archivée</h3><p>La fiche ${esc(id)} n'est plus une consigne en vigueur. Elle a été retirée du book par un administrateur.</p><div class="btns"><a class="btn primary" href="#/">Ma journée</a><a class="btn" href="#/recherche?q=${encodeURIComponent(f.title)}">Chercher une procédure proche</a></div></div>`;
   const c = chapter(f.ch) || { id: f.ch, title: "", icon: "book" };
-  const blocks = (f.blocks || []).map((b, bi) => renderBlock(b, bi, id)).join("");
+  const nStepBlocks = (f.blocks || []).filter((b) => b.t === "steps").length;
+  const blocks = (f.blocks || []).map((b, bi) => renderBlock(b.t === "steps" && nStepBlocks === 1 && /^étapes$/i.test((b.h || "").trim()) && !preview ? Object.assign({}, b, { h: "" }) : b, bi, id)).join("");
+  const nSteps = (f.blocks || []).filter((b) => b.t === "steps").reduce((a, b) => a + (b.items || []).length, 0);
   const heads = (f.blocks || []).map((b, bi) => (b.h ? [b.h, "b" + bi] : b.t === "done" ? ["C'est terminé lorsque…", "b" + bi] : null)).filter(Boolean);
   if (f.sources && f.sources.length) heads.push(["Sources", "sources"]);
   const toc = heads.length >= 3;
@@ -2877,15 +2921,17 @@ function viewFiche(id, params, preview) {
         <div class="f-badge">${ic(c.icon || "book", "lg")}<b>${esc(id)}</b></div>
         <div style="min-width:0"><span class="eyebrow">${esc(c.title)}</span><h1>${esc(f.title)}</h1><p class="lead">${linkify(f.sum)}</p></div>
       </header>
+      ${preview ? "" : fromSearchBanner(id, params || {})}
       ${preview ? "" : `<div class="f-actions">
-        <button class="btn" type="button" data-report="">${ic("flag")} Signaler<span class="l-wide">&nbsp;un problème</span></button>
-        <button class="btn" type="button" id="printBtn" aria-label="Imprimer ou enregistrer en PDF" title="Imprimer ou enregistrer en PDF">${ic("file")}<span class="l-wide">Imprimer / PDF</span></button>
-        <a class="btn ghost" href="#/assistant?f=${encodeURIComponent(id)}">${ic("sparkles")} <span class="l-wide">Poser une question sur cette fiche</span><span class="l-narrow" aria-hidden="true">Question</span></a>
+        ${nSteps >= 2 ? `<a class="btn primary f-guide" href="#/fiche/${id}/guide">${ic("compass")} Me guider pas à pas</a>` : ""}
+        <a class="btn" href="#/assistant?f=${encodeURIComponent(id)}" aria-label="Poser une question sur cette fiche">${ic("sparkles")}<span class="l-wide">Une question ?</span><span class="l-narrow" aria-hidden="true">Question</span></a>
+        <button class="btn" type="button" data-report="" aria-label="Signaler un problème">${ic("flag")}<span class="l-wide">Signaler</span><span class="l-narrow" aria-hidden="true">Signaler</span></button>
+        <button class="btn" type="button" id="printBtn" aria-label="Imprimer ou enregistrer en PDF" title="Imprimer ou enregistrer en PDF">${ic("file")}<span class="l-wide">PDF</span><span class="l-narrow" aria-hidden="true">PDF</span></button>
       </div>`}
-      ${!preview && ficheGuideSteps(f).length >= 2 ? `<div class="guide-cta fg-cta"><a class="btn primary" href="#/fiche/${id}/guide">${ic("compass")} Me guider pas à pas</a><span class="small muted">Tu fais cette procédure maintenant ? Une étape à la fois, avec la vérification à la fin.</span></div>` : ""}
-      ${guideHtml(f, id, preview)}
+      ${ficheBrief(f, "main-brief")}
       ${toc ? `<details class="toc-m"><summary>${ic("list", "sm")} Sommaire de la fiche</summary><nav>${heads.map(([h, a]) => `<a href="#/fiche/${id}?s=${a}">${esc(h)}</a>`).join("")}</nav></details>` : ""}
-      ${blocks ? `<h2 class="detail-h">Le détail de la fiche</h2>` : ""}${conf}${gaps}${contacts}${blocks}
+      ${blocks ? `<h2 class="detail-h">${nSteps ? `${ic("checklist")} Étape par étape <span class="step-prog" id="stepProg" hidden></span>` : "Le contenu de la fiche"}</h2>` : ""}${conf}${gaps}${contacts}${blocks}
+      ${preview ? "" : parcoursNext(id, params || {})}
       <footer class="f-foot">
         <dl>
           ${f.sources && f.sources.length ? `<dt id="sources">Sources</dt><dd><ul class="src-list">${f.sources.map((x) => `<li>${linkify(x)}</li>`).join("")}</ul></dd>` : `<dt>Source</dt><dd>${esc(BOOK.source.name)} — pages ${esc(f.pages || "")}</dd>`}
@@ -2896,11 +2942,60 @@ function viewFiche(id, params, preview) {
         ${preview ? "" : `<div class="pn">${prev ? `<a href="#/fiche/${prev}"><small>${ic("left", "sm")} Fiche précédente</small>${prev} — ${esc(getFiche(prev).title)}</a>` : "<span></span>"}${next ? `<a class="next" href="#/fiche/${next}"><small>Fiche suivante ${ic("right", "sm")}</small>${next} — ${esc(getFiche(next).title)}</a>` : ""}</div>`}
       </footer>
     </div>`;
-  return `<div class="fiche ${toc ? "" : "no-toc"}"><div style="min-width:0">${main}</div>${toc ? `<nav class="toc" aria-label="Sommaire de la fiche"><h2>Sur cette fiche</h2>${heads.map(([h, a]) => `<a href="#/fiche/${id}?s=${a}" data-toc="${a}">${esc(h)}</a>`).join("")}</nav>` : ""}</div>`;
+  const sideBrief = preview ? "" : ficheBrief(f, "side-brief");
+  const side = toc || sideBrief;
+  return `<div class="fiche ${side ? "" : "no-toc"} ${sideBrief ? "has-side-brief" : ""}"><div style="min-width:0">${main}</div>${side ? `<aside class="f-side">${sideBrief}${toc ? `<nav class="toc" aria-label="Sommaire de la fiche"><h2>Sur cette fiche</h2>${heads.map(([h, a]) => `<a href="#/fiche/${id}?s=${a}" data-toc="${a}">${esc(h)}</a>`).join("")}</nav>` : ""}</aside>` : ""}</div>`;
+}
+/* En bref : quand, où, qui — en une ligne chacun, avant les étapes */
+function ficheBrief(f, cls) {
+  const it = [], where = f.where && !/^Non précisé/.test(f.where) ? ["pin", f.whereL || "Où", f.path ? pathHtml(f.where) : `<p>${linkify(f.where)}</p>`] : null;
+  if (f.who) { // format « procédure détaillée » : Objectif, Qui, Quand
+    if (f.why) it.push(["target", "Objectif", `<p>${linkify(f.why)}</p>`]);
+    it.push(["user", "Qui réalise l'opération ?", `<p>${linkify(f.who)}</p>`]);
+    if (f.when) it.push(["clock", "Quand utiliser cette procédure ?", `<p>${linkify(f.when)}</p>`]);
+    if (where) it.push(where);
+  } else {
+    if (f.when) it.push(["clock", "Quand", `<p>${linkify(f.when)}</p>`]);
+    if (where) it.push(where);
+    if (f.why) it.push(["target", "Pourquoi", `<p>${linkify(f.why)}</p>`]);
+  }
+  return it.length ? `<dl class="f-brief ${cls || ""}">${it.map(([i, k, v]) => `<div><dt>${ic(i, "sm")} ${esc(k)}</dt><dd>${v}</dd></div>`).join("")}</dl>` : "";
+}
+/* Arrivée depuis la recherche : on dit pourquoi cette fiche, et le parcours s'il y en a un */
+function fromSearchBanner(id, params) {
+  const q = (params.q || "").trim(); if (!q) return "";
+  const P = (params.p || "").split(",").filter((x) => x && getFiche(x) && canSee(x));
+  const qs = "q=" + encodeURIComponent(q) + (P.length > 1 ? "&p=" + encodeURIComponent(P.join(",")) : "");
+  const route = P.length > 1 ? `<ol class="fs-route">${P.map((x, i) => `<li class="${x === id ? "on" : P.indexOf(id) > i ? "done" : ""}"><a href="#/fiche/${x}?${qs}" ${x === id ? 'aria-current="step"' : ""}><span class="n">${i + 1}</span><span>${esc(getFiche(x).title)}</span></a></li>`).join("")}</ol>` : "";
+  return `<div class="from-search">${ic("compass")}<div><p>${P.length > 1 ? `Pour « <b>${esc(q)}</b> », il y a <b>${P.length} fiches à suivre dans l'ordre</b>. Tu es sur la ${P.indexOf(id) + 1 === 1 ? "1re" : P.indexOf(id) + 1 + "e"}.` : `Pour « <b>${esc(q)}</b> », voici la procédure à suivre, étape par étape.`}</p>${route}<a class="small" href="#/recherche?q=${encodeURIComponent(q)}&rep=0">Ce n'est pas la bonne fiche ? Voir les autres résultats</a></div></div>`;
+}
+function parcoursNext(id, params) {
+  const q = (params.q || "").trim(), P = (params.p || "").split(",").filter((x) => x && getFiche(x) && canSee(x)), i = P.indexOf(id);
+  if (!q || P.length < 2 || i < 0 || i === P.length - 1) return "";
+  const nx = P[i + 1];
+  return `<a class="pc-next" href="#/fiche/${nx}?q=${encodeURIComponent(q)}&p=${encodeURIComponent(P.join(","))}">${ic("check")}<span><small>Fiche ${i + 1} sur ${P.length} terminée ? Ensuite :</small><b>${i + 2}. ${esc(getFiche(nx).title)}</b></span>${ic("right")}</a>`;
+}
+/* Cocher les étapes au fur et à mesure (le temps de la visite) */
+const STEP_TICKS = {};
+function mountStepTicks(root, id) {
+  const steps = $$(".f-main ol.steps > li.step", root); if (!steps.length) return;
+  const set = STEP_TICKS[id] = STEP_TICKS[id] || new Set(), prog = $("#stepProg", root);
+  const upd = () => { if (prog) { prog.hidden = !set.size; prog.innerHTML = `${set.size} / ${steps.length} faite${set.size > 1 ? "s" : ""} <button class="linkbtn" type="button" data-untick>Tout décocher</button>`; const u = $("[data-untick]", prog); if (u) u.onclick = () => { set.clear(); steps.forEach(paint); upd(); }; } };
+  const paint = (li) => { const on = set.has(li.id); li.classList.toggle("ticked", on); const b = $(".sn", li); b.setAttribute("aria-pressed", String(on)); };
+  steps.forEach((li) => {
+    const old = $(".sn", li), n = old.textContent.trim();
+    const b = document.createElement("button"); b.type = "button"; b.className = "sn"; b.dataset.n = n; b.innerHTML = `<span class="sn-n">${esc(n)}</span>${ic("check", "sm")}`;
+    b.setAttribute("aria-label", "Étape " + (+n) + " faite"); b.title = "Cocher quand c'est fait";
+    old.replaceWith(b); paint(li);
+    b.onclick = () => { if (set.has(li.id)) set.delete(li.id); else set.add(li.id); paint(li); upd(); };
+  });
+  upd();
 }
 function ficheMount(root, id, params) {
   const f = getFiche(id); if (!f || (!isAdmin() && (meta(id).archived || meta(id).access !== "all"))) return;
   pushRecent(id); logView(id);
+  mountStepTicks(root, id);
+  if (params.q) aiRefine(root, params.q, [id].concat((params.p || "").split(",").filter((x) => x && x !== id)));
   const pb = $("#printBtn", root); if (pb) pb.onclick = () => printFiche(id);
   const fb = $("#favBtn", root); if (fb) fb.onclick = () => toggleFav(id, fb);
   $$("[data-report]", root).forEach((b) => (b.onclick = () => openReport(id, b.dataset.report || null)));
@@ -2929,11 +3024,11 @@ function ficheMount(root, id, params) {
 function selectText(el) { if (!el) return; const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast("Texte sélectionné : fais Ctrl+C pour copier", "copy"); }
 
 /* ===================== Résultats ===================== */
-function resultItem(r, best) {
+function resultItem(r, best, qs) {
   const f = getFiche(r.id), c = chapter(f.ch);
   const ex = r.best && !r.best.hidden && r.best.label !== "Titre" ? r.best : null;
-  const anchor = ex && ex.a && ex.a !== "top" ? `?s=${ex.a}` : "";
-  return `<a class="r-item ${best ? "best" : ""}" href="#/fiche/${r.id}${anchor}">
+  const anchor = [ex && ex.a && ex.a !== "top" ? `s=${ex.a}` : "", qs || ""].filter(Boolean).join("&");
+  return `<a class="r-item ${best ? "best" : ""}" href="#/fiche/${r.id}${anchor ? "?" + anchor : ""}">
     <div class="r-top">${best ? `<span class="badge">${ic("check", "sm")} Meilleure réponse</span>` : ""}<span class="badge grey">${esc(c ? c.title : "")}</span><span>Fiche ${esc(r.id)}</span></div>
     <h3>${highlight(f.title, r.hits)}</h3>
     <p class="ex">${ex ? excerpt(ex.text, r.hits) : esc(f.sum)}</p>
@@ -2950,47 +3045,33 @@ function viewResults(params) {
   const box = `<div style="max-width:720px;margin-bottom:22px">${searchBox({ id: "qres", big: true, value: q, label: "Rechercher ou poser une question", placeholder: "Un mot ou une question…" })}</div>`;
   if (!q) return `<h1 style="font-size:30px;margin-bottom:16px">Rechercher ou poser une question</h1>${box}<div class="section"><h2 style="font-size:18px">Idées de recherche</h2><div class="chips">${TRY.concat(["période d'essai", "tarif jardinage", "mission Domiserve"]).map((t) => `<a class="chip" href="#/recherche?q=${encodeURIComponent(t)}">${esc(t)}</a>`).join("")}</div></div><div style="margin-top:28px">${situationsSection()}</div>`;
   const res = search(q); const conf = confidence(res);
-  // Une vraie question (« comment… ? », « je fais quoi… ») : la réponse du book passe en premier
-  const sm0 = !S.aiOff && !directId(q) ? matchSituation(q) : null;
-  const asked = !S.aiOff && params.rep !== "0" && (params.rep === "1" || isQuestion(q) || useSituation(q, sm0));
-  let ans = "";
-  if (asked) { try { ans = compose(q, null); } catch (e) { ans = ""; } }
-  const ansBox = ans ? `<section class="answer msg a" aria-label="Réponse du book"><div class="who"><span class="av">${ic("sparkles", "sm")}</span>Réponse du book</div><div class="bubble ans" id="ansBody" aria-live="polite">${ans}</div><p class="note">${ic("info", "sm")} Réponse construite uniquement avec les procédures validées (${esc(BOOK.source.version)}). En cas de doute, ouvre la fiche ou demande à ton responsable.</p></section>` : "";
-  const vague = !ans && vagueQuery(q);
-  const vagueBox = vague ? `<div class="notice" style="margin-bottom:18px;max-width:760px">${ic("info")}<div><b>Ta question est générale.</b><span>Précise l'action ou la situation, par exemple « enregistrer une absence dans Ximi » ou « client qui se plaint ». Depuis une tâche, « M'aider sur cette tâche » répond avec son contexte. ${ximiGuideLink()}</span></div></div>` : "";
-  const top = res.results[0];
-  const shown = res.results.filter((r) => top && r.score >= Math.max(0.6, top.score * 0.18)).slice(0, 12);
-  const miss = res.unknown.length ? `<p class="missing">Aucune fiche ne contient : ${res.unknown.map((w) => `<s>${esc(w)}</s>`).join(", ")}</p>` : "";
-  let body = "";
-  if (ans) {
-    const inAns = new Set((ans.match(/data-ans-fiches="([^"]*)"/) || ["", ""])[1].split(",").filter(Boolean));
-    const fromSit = /data-ans-src="sit"/.test(ans);
-    const more = fromSit ? [] : shown.filter((r) => !inAns.has(r.id)).slice(0, 4);
-    body = more.length && conf !== "none" ? `<h2 style="font-size:18px;margin:6px 0 10px">${inAns.size ? "D'autres procédures qui peuvent t'aider" : conf === "weak" ? "Peut-être en lien" : "Les procédures en lien"}</h2><div class="res">${more.map((r) => resultItem(r)).join("")}</div>` : "";
-    if (fromSit) body += `<p class="small"><a href="#/recherche?q=${encodeURIComponent(q)}&rep=0">${ic("search", "sm")} Voir toutes les procédures qui parlent de « ${esc(q)} »</a></p>`;
-    else if (conf === "none" || conf === "weak") body += `<h2 style="font-size:18px;margin:26px 0 10px">Parcourir les thèmes</h2><div class="chips">${chapters().map((c) => `<a class="chip" href="#/theme/${c.id}">${ic(c.icon, "sm")} ${esc(c.title)}</a>`).join("")}</div>`;
-  } else if (conf === "none" || conf === "weak") {
-    body = `<div class="empty" style="margin-bottom:20px"><h3>Aucune procédure ne correspond clairement à « ${esc(q)} »</h3>
-      <p>Essaie avec un autre mot, plus simple ou plus courant (par exemple « congés », « absence », « devis », « clé »), ou parcours les thèmes.</p>
-      <div class="btns"><a class="btn primary" href="#/demande/new?q=${encodeURIComponent(q)}">${ic("send")} Demander de l'aide au responsable</a><button class="btn" type="button" data-miss>${ic("flag")} Signaler une information manquante</button></div></div>
-      ${shown.length ? `<h2 style="font-size:18px;margin-bottom:10px">Peut-être en lien</h2><div class="res">${shown.slice(0, 4).map((r) => resultItem(r)).join("")}</div>` : ""}
-      <h2 style="font-size:18px;margin:26px 0 10px">Parcourir les thèmes</h2><div class="chips">${chapters().map((c) => `<a class="chip" href="#/theme/${c.id}">${ic(c.icon, "sm")} ${esc(c.title)}</a>`).join("")}</div>`;
-  } else if (conf === "clear") {
-    body = `<p class="muted" style="margin-bottom:10px">Une procédure correspond clairement à ta recherche :</p><div class="res">${resultItem(top, true)}</div>
-      ${shown.length > 1 ? `<h2 style="font-size:18px;margin:26px 0 10px">Autres procédures en lien</h2><div class="res">${shown.slice(1, 8).map((r) => resultItem(r)).join("")}</div>` : ""}`;
-  } else {
-    const chs = Array.from(new Set(shown.map((r) => getFiche(r.id).ch)));
-    body = `<p class="muted" style="margin-bottom:12px">${shown.length} procédures correspondent. Lis le titre et l'extrait pour choisir la bonne situation${chs.length > 1 ? ", ou filtre par thème" : ""}.</p>
-      ${chs.length > 1 ? `<div class="chips" style="margin-bottom:14px" role="group" aria-label="Filtrer par thème"><button class="chip" type="button" data-chf="" aria-pressed="true">Tous</button>${chs.map((ch) => `<button class="chip" type="button" data-chf="${ch}">${esc(chapter(ch) ? chapter(ch).title : ch)}</button>`).join("")}</div>` : ""}
-      <div class="res" id="resList">${shown.map((r) => `<div data-ch="${getFiche(r.id).ch}">${resultItem(r)}</div>`).join("")}</div>`;
+  const sm = !S.aiOff && !directId(q) ? matchSituation(q) : null;
+  // Situation large : une seule question pour préciser. Situation absente du book : on le dit.
+  if (params.rep !== "0" && useSituation(q, sm) && (sm.sit.broad || !sitFiches(sm.sit).length)) {
+    return `<h1 style="font-size:28px;margin-bottom:16px">${sm.sit.broad ? "Précisons ta situation" : "Je t'accompagne"}</h1>${box}<section class="answer msg a" aria-label="Pour t'aider"><div class="bubble ans" id="ansBody">${situationAnswer(sm.sit, q)}</div></section>`;
   }
-  return `<h1 style="font-size:28px;margin-bottom:16px">${ans ? (isQuestion(q) ? "Ta question" : "Je t'accompagne") : "Résultats pour « " + esc(q) + " »"}</h1>${box}${ansBox}${vagueBox}${ans ? "" : miss}${body}`;
+  const vague = vagueQuery(q);
+  const vagueBox = vague ? `<div class="notice" style="margin-bottom:18px;max-width:760px">${ic("info")}<div><b>Ta question est générale.</b><span>Précise l'action ou la situation, par exemple « enregistrer une absence dans Ximi » ou « client qui se plaint ».</span></div></div>` : "";
+  const top = res.results[0];
+  const shown = res.results.filter((r) => top && r.score >= Math.max(0.6, top.score * 0.18)).slice(0, params.rep === "0" ? 12 : 6);
+  const qs = "q=" + encodeURIComponent(q);
+  let body = "";
+  const strongUnk = res.unknown.filter((w) => w.length >= 4).length;
+  if (conf === "none" || conf === "weak" || (top && (top.cov < 0.5 || (strongUnk && top.cov < 0.67)))) {
+    body = `<div class="empty" style="margin-bottom:20px"><h3>Aucune procédure ne correspond clairement à « ${esc(q)} »</h3>
+      <p>Essaie avec d'autres mots, ou décris ta situation (« un client n'est pas content », « une intervenante est malade »).</p>
+      <div class="btns"><a class="btn primary" href="#/demande/new?q=${encodeURIComponent(q)}">${ic("send")} Demander de l'aide au responsable</a><button class="btn" type="button" data-miss>${ic("flag")} Signaler une information manquante</button></div></div>
+      ${shown.length ? `<h2 style="font-size:18px;margin-bottom:10px">Peut-être en lien</h2><div class="res">${shown.slice(0, 3).map((r) => resultItem(r, false, qs)).join("")}</div>` : ""}`;
+  } else {
+    body = `<p class="muted" style="margin-bottom:12px">${shown.length > 1 ? `${shown.length} procédures peuvent correspondre. Choisis celle qui décrit ta situation :` : "Une procédure correspond :"}</p>
+      <div class="res" id="resList">${shown.map((r) => `<div data-ch="${getFiche(r.id).ch}">${resultItem(r, false, qs)}</div>`).join("")}</div>`;
+  }
+  return `<h1 style="font-size:28px;margin-bottom:16px">Résultats pour « ${esc(q)} »</h1>${box}${vagueBox}${body}`;
 }
 function resultsMount(root, params) {
   attachSearch(root);
   bindAnswer($("#ansBody", root));
-  if (params.q) aiRefine(root, params.q.trim());
-  if (params.q) { try { const r = search(params.q.trim()), cf = confidence(r); logSearch(params.q, cf === "none" || cf === "weak" ? 0 : r.results.length); } catch (e) { /* */ } }
+  if (params.q) { try { const r = search(params.q.trim()), cf = confidence(r), t0 = r.results[0], none = cf === "none" || cf === "weak" || !!$(".empty", root) || !t0; logSearch(params.q, none ? 0 : r.results.length); if (none && !$("#ansBody", root) && params.q.trim().length >= 4) logUnanswered(params.q.trim()); } catch (e) { /* */ } }
   const mb = $("[data-miss]", root); if (mb) mb.onclick = () => openReport(null, "missing", `Recherche sans réponse : « ${params.q} »`);
   $$("[data-chf]", root).forEach((b) => (b.onclick = () => { $$("[data-chf]", root).forEach((x) => x.setAttribute("aria-pressed", x === b)); $$("#resList > div", root).forEach((d) => (d.hidden = b.dataset.chf && d.dataset.ch !== b.dataset.chf)); }));
 }
@@ -3040,9 +3121,9 @@ function route() {
   else if (r.name === "procedures" || r.name === "themes") { html = viewHome(); mount = homeMount; }
   else if (r.name === "theme") { html = viewTheme(r.arg); mount = (x) => chapter(r.arg) && themeMount(x, r.arg); }
   else if (r.name === "fiche" && r.rest[0] === "guide") { html = viewFicheGuide(r.arg, r.params); mount = (x) => ficheGuideMount(x, r.arg, r.params); }
-  else if (r.name === "situation") { html = viewSituation(dec(r.arg || "")); mount = situationMount; }
+  else if (r.name === "situation") { const st = sitById(dec(r.arg || "")), fs = st && !st.broad ? sitFiches(st) : []; if (fs.length) { history.replaceState(null, "", `#/fiche/${fs[0]}?q=${encodeURIComponent(r.params.q || st.t)}${fs.length > 1 ? "&p=" + encodeURIComponent(fs.join(",")) : ""}`); return route(); } html = viewSituation(dec(r.arg || "")); mount = situationMount; }
   else if (r.name === "fiche") { html = (r.params.task ? taskBanner(r.params.task) : "") + viewFiche(r.arg, r.params); mount = (x) => { ficheMount(x, r.arg, r.params); lateTaskBanner(x, r.params.task); }; }
-  else if (r.name === "recherche") { html = viewResults(r.params); mount = (x) => resultsMount(x, r.params); }
+  else if (r.name === "recherche") { const to = searchTarget(r.params); if (to) { try { logSearch(r.params.q, 1); } catch (e) { /* */ } history.replaceState(null, "", to); return route(); } html = viewResults(r.params); mount = (x) => resultsMount(x, r.params); }
   else if (r.name === "favoris") { html = viewHome(); mount = homeMount; } // favoris retirés : ancien lien → procédures
   else if (r.name === "demandes") { html = viewMyTickets(); mount = myTicketsMount; }
   else if (r.name === "demande" && r.arg === "new") { html = viewTicketForm(r.params); mount = (x) => ticketFormMount(x, r.params); }
@@ -3463,6 +3544,23 @@ function offTopic(q, sm) {
   const unk = search(q).unknown.filter((w) => w.length >= 4 && !Array.from(usedW).some((u) => w.startsWith(u) || u.startsWith(w)));
   return unk.length >= 1;
 }
+/* Où mène une recherche ? Directement à la fiche quand on sait laquelle (null = page de résultats) */
+function searchTarget(params) {
+  const q = (params.q || "").trim(); if (!q || params.rep === "0") return null;
+  const qs = "q=" + encodeURIComponent(q);
+  const did = directId(q); if (did && getFiche(did) && canSee(did) && !meta(did).archived) return `#/fiche/${did}`;
+  if (S.aiOff) return null;
+  const sm = matchSituation(q);
+  if (useSituation(q, sm)) {
+    if (sm.sit.broad) return null; // une question pour préciser
+    const fs = sitFiches(sm.sit); if (!fs.length) return null; // le book ne couvre pas : on le dit
+    return `#/fiche/${fs[0]}?${qs}${fs.length > 1 ? "&p=" + encodeURIComponent(fs.join(",")) : ""}`;
+  }
+  if (vagueQuery(q)) return null;
+  const res = search(q), top = res.results[0];
+  if (top && confidence(res) === "clear" && top.cov >= 0.67) return `#/fiche/${top.id}?${qs}`;
+  return null;
+}
 /* Situation ou fiche ? Une fiche qui correspond clairement et précisément l'emporte sur une situation
    reconnue par un seul mot (ex. « résilier une téléassistance » → la fiche de résiliation, pas la fiche générale). */
 function useSituation(q, sm) {
@@ -3647,14 +3745,14 @@ function aiText(t) {
   return esc(t).replace(/\[(\d{2}\.\d{1,2}|A\d)\]/g, (m, id) => (getFiche(id) && canSee(id) ? `<a class="ai-cite" href="#/fiche/${id}">${id}</a>` : m))
     .split(/\n{2,}/).map((p) => `<p>${p.replace(/\n/g, "<br>")}</p>`).join("");
 }
-async function aiRefine(root, q) {
-  const ab = $("#ansBody", root); if (!ab || !S.aiClaude || !REMOTE || S.aiOff) return;
-  const meta = $("[data-ans-kind]", ab); if (!meta || meta.dataset.ansKind === "clarify") return;
-  const ids = (meta.dataset.ansFiches || "").split(",").filter(Boolean).slice(0, 4);
-  if (!ids.length) return;
+async function aiRefine(root, q, given) {
+  if (!S.aiClaude || !REMOTE || S.aiOff) return;
+  let ids = given || [];
+  if (!given) { const ab = $("#ansBody", root); if (!ab) return; const meta = $("[data-ans-kind]", ab); if (!meta || meta.dataset.ansKind === "clarify") return; ids = (meta.dataset.ansFiches || "").split(",").filter(Boolean); }
+  ids = ids.slice(0, 4); if (!ids.length) return;
   const box = document.createElement("section"); box.className = "ai-box"; box.setAttribute("aria-live", "polite");
   box.innerHTML = `<div class="who"><span class="av">${ic("sparkles", "sm")}</span>En bref, rédigé par l'IA</div><div class="ai-body"><div class="skel" style="height:70px;margin:0" aria-hidden="true"></div></div>`;
-  const ans = root.querySelector(".answer"); if (!ans) return; ans.parentNode.insertBefore(box, ans);
+  const ans = root.querySelector(".answer") || root.querySelector(".f-brief") || root.querySelector(".detail-h"); if (!ans) return; ans.parentNode.insertBefore(box, ans);
   const key = q + "|" + ids.join(",");
   try {
     let out = AI_CACHE.get(key);
@@ -3667,9 +3765,9 @@ async function aiRefine(root, q) {
 function bindAnswer(ab) {
   if (!ab) return;
   ab.addEventListener("click", (e) => {
-    const sb = e.target.closest("[data-sit]"); if (sb) { const s = sitById(sb.dataset.sit); if (s) { ab.innerHTML = situationAnswer(s, sb.dataset.q || s.t); ab.scrollIntoView({ block: "start", behavior: REDUCED() ? "auto" : "smooth" }); } return; }
+    const sb = e.target.closest("[data-sit]"); if (sb) { const s = sitById(sb.dataset.sit); if (s) location.hash = `#/situation/${s.id}?q=${encodeURIComponent(sb.dataset.q || s.t)}`; return; }
     const a = e.target.closest("[data-ask]"); if (a) { location.hash = "#/recherche?q=" + encodeURIComponent(a.dataset.ask); return; }
-    const p = e.target.closest("[data-pick]"); if (p) { try { ab.innerHTML = guideAnswer(p.dataset.pick, p.dataset.q, {}); } catch (x) { /* la liste reste affichée */ } return; }
+    const p = e.target.closest("[data-pick]"); if (p) { location.hash = `#/fiche/${p.dataset.pick}?q=${encodeURIComponent(p.dataset.q || "")}`; return; }
     const r = e.target.closest("[data-repq]"); if (r) openReport(r.dataset.fiche || null, r.dataset.type || "unclear", r.dataset.repq, "assistant");
   });
 }
@@ -5312,7 +5410,7 @@ function bindDay(root) {
   }));
   const ap = $("[data-allprio]", root);
   if (ap) ap.onclick = () => { const m = $("#morePrio", root); m.hidden = !m.hidden; if (!m.hidden) markRead("consigne", DAYST.consignes.map((c) => c.id)); ap.setAttribute("aria-expanded", String(!m.hidden)); ap.textContent = m.hidden ? `Tout voir (${DAYST.consignes.length})` : "Réduire"; };
-  const af = $("#dayAsk", root); if (af) af.onsubmit = (e) => { e.preventDefault(); const q = $("#dayQ", root).value.trim(); location.hash = q ? "#/recherche?q=" + encodeURIComponent(q) + (S.aiOff ? "" : "&rep=1") : "#/aide"; };
+  const af = $("#dayAsk", root); if (af) af.onsubmit = (e) => { e.preventDefault(); const q = $("#dayQ", root).value.trim(); location.hash = q ? "#/recherche?q=" + encodeURIComponent(q) : "#/aide"; };
   const tb = $("[data-tour]", root); if (tb) tb.onclick = () => startTour(true);
   bindBoard($("#boardSec", root));
   const rl = $("[data-reload]", root); if (rl) rl.onclick = () => { DAYST.error = null; dayMount(root.closest(".view") || root); };
@@ -5479,7 +5577,7 @@ function aideMount(root, params) {
     e.preventDefault(); const q = $("#helpQ", root).value.trim();
     if (task || fid) { location.hash = "#/assistant?" + (task ? "task=" + encodeURIComponent(task.id) : "f=" + encodeURIComponent(fid)) + (q ? "&q=" + encodeURIComponent(q) : ""); return; }
     if (!q) { $("#helpQ", root).focus(); return; }
-    location.hash = "#/recherche?q=" + encodeURIComponent(q) + (S.aiOff ? "" : "&rep=1");
+    location.hash = "#/recherche?q=" + encodeURIComponent(q);
   };
   $$("[data-hq]", root).forEach((b) => (b.onclick = () => { const i = $("#helpQ", root); i.value = b.dataset.hq; i.focus(); }));
   const bl = $("[data-blocked]", root); if (bl && task) bl.onclick = () => askNote(task.id, "blocked");
