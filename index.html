@@ -88,7 +88,8 @@ img { max-width: 100%; }
 mark { background: var(--mark); color: inherit; border-radius: 4px; padding: 0 2px; }
 :focus-visible { outline: 3px solid rgba(var(--brand-rgb), .55); outline-offset: 2px; border-radius: 8px; }
 [hidden] { display: none !important; }
-.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+h1, h2, h3, p, li, td, th { overflow-wrap: break-word; }
+.sr-only { position: absolute !important; width: 1px !important; height: 1px !important; min-width: 0 !important; min-height: 0 !important; padding: 0 !important; margin: -1px !important; border: 0 !important; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
 .skip { position: absolute; left: 12px; top: -60px; background: var(--blue); color: #fff; padding: 10px 14px; border-radius: var(--r-sm); z-index: 100; }
 .skip:focus { top: 12px; }
 svg.i { width: 20px; height: 20px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
@@ -111,7 +112,7 @@ svg.i.lg { width: 24px; height: 24px; }
 .brand img { width: 70px; height: auto; }
 .brand span { font-size: .8125rem; font-weight: 600; line-height: 1.25; color: var(--label-2); letter-spacing: -.005em; }
 .side-search { display: flex; align-items: center; gap: 8px; width: 100%; min-height: 36px; padding: 0 10px; border: 0; border-radius: var(--r-sm); background: var(--fill); color: var(--label-2); cursor: pointer; text-align: left; font-size: .9375rem; margin-bottom: 8px; }
-@media (hover: hover) and (pointer: fine) { .side-search:hover { background: #dedee3; } }
+@media (hover: hover) and (pointer: fine) { .side-search:hover { background: var(--fill-2); } }
 .side-search kbd { margin-left: auto; font: 500 .75rem var(--font); color: var(--label-3); border: 1px solid var(--sep-strong); border-radius: 5px; padding: 0 5px; background: var(--bg); }
 .nav-label { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; border: 0; background: none; text-align: left; cursor: pointer; font: inherit; font-size: .75rem; font-weight: 600; color: var(--label-2); padding: 8px 10px; margin-top: 10px; border-radius: 9px; letter-spacing: .01em; }
 .nav-label svg { color: var(--label-3); }
@@ -387,7 +388,7 @@ table.t td.n { font-variant-numeric: tabular-nums; white-space: nowrap; }
 .r-item .ex { font-size: .9375rem; color: var(--label-2); line-height: 1.5; letter-spacing: -.012em; }
 .r-item .where { font-size: .8125rem; color: var(--blue); font-weight: 500; display: flex; align-items: center; gap: 2px; }
 .res .best { background: var(--blue-tint); }
-@media (hover: hover) and (pointer: fine) { .res .best:hover { background: #e0ecfa; } }
+@media (hover: hover) and (pointer: fine) { .res .best:hover { background: var(--sereo-sage-tint-2); } }
 .missing { font-size: .875rem; color: var(--label-2); margin-bottom: 12px; }
 .missing s { color: var(--red); }
 
@@ -399,7 +400,7 @@ table.t td.n { font-variant-numeric: tabular-nums; white-space: nowrap; }
 .msg.u .bubble { background: var(--blue); color: #fff; border-radius: 20px 20px 6px 20px; padding: 10px 16px; max-width: 80%; letter-spacing: -.016em; }
 .msg.a .bubble { background: var(--bg); border-radius: 6px 22px 22px 22px; padding: 18px 20px; display: grid; gap: 14px; box-shadow: 0 0 0 1px var(--sep), var(--shadow-1); }
 .msg.a .who { display: flex; align-items: center; gap: 8px; font-size: .8125rem; color: var(--label-2); font-weight: 600; }
-.msg.a .who .av { width: 26px; height: 26px; border-radius: 50%; background: linear-gradient(135deg, #3a8ee6, var(--blue)); color: #fff; display: grid; place-items: center; }
+.msg.a .who .av { width: 26px; height: 26px; border-radius: 50%; background: linear-gradient(135deg, var(--sereo-sage), var(--blue)); color: #fff; display: grid; place-items: center; }
 .ans h3 { font-size: 1.0625rem; }
 .ans ol, .ans ul { margin: 0; padding-left: 22px; display: grid; gap: 5px; }
 .ans ol li::marker { color: var(--blue); font-weight: 600; }
@@ -795,8 +796,39 @@ button, .btn, .chip, .tabbar a, .nav a, .tick, .sit-tabs button, .tabs a, .help-
 /* ---------- Barre du haut : « Besoin d'aide ? » toujours accessible ---------- */
 .help-btn { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 14px; border: 0; border-radius: 999px; background: var(--blue-tint); color: var(--blue); font-weight: 600; font-size: .9375rem; cursor: pointer; flex: none; transition: transform 160ms var(--ease-out), background-color 160ms ease; }
 .help-btn:active { transform: scale(.97); transition-duration: 100ms; }
-@media (hover: hover) and (pointer: fine) { .help-btn:hover { background: #dfe8fd; } }
+@media (hover: hover) and (pointer: fine) { .help-btn:hover { background: var(--sereo-sage-tint-2); } }
 .help-btn .l-short { display: none; }
+.help-btn { position: relative; text-decoration: none; }
+.help-btn:hover { text-decoration: none; }
+.help-btn[aria-current="page"] { background: var(--blue); color: #fff; }
+.help-btn .tk-dot { position: absolute; top: 1px; right: 1px; margin: 0; box-shadow: 0 0 0 2px #fff; }
+.help-btn .tk-dot[hidden] { display: none; }
+/* Page « Besoin d'aide ? » */
+.help-hub { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; max-width: 900px; }
+.help-card { display: flex; align-items: flex-start; gap: 16px; padding: 22px; border-radius: var(--r-xl); background: var(--bg); box-shadow: 0 0 0 1px var(--sep), var(--shadow-1); color: var(--label); }
+a.help-card { align-items: center; }
+a.help-card:hover { text-decoration: none; }
+@media (hover: hover) and (pointer: fine) { a.help-card:hover { box-shadow: 0 0 0 1px var(--sep-strong), var(--shadow-2); } }
+a.help-card:active { transform: scale(.99); }
+a.help-card > svg:last-child { margin-left: auto; color: var(--label-3); flex: none; }
+.help-card.main-q { grid-column: 1 / -1; }
+.help-card .hc-body { display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; min-width: 0; flex: 1; }
+.help-card h2 { font-size: 1.1875rem; letter-spacing: -.02em; }
+.help-card p { color: var(--label-2); }
+.help-card .ask-inline { margin-top: 8px; }
+.help-card .try button { white-space: normal; text-align: left; max-width: 100%; }
+.hc-ico { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: var(--sereo-sage-tint); color: var(--blue); flex: none; }
+.hc-ico.idea { background: var(--sereo-coral-tint); color: var(--sereo-coral-ink); }
+.help-more { display: grid; max-width: 900px; margin-top: 22px; border-radius: var(--r-xl); background: var(--bg); box-shadow: 0 0 0 1px var(--sep); overflow: hidden; }
+.help-line { display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 18px; color: var(--label); font: inherit; font-weight: 500; background: none; border: 0; text-align: left; cursor: pointer; width: 100%; }
+.help-line + .help-line { box-shadow: inset 0 1px 0 var(--sep); }
+.help-line:hover { text-decoration: none; background: var(--fill); }
+.help-line svg { color: var(--blue); }
+.help-line .badge, .help-line .muted { margin-left: auto; }
+.answer { max-width: 800px; margin-bottom: 26px; }
+.answer .note { font-size: .75rem; color: var(--label-3); display: flex; gap: 5px; align-items: center; }
+@media (max-width: 700px) { .help-hub { grid-template-columns: minmax(0, 1fr); } .help-card { padding: 18px; gap: 12px; } .help-card.main-q .hc-ico { display: none; } }
+@media (max-width: 600px) { .subtabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; } .subtabs::-webkit-scrollbar { display: none; } .subtabs a { white-space: nowrap; flex: none; } }
 @media (max-width: 600px) { .help-btn { padding: 0 11px; } .help-btn .l-long { display: none; } .help-btn .l-short { display: inline; } }
 
 /* ---------- Ma journée : hiérarchie ---------- */
@@ -1049,6 +1081,7 @@ button, .btn, .chip, .tabbar a, .nav a, .tick, .sit-tabs button, .tabs a, .help-
 .tour h2 { font-size: 1.125rem; letter-spacing: -.018em; line-height: 1.25; }
 .tour p { font-size: .9375rem; color: var(--label-2); }
 .tour .btns { margin-top: 8px; }
+.topbar a.tour-hit { box-shadow: 0 0 0 3px var(--accent); }
 .nav a.tour-hit { background: #fff; color: var(--navy); font-weight: 600; }
 .tabbar a.tour-hit { color: var(--blue); background: var(--blue-tint); }
 @media (max-width: 860px) {
@@ -2376,8 +2409,6 @@ function shell() {
       <a class="brand" href="#/" aria-label="Ma journée — Book des Process"><img src="${ASSETS.logo}" alt="Séréo" width="52" height="40"><span>Book des<br>Process</span></a>
       <button class="side-search" type="button" id="sideSearch">${ic("search")}<span>Rechercher</span><kbd>/</kbd></button>
       <nav class="nav" id="navMain"></nav>
-      <button class="nav-label" type="button" id="themesLabel" aria-expanded="false" aria-controls="navThemes"><span>Procédures par thème</span>${ic("right", "sm")}</button>
-      <nav class="nav" id="navThemes" aria-labelledby="themesLabel" hidden></nav>
       <div class="side-foot">
         ${REMOTE ? `<button class="acct" type="button" id="acctBtn">${ic("user", "sm")}<span><b>${esc(myName())}</b><span>${esc(roleLabel())} · ${esc(account())}</span></span></button>`
           : `<div class="role">${ic("user", "sm")}<label class="sr-only" for="roleSel">Profil</label>
@@ -2390,7 +2421,7 @@ function shell() {
         <a class="mlogo" href="#/" aria-label="Ma journée"><img src="${ASSETS.logo}" alt="Séréo" width="40" height="31"></a>
         <div id="topSearch" style="flex:1;min-width:0"></div>
         <button class="ico-btn notif-btn" type="button" id="notifBtn" aria-haspopup="dialog" aria-label="Notifications">${ic("inbox")}<b></b></button>
-        <button class="help-btn" type="button" id="helpBtn" aria-haspopup="dialog">${ic("help")}<span class="l-long">Besoin d'aide ?</span><span class="l-short">Aide</span></button>
+        <a class="help-btn" href="#/aide" id="helpBtn">${ic("help")}<span class="l-long">Besoin d'aide ?</span><span class="l-short">Aide</span><i class="tk-dot" data-tk-dot hidden></i></a>
         <button class="ico-btn" type="button" id="profileBtn" aria-label="Mon compte">${ic("user")}</button>
       </header>
       <main class="content" id="main" tabindex="-1"></main>
@@ -2402,9 +2433,8 @@ function shell() {
   else { $("#roleSel").value = S.role; $("#roleSel").onchange = (e) => setRole(e.target.value); }
   $("#sideSearch").onclick = () => { const i = $("#main .search input") || $("#topSearch input"); if (i) i.focus(); else location.hash = "#/recherche"; };
   $("#profileBtn").onclick = openProfile;
-  $("#helpBtn").onclick = openHelp;
+  $("#helpBtn").onclick = (e) => { e.preventDefault(); openHelp(); };
   $("#notifBtn").onclick = openNotifs;
-  $("#themesLabel").onclick = () => { THEMES_OPEN = $("#navThemes").hidden; showThemes(THEMES_OPEN); };
   document.addEventListener("touchstart", () => {}, { passive: true }); // active :active sur iOS
   const tb = $(".topbar"); const onScroll = () => tb.classList.toggle("scrolled", window.scrollY > 4);
   window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
@@ -2412,10 +2442,6 @@ function shell() {
     if (e.key === "/" && !/input|textarea|select/i.test(document.activeElement.tagName)) { e.preventDefault(); const i = $("#main .search input") || $("#topSearch input"); if (i) i.focus(); }
   });
 }
-/* Thèmes de la barre latérale : repliés sur « Ma journée » pour laisser la place aux quatre entrées
-   principales, ouverts d'office dans les procédures. Le choix fait à la main est conservé. */
-let THEMES_OPEN = null;
-function showThemes(open) { $("#navThemes").hidden = !open; $("#themesLabel").setAttribute("aria-expanded", String(open)); }
 function setRole(r) {
   S.role = r; save(); IDX = null; $("#roleSel").value = r;
   toast(r === "admin" ? "Profil Administrateur activé" : "Profil Salarié activé", "user");
@@ -2425,7 +2451,7 @@ function openProfile() {
   if (REMOTE) return modal(`<h2 id="mtitle">Mon compte</h2>
     <div class="radio-cards"><label style="cursor:default"><span><b>${esc(myName())}</b><br><span class="small muted">Identifiant : ${esc(account())} · ${esc(roleLabel())}</span><br><span class="small muted">${isAdmin() ? "Responsable : gère les routines, les consignes, les procédures et les comptes." : "Collaborateur : ta journée, les procédures, l'assistant et les signalements."}</span></span></label></div>
     <details class="toc-m" style="display:block" id="pwBox"><summary>${ic("lock", "sm")} Changer mon mot de passe</summary><form class="form" id="myPw" novalidate style="padding-bottom:12px">${passwordForm("mp")}<div><button class="btn primary" type="submit">Enregistrer le mot de passe</button></div></form></details>
-    <div class="btns">${isAdmin() ? `<a class="btn" href="#/admin" data-close>${ic("admin")} Administration</a><a class="btn" href="#/admin/comptes" data-close>${ic("users")} Gestion des collaborateurs</a>` : ""}<a class="btn" href="#/notes" data-close>${ic("notebook")} Mes notes</a><a class="btn" href="#/annuaire" data-close>${ic("phone")} Annuaire</a><a class="btn" href="#/journal" data-close>${ic("history")} Mes journées précédentes</a><a class="btn" href="#/avis" data-close>${ic("bulb")} Donner mon avis</a><button class="btn danger" type="button" id="logoutBtn">Se déconnecter</button><button class="btn ghost" type="button" data-close>Fermer</button></div>`, (m) => {
+    <div class="btns">${isAdmin() ? `<a class="btn" href="#/admin" data-close>${ic("admin")} Administration</a><a class="btn" href="#/admin/comptes" data-close>${ic("users")} Gestion des collaborateurs</a>` : ""}<a class="btn" href="#/notes" data-close>${ic("notebook")} Mes notes</a><a class="btn" href="#/annuaire" data-close>${ic("phone")} Annuaire</a><a class="btn" href="#/journal" data-close>${ic("history")} Mes journées précédentes</a><a class="btn" href="#/demandes" data-close>${ic("inbox")} Mes demandes</a><a class="btn" href="#/avis" data-close>${ic("bulb")} Proposer une idée</a><button class="btn danger" type="button" id="logoutBtn">Se déconnecter</button><button class="btn ghost" type="button" data-close>Fermer</button></div>`, (m) => {
     $$("[data-close]", m).forEach((b) => b.addEventListener("click", closeModal));
     $("#logoutBtn", m).onclick = logout;
     $("#myPw", m).onsubmit = async (e) => {
@@ -2452,27 +2478,22 @@ function renderNav(r) {
     ["#/actualites", "news", "Actualités", cur === "actualites" || cur === "actualite", `<span class="badge news" data-actu-n></span>`],
     ["#/", "day", "Ma journée", cur === "home" || cur === "tache" || cur === "journal" || cur === "guide"],
     ["#/notes", "notebook", "Mes notes", cur === "notes"],
-    ["#/procedures", "book", "Procédures", cur === "procedures" || cur === "themes" || cur === "theme" || cur === "fiche" || cur === "recherche"],
-    ["#/assistant", "sparkles", "Assistant", cur === "assistant"],
+    ["#/procedures", "book", "Procédures", cur === "procedures" || cur === "themes" || cur === "theme" || cur === "fiche" || cur === "recherche" || cur === "assistant"],
     ["#/formation", "school", "Formation", cur === "formation"],
     ...(typeof INT !== "undefined" && INT.row && !INT.row.done_at ? [["#/integration", "checklist", "Ma première semaine", cur === "integration"]] : []),
-    ["#/demandes", "inbox", "Mes demandes", cur === "demandes" || cur === "demande", `<span class="badge warn" data-tk-mine></span>`],
-    ["#/annuaire", "phone", "Annuaire", cur === "annuaire"],
-    ["#/avis", "bulb", "Ton avis", cur === "avis"]
+    ["#/annuaire", "phone", "Annuaire", cur === "annuaire"]
   ];
   if (isAdmin()) navMain.push(["#/admin", "admin", "Administration", cur.startsWith("admin"), `<span class="badge warn" data-tk-team hidden></span>`]);
   $("#navMain").innerHTML = navMain.map(([h, i, l, on, extra]) => `<a href="${h}" ${on ? 'aria-current="page"' : ""}>${ic(i)}<span>${l}</span>${extra || ""}</a>`).join("");
-  const curCh = r.name === "theme" ? r.arg : r.name === "fiche" && getFiche(r.arg) ? getFiche(r.arg).ch : null;
-  showThemes(THEMES_OPEN != null ? THEMES_OPEN : ["procedures", "themes", "theme", "fiche", "recherche"].includes(cur));
-  $("#navThemes").innerHTML = chapters().map((c) => `<a href="#/theme/${c.id}" ${curCh === c.id ? 'aria-current="page"' : ""}><span class="n">${esc(c.id)}</span>${ic(c.icon || "book", "sm")}<span>${esc(c.title)}</span></a>`).join("");
-  const tabs = [["#/actualites", "news", "Actus", cur === "actualites" || cur === "actualite"], ["#/", "day", "Ma journée", cur === "home" || cur === "tache" || cur === "journal" || cur === "guide"], ["#/notes", "notebook", "Notes", cur === "notes"], ["#/procedures", "book", "Procédures", cur === "procedures" || cur === "themes" || cur === "theme" || cur === "fiche" || cur === "recherche"], ["#/assistant", "sparkles", "Assistant", cur === "assistant"], ["#/formation", "school", "Formation", cur === "formation"], ["#/demandes", "inbox", "Demandes", cur === "demandes" || cur === "demande"]];
+  const tabs = [["#/actualites", "news", "Actus", cur === "actualites" || cur === "actualite"], ["#/", "day", "Ma journée", cur === "home" || cur === "tache" || cur === "journal" || cur === "guide"], ["#/notes", "notebook", "Notes", cur === "notes"], ["#/procedures", "book", "Procédures", cur === "procedures" || cur === "themes" || cur === "theme" || cur === "fiche" || cur === "recherche" || cur === "assistant"], ["#/formation", "school", "Formation", cur === "formation"]];
   if (isAdmin()) tabs.push(["#/admin", "admin", "Admin", cur.startsWith("admin")]);
   $("#tabbar").innerHTML = tabs.map(([h, i, l, on]) => `<a href="${h}" ${on ? 'aria-current="page"' : ""}>${ic(i)}<span>${l}</span>${h === "#/actualites" ? `<i class="tk-dot" data-actu-dot hidden></i>` : h === "#/demandes" ? `<i class="tk-dot" data-tk-dot hidden></i>` : h === "#/admin" ? `<i class="tk-dot" data-adm-dot hidden></i>` : ""}</a>`).join("");
   ensureTickets(); ensureAdminCounts(); ticketBadges(); ensureActus(); actuBadges();
+  const hb = $("#helpBtn"); if (hb) { if (["aide", "demandes", "demande", "avis"].includes(cur)) hb.setAttribute("aria-current", "page"); else hb.removeAttribute("aria-current"); }
   if (typeof tourHit === "function") tourHit(); // la découverte garde son repère quand la navigation est redessinée
   const ts = $("#topSearch");
-  if (cur === "procedures" || cur === "themes" || cur === "recherche") ts.innerHTML = "";
-  else { ts.innerHTML = searchBox({ id: "qtop", placeholder: matchMedia("(max-width: 480px)").matches ? "Rechercher…" : "Rechercher une procédure…" }); attachSearch(ts); }
+  if (cur === "procedures" || cur === "themes" || cur === "recherche" || cur === "aide") ts.innerHTML = "";
+  else { ts.innerHTML = searchBox({ id: "qtop", label: "Rechercher ou poser une question", placeholder: matchMedia("(max-width: 480px)").matches ? "Rechercher ou demander…" : "Rechercher ou poser une question…" }); attachSearch(ts); }
 }
 function renderNavCounts() { const b = $("#favCount"); if (b) b.textContent = S.favs.filter((id) => canSee(id)).length || ""; }
 const newReports = () => S.reports.filter((r) => r.status === "new").length;
@@ -2513,9 +2534,9 @@ function attachSearch(root) {
         sits.slice(0, 3).forEach(([txt, ids]) => { const vis = ids.filter((i) => canSee(i)); items.push(vis.length === 1 ? `#/fiche/${vis[0]}` : `#/recherche?q=${encodeURIComponent(txt)}`); h += `<div role="option" id="${inp.id}-o${items.length - 1}" data-i="${items.length - 1}" aria-selected="false"><span class="s-num">${ic("right", "sm")}</span><span class="s-t">${esc(txt)}</span><span class="s-c" style="margin-left:auto">${vis.join(" · ")}</span></div>`; });
       }
       items.push(`#/recherche?q=${encodeURIComponent(q)}`);
-      h += `<div role="option" id="${inp.id}-o${items.length - 1}" data-i="${items.length - 1}" aria-selected="false" class="s-all">${ic("search", "sm")} Voir tous les résultats pour « ${esc(q)} »</div>`;
-      items.push(`#/assistant?q=${encodeURIComponent(q)}`);
-      h += `<div role="option" id="${inp.id}-o${items.length - 1}" data-i="${items.length - 1}" aria-selected="false" class="s-all">${ic("sparkles", "sm")} Poser la question à l'assistant</div>`;
+      h += `<div role="option" id="${inp.id}-o${items.length - 1}" data-i="${items.length - 1}" aria-selected="false" class="s-all">${isQuestion(q) && !S.aiOff ? `${ic("sparkles", "sm")} Voir la réponse et les procédures` : `${ic("search", "sm")} Voir tous les résultats pour « ${esc(q)} »`}</div>`;
+      if (!S.aiOff && !isQuestion(q)) { items.push(`#/recherche?q=${encodeURIComponent(q)}&rep=1`);
+        h += `<div role="option" id="${inp.id}-o${items.length - 1}" data-i="${items.length - 1}" aria-selected="false" class="s-all">${ic("sparkles", "sm")} Obtenir une réponse à « ${esc(q)} »</div>`; }
       list.innerHTML = h; list.hidden = false; inp.setAttribute("aria-expanded", "true"); sel = -1;
       $$("[role=option]", list).forEach((o) => { o.onmousedown = (e) => { e.preventDefault(); go(items[+o.dataset.i]); }; });
     };
@@ -2818,19 +2839,27 @@ function vagueQuery(q) { const qt = parseQuery(q); return qt.length > 0 && qt.ev
 const ximiGuideLink = () => (getFiche("01.2") && canSee("01.2") ? ` Pour te repérer dans Ximi : fiche <a href="#/fiche/01.2">01.2 — ${esc(getFiche("01.2").title)}</a>.` : "");
 function viewResults(params) {
   const q = (params.q || "").trim();
-  const box = `<div style="max-width:720px;margin-bottom:22px">${searchBox({ id: "qres", big: true, value: q })}</div>`;
-  if (!q) return `<h1 style="font-size:30px;margin-bottom:16px">Rechercher</h1>${box}<div class="section"><h2 style="font-size:18px">Idées de recherche</h2><div class="chips">${TRY.concat(["période d'essai", "tarif jardinage", "mission Domiserve"]).map((t) => `<a class="chip" href="#/recherche?q=${encodeURIComponent(t)}">${esc(t)}</a>`).join("")}</div></div><div style="margin-top:28px">${situationsSection()}</div>`;
+  const box = `<div style="max-width:720px;margin-bottom:22px">${searchBox({ id: "qres", big: true, value: q, label: "Rechercher ou poser une question", placeholder: "Un mot ou une question…" })}</div>`;
+  if (!q) return `<h1 style="font-size:30px;margin-bottom:16px">Rechercher ou poser une question</h1>${box}<div class="section"><h2 style="font-size:18px">Idées de recherche</h2><div class="chips">${TRY.concat(["période d'essai", "tarif jardinage", "mission Domiserve"]).map((t) => `<a class="chip" href="#/recherche?q=${encodeURIComponent(t)}">${esc(t)}</a>`).join("")}</div></div><div style="margin-top:28px">${situationsSection()}</div>`;
   const res = search(q); const conf = confidence(res);
-  const vague = vagueQuery(q);
+  // Une vraie question (« comment… ? », « je fais quoi… ») : la réponse du book passe en premier
+  const asked = !S.aiOff && (params.rep === "1" || isQuestion(q));
+  let ans = "";
+  if (asked) { try { ans = compose(q, null); } catch (e) { ans = ""; } }
+  const ansBox = ans ? `<section class="answer msg a" aria-label="Réponse du book"><div class="who"><span class="av">${ic("sparkles", "sm")}</span>Réponse du book</div><div class="bubble ans" id="ansBody" aria-live="polite">${ans}</div><p class="note">${ic("info", "sm")} Réponse construite uniquement avec les procédures validées (${esc(BOOK.source.version)}). En cas de doute, ouvre la fiche ou demande à ton responsable.</p></section>` : "";
+  const vague = !ans && vagueQuery(q);
   const vagueBox = vague ? `<div class="notice" style="margin-bottom:18px;max-width:760px">${ic("info")}<div><b>Ta question est générale.</b><span>Précise l'action ou la situation, par exemple « enregistrer une absence dans Ximi » ou « client qui se plaint ». Depuis une tâche, « M'aider sur cette tâche » répond avec son contexte. ${ximiGuideLink()}</span></div></div>` : "";
   const top = res.results[0];
   const shown = res.results.filter((r) => top && r.score >= Math.max(0.6, top.score * 0.18)).slice(0, 12);
   const miss = res.unknown.length ? `<p class="missing">Aucune fiche ne contient : ${res.unknown.map((w) => `<s>${esc(w)}</s>`).join(", ")}</p>` : "";
   let body = "";
-  if (conf === "none" || conf === "weak") {
+  if (ans) {
+    body = shown.length && conf !== "none" ? `<h2 style="font-size:18px;margin:6px 0 10px">${conf === "weak" ? "Peut-être en lien" : "Les procédures en lien"}</h2><div class="res">${shown.slice(0, conf === "weak" ? 4 : 8).map((r) => resultItem(r)).join("")}</div>` : "";
+    if (conf === "none" || conf === "weak") body += `<h2 style="font-size:18px;margin:26px 0 10px">Parcourir les thèmes</h2><div class="chips">${chapters().map((c) => `<a class="chip" href="#/theme/${c.id}">${ic(c.icon, "sm")} ${esc(c.title)}</a>`).join("")}</div>`;
+  } else if (conf === "none" || conf === "weak") {
     body = `<div class="empty" style="margin-bottom:20px"><h3>Aucune procédure ne correspond clairement à « ${esc(q)} »</h3>
       <p>Essaie avec un autre mot, plus simple ou plus courant (par exemple « congés », « absence », « devis », « clé »), ou parcours les thèmes.</p>
-      <div class="btns"><a class="btn primary" href="#/assistant?q=${encodeURIComponent(q)}">${ic("sparkles")} Poser la question à l'assistant</a><button class="btn" type="button" data-miss>${ic("flag")} Signaler une information manquante</button></div></div>
+      <div class="btns"><a class="btn primary" href="#/demande/new?q=${encodeURIComponent(q)}">${ic("send")} Demander de l'aide au responsable</a><button class="btn" type="button" data-miss>${ic("flag")} Signaler une information manquante</button></div></div>
       ${shown.length ? `<h2 style="font-size:18px;margin-bottom:10px">Peut-être en lien</h2><div class="res">${shown.slice(0, 4).map((r) => resultItem(r)).join("")}</div>` : ""}
       <h2 style="font-size:18px;margin:26px 0 10px">Parcourir les thèmes</h2><div class="chips">${chapters().map((c) => `<a class="chip" href="#/theme/${c.id}">${ic(c.icon, "sm")} ${esc(c.title)}</a>`).join("")}</div>`;
   } else if (conf === "clear") {
@@ -2842,10 +2871,16 @@ function viewResults(params) {
       ${chs.length > 1 ? `<div class="chips" style="margin-bottom:14px" role="group" aria-label="Filtrer par thème"><button class="chip" type="button" data-chf="" aria-pressed="true">Tous</button>${chs.map((ch) => `<button class="chip" type="button" data-chf="${ch}">${esc(chapter(ch) ? chapter(ch).title : ch)}</button>`).join("")}</div>` : ""}
       <div class="res" id="resList">${shown.map((r) => `<div data-ch="${getFiche(r.id).ch}">${resultItem(r)}</div>`).join("")}</div>`;
   }
-  return `<h1 style="font-size:28px;margin-bottom:16px">Résultats pour « ${esc(q)} »</h1>${box}${vagueBox}${miss}${body}`;
+  return `<h1 style="font-size:28px;margin-bottom:16px">${ans ? "Ta question" : "Résultats pour « " + esc(q) + " »"}</h1>${box}${ansBox}${vagueBox}${ans ? "" : miss}${body}`;
 }
 function resultsMount(root, params) {
   attachSearch(root); mountSituations(root);
+  const ab = $("#ansBody", root);
+  if (ab) ab.addEventListener("click", (e) => {
+    const a = e.target.closest("[data-ask]"); if (a) { location.hash = "#/recherche?q=" + encodeURIComponent(a.dataset.ask); return; }
+    const p = e.target.closest("[data-pick]"); if (p) { try { ab.innerHTML = answerFiche(p.dataset.q, p.dataset.pick, null); } catch (x) { /* la liste des procédures reste affichée */ } return; }
+    const r = e.target.closest("[data-repq]"); if (r) openReport(r.dataset.fiche || null, r.dataset.type || "unclear", r.dataset.repq, "assistant");
+  });
   if (params.q) { try { const r = search(params.q.trim()), cf = confidence(r); logSearch(params.q, cf === "none" || cf === "weak" ? 0 : r.results.length); } catch (e) { /* */ } }
   const mb = $("[data-miss]", root); if (mb) mb.onclick = () => openReport(null, "missing", `Recherche sans réponse : « ${params.q} »`);
   $$("[data-chf]", root).forEach((b) => (b.onclick = () => { $$("[data-chf]", root).forEach((x) => x.setAttribute("aria-pressed", x === b)); $$("#resList > div", root).forEach((d) => (d.hidden = b.dataset.chf && d.dataset.ch !== b.dataset.chf)); }));
@@ -2906,6 +2941,7 @@ function route() {
   else if (r.name === "formation") { html = viewFormation(r.params); mount = (x) => formationMount(x, r.params); }
   else if (r.name === "integration") { html = viewIntegration(); mount = (x) => integrationMount(x, r.params); }
   else if (r.name === "avis") { html = viewAvis(); mount = avisMount; }
+  else if (r.name === "aide") { html = viewAide(r.params); mount = (x) => aideMount(x, r.params); }
   else if (r.name === "annuaire") { html = viewAnnuaire(); mount = annuaireMount; }
   else if (r.name === "notes") { const nid = dec(r.arg || ""); html = viewNotes(nid); mount = (x) => notesMount(x, nid); }
   else if (r.name === "actualites") { html = viewActus(); mount = actusMount; }
@@ -2917,7 +2953,7 @@ function route() {
   const key = location.hash.split("?s=")[0];
   if (key !== lastRoute && !r.params.s) { window.scrollTo(0, 0); if (r.name !== "procedures" && r.name !== "themes" && r.name !== "recherche" && r.name !== "assistant") main.focus({ preventScroll: true }); }
   lastRoute = key;
-  const titles = { home: "Ma journée", tache: "Tâche", guide: "Me guider", journal: "Mes journées", procedures: "Procédures", themes: "Procédures", favoris: "Mes favoris", demandes: "Mes demandes", demande: "Demande d'aide", assistant: "Assistant", recherche: "Recherche", formation: "Formation", integration: "Ma première semaine", avis: "Ton avis", notes: "Mes notes", annuaire: "Annuaire", actualites: "Actualités", actualite: "Actualité" };
+  const titles = { home: "Ma journée", tache: "Tâche", guide: "Me guider", journal: "Mes journées", procedures: "Procédures", themes: "Procédures", favoris: "Procédures", aide: "Besoin d'aide ?", demandes: "Mes demandes", demande: "Demande d'aide", assistant: "Assistant", recherche: "Rechercher ou poser une question", formation: "Formation", integration: "Ma première semaine", avis: "Ton avis", notes: "Mes notes", annuaire: "Annuaire", actualites: "Actualités", actualite: "Actualité" };
   document.title = (r.name === "fiche" && getFiche(r.arg) ? r.arg + " " + getFiche(r.arg).title : r.name === "theme" && chapter(r.arg) ? chapter(r.arg).title : r.name === "formation" && r.arg === "video" && fvById(r.rest[0]) ? fvById(r.rest[0]).t : titles[r.name] || "Administration") + " · Book des Process";
 }
 
@@ -2934,6 +2970,15 @@ let CHAT_CTX = null, CHAT_LASTQ = null, CHAT_KEY = null;
 const OPS = /\b(comment|que faire|quoi faire|fais quoi|faire quoi|on fait|je fais|procedure|etapes?|demarche|marche a suivre|je dois|dois je|faut il|il faut|faire|proceder|gerer|traiter|mettre en place|creer|enregistrer|remplir)\b/;
 const FACT = /\b(combien|quel|quelle|quels|quelles|qui|quand|ou se trouve|ou trouver|numero|prix|tarif|tarifs|delai|adresse|telephone|code|siret|iban|taux|montant|duree|c est quoi|signifie|veut dire)\b/;
 
+/* Une vraie question (et pas seulement des mots-clés) : la barre de recherche y répond */
+function isQuestion(q) {
+  const t = String(q || "").trim(); if (!t) return false;
+  if (/\?\s*$/.test(t)) return true;
+  const nq = norm(t);
+  if (/^(comment|pourquoi|quand|ou |qui |que |quoi|quel|quelle|quels|quelles|combien|est ce|puis je|peut on|peux tu|dois je|faut il|a qui|qu est|c est quoi|on fait|je fais|je dois|il faut)/.test(nq)) return true;
+  if (/\b(je fais quoi|on fait quoi|que faire|quoi faire|comment faire|faire quoi)\b/.test(nq)) return true;
+  return nq.split(" ").filter(Boolean).length >= 6;
+}
 function viewAssistant(params) {
   if (S.aiOff) return `<h1 style="font-size:30px;margin-bottom:10px">Assistant</h1>
     <div class="notice warn" style="max-width:760px;margin-bottom:20px">${ic("alert")}<div><b>L'assistant est momentanément indisponible.</b><span>Tu peux continuer à consulter toutes les procédures : utilise la recherche ci-dessous ou parcours les thèmes.</span></div></div>
@@ -3111,17 +3156,19 @@ function answerFiche(q, fid, res) {
 /* ===================== Administration ===================== */
 /* Huit entrées sur une ligne. « Retours » et « Le book » regroupent des pages voisines : leurs
    sous-onglets n'apparaissent que lorsqu'on y est. */
-const ADMIN_TABS = [["", "admin", "Tableau de bord"], ["equipe", "users", "Équipe du jour"], ["routines", "checklist", "Routines"], ["ponctuelles", "calendar", "Tâches ponctuelles"], ["consignes", "info", "Consignes"], ["actualites", "news", "Actualités"],
-  ["demandes", "inbox", "Demandes", [["demandes", "Demandes de l'équipe"], ["questions", "Questions sans réponse"], ["signalements", "Signalements"], ["avis", "Avis et idées"]]],
-  ["fiches", "book", "Le book", [["fiches", "Procédures"], ["statistiques", "Statistiques"], ["themes", "Thèmes"], ["documents", "Documents"], ["verification", "Points à vérifier"], ["historique", "Historique"]]],
-  ["formation", "school", "Formation", [["formation", "Tutos et quiz"], ["integration", "Intégration"]]], ["comptes", "userCheck", "Collaborateurs"]];
+/* Administration : 4 onglets, chacun avec ses sous-onglets */
+const ADMIN_TABS = [
+  ["", "users", "Équipe", [["", "Vue d'ensemble"], ["equipe", "Équipe du jour"], ["routines", "Routines"], ["ponctuelles", "Tâches ponctuelles"], ["consignes", "Consignes"]]],
+  ["actualites", "news", "Communication", [["actualites", "Actualités"], ["demandes", "Demandes"], ["questions", "Questions sans réponse"], ["signalements", "Signalements"], ["avis", "Avis et idées"]]],
+  ["fiches", "book", "Contenu", [["fiches", "Procédures"], ["themes", "Thèmes"], ["documents", "Documents"], ["verification", "Points à vérifier"], ["historique", "Historique"], ["statistiques", "Statistiques"], ["formation", "Formation"], ["integration", "Intégration"]]],
+  ["comptes", "userCheck", "Collaborateurs"]];
 function adminTabs(cur) {
   const group = ADMIN_TABS.find((t) => t[3] && t[3].some(([k]) => k === cur));
   const t = adminTodo(), keys = ["demandes", "questions", "signalements", "avis"];
   const bdg = (k, n) => ` <span class="badge warn" data-adm="${k}">${n || ""}</span>`;
   return `<nav class="tabs" aria-label="Administration">${ADMIN_TABS.map((x) => { const [k, i, l, sub] = x; const on = sub ? x === group : cur === k;
-      return `<a href="#/admin${k ? "/" + k : ""}" ${on ? 'aria-current="' + (sub ? "true" : "page") + '"' : ""}>${l}${sub && sub.some(([y]) => y === "signalements") ? bdg("all", adminTodoTotal()) : ""}</a>`; }).join("")}</nav>
-    ${group ? `<nav class="subtabs" aria-label="${esc(group[2])}">${group[3].map(([k, l]) => `<a href="#/admin/${k}" ${cur === k ? 'aria-current="page"' : ""}>${l}${keys.includes(k) ? bdg(k, t[k]) : ""}</a>`).join("")}</nav>` : ""}`;
+      return `<a href="#/admin${k ? "/" + k : ""}" ${on ? 'aria-current="' + (sub ? "true" : "page") + '"' : ""}>${ic(i, "sm")}<span>${l}</span>${sub && sub.some(([y]) => y === "signalements") ? bdg("all", adminTodoTotal()) : ""}</a>`; }).join("")}</nav>
+    ${group ? `<nav class="subtabs" aria-label="${esc(group[2])}">${group[3].map(([k, l]) => `<a href="#/admin${k ? "/" + k : ""}" ${cur === k ? 'aria-current="page"' : ""}>${l}${keys.includes(k) ? bdg(k, t[k]) : ""}</a>`).join("")}</nav>` : ""}`;
 }
 function viewAdmin(r) {
   const sub = r.sub || "";
@@ -3139,14 +3186,14 @@ function viewAdmin(r) {
   else if (sub === "consignes") { html = head("Consignes de l'équipe", "Urgences, changements de procédure et points de vigilance, avec une date de fin pour qu'ils ne restent pas affichés.") + adminTabs("consignes") + adminConsignes(); mount = consignesMount; }
   else if (sub === "consigne") { html = head(r.arg === "new" ? "Nouvelle consigne" : "Modifier la consigne") + viewConsigneEditor(); mount = (x) => consigneEditorMount(x, r.arg); }
   else if (sub === "demandes") { html = head("Demandes de l'équipe", "Les demandes d'aide envoyées depuis l'application. Répondez, demandez une précision ou apportez la solution : le collaborateur suit tout dans « Mes demandes ».") + adminTabs("demandes") + adminTickets(r.params); mount = (x) => adminTicketsMount(x, r.params); }
-  else if (sub === "questions") { html = head("Questions sans réponse", "Questions posées à l'assistant pour lesquelles aucune procédure ne répondait. Elles indiquent les fiches à créer ou à compléter.") + adminTabs("questions") + adminQuestions(); mount = questionsMount; }
+  else if (sub === "questions") { html = head("Questions sans réponse", "Questions posées dans la recherche pour lesquelles aucune procédure ne répondait. Elles indiquent les fiches à créer ou à compléter.") + adminTabs("questions") + adminQuestions(); mount = questionsMount; }
   else if (sub === "fiches") { html = head("Procédures") + adminTabs("fiches") + adminFiches(r.params); mount = fichesAdminMount; }
   else if (sub === "formation") { html = head("Formation", "Les tutos vidéo regardés par chaque personne.") + adminTabs("formation") + adminFormation(); mount = adminFormationMount; }
   else if (sub === "integration") { html = head("Intégration", "Le parcours « Ma première semaine » des nouvelles personnes.") + adminTabs("integration") + adminIntegration(r); mount = (x) => adminIntegrationMount(x, r); }
   else if (sub === "avis") { html = head("Avis et idées", "La question du mois et les idées envoyées par l'équipe.") + adminTabs("avis") + adminAvis(); mount = (x) => adminAvisMount(x, r.params); }
   else if (sub === "comptes") { html = head("Gestion des collaborateurs", "Créez un compte pour chaque personne, transmettez-lui son identifiant et son mot de passe, puis gérez ses accès. Vous n'avez jamais besoin de connaître son mot de passe : vous pouvez en définir un nouveau à tout moment.") + adminTabs("comptes") + adminAccounts(); mount = accountsMount; }
   else if (sub === "statistiques") { html = head("Statistiques", "Ce que l'équipe consulte et cherche : pour savoir quelles fiches améliorer en priorité.") + adminTabs("statistiques") + adminStats(); mount = adminStatsMount; }
-  else if (sub === "themes") { html = head("Thèmes", "Le menu de gauche et les cartes de l'accueil reprennent ces thèmes.") + adminTabs("themes") + adminThemes(); mount = themesAdminMount; }
+  else if (sub === "themes") { html = head("Thèmes", "Les cartes de la page Procédures reprennent ces thèmes.") + adminTabs("themes") + adminThemes(); mount = themesAdminMount; }
   else if (sub === "documents") { html = head("Documents", "Ajoutez un document : son contenu est extrait, puis vérifié avant toute publication.") + adminTabs("documents") + adminDocs(); mount = docsMount; }
   else if (sub === "verification") { html = head("Points à vérifier", "Points relevés lors de l'analyse du book. Rien n'a été inventé : ces éléments sont à compléter ou à arbitrer par la Direction.") + adminTabs("verification") + adminVerif(); mount = verifMount; }
   else if (sub === "signalements") { html = head("Signalements", "Les remarques envoyées par les salariés depuis les fiches et l'assistant.") + adminTabs("signalements") + adminReports(); mount = reportsMount; }
@@ -3304,7 +3351,7 @@ function adminDocs() {
   const vi = verifItems(); const open = vi.filter((x) => !S.verified[x.key]).length;
   return `<div style="display:grid;gap:14px">
     <section class="panel"><div style="display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap"><span class="fnum" style="width:52px">${ic("file", "lg")}</span><div style="flex:1;min-width:0">
-      <h2>${esc(BOOK.source.file)}</h2><p class="small muted">${esc(BOOK.source.name)} · ${esc(BOOK.source.version)} · ${BOOK.source.pages} pages · importé le ${fmtDate(BOOK.source.imported)}</p>
+      <h2 style="overflow-wrap:anywhere">${esc(BOOK.source.file)}</h2><p class="small muted">${esc(BOOK.source.name)} · ${esc(BOOK.source.version)} · ${BOOK.source.pages} pages · importé le ${fmtDate(BOOK.source.imported)}</p>
       <div class="m" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px"><span class="badge ok">Texte lisible (non scanné)</span><span class="badge">${BOOK.chapters.length - 1} thèmes · ${BOOK.fiches.length - 3} fiches · 3 annexes</span><span class="badge ${open ? "warn" : "ok"}">${open} points à vérifier</span></div></div>
       <a class="btn" href="#/admin/verification">${ic("checklist")} Vérifier l'extraction</a></div></section>
     ${S.imports.map((d) => `<section class="panel"><div class="rowi" style="padding:0"><div><div class="t">${esc(d.name)}</div><div class="d">${fmtDateTime(d.date)} · ${Math.round(d.size / 1024) || 1} Ko</div><div class="m"><span class="badge ${d.fiche ? "warn" : "grey"}">${esc(d.status)}</span></div><p class="small" style="margin-top:6px">${esc(d.note || "")}</p></div>${d.fiche ? `<a class="btn sm primary" href="#/admin/edit/${d.fiche}">${ic("pencil", "sm")} Vérifier le brouillon</a>` : ""}</div></section>`).join("")}
@@ -4631,10 +4678,10 @@ function dayHtml() {
   const path = boardHtml(items, nx, allDemo);
 
   const ask = `<section class="askbox" aria-labelledby="askH"><div>${ILLU.help}</div><div><h2 id="askH">Sur quoi as-tu besoin d'aide ?</h2>
-      <form class="ask-inline" id="dayAsk"><label class="sr-only" for="dayQ">Ta question</label><input id="dayQ" type="text" enterkeyhint="send" autocomplete="off" placeholder="Ex. : comment enregistrer une absence dans Ximi ?"><button class="btn primary" type="submit">${ic("send")}<span class="hide-sm">Demander</span></button></form>
+      <form class="ask-inline" id="dayAsk"><label class="sr-only" for="dayQ">Ta question</label><input id="dayQ" type="text" enterkeyhint="send" autocomplete="off" placeholder="Ex. : comment enregistrer une absence dans Ximi ?"><button class="btn primary" type="submit" aria-label="Demander">${ic("send")}<span class="hide-sm" aria-hidden="true">Demander</span></button></form>
       <p class="small muted">L'assistant répond à partir des procédures validées et montre ses sources.</p>
       <p class="askbox-alt">Besoin d'une personne ? <a class="btn sm" href="#/demande/new">${ic("send", "sm")} Demander de l'aide au responsable</a></p></div></section>`;
-  const foot = `<nav class="day-foot" aria-label="Autres pages"><a href="#/journal">${ic("history", "sm")} Mes journées précédentes</a><a href="#/procedures">${ic("book", "sm")} Toutes les procédures</a><a href="#/avis">${ic("bulb", "sm")} Donner mon avis</a><button class="linkbtn" type="button" data-tour>${ic("compass", "sm")} Revoir la découverte</button></nav>`;
+  const foot = `<nav class="day-foot" aria-label="Autres pages"><a href="#/journal">${ic("history", "sm")} Mes journées précédentes</a><a href="#/procedures">${ic("book", "sm")} Toutes les procédures</a><a href="#/aide">${ic("help", "sm")} Besoin d'aide ?</a><button class="linkbtn" type="button" data-tour>${ic("compass", "sm")} Revoir la découverte</button></nav>`;
   const demo = REMOTE ? "" : `<p class="small muted demo-note" style="margin-top:22px">${ic("info", "sm")}<span>Démonstration : ta progression est enregistrée dans ce navigateur seulement. Le suivi partagé avec le responsable fonctionne dans la version en ligne.</span></p>`;
   return head + `<div class="day-body">` + now + `<div id="dayExtra">${dayExtraHtml()}</div>` + prio + path + ask + demo + foot + `</div>`;
 }
@@ -4733,7 +4780,7 @@ function bindDay(root) {
   }));
   const ap = $("[data-allprio]", root);
   if (ap) ap.onclick = () => { const m = $("#morePrio", root); m.hidden = !m.hidden; if (!m.hidden) markRead("consigne", DAYST.consignes.map((c) => c.id)); ap.setAttribute("aria-expanded", String(!m.hidden)); ap.textContent = m.hidden ? `Tout voir (${DAYST.consignes.length})` : "Réduire"; };
-  const af = $("#dayAsk", root); if (af) af.onsubmit = (e) => { e.preventDefault(); const q = $("#dayQ", root).value.trim(); location.hash = "#/assistant" + (q ? "?q=" + encodeURIComponent(q) : ""); };
+  const af = $("#dayAsk", root); if (af) af.onsubmit = (e) => { e.preventDefault(); const q = $("#dayQ", root).value.trim(); location.hash = q ? "#/recherche?q=" + encodeURIComponent(q) + (S.aiOff ? "" : "&rep=1") : "#/aide"; };
   const tb = $("[data-tour]", root); if (tb) tb.onclick = () => startTour(true);
   bindBoard($("#boardSec", root));
   const rl = $("[data-reload]", root); if (rl) rl.onclick = () => { DAYST.error = null; dayMount(root.closest(".view") || root); };
@@ -4845,34 +4892,67 @@ function taskBanner(itemId) {
 }
 
 /* ---------- « Besoin d'aide ? » : accessible depuis la barre du haut, sur toutes les pages ---------- */
+/* « Besoin d'aide ? » : une seule page, trois choix (poser une question, demander au responsable,
+   proposer une idée). Depuis une tâche ou une fiche, le contexte est repris. */
 function openHelp() {
   const r = parseHash();
+  if (r.name === "aide") return route();
   const tid = r.name === "tache" || r.name === "guide" ? dec(r.arg || "") : r.params.task || "";
-  const task = tid ? findItem(tid) : null;
-  const fid = r.name === "fiche" && getFiche(r.arg) && canSee(r.arg) ? r.arg : null;
-  const ctx = [];
-  if (task) ctx.push(`<a class="btn" href="#/assistant?task=${encodeURIComponent(task.id)}" data-close>${ic("sparkles")} M'aider sur « ${esc(task.title)} »</a>`);
-  ctx.push(`<a class="btn" href="#/demande/new${task ? "?task=" + encodeURIComponent(task.id) : fid ? "?f=" + encodeURIComponent(fid) : ""}" data-close>${ic("send")} Demander de l'aide au responsable</a>`);
-  if (task && guideSteps(task)) ctx.push(`<a class="btn" href="#/guide/${encodeURIComponent(task.id)}" data-close>${ic("compass")} Me guider, une étape à la fois</a>`);
-  if (task && (task.status === "todo" || task.status === "doing")) ctx.push(`<button class="btn" type="button" data-blocked>${ic("ban")} Je suis bloqué sur cette tâche</button>`);
-  if (fid) ctx.push(`<a class="btn" href="#/assistant?f=${encodeURIComponent(fid)}" data-close>${ic("sparkles")} Une question sur la fiche ${esc(fid)}</a>`);
+  const fid = r.name === "fiche" && getFiche(r.arg) && canSee(r.arg) ? r.arg : "";
+  location.hash = "#/aide" + (tid && findItem(tid) ? "?task=" + encodeURIComponent(tid) : fid ? "?f=" + encodeURIComponent(fid) : "");
+}
+function viewAide(params) {
+  const task = params.task ? findItem(params.task) : null;
+  const fid = params.f && getFiche(params.f) && canSee(params.f) ? params.f : null;
   const fctx = fid || (task && task.fiche && getFiche(task.fiche) && canSee(task.fiche) ? task.fiche : null);
-  // Suggestions liées au contexte : seulement celles auxquelles une procédure accessible peut répondre
   const sugg = fctx ? ["Explique-moi les étapes.", "Quels points dois-je vérifier ?"].concat(/ximi/i.test(JSON.stringify(getFiche(fctx)).slice(0, 4000)) ? ["Comment faire cette action dans Ximi ?"] : [])
     : ["Comment enregistrer une absence dans Ximi ?", "Un client se plaint, je fais quoi ?", "Comment on prépare un devis ?"];
-  modal(`<h2 id="mtitle">Sur quoi as-tu besoin d'aide ?</h2>
-    <p class="muted">Pose ta question avec tes mots. L'assistant répond à partir des procédures validées et te montre ses sources.</p>
-    <form class="ask-inline" id="helpAsk"><label class="sr-only" for="helpQ">Ta question</label><input id="helpQ" type="text" enterkeyhint="send" autocomplete="off" placeholder="Ex. : comment enregistrer une absence dans Ximi ?"><button class="btn primary" type="submit">${ic("send")}<span class="hide-sm">Demander</span></button></form>
-    <div class="try"><span>Exemples :</span>${sugg.map((t) => `<button type="button" data-hq="${esc(t)}">${esc(t)}</button>`).join("")}</div>
-    ${ctx.length ? `<div class="btns">${ctx.join("")}</div>` : ""}
-    <div class="btns"><a class="btn ghost" href="#/procedures" data-close>${ic("book")} Parcourir les procédures</a><button class="btn ghost" type="button" data-retour>${ic("compass")} Revoir la découverte</button><button class="btn ghost" type="button" data-close>Fermer</button></div>`, (m) => {
-    $("[data-retour]", m).onclick = () => { closeModal(true); startTour(true); };
-    $$("[data-close]", m).forEach((b) => b.addEventListener("click", closeModal));
-    $("#helpAsk", m).onsubmit = (e) => { e.preventDefault(); const q = $("#helpQ", m).value.trim(); closeModal(); location.hash = "#/assistant?" + (task ? "task=" + encodeURIComponent(task.id) + "&" : fid ? "f=" + encodeURIComponent(fid) + "&" : "") + (q ? "q=" + encodeURIComponent(q) : ""); };
-    $$("[data-hq]", m).forEach((b) => (b.onclick = () => { const i = $("#helpQ", m); i.value = b.dataset.hq; i.focus(); }));
-    const bl = $("[data-blocked]", m); if (bl) bl.onclick = () => { closeModal(true); askNote(task.id, "blocked"); };
-    $("#helpQ", m).focus();
-  });
+  const ctx = [];
+  if (task) ctx.push(`<a class="btn" href="#/assistant?task=${encodeURIComponent(task.id)}">${ic("sparkles")} M'aider sur cette tâche</a>`);
+  if (task && guideSteps(task)) ctx.push(`<a class="btn" href="#/guide/${encodeURIComponent(task.id)}">${ic("compass")} Me guider, une étape à la fois</a>`);
+  if (task && (task.status === "todo" || task.status === "doing")) ctx.push(`<button class="btn" type="button" data-blocked>${ic("ban")} Je suis bloqué sur cette tâche</button>`);
+  const open = TK.loaded ? myTickets().filter((t) => t.status !== "resolved").length : 0;
+  const fresh = TK.loaded ? myTickets().filter((t) => unseen(t, false)).length : 0;
+  const askTo = task ? `?task=${encodeURIComponent(task.id)}` : fid ? `?f=${encodeURIComponent(fid)}` : "";
+  return `${task ? `<nav class="crumbs"><a href="#/tache/${encodeURIComponent(task.id)}">${ic("left", "sm")} Revenir à la tâche</a></nav>` : fid ? `<nav class="crumbs"><a href="#/fiche/${fid}">${ic("left", "sm")} Revenir à la fiche ${esc(fid)}</a></nav>` : ""}
+    <header class="task-head"><h1>Besoin d'aide ?</h1><p class="lead">${task ? `Pour la tâche « ${esc(task.title)} ». ` : fid ? `Pour la fiche ${esc(fid)} — ${esc(getFiche(fid).title)}. ` : ""}Choisis ce dont tu as besoin.</p></header>
+    ${ctx.length ? `<div class="btns" style="margin-bottom:18px">${ctx.join("")}</div>` : ""}
+    <div class="help-hub">
+      <section class="help-card main-q" aria-labelledby="hq1">
+        <span class="hc-ico">${ic("sparkles")}</span>
+        <div class="hc-body"><h2 id="hq1">Poser une question</h2><p>Avec tes mots. La réponse vient des procédures validées, avec ses sources.</p>
+          <form class="ask-inline" id="helpAsk"><label class="sr-only" for="helpQ">Ta question</label><input id="helpQ" type="text" enterkeyhint="send" autocomplete="off" placeholder="${S.aiOff ? "Un mot pour chercher une procédure…" : "Ex. : comment enregistrer une absence dans Ximi ?"}"><button class="btn primary" type="submit" aria-label="${S.aiOff ? "Chercher" : "Demander"}">${ic(S.aiOff ? "search" : "send")}<span class="hide-sm" aria-hidden="true">${S.aiOff ? "Chercher" : "Demander"}</span></button></form>
+          ${S.aiOff ? `<p class="small muted">Les réponses automatiques sont momentanément arrêtées : la recherche des procédures fonctionne.</p>` : `<div class="try"><span>Exemples :</span>${sugg.map((t) => `<button type="button" data-hq="${esc(t)}">${esc(t)}</button>`).join("")}</div>`}</div>
+      </section>
+      <a class="help-card" href="#/demande/new${task ? "?task=" + encodeURIComponent(task.id) : fid ? "?f=" + encodeURIComponent(fid) : ""}">
+        <span class="hc-ico">${ic("send")}</span>
+        <div class="hc-body"><h2>Demander de l'aide au responsable</h2><p>Ta demande lui arrive directement. Tu suis sa réponse dans « Mes demandes ».</p></div>${ic("right")}
+      </a>
+      <a class="help-card" href="#/avis">
+        <span class="hc-ico idea">${ic("bulb")}</span>
+        <div class="hc-body"><h2>Proposer une idée</h2><p>Une idée pour simplifier le travail, une remarque, la question du mois.</p></div>${ic("right")}
+      </a>
+    </div>
+    <div class="help-more">
+      <a class="help-line" href="#/demandes">${ic("inbox", "sm")}<span>Mes demandes</span>${fresh ? `<span class="badge warn">${fresh} nouvelle${fresh > 1 ? "s" : ""} réponse${fresh > 1 ? "s" : ""}</span>` : open ? `<span class="small muted">${open} en cours</span>` : ""}</a>
+      <a class="help-line" href="#/procedures">${ic("book", "sm")}<span>Parcourir les procédures</span></a>
+      <button class="help-line" type="button" data-retour>${ic("compass", "sm")}<span>Revoir la découverte</span></button>
+    </div>`;
+}
+function aideMount(root, params) {
+  const task = params.task ? findItem(params.task) : null;
+  const fid = params.f && getFiche(params.f) && canSee(params.f) ? params.f : null;
+  $("[data-retour]", root).onclick = () => startTour(true);
+  $("#helpAsk", root).onsubmit = (e) => {
+    e.preventDefault(); const q = $("#helpQ", root).value.trim();
+    if (task || fid) { location.hash = "#/assistant?" + (task ? "task=" + encodeURIComponent(task.id) : "f=" + encodeURIComponent(fid)) + (q ? "&q=" + encodeURIComponent(q) : ""); return; }
+    if (!q) { $("#helpQ", root).focus(); return; }
+    location.hash = "#/recherche?q=" + encodeURIComponent(q) + (S.aiOff ? "" : "&rep=1");
+  };
+  $$("[data-hq]", root).forEach((b) => (b.onclick = () => { const i = $("#helpQ", root); i.value = b.dataset.hq; i.focus(); }));
+  const bl = $("[data-blocked]", root); if (bl && task) bl.onclick = () => askNote(task.id, "blocked");
+  if (!TK.loaded) loadTickets().then(() => { if (TK.loaded && parseHash().name === "aide" && document.contains(root)) { const v = $("#main .view"); if (v) { v.innerHTML = viewAide(params); aideMount(v, params); } } }).catch(() => {});
+  if (window.innerWidth > 860) $("#helpQ", root).focus({ preventScroll: true });
 }
 
 /* ---------- Mes journées précédentes ---------- */
@@ -4975,11 +5055,11 @@ document.addEventListener("keydown", (e) => {
 /* ---------- Découverte à la première ouverture : trois repères, que l'on peut passer et revoir ---------- */
 const TOUR = [["#/", "Ici, tu retrouves ta journée.", "Ta prochaine action, ton parcours du jour et les consignes de ton responsable."],
   ["#/procedures", "Ici, tu consultes les procédures.", "Tout le book, par thème ou avec la recherche."],
-  ["#/assistant", "Ici, tu poses tes questions.", "L'assistant répond à partir des procédures validées et montre ses sources."]];
+  ["#/aide", "Ici, tu trouves de l'aide.", "Pose ta question dans la barre de recherche, ou touche « Besoin d'aide ? » pour demander à ton responsable ou proposer une idée."]];
 let TOUR_AT = -1;
 function tourHit() {
   $$(".tour-hit").forEach((x) => x.classList.remove("tour-hit"));
-  if (TOUR_AT >= 0) $$(`#navMain a[href="${TOUR[TOUR_AT][0]}"], #tabbar a[href="${TOUR[TOUR_AT][0]}"]`).forEach((x) => x.classList.add("tour-hit"));
+  if (TOUR_AT >= 0) $$(`#navMain a[href="${TOUR[TOUR_AT][0]}"], #tabbar a[href="${TOUR[TOUR_AT][0]}"], .topbar a[href="${TOUR[TOUR_AT][0]}"]`).forEach((x) => x.classList.add("tour-hit"));
 }
 function endTour() {
   TOUR_AT = -1; tourHit(); S.tourSeen = true; save();
@@ -6513,7 +6593,7 @@ function myTicketsHtml() {
   const card = (t) => { const s = T_STATUS[t.status], nw = unseen(t, false);
     return `<a class="tk-card ${nw ? "has-new" : ""}" href="#/demande/${encodeURIComponent(t.id)}"><div style="min-width:0"><p class="small muted">${esc(tnum(t))} · ${esc(t.category)}</p><h3>${esc(t.subject)}</h3><p class="tk-ex">${esc(s[3])}</p>
       <div class="m">${statusBadgeT(t)}${nw ? `<span class="badge">${ic("mail", "sm")} Nouvelle réponse</span>` : ""}<span class="small muted">Dernière activité : ${fmtDateTime(t.last_activity)}</span></div></div>${ic("right")}</a>`; };
-  return `<header class="task-head"><h1>Mes demandes</h1><p class="lead">Tes demandes d'aide et les réponses de ton responsable.</p></header>
+  return `<nav class="crumbs" aria-label="Fil d'Ariane"><a href="#/aide">${ic("left", "sm")} Besoin d'aide ?</a></nav><header class="task-head"><h1>Mes demandes</h1><p class="lead">Tes demandes d'aide et les réponses de ton responsable.</p></header>
     <div class="btns" style="margin-bottom:18px"><a class="btn primary" href="#/demande/new">${ic("plus")} Demander de l'aide</a></div>
     ${!TK.loaded ? `<div class="skel" aria-hidden="true"></div>` : !list.length ? `<div class="empty soft">${ILLU.help}<h3>Tu n'as aucune demande en cours.</h3><p>Si tu rencontres une difficulté, tu peux demander de l'aide ici.</p><a class="btn primary" href="#/demande/new">${ic("plus")} Demander de l'aide</a></div>`
       : `${open.length ? `<div class="tk-cards">${open.map(card).join("")}</div>` : `<p class="muted">Tu n'as aucune demande en cours.</p>`}
@@ -7760,7 +7840,7 @@ async function avisMount(root) {
   const form = (id, label, ph) => `<form class="form avis-form" id="${id}" novalidate><label class="sr-only" for="${id}T">${esc(label)}</label><textarea class="inp avis-ta" id="${id}T" rows="4" maxlength="3000" placeholder="${esc(ph)}"></textarea>
     <label class="avis-anon"><input type="checkbox" id="${id}A"> Envoyer sans mon nom</label><p class="small muted">Sans ton nom, ta responsable lit ton message mais ne sait pas qui l'a écrit, et tu ne verras pas sa réponse ici.</p>
     <div class="btns"><button class="btn primary" type="submit">${ic("send")} Envoyer</button></div></form>`;
-  box.innerHTML = `<h1 style="font-size:32px;margin-bottom:6px">Ton avis</h1>
+  box.innerHTML = `<nav class="crumbs" aria-label="Fil d'Ariane"><a href="#/aide">${ic("left", "sm")} Besoin d'aide ?</a></nav><h1 style="font-size:32px;margin-bottom:6px">Ton avis et tes idées</h1>
     <p class="lead" style="margin-bottom:18px">Tu vois des choses que personne d'autre ne voit. Dis-nous ce qui t'aiderait, ce qui manque ou ce qu'on pourrait faire mieux.</p>
     ${q ? `<section class="section xcard-in"><p class="eyebrow">${ic("bulb", "sm")} La question du mois</p><h2 class="avis-q">${esc(q.question)}</h2>
       ${done ? `<div class="notice ok">${ic("check")}<div><b>Merci, ta réponse a bien été envoyée.</b><span>Tu peux toujours envoyer une idée ci-dessous.</span></div></div>` : form("avS", "Ta réponse", "Écris ce que tu veux, même en quelques mots.")}</section>` : ""}

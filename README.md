@@ -8,8 +8,8 @@ Application interne : procédures, « Ma journée », formation, demandes et adm
 
 ## Branche `prochaine-version` (pas en ligne)
 
-Cette branche contient la prochaine version de l'application : Actualités, Mes notes, données personnelles synchronisées et gestion des collaborateurs. **Elle n'est pas en ligne** : le site publie uniquement la branche `main`.
+Cette branche contient la prochaine version : accusés de lecture, annuaire, statistiques, impression PDF, réactions et commentaires, consultation sans internet (`sw.js`), et l'interface simplifiée (une seule barre « Rechercher ou poser une question », page « Besoin d'aide ? », administration en 4 onglets). **Elle n'est pas en ligne** : le site publie uniquement la branche `main`.
 
 Pour la mettre en ligne :
-1. Exécuter dans Supabase les scripts `5-actualites.sql` et `6-notes-et-donnees-perso.sql` (ils sont dans le projet privé `book-des-process-complet`).
-2. Fusionner cette branche dans `main`.
+1. Faire une sauvegarde, puis exécuter dans Supabase le script `7-lectures-annuaire-stats.sql` (projet privé `book-des-process-complet`). Les scripts 5 et 6 sont déjà exécutés.
+2. Fusionner cette branche dans `main` (`index.html` et `sw.js`).
