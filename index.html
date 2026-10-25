@@ -2358,7 +2358,7 @@ function setRole(r) {
 }
 function openProfile() {
   if (REMOTE) return modal(`<h2 id="mtitle">Mon compte</h2>
-    <div class="radio-cards"><label style="cursor:default"><span><b>${esc(myName())}</b><br><span class="small muted">Identifiant : ${esc(account())} · ${esc(roleLabel())}</span><br><span class="small muted">${isAdmin() ? "Responsable : gère les routines, les consignes, les procédures et les comptes." : "Collaborateur : ta journée, les procédures, l'assistant, les favoris et les signalements."}</span></span></label></div>
+    <div class="radio-cards"><label style="cursor:default"><span><b>${esc(myName())}</b><br><span class="small muted">Identifiant : ${esc(account())} · ${esc(roleLabel())}</span><br><span class="small muted">${isAdmin() ? "Responsable : gère les routines, les consignes, les procédures et les comptes." : "Collaborateur : ta journée, les procédures, l'assistant et les signalements."}</span></span></label></div>
     <details class="toc-m" style="display:block" id="pwBox"><summary>${ic("lock", "sm")} Changer mon mot de passe</summary><form class="form" id="myPw" novalidate style="padding-bottom:12px">${passwordForm("mp")}<div><button class="btn primary" type="submit">Enregistrer le mot de passe</button></div></form></details>
     <div class="btns">${isAdmin() ? `<a class="btn" href="#/admin" data-close>${ic("admin")} Administration</a><a class="btn" href="#/admin/comptes" data-close>${ic("users")} Gestion des collaborateurs</a>` : ""}<a class="btn" href="#/notes" data-close>${ic("notebook")} Mes notes</a><a class="btn" href="#/journal" data-close>${ic("history")} Mes journées précédentes</a><a class="btn" href="#/avis" data-close>${ic("bulb")} Donner mon avis</a><button class="btn danger" type="button" id="logoutBtn">Se déconnecter</button><button class="btn ghost" type="button" data-close>Fermer</button></div>`, (m) => {
     $$("[data-close]", m).forEach((b) => b.addEventListener("click", closeModal));
@@ -2373,7 +2373,7 @@ function openProfile() {
   modal(`<h2 id="mtitle">Profil</h2>
     <p class="muted small">Démonstration : choisissez le profil pour tester les droits d'accès. En production, le profil vient de la connexion de chaque salarié.</p>
     <div class="radio-cards">
-      <label><input type="radio" name="prole" value="salarie" ${S.role === "salarie" ? "checked" : ""}> <span><b>Salarié</b><br><span class="small muted">Consulter, rechercher, poser une question, favoris, signaler un problème.</span></span></label>
+      <label><input type="radio" name="prole" value="salarie" ${S.role === "salarie" ? "checked" : ""}> <span><b>Salarié</b><br><span class="small muted">Consulter, rechercher, poser une question, signaler un problème.</span></span></label>
       <label><input type="radio" name="prole" value="admin" ${S.role === "admin" ? "checked" : ""}> <span><b>Administrateur</b><br><span class="small muted">Gérer les contenus, les publications et les accès.</span></span></label>
     </div>
     <div class="btns">${isAdmin() ? `<a class="btn" href="#/admin" data-close>${ic("admin")} Administration</a>` : ""}<button class="btn ghost" type="button" data-close>Fermer</button></div>`, (m) => {
@@ -2392,7 +2392,6 @@ function renderNav(r) {
     ["#/formation", "school", "Formation", cur === "formation"],
     ...(typeof INT !== "undefined" && INT.row && !INT.row.done_at ? [["#/integration", "checklist", "Ma première semaine", cur === "integration"]] : []),
     ["#/demandes", "inbox", "Mes demandes", cur === "demandes" || cur === "demande", `<span class="badge warn" data-tk-mine></span>`],
-    ["#/favoris", "star", "Mes favoris", cur === "favoris", `<span class="badge" id="favCount">${S.favs.filter((id) => canSee(id)).length || ""}</span>`],
     ["#/avis", "bulb", "Ton avis", cur === "avis"]
   ];
   if (isAdmin()) navMain.push(["#/admin", "admin", "Administration", cur.startsWith("admin"), `<span class="badge warn" data-tk-team hidden></span>`]);
@@ -2486,7 +2485,7 @@ function viewHome() {
       </div>
       <img src="${ASSETS.hero}" alt="" width="220">
     </section>`,
-    favs: favStrip(),
+    favs: "", // favoris retirés de l'interface le 25/10/2026 (données conservées)
     recent: recentStrip(),
     themes: `<section class="section"><div class="section-h"><h2>Les thèmes</h2></div><div class="themes">${chapters().map(themeCard).join("")}</div></section>`,
     sits: situationsSection(),
@@ -2685,7 +2684,6 @@ function viewFiche(id, params, preview) {
         <div style="min-width:0"><span class="eyebrow">${esc(c.title)}</span><h1>${esc(f.title)}</h1><p class="lead">${linkify(f.sum)}</p></div>
       </header>
       ${preview ? "" : `<div class="f-actions">
-        <button class="btn ${isFav(id) ? "fav-on" : ""}" type="button" id="favBtn" aria-pressed="${isFav(id)}">${ic("star")}<span class="lbl-fav l-wide">${isFav(id) ? "Dans mes favoris" : "Ajouter aux favoris"}</span><span class="l-narrow" aria-hidden="true">Favori</span></button>
         <button class="btn" type="button" data-report="">${ic("flag")} Signaler<span class="l-wide">&nbsp;un problème</span></button>
         <a class="btn ghost" href="#/assistant?f=${encodeURIComponent(id)}">${ic("sparkles")} <span class="l-wide">Poser une question sur cette fiche</span><span class="l-narrow" aria-hidden="true">Question</span></a>
       </div>`}
@@ -2830,7 +2828,7 @@ function route() {
   else if (r.name === "theme") { html = viewTheme(r.arg); mount = (x) => chapter(r.arg) && themeMount(x, r.arg); }
   else if (r.name === "fiche") { html = (r.params.task ? taskBanner(r.params.task) : "") + viewFiche(r.arg, r.params); mount = (x) => { ficheMount(x, r.arg, r.params); lateTaskBanner(x, r.params.task); }; }
   else if (r.name === "recherche") { html = viewResults(r.params); mount = (x) => resultsMount(x, r.params); }
-  else if (r.name === "favoris") { html = viewFavs(); mount = favsMount; }
+  else if (r.name === "favoris") { html = viewHome(); mount = homeMount; } // favoris retirés : ancien lien → procédures
   else if (r.name === "demandes") { html = viewMyTickets(); mount = myTicketsMount; }
   else if (r.name === "demande" && r.arg === "new") { html = viewTicketForm(r.params); mount = (x) => ticketFormMount(x, r.params); }
   else if (r.name === "demande") { const kid = dec(r.arg || ""); html = viewTicket(kid, r.params); mount = (x) => ticketMount(x, kid, r.params); }
