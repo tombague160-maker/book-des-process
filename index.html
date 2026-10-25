@@ -2457,6 +2457,7 @@ function renderNav(r) {
     ["#/formation", "school", "Formation", cur === "formation"],
     ...(typeof INT !== "undefined" && INT.row && !INT.row.done_at ? [["#/integration", "checklist", "Ma première semaine", cur === "integration"]] : []),
     ["#/demandes", "inbox", "Mes demandes", cur === "demandes" || cur === "demande", `<span class="badge warn" data-tk-mine></span>`],
+    ["#/annuaire", "phone", "Annuaire", cur === "annuaire"],
     ["#/avis", "bulb", "Ton avis", cur === "avis"]
   ];
   if (isAdmin()) navMain.push(["#/admin", "admin", "Administration", cur.startsWith("admin"), `<span class="badge warn" data-tk-team hidden></span>`]);
