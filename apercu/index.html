@@ -803,6 +803,47 @@ button, .btn, .chip, .tabbar a, .nav a, .tick, .sit-tabs button, .tabs a, .help-
 .help-btn[aria-current="page"] { background: var(--blue); color: #fff; }
 .help-btn .tk-dot { position: absolute; top: 1px; right: 1px; margin: 0; box-shadow: 0 0 0 2px #fff; }
 .help-btn .tk-dot[hidden] { display: none; }
+/* Accompagnement : réponses rédigées en conseils */
+.ans { line-height: 1.55; }
+.ans-lead { font-size: 1.03rem; }
+.ans-lead i { font-style: normal; font-weight: 600; color: var(--label); }
+.ans-sec { display: grid; gap: 8px; }
+.ans-sec h4 { font-size: .9375rem; font-weight: 700; letter-spacing: -.01em; display: flex; align-items: center; gap: 6px; color: var(--label); }
+.ans-sec ul { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
+.ans-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 8px; margin: 0; }
+.ans-facts > div { background: var(--grouped); border-radius: var(--r-sm); padding: 10px 12px; box-shadow: inset 0 0 0 1px var(--sep); min-width: 0; }
+.ans-facts dt { font-size: .75rem; font-weight: 600; color: var(--blue); display: flex; gap: 5px; align-items: center; }
+.ans-facts dd { margin: 3px 0 0; font-size: .875rem; color: var(--label); }
+.adv-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: adv; }
+.adv-step { counter-increment: adv; position: relative; padding: 9px 0 9px 40px; box-shadow: inset 0 -1px 0 var(--sep); }
+.adv-step:last-child { box-shadow: none; }
+.adv-step::before { content: counter(adv); position: absolute; left: 0; top: 8px; width: 26px; height: 26px; border-radius: 50%; background: var(--sereo-sage-tint); color: var(--blue); font-weight: 700; font-size: .8125rem; display: grid; place-items: center; font-variant-numeric: tabular-nums; }
+.adv-step b { font-weight: 600; }
+.adv-path { display: block; margin-top: 4px; }
+.adv-grp { font-size: .75rem; font-weight: 700; color: var(--sereo-coral-ink); padding: 12px 0 2px; }
+.ans-done ul { list-style: none; padding: 0; }
+.ans-done li { position: relative; padding-left: 24px; }
+.ans-done li::before { content: ""; position: absolute; left: 2px; top: .45em; width: 12px; height: 7px; border-left: 2px solid var(--green); border-bottom: 2px solid var(--green); transform: rotate(-45deg); }
+.ans-gap { background: var(--orange-tint); border-radius: var(--r-sm); padding: 10px 12px; }
+.ans-gap h4 { color: var(--orange); }
+.ans-cos { gap: 10px; }
+.ans-links { list-style: none; padding: 0 !important; }
+.ans-links li { padding: 2px 0; }
+.ans-fact { background: var(--sereo-sage-tint); border-radius: var(--r-sm); padding: 12px 14px; display: grid; gap: 4px; }
+.ans-fact small a { font-weight: 600; }
+.ans-actions { margin-top: 4px; }
+.ans-feedback { display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: center; padding-top: 10px; box-shadow: inset 0 1px 0 var(--sep); }
+.ans-feedback .linkbtn { display: inline-flex; gap: 4px; align-items: center; }
+.parcours { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.parcours li { display: flex; gap: 12px; padding: 10px 0; position: relative; }
+.parcours li + li { box-shadow: inset 0 1px 0 var(--sep); }
+.pc-n { flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--blue); color: #fff; font-weight: 700; font-size: .8125rem; display: grid; place-items: center; }
+.parcours p { margin: 2px 0 0; font-size: .875rem; color: var(--label-2); }
+.sit-choices button span { font-size: .8125rem; }
+.fg-cta { margin: 6px 0 14px; padding: 12px 14px; border-radius: var(--r-lg); background: var(--sereo-sage-tint); }
+.g-intro { display: grid; gap: 8px; max-width: 760px; margin: 0 0 16px; }
+.g-intro p { margin: 0; }
+@media (max-width: 600px) { .adv-step { padding-left: 36px; } .ans-facts { grid-template-columns: minmax(0, 1fr); } }
 /* Page « Besoin d'aide ? » */
 .help-hub { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; max-width: 900px; }
 .help-card { display: flex; align-items: flex-start; gap: 16px; padding: 22px; border-radius: var(--r-xl); background: var(--bg); box-shadow: 0 0 0 1px var(--sep), var(--shadow-1); color: var(--label); }
@@ -826,6 +867,12 @@ a.help-card > svg:last-child { margin-left: auto; color: var(--label-3); flex: n
 .help-line svg { color: var(--blue); }
 .help-line .badge, .help-line .muted { margin-left: auto; }
 .answer { max-width: 800px; margin-bottom: 26px; }
+.ai-box { max-width: 800px; margin-bottom: 14px; padding: 16px 18px; border-radius: var(--r-lg); background: var(--sereo-sage-tint); display: grid; gap: 8px; }
+.ai-box .who { display: flex; align-items: center; gap: 8px; font-size: .8125rem; color: var(--label-2); font-weight: 600; }
+.ai-box .av { width: 26px; height: 26px; border-radius: 50%; background: var(--blue); color: #fff; display: grid; place-items: center; }
+.ai-body { display: grid; gap: 8px; }
+.ai-cite { display: inline-block; font-size: .75rem; font-weight: 700; padding: 0 6px; border-radius: 6px; background: var(--bg); box-shadow: 0 0 0 1px var(--sep-strong); }
+.suggest .s-sit { display: flex; gap: 8px; align-items: center; font-weight: 600; color: var(--blue); }
 .answer .note { font-size: .75rem; color: var(--label-3); display: flex; gap: 5px; align-items: center; }
 @media (max-width: 700px) { .help-hub { grid-template-columns: minmax(0, 1fr); } .help-card { padding: 18px; gap: 12px; } .help-card.main-q .hc-ico { display: none; } }
 @media (max-width: 600px) { .subtabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; } .subtabs::-webkit-scrollbar { display: none; } .subtabs a { white-space: nowrap; flex: none; } }
@@ -2478,14 +2525,14 @@ function renderNav(r) {
     ["#/actualites", "news", "Actualités", cur === "actualites" || cur === "actualite", `<span class="badge news" data-actu-n></span>`],
     ["#/", "day", "Ma journée", cur === "home" || cur === "tache" || cur === "journal" || cur === "guide"],
     ["#/notes", "notebook", "Mes notes", cur === "notes"],
-    ["#/procedures", "book", "Procédures", cur === "procedures" || cur === "themes" || cur === "theme" || cur === "fiche" || cur === "recherche" || cur === "assistant"],
+    ["#/procedures", "book", "Procédures", cur === "procedures" || cur === "themes" || cur === "theme" || cur === "fiche" || cur === "recherche" || cur === "assistant" || cur === "situation"],
     ["#/formation", "school", "Formation", cur === "formation"],
     ...(typeof INT !== "undefined" && INT.row && !INT.row.done_at ? [["#/integration", "checklist", "Ma première semaine", cur === "integration"]] : []),
     ["#/annuaire", "phone", "Annuaire", cur === "annuaire"]
   ];
   if (isAdmin()) navMain.push(["#/admin", "admin", "Administration", cur.startsWith("admin"), `<span class="badge warn" data-tk-team hidden></span>`]);
   $("#navMain").innerHTML = navMain.map(([h, i, l, on, extra]) => `<a href="${h}" ${on ? 'aria-current="page"' : ""}>${ic(i)}<span>${l}</span>${extra || ""}</a>`).join("");
-  const tabs = [["#/actualites", "news", "Actus", cur === "actualites" || cur === "actualite"], ["#/", "day", "Ma journée", cur === "home" || cur === "tache" || cur === "journal" || cur === "guide"], ["#/notes", "notebook", "Notes", cur === "notes"], ["#/procedures", "book", "Procédures", cur === "procedures" || cur === "themes" || cur === "theme" || cur === "fiche" || cur === "recherche" || cur === "assistant"], ["#/formation", "school", "Formation", cur === "formation"]];
+  const tabs = [["#/actualites", "news", "Actus", cur === "actualites" || cur === "actualite"], ["#/", "day", "Ma journée", cur === "home" || cur === "tache" || cur === "journal" || cur === "guide"], ["#/notes", "notebook", "Notes", cur === "notes"], ["#/procedures", "book", "Procédures", cur === "procedures" || cur === "themes" || cur === "theme" || cur === "fiche" || cur === "recherche" || cur === "assistant" || cur === "situation"], ["#/formation", "school", "Formation", cur === "formation"]];
   if (isAdmin()) tabs.push(["#/admin", "admin", "Admin", cur.startsWith("admin")]);
   $("#tabbar").innerHTML = tabs.map(([h, i, l, on]) => `<a href="${h}" ${on ? 'aria-current="page"' : ""}>${ic(i)}<span>${l}</span>${h === "#/actualites" ? `<i class="tk-dot" data-actu-dot hidden></i>` : h === "#/demandes" ? `<i class="tk-dot" data-tk-dot hidden></i>` : h === "#/admin" ? `<i class="tk-dot" data-adm-dot hidden></i>` : ""}</a>`).join("");
   ensureTickets(); ensureAdminCounts(); ticketBadges(); ensureActus(); actuBadges();
@@ -2524,6 +2571,8 @@ function attachSearch(root) {
       const sits = []; BOOK.jedois.forEach((c) => c.items.forEach(([txt, ids]) => { const nt = norm(txt); if (nq.split(" ").every((w) => nt.includes(w)) && ids.some((i) => canSee(i))) sits.push([txt, ids]); }));
       items = [];
       let h = "";
+      const smx = !S.aiOff && q.length >= 4 && typeof matchSituation === "function" ? matchSituation(q) : null;
+      if (smx && !smx.sit.broad) { items.push(`#/situation/${smx.sit.id}`); h += `<div class="s-head">Je t'accompagne</div><div role="option" id="${inp.id}-o${items.length - 1}" data-i="${items.length - 1}" aria-selected="false" class="s-sit">${ic("compass", "sm")}<span>${esc(smx.sit.t)}</span></div>`; }
       const good = res.results.filter((r) => r.score >= 1.5 && r.cov >= 0.5).slice(0, 5);
       if (good.length) {
         h += `<div class="s-head">Procédures</div>`;
@@ -2561,24 +2610,24 @@ function attachSearch(root) {
 }
 
 /* ===================== Accueil ===================== */
-const TRY = ["arrêt maladie", "devis ménage", "numéro d'astreinte", "changer un RIB", "kms manquants"];
+const TRY = ["Une intervenante est malade", "Le client n'est pas content", "J'ai un problème de planning", "Devis ménage", "C'est la fin du mois"];
 function viewHome() {
   const sections = {
     hero: `<section class="hero">
       <div class="hero-text">
-        <div><p class="hello">Procédures</p><h1>Que recherches-tu ?</h1></div>
-        ${searchBox({ id: "qhome", big: true, placeholder: "Un mot ou une question : « remplacer un intervenant »…" })}
-        <div class="try"><span>Essaie :</span>${TRY.map((t) => `<button type="button" data-try="${esc(t)}">${esc(t)}</button>`).join("")}</div>
+        <div><p class="hello">Procédures</p><h1>Comment je peux t'aider ?</h1></div>
+        ${searchBox({ id: "qhome", big: true, label: "Décris ta situation ou cherche une procédure", placeholder: "Décris ta situation : « un client n'est pas content »…" })}
+        <div class="try"><span>Par exemple :</span>${TRY.map((t) => `<button type="button" data-try="${esc(t)}">${esc(t)}</button>`).join("")}</div>
       </div>
       <img src="${ASSETS.hero}" alt="" width="220">
     </section>`,
     favs: "", // favoris retirés de l'interface le 25/10/2026 (données conservées)
     recent: recentStrip(),
     themes: `<section class="section"><div class="section-h"><h2>Les thèmes</h2></div><div class="themes">${chapters().map(themeCard).join("")}</div></section>`,
-    sits: situationsSection(),
+    sits: sitHubSection(),
     updates: updatesSection()
   };
-  const orders = { A: ["hero", "favs", "recent", "themes", "sits", "updates"], B: ["hero", "themes", "favs", "recent", "sits", "updates"], C: ["hero", "sits", "favs", "recent", "themes", "updates"] };
+  const orders = { A: ["hero", "sits", "recent", "themes", "updates"], B: ["hero", "themes", "favs", "recent", "sits", "updates"], C: ["hero", "sits", "favs", "recent", "themes", "updates"] };
   const order = orders[S.homeVariant] || orders.A;
   const vb = isAdmin() && false ? `<div class="variant-bar" role="group" aria-label="Disposition de l'accueil">${ic("eye", "sm")} Disposition de l'accueil (visible par les administrateurs) :
     ${[["A", "Recherche d'abord — recommandée"], ["B", "Thèmes d'abord"], ["C", "Situations d'abord"]].map(([k, l]) => `<button class="chip" style="min-height:32px" type="button" data-variant="${k}" aria-pressed="${S.homeVariant === k}">${k} · ${l}</button>`).join("")}</div>` : "";
@@ -2588,7 +2637,7 @@ function homeMount(root) {
   attachSearch(root);
   $$("[data-try]", root).forEach((b) => (b.onclick = () => { location.hash = `#/recherche?q=${encodeURIComponent(b.dataset.try)}`; }));
   $$("[data-variant]", root).forEach((b) => (b.onclick = () => { const v = b.dataset.variant; saveSetting("homeVariant", () => { S.homeVariant = v; }, null, null, route); }));
-  mountSituations(root);
+  mountSitHub(root);
 }
 function themeCard(c) {
   const n = fichesOf(c.id).length;
@@ -2609,7 +2658,7 @@ function situationsSection() {
   if (!BOOK.jedois || !BOOK.jedois.length) return "";
   if (sitTab >= BOOK.jedois.length) sitTab = 0;
   return `<section class="section" id="sits"><div class="section-h"><h2>Je dois…</h2><span class="small muted">Raccourcis par situation, repris de l'index du book</span></div>
-    <div class="sit-tabs" role="group" aria-label="Catégories">${BOOK.jedois.map((c, i) => `<button type="button" data-sit="${i}" aria-pressed="${i === sitTab}">${esc(c.cat)}</button>`).join("")}</div>
+    <div class="sit-tabs" role="group" aria-label="Catégories">${BOOK.jedois.map((c, i) => `<button type="button" data-sittab="${i}" aria-pressed="${i === sitTab}">${esc(c.cat)}</button>`).join("")}</div>
     <div class="situations" id="sitList">${sitItems(sitTab)}</div></section>`;
 }
 function sitItems(i) {
@@ -2620,7 +2669,7 @@ function sitItems(i) {
   }).join("");
 }
 function mountSituations(root) {
-  $$("[data-sit]", root).forEach((b) => (b.onclick = () => { sitTab = +b.dataset.sit; $$("[data-sit]", root).forEach((x) => x.setAttribute("aria-pressed", x === b)); $("#sitList", root).innerHTML = sitItems(sitTab); }));
+  $$("[data-sittab]", root).forEach((b) => (b.onclick = () => { sitTab = +b.dataset.sittab; $$("[data-sittab]", root).forEach((x) => x.setAttribute("aria-pressed", x === b)); $("#sitList", root).innerHTML = sitItems(sitTab); }));
 }
 function updatesSection() {
   const ups = allIds().filter((id) => meta(id).updated && canSee(id) && !meta(id).archived).sort((a, b) => (meta(b).updated > meta(a).updated ? 1 : -1)).slice(0, 4);
@@ -2775,6 +2824,7 @@ function viewFiche(id, params, preview) {
         <button class="btn" type="button" id="printBtn" aria-label="Imprimer ou enregistrer en PDF" title="Imprimer ou enregistrer en PDF">${ic("file")}<span class="l-wide">Imprimer / PDF</span></button>
         <a class="btn ghost" href="#/assistant?f=${encodeURIComponent(id)}">${ic("sparkles")} <span class="l-wide">Poser une question sur cette fiche</span><span class="l-narrow" aria-hidden="true">Question</span></a>
       </div>`}
+      ${!preview && ficheGuideSteps(f).length >= 2 ? `<div class="guide-cta fg-cta"><a class="btn primary" href="#/fiche/${id}/guide">${ic("compass")} Me guider pas à pas</a><span class="small muted">Tu fais cette procédure maintenant ? Une étape à la fois, avec la vérification à la fin.</span></div>` : ""}
       ${guideHtml(f, id, preview)}
       ${toc ? `<details class="toc-m"><summary>${ic("list", "sm")} Sommaire de la fiche</summary><nav>${heads.map(([h, a]) => `<a href="#/fiche/${id}?s=${a}">${esc(h)}</a>`).join("")}</nav></details>` : ""}
       ${blocks ? `<h2 class="detail-h">Le détail de la fiche</h2>` : ""}${conf}${gaps}${contacts}${blocks}
@@ -2843,7 +2893,8 @@ function viewResults(params) {
   if (!q) return `<h1 style="font-size:30px;margin-bottom:16px">Rechercher ou poser une question</h1>${box}<div class="section"><h2 style="font-size:18px">Idées de recherche</h2><div class="chips">${TRY.concat(["période d'essai", "tarif jardinage", "mission Domiserve"]).map((t) => `<a class="chip" href="#/recherche?q=${encodeURIComponent(t)}">${esc(t)}</a>`).join("")}</div></div><div style="margin-top:28px">${situationsSection()}</div>`;
   const res = search(q); const conf = confidence(res);
   // Une vraie question (« comment… ? », « je fais quoi… ») : la réponse du book passe en premier
-  const asked = !S.aiOff && (params.rep === "1" || isQuestion(q));
+  const sm0 = !S.aiOff && !directId(q) ? matchSituation(q) : null;
+  const asked = !S.aiOff && params.rep !== "0" && (params.rep === "1" || isQuestion(q) || useSituation(q, sm0));
   let ans = "";
   if (asked) { try { ans = compose(q, null); } catch (e) { ans = ""; } }
   const ansBox = ans ? `<section class="answer msg a" aria-label="Réponse du book"><div class="who"><span class="av">${ic("sparkles", "sm")}</span>Réponse du book</div><div class="bubble ans" id="ansBody" aria-live="polite">${ans}</div><p class="note">${ic("info", "sm")} Réponse construite uniquement avec les procédures validées (${esc(BOOK.source.version)}). En cas de doute, ouvre la fiche ou demande à ton responsable.</p></section>` : "";
@@ -2854,8 +2905,12 @@ function viewResults(params) {
   const miss = res.unknown.length ? `<p class="missing">Aucune fiche ne contient : ${res.unknown.map((w) => `<s>${esc(w)}</s>`).join(", ")}</p>` : "";
   let body = "";
   if (ans) {
-    body = shown.length && conf !== "none" ? `<h2 style="font-size:18px;margin:6px 0 10px">${conf === "weak" ? "Peut-être en lien" : "Les procédures en lien"}</h2><div class="res">${shown.slice(0, conf === "weak" ? 4 : 8).map((r) => resultItem(r)).join("")}</div>` : "";
-    if (conf === "none" || conf === "weak") body += `<h2 style="font-size:18px;margin:26px 0 10px">Parcourir les thèmes</h2><div class="chips">${chapters().map((c) => `<a class="chip" href="#/theme/${c.id}">${ic(c.icon, "sm")} ${esc(c.title)}</a>`).join("")}</div>`;
+    const inAns = new Set((ans.match(/data-ans-fiches="([^"]*)"/) || ["", ""])[1].split(",").filter(Boolean));
+    const fromSit = /data-ans-src="sit"/.test(ans);
+    const more = fromSit ? [] : shown.filter((r) => !inAns.has(r.id)).slice(0, 4);
+    body = more.length && conf !== "none" ? `<h2 style="font-size:18px;margin:6px 0 10px">${inAns.size ? "D'autres procédures qui peuvent t'aider" : conf === "weak" ? "Peut-être en lien" : "Les procédures en lien"}</h2><div class="res">${more.map((r) => resultItem(r)).join("")}</div>` : "";
+    if (fromSit) body += `<p class="small"><a href="#/recherche?q=${encodeURIComponent(q)}&rep=0">${ic("search", "sm")} Voir toutes les procédures qui parlent de « ${esc(q)} »</a></p>`;
+    else if (conf === "none" || conf === "weak") body += `<h2 style="font-size:18px;margin:26px 0 10px">Parcourir les thèmes</h2><div class="chips">${chapters().map((c) => `<a class="chip" href="#/theme/${c.id}">${ic(c.icon, "sm")} ${esc(c.title)}</a>`).join("")}</div>`;
   } else if (conf === "none" || conf === "weak") {
     body = `<div class="empty" style="margin-bottom:20px"><h3>Aucune procédure ne correspond clairement à « ${esc(q)} »</h3>
       <p>Essaie avec un autre mot, plus simple ou plus courant (par exemple « congés », « absence », « devis », « clé »), ou parcours les thèmes.</p>
@@ -2871,16 +2926,12 @@ function viewResults(params) {
       ${chs.length > 1 ? `<div class="chips" style="margin-bottom:14px" role="group" aria-label="Filtrer par thème"><button class="chip" type="button" data-chf="" aria-pressed="true">Tous</button>${chs.map((ch) => `<button class="chip" type="button" data-chf="${ch}">${esc(chapter(ch) ? chapter(ch).title : ch)}</button>`).join("")}</div>` : ""}
       <div class="res" id="resList">${shown.map((r) => `<div data-ch="${getFiche(r.id).ch}">${resultItem(r)}</div>`).join("")}</div>`;
   }
-  return `<h1 style="font-size:28px;margin-bottom:16px">${ans ? "Ta question" : "Résultats pour « " + esc(q) + " »"}</h1>${box}${ansBox}${vagueBox}${ans ? "" : miss}${body}`;
+  return `<h1 style="font-size:28px;margin-bottom:16px">${ans ? (isQuestion(q) ? "Ta question" : "Je t'accompagne") : "Résultats pour « " + esc(q) + " »"}</h1>${box}${ansBox}${vagueBox}${ans ? "" : miss}${body}`;
 }
 function resultsMount(root, params) {
-  attachSearch(root); mountSituations(root);
-  const ab = $("#ansBody", root);
-  if (ab) ab.addEventListener("click", (e) => {
-    const a = e.target.closest("[data-ask]"); if (a) { location.hash = "#/recherche?q=" + encodeURIComponent(a.dataset.ask); return; }
-    const p = e.target.closest("[data-pick]"); if (p) { try { ab.innerHTML = answerFiche(p.dataset.q, p.dataset.pick, null); } catch (x) { /* la liste des procédures reste affichée */ } return; }
-    const r = e.target.closest("[data-repq]"); if (r) openReport(r.dataset.fiche || null, r.dataset.type || "unclear", r.dataset.repq, "assistant");
-  });
+  attachSearch(root);
+  bindAnswer($("#ansBody", root));
+  if (params.q) aiRefine(root, params.q.trim());
   if (params.q) { try { const r = search(params.q.trim()), cf = confidence(r); logSearch(params.q, cf === "none" || cf === "weak" ? 0 : r.results.length); } catch (e) { /* */ } }
   const mb = $("[data-miss]", root); if (mb) mb.onclick = () => openReport(null, "missing", `Recherche sans réponse : « ${params.q} »`);
   $$("[data-chf]", root).forEach((b) => (b.onclick = () => { $$("[data-chf]", root).forEach((x) => x.setAttribute("aria-pressed", x === b)); $$("#resList > div", root).forEach((d) => (d.hidden = b.dataset.chf && d.dataset.ch !== b.dataset.chf)); }));
@@ -2930,6 +2981,8 @@ function route() {
   else if (r.name === "journal") { html = viewJournal(); mount = journalMount; }
   else if (r.name === "procedures" || r.name === "themes") { html = viewHome(); mount = homeMount; }
   else if (r.name === "theme") { html = viewTheme(r.arg); mount = (x) => chapter(r.arg) && themeMount(x, r.arg); }
+  else if (r.name === "fiche" && r.rest[0] === "guide") { html = viewFicheGuide(r.arg, r.params); mount = (x) => ficheGuideMount(x, r.arg, r.params); }
+  else if (r.name === "situation") { html = viewSituation(dec(r.arg || "")); mount = situationMount; }
   else if (r.name === "fiche") { html = (r.params.task ? taskBanner(r.params.task) : "") + viewFiche(r.arg, r.params); mount = (x) => { ficheMount(x, r.arg, r.params); lateTaskBanner(x, r.params.task); }; }
   else if (r.name === "recherche") { html = viewResults(r.params); mount = (x) => resultsMount(x, r.params); }
   else if (r.name === "favoris") { html = viewHome(); mount = homeMount; } // favoris retirés : ancien lien → procédures
@@ -2953,7 +3006,7 @@ function route() {
   const key = location.hash.split("?s=")[0];
   if (key !== lastRoute && !r.params.s) { window.scrollTo(0, 0); if (r.name !== "procedures" && r.name !== "themes" && r.name !== "recherche" && r.name !== "assistant") main.focus({ preventScroll: true }); }
   lastRoute = key;
-  const titles = { home: "Ma journée", tache: "Tâche", guide: "Me guider", journal: "Mes journées", procedures: "Procédures", themes: "Procédures", favoris: "Procédures", aide: "Besoin d'aide ?", demandes: "Mes demandes", demande: "Demande d'aide", assistant: "Assistant", recherche: "Rechercher ou poser une question", formation: "Formation", integration: "Ma première semaine", avis: "Ton avis", notes: "Mes notes", annuaire: "Annuaire", actualites: "Actualités", actualite: "Actualité" };
+  const titles = { home: "Ma journée", tache: "Tâche", guide: "Me guider", journal: "Mes journées", procedures: "Procédures", themes: "Procédures", favoris: "Procédures", aide: "Besoin d'aide ?", demandes: "Mes demandes", demande: "Demande d'aide", assistant: "Assistant", recherche: "Rechercher ou poser une question", situation: "Accompagnement", formation: "Formation", integration: "Ma première semaine", avis: "Ton avis", notes: "Mes notes", annuaire: "Annuaire", actualites: "Actualités", actualite: "Actualité" };
   document.title = (r.name === "fiche" && getFiche(r.arg) ? r.arg + " " + getFiche(r.arg).title : r.name === "theme" && chapter(r.arg) ? chapter(r.arg).title : r.name === "formation" && r.arg === "video" && fvById(r.rest[0]) ? fvById(r.rest[0]).t : titles[r.name] || "Administration") + " · Book des Process";
 }
 
@@ -3033,6 +3086,7 @@ function assistantMount(root, params) {
   inp.addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); form.requestSubmit(); } });
   inp.addEventListener("input", () => { inp.style.height = "auto"; inp.style.height = Math.min(160, inp.scrollHeight) + "px"; });
   chat.addEventListener("click", (e) => {
+    const sb = e.target.closest("[data-sit]"); if (sb) { const st = sitById(sb.dataset.sit); if (st) { const lab = st.t; CHAT.push({ role: "u", text: "→ " + lab }); chat.insertAdjacentHTML("beforeend", msgHtml({ role: "u", text: "→ " + lab })); const html = situationAnswer(st, sb.dataset.q || lab); CHAT.push({ role: "a", html }); chat.insertAdjacentHTML("beforeend", msgHtml({ role: "a", html })); requestAnimationFrame(scrollChat); } return; }
     const a = e.target.closest("[data-ask]"); if (a) { ask(a.dataset.ask); return; }
     const p = e.target.closest("[data-pick]"); if (p) { CHAT.push({ role: "u", text: "→ " + p.dataset.label }); chat.insertAdjacentHTML("beforeend", msgHtml({ role: "u", text: "→ " + p.dataset.label })); ask(p.dataset.q, p.dataset.pick); return; }
     const r = e.target.closest("[data-repq]"); if (r) { openReport(r.dataset.fiche || null, r.dataset.type || "unclear", r.dataset.repq, "assistant"); }
@@ -3047,6 +3101,10 @@ function compose(q, ctx) {
   const nq = norm(q);
   if (/^(bonjour|salut|hello|coucou|merci|merci beaucoup|ok|d accord|super|parfait)( .*)?$/.test(nq) && parseQuery(q).length <= 1)
     return /merci|ok|accord|super|parfait/.test(nq) ? `<p>Avec plaisir. Pose-moi une autre question quand tu veux.</p>` : `<p>Bonjour ! Dis-moi ce que tu cherches, par exemple « comment remplacer un intervenant absent ? ».</p>`;
+  if (!ctx && !directId(q)) {
+    const sm = matchSituation(q);
+    if (useSituation(q, sm)) return situationAnswer(sm.sit, q);
+  }
   if (vagueQuery(q)) return ctx ? answerFiche(q, ctx, null) : askPrecise(q);
   const res = search(q);
   if (ctx) res.results.forEach((r) => { if (r.id === ctx) r.score = r.score * 2 + 3; });
@@ -3055,13 +3113,13 @@ function compose(q, ctx) {
   const top = res.results[0], second = res.results[1];
   const conf = confidence(res);
   const strongUnknown = res.unknown.filter((w) => w.length >= 3);
-  if (!top || conf === "none" || (conf === "weak" && !(ctx && top.id === ctx)) || (strongUnknown.length && top.cov < 0.67)) return notFound(q, res);
+  if (!top || conf === "none" || (conf === "weak" && !(ctx && top.id === ctx)) || (strongUnknown.length && top.cov < 0.67) || (!ctx && top.cov < 0.5 && !res.direct)) return notFound(q, res);
   const isFactQ = FACT.test(nq) && !/\bcomment\b/.test(nq);
   if (!ctx && conf === "several" && second && top.score < 1.35 * second.score) {
     // Les deux premières fiches vont ensemble dans l'index « Je dois… » : on répond avec la première de la ligne
     const pair = []; BOOK.jedois.forEach((c) => c.items.forEach(([t, ids]) => { if (ids.includes(top.id) && ids.includes(second.id)) pair.push(ids); }));
-    if (pair.length) return answerFiche(q, pair[0].find((i) => i === top.id || i === second.id), res);
-    if (isFactQ) return answerFiche(q, top.id, res);
+    if (pair.length) return guideAnswer(pair[0].find((i) => i === top.id || i === second.id), q, {});
+    if (isFactQ) return guideAnswer(top.id, q, {});
     const cands = res.results.filter((r) => r.score >= 0.62 * top.score && r.cov >= 0.5).slice(0, 4);
     if (cands.length >= 2) {
       return `<p><b>Ta question peut correspondre à plusieurs situations.</b> Laquelle te concerne ?</p>
@@ -3069,7 +3127,7 @@ function compose(q, ctx) {
         <p class="small muted">Aucune ne correspond ? Reformule avec d'autres mots ou <a href="#/recherche?q=${encodeURIComponent(q)}">vois tous les résultats</a>.</p>`;
     }
   }
-  return answerFiche(q, top.id, res);
+  return ctx ? answerFiche(q, top.id, res) : guideAnswer(top.id, q, {});
 }
 function askPrecise(q) {
   const ex = ["Comment enregistrer une absence dans Ximi ?", "Un client se plaint, je fais quoi ?", "Comment on prépare un devis ?"];
@@ -3151,6 +3209,411 @@ function answerFiche(q, fid, res) {
   parts.push(`<div class="sources"><span>Sources :</span><a href="#/fiche/${fid}${pass[0] ? "?s=" + pass[0].a : ""}">${ic("file", "sm")} Fiche ${fid} · p. ${esc(f.pages)}</a>${also.map((x) => `<a href="#/fiche/${x.id}">${ic("file", "sm")} Voir aussi ${x.id} — ${esc(getFiche(x.id).title)}</a>`).join("")}</div>`);
   parts.push(`<div class="btns"><a class="btn sm primary" href="#/fiche/${fid}">Voir la procédure complète</a><button class="btn sm ghost" type="button" data-repq="${esc("Réponse peu utile à la question : « " + q + " »")}" data-fiche="${fid}" data-type="unclear">${ic("flag", "sm")} Cette réponse ne m'aide pas</button><button class="btn sm ghost" type="button" data-repq="${esc("Réponse incorrecte de l'assistant à la question : « " + q + " »")}" data-fiche="${fid}" data-type="incorrect">${ic("alert", "sm")} Signaler une réponse incorrecte</button></div>`);
   return parts.join("");
+}
+
+/* ===================== Accompagnement : comprendre la situation, conseiller, guider =====================
+   1. SITS : les situations du quotidien, dans les mots de l'équipe, reliées aux fiches du book.
+      Une situation large (« un problème de planning ») pose d'abord une question pour préciser.
+      L'ordre des fiches d'un parcours reprend ce que le book dit lui-même (renvois « fiche X.Y »).
+   2. guideAnswer() rédige la réponse en conseils (par où commencer, étapes, points d'attention,
+      comment savoir que c'est fini, si ça bloque, et ensuite), uniquement avec le contenu des fiches.
+   3. Mode « Me guider » : n'importe quelle procédure, une étape à la fois.                       */
+const SIT_CATS = [
+  ["planning", "calendar", "Planning"], ["intervenants", "users", "Intervenants"], ["clients", "user", "Clients"],
+  ["devis", "file", "Devis et nouveaux clients"], ["recrutement", "userCheck", "Recrutement et embauche"],
+  ["mois", "checklist", "Fin de mois"], ["urgences", "alert", "Urgences et astreinte"], ["quotidien", "inbox", "Au quotidien"]
+];
+/* m : motifs. Un motif = des groupes ; chaque groupe = des mots possibles séparés par « | ».
+   Tous les groupes d'un motif doivent être présents. Mot de 4 lettres ou moins : mot exact (pluriel accepté) ;
+   au-delà : début de mot. */
+const SITS = [
+  // ---- Planning
+  { id: "planning", cat: "planning", broad: true, t: "J'ai un problème de planning", ask: "Ton problème de planning, c'est plutôt :",
+    choix: ["absence", "apourvoir", "anomalie", "regles", "periodicite", "trajet", "km", "conges", "envoi-plannings", "squelette"],
+    m: [[["planning|plannings|planif"], ["probleme|souci|soucis|marche pas|va pas|bug|erreur|bloque|galere|aide|help|comprends pas|difficult|pas fini|pas termine|incomplet|pas complet|en retard"]], [["planning|plannings"]]] },
+  { id: "apourvoir", cat: "planning", t: "Des interventions n'ont pas d'intervenant (« À pourvoir »)", f: ["03.3"],
+    m: [[["pourvoir"]], [["trou|trous|vide|vides|combler"], ["planning|plannings|semaine|journee"]], [["intervention|interventions|prestation|prestations|mission|missions"], ["sans intervenant|sans personne|non attribu|pas attribu|personne pour|pas d intervenant"]], [["combler|remplir le planning|trouver quelqu un pour|personne pour aller|personne pour y aller|personne pour faire|il manque quelqu un|non couvert|non couverte|pas couvert|pas couverte|sans remplacant"]]] },
+  { id: "anomalie", cat: "planning", t: "Ximi signale une anomalie, ou des heures en trop", f: ["03.2", "03.1"],
+    m: [[["anomalie"]], [["compteur"]], [["heure|heures"], ["en trop|depass|pas assez|manque d heure|dans le rouge|alerte"]], [["trop d heure|trop d heures|pas assez d heure|depasse ses heures|hors regle"]], [["alerte|alertes|rouge|rouges|signale|conflit|chevauch|doublon"], ["planning|plannings|ximi|heure|heures"]]] },
+  { id: "regles", cat: "planning", t: "Savoir si un planning respecte les règles (repos, heures)", f: ["03.1"],
+    m: [[["regle|regles|droit du travail|legal|legale|autorise"], ["planning|heure|heures|repos|travail|semaine"]], [["repos"]], [["heure|heures"], ["max|maximum|minimum|par semaine|par jour|amplitude|combien d heure"]], [["dimanche|week end|weekend"], ["travaill|repos|combien"]], [["d affilee|de suite|consecutif|consecutive|sans repos|jours de repos|pause|amplitude"]], [["max|maximum|maximal|maximale|minimum|minimal"], ["heure|heures|horaire|horaires|travail|travailler"]], [["peut|peuvent|a le droit|autorise"], ["travailler|faire"], ["heure|heures|jours|semaine|nuit"]]] },
+  { id: "periodicite", cat: "planning", t: "Créer ou changer une intervention régulière (jour, horaire, intervenant)", f: ["03.4"],
+    m: [[["periodicite|recurren|reguliere|regulieres|tous les lundi|tous les mardi|tous les mercredi|tous les jeudi|tous les vendredi|tous les samedi|toutes les semaine|chaque semaine|chaque lundi|chaque mardi|chaque mercredi|chaque jeudi|chaque vendredi"]],
+      [["chang|modifi|deplac|decal"], ["jour d intervention|son jour|ses jours|horaire|horaires|creneau|heure de passage|intervenant attitre|d intervenant"]], [["passer du|passer au|plutot le|changer de jour|venir le|au lieu du|au lieu de"], ["lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche|matin|apres midi|soir"]], [["prefere|prefererait|voudrait|veut|souhaite|aimerait"], ["vienne|venir|passe|passer|intervienne"], ["matin|apres midi|soir|lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche|plus tot|plus tard|autre jour|autre heure"]]] },
+  { id: "trajet", cat: "planning", t: "Le temps de trajet entre deux interventions est trop court", f: ["03.5"],
+    m: [[["trajet|trajets|temps de route|d un client a l autre|entre deux client|entre deux intervention|entre deux prestation"]], [["pas le temps"], ["aller|client|intervention|arriver"]], [["en retard"], ["client|intervention|chaque"]]] },
+  { id: "km", cat: "planning", t: "Des kilomètres manquent ou sont à 0", f: ["03.6"],
+    m: [[["km|kms|kilometr"]]] },
+  { id: "squelette", cat: "planning", t: "Tenir le squelette de planning", f: ["03.7"], m: [[["squelette"]]] },
+  { id: "envoi-plannings", cat: "mois", t: "Envoyer les plannings du mois aux clients", f: ["09.2"],
+    m: [[["envo|transmet|expedi"], ["planning|plannings"]], [["planning|plannings"], ["mensuel|du mois|mois prochain|mois suivant|aux clients"]]] },
+  // ---- Intervenants
+  { id: "intervenant", cat: "intervenants", broad: true, t: "J'ai une question sur un intervenant", ask: "Ta question sur l'intervenant concerne plutôt :",
+    choix: ["absence", "conges", "pointage", "acompte", "rib", "bulletin", "avenant", "attestation", "essai", "vehicule"],
+    m: [[["intervenant|intervenante|intervenants|salarie|salariee|aide a domicile|auxiliaire|aide menagere|employe|employee"], ["probleme|souci|soucis|question|gerer|difficult"]]] },
+  { id: "absence", cat: "intervenants", t: "Un intervenant est absent ou malade", f: ["08.3", "08.5", "04.4"], why: ["08.3", "retenir"],
+    m: [[["malade|maladie|arret maladie|arret de travail|en arret|absent|absente|absence|absences|ne vient pas|vient pas|viendra pas|pas venu|pas venue|empeche|empechee|indisponible|accident du travail|dsn|fievre|souffrant|souffrante|blesse|blessee|arret de|net entreprise|enfant malade|pas bien ce matin|pas venir|pourra pas|peut pas venir|pourra plus|casse|cassee|fractur|operee|opere|hospitalisee|hospitalise"]]], w: 1.1 },
+  { id: "remplacer", cat: "intervenants", t: "Trouver un remplaçant", f: ["08.5", "04.4"], why: ["08.5", "attention"],
+    m: [[["rempla"]], [["a la place|a sa place"], ["qui|trouver|chercher|mettre|mets|envoyer"]], [["une autre intervenante|un autre intervenant|une autre aide|une autre auxiliaire|quelqu un d autre|mettre une autre|mettre un autre|envoyer une autre|envoyer un autre"]]], w: 1.15 },
+  { id: "conges", cat: "intervenants", t: "Un intervenant demande des congés", f: ["08.4", "08.5"],
+    m: [[["conge|conges|vacances|cp|poser des jours|jours off|partir en"]], [["partir|absente pendant|absent pendant|poser|prendre"], ["semaine|semaines|jours|ete|aout|juillet|noel|mois|quinze"]]] },
+  { id: "bulletin", cat: "intervenants", t: "Un intervenant demande son bulletin de paie ou son solde de congés", f: ["08.6"],
+    m: [[["bulletin|fiche de paie|fiche de paye|feuille de paie|feuille de paye|solde de conge"]], [["reste|restant|solde|combien"], ["conge|conges|cp"]]], w: 1.3 },
+  { id: "acompte", cat: "intervenants", t: "Un intervenant demande une avance sur salaire", f: ["02.6"], m: [[["acompte|une avance|avance sur|avance de|besoin d argent|argent avant|avancer sa paie|avancer son salaire"]], [["avance"], ["euro|euros|salaire|paie|paye|argent|veut|demande|besoin"]]], w: 1.3 },
+  { id: "pointage", cat: "intervenants", t: "Un pointage est faux, ou le temps n'est pas respecté", f: ["02.3"],
+    m: [[["pointage|pointages|pointe|pointer|badg|badge"]], [["part|parti|partie|arrive|arrivee|reste|repart"], ["plus tot|en avance|trop tard|moins longtemps|avant l heure"]], [["temps prevu|pas fait ses heures|heures non faites|1h c est 1h"]]] },
+  { id: "rib", cat: "intervenants", t: "Un intervenant change de RIB ou d'adresse", f: ["08.2"],
+    m: [[["rib|iban|banque|compte bancaire|coordonnees bancaires"], ["intervenant|intervenante|salarie|salariee|aide a domicile|auxiliaire|change|changer|nouveau|nouvel|nouvelle|modifi"]], [["demenag|nouvelle adresse|change d adresse|changer d adresse|changement d adresse"]]] },
+  { id: "avenant", cat: "intervenants", t: "Le nombre d'heures d'un contrat change (avenant)", f: ["08.8"],
+    m: [[["avenant"]], [["chang|modifi|augment|baiss|diminu|passer de|passe de|passer un|passer son|plus d heure|moins d heure"], ["heure|heures|volume|contrat"]], [["contrat"], ["passer|augment|baiss|diminu|chang|modifi"]]] },
+  { id: "attestation", cat: "intervenants", t: "Établir une attestation (salaire, emploi…)", f: ["08.7"], m: [[["attestation|justificatif|certificat de travail|certificat d emploi|preuve d emploi"]], [["papier|document"], ["prouve|prouver|justifi|travaille chez|employeur|banque|caf|logement"]]] },
+  { id: "vehicule", cat: "intervenants", t: "Prêter le véhicule de service", f: ["02.7"], m: [[["vehicule|voiture"]]] },
+  { id: "essai", cat: "recrutement", t: "Suivre ou renouveler une période d'essai", f: ["07.7"], m: [[["periode d essai|essai"]]], w: 1.2 },
+  { id: "telegestion", cat: "quotidien", t: "Répondre aux messages des intervenants (télégestion)", f: ["02.2"],
+    m: [[["telegestion|groupe de discussion|groupes de discussion|groupe ximi|groupes ximi"]], [["message|messages"], ["intervenant|intervenante|ximi|terrain"]]] },
+  { id: "tutorat", cat: "recrutement", t: "Organiser le tutorat d'un nouvel intervenant", f: ["07.5"], m: [[["tutor|tuteur|tutrice|binome|doublure"]]], w: 1.2 },
+  // ---- Clients
+  { id: "client", cat: "clients", broad: true, t: "J'ai un problème avec un client", ask: "Ta situation avec le client, c'est plutôt :",
+    choix: ["reclamation", "maltraitance", "infection", "periodicite", "client-stop", "cle", "prelevement", "cheque", "tarifs"],
+    m: [[["client|cliente|clients|beneficiaire|famille"], ["probleme|souci|soucis|difficult|gerer|question"]]] },
+  { id: "reclamation", cat: "clients", t: "Un client n'est pas content ou se plaint", f: ["04.5", "11.2"],
+    m: [[["reclam|plaint|plaign|mecontent|pas content|pas contente|insatisf|rale|ralait|en colere|colere|enerve|enervee|fache|fachee|pas satisf|incident|evenement indesirable|furieu|agace|agacee|decu|decue|menace|pas du tout content|n est pas satisfait|pas satisfaite"]]], w: 1.2 },
+  { id: "maltraitance", cat: "clients", t: "Je soupçonne une maltraitance", f: ["11.1"],
+    m: [[["maltrait|violence|violent|violente|abus|frappe|frapper|humili|bientraitance|negligence|negliger|neglige|bleus|hematome|hematomes|traces de coup|des coups|crie dessus|enfermee|enferme|vol d argent|lui prend son argent"]], [["crie sur|hurle sur|crier sur|hurler sur|insulte|insulter|brusque|brusquer|brutal|brutale|moque|rabaiss"]]], w: 1.4 },
+  { id: "infection", cat: "clients", t: "Un risque de maladie contagieuse chez un client", f: ["11.3"],
+    m: [[["gastro|covid|grippe|contag|infect|epidemi|virus|hygiene|masque|masques|gants|gale|poux|punaise|tuberculose"]]], w: 1.3 },
+  { id: "client-stop", cat: "clients", t: "Un client veut arrêter ses prestations", f: [], gap: "Le book ne décrit pas encore comment arrêter les prestations d'un client (résiliation, dernière facture, restitution des clés).",
+    m: [[["client|cliente|beneficiaire|famille|madame|monsieur|mme|mr"], ["arreter|arrete ses|resili|stopp|mettre fin|ne veut plus|ne souhaite plus|quitte|quitter|entre en ehpad|part en ehpad|ehpad|maison de retraite|plus besoin de nous"]], [["resili|ehpad|maison de retraite|ne veut plus de nous|plus besoin de nous"]]], w: 1.3 },
+  { id: "cle", cat: "clients", t: "Une clé de client (nouvelle, perdue, à transmettre)", f: ["04.4"], m: [[["cle|cles|clef|clefs|trousseau|registre des cle"]]], w: 1.3 },
+  { id: "prelevement", cat: "clients", t: "Mettre en place le prélèvement automatique", f: ["04.2"],
+    m: [[["prelevement|sepa|mandat"]], [["rib|iban|coordonnees bancaires"], ["client|cliente"]]], w: 1.2 },
+  { id: "cheque", cat: "clients", t: "Un client paie par chèque", f: ["02.5"], m: [[["cheque|cheques|encaiss"]]], w: 1.2 },
+  { id: "fiche-client", cat: "clients", t: "Créer ou compléter une fiche client", f: ["04.1"],
+    m: [[["fiche client|fiche cliente|creer un client|creer un nouveau client|creer le client|nouveau client dans ximi|dossier client|fiche besoin|fiche besoins"]]], w: 1.3 },
+  // ---- Devis et nouveaux clients
+  { id: "demande-prestation", cat: "devis", broad: true, t: "Un client me demande une prestation", ask: "Le client demande plutôt :",
+    choix: ["devis-menage", "devis-maintien", "devis-jardin", "teleassistance", "tarifs", "dispositifs"],
+    m: [[["client|cliente|famille|quelqu un|personne"], ["demande|veut|voudrait|souhaite|besoin|appelle"], ["prestation|aide|service|intervention|devis"]]] },
+  { id: "tarifs", cat: "devis", t: "Connaître un tarif", f: ["05.1"],
+    m: [[["tarif|tarifs|prix|cout|coute|combien ca|combien coute|grille tarifaire|majoration|credit d impot"]]] },
+  { id: "devis-menage", cat: "devis", t: "Faire un devis ménage ou repassage", f: ["05.2", "05.5"],
+    m: [[["menage|repassage|nettoyage"], ["devis|client|cliente|veut|souhaite|demande|voudrait"]]] },
+  { id: "relance-devis", cat: "devis", t: "Relancer un devis resté sans réponse", f: ["05.2"],
+    m: [[["devis"], ["pas repondu|sans reponse|relanc|pas de nouvelle|toujours pas|rien recu"]]], w: 1.3 },
+  { id: "devis-maintien", cat: "devis", t: "Une aide au maintien à domicile (sortie d'hôpital, toilette…)", f: ["05.3", "05.5"],
+    m: [[["sortie d hopital|sortie d hospitalisation|hopital|hospitalis|assistante sociale|toilette|maintien a domicile|perte d autonomie|lever|coucher|alzheimer|dependan"]]] },
+  { id: "devis-jardin", cat: "devis", t: "Faire un devis jardin", f: ["05.4", "05.5"],
+    m: [[["jardin|jardinage|tonte|tondre|pelouse|haie|haies|debroussaill|jardinier"]]] },
+  { id: "pieces-devis", cat: "devis", t: "Envoyer un devis avec les bonnes pièces", f: ["05.5"],
+    m: [[["devis"], ["joindre|joins|joint|pieces|piece|envoyer|envoi|accompagn|plaquette"]]], w: 1.2 },
+  { id: "nouveau-client", cat: "devis", t: "Un nouveau client a signé le devis", f: ["05.6", "04.1", "04.2", "03.4"],
+    m: [[["devis"], ["accept|signe|valide|contrat"]], [["nouveau client|nouvelle cliente|nouveau beneficiaire"], ["signe|accept|commence|demarr|arrive"]], [["client|cliente"], ["a signe|a accepte"]]], w: 1.2 },
+  { id: "teleassistance", cat: "devis", t: "Mettre en place une téléassistance", f: ["05.7"], chap: "12",
+    m: [[["teleassist|telealarme|medaillon|bracelet d appel|alarme"]]], w: 1.3 },
+  { id: "dispositifs", cat: "devis", t: "Les aides et dispositifs pour le client", f: ["05.8"],
+    m: [[["dispositif|dispositifs|financement|apa|pch|caisse de retraite"]], [["aide|aides"], ["existe|financ|personne agee|personnes agees|beneficier|droit|droits"]]] },
+  { id: "domiserve", cat: "devis", t: "Une mission Domiserve (dont Sortir Plus)", f: ["04.6"], m: [[["domiserve|sortir plus"]]], w: 1.6 },
+  { id: "ads", cat: "devis", t: "Une mission ADS, AXA, IMA ou BEA", f: ["04.7"], m: [[["ads|axa|ima|bea|assisteur|europ assistance"]]], w: 1.6 },
+  // ---- Recrutement et embauche
+  { id: "recrutement", cat: "recrutement", t: "Recruter quelqu'un", f: ["06.1"], m: [[["recrut|embaucher quelqu un|trouver du personnel|manque de personnel"]]] },
+  { id: "candidature", cat: "recrutement", t: "J'ai reçu une candidature (CV, appel, passage)", f: ["06.2", "06.3"],
+    m: [[["cv|candidature|candidatures|candidat|candidate|postul"]]] },
+  { id: "pre-entretien", cat: "recrutement", t: "Appeler un candidat (pré-entretien)", f: ["06.3"],
+    m: [[["pre entretien|preentretien"]], [["appel|telephon"], ["candidat|candidate"]]], w: 1.2 },
+  { id: "entretien", cat: "recrutement", t: "Mener un entretien de recrutement", f: ["06.4"],
+    m: [[["entretien"], ["embauche|recrutement|preparer|mener|faire passer|convoqu"]]], w: 1.1 },
+  { id: "references", cat: "recrutement", t: "Contrôler les références d'un candidat", f: ["06.5"],
+    m: [[["reference|references|ancien employeur|precedent employeur|anciens employeurs"]], [["ancien employeur|precedent employeur|anciens employeurs|reference"], ["appel|contact|joindre|telephon|verifi"]]], w: 1.2 },
+  { id: "embauche", cat: "recrutement", t: "Le candidat est retenu : préparer l'embauche", f: ["06.6", "07.1", "07.2", "07.3", "07.4", "06.7"],
+    m: [[["on embauche|on l embauche|on la prend|on le prend|candidat retenu|candidate retenue"]], [["embauch|retenu|retenue|accepte"], ["candidat|candidate"]]], w: 1.2 },
+  { id: "contrat", cat: "recrutement", t: "Faire le contrat de travail", f: ["07.1", "07.2", "07.3", "07.4"],
+    m: [[["contrat de travail"]], [["contrat"], ["faire|creer|rediger|nouveau|nouvelle|etablir|preparer|editer|word|signer"]]] },
+  { id: "documents-embauche", cat: "recrutement", t: "Les documents à réunir à l'embauche", f: ["06.7"],
+    m: [[["document|documents|papier|papiers|pieces|dossier"], ["embauche|embaucher|salarie|nouvel|nouvelle"]]], w: 1.1 },
+  { id: "ik", cat: "recrutement", t: "Paramétrer les indemnités kilométriques", f: ["07.2"], m: [[["indemnit"], ["km|kilometr"]], [["ik"]]], w: 1.4 },
+  { id: "arrivee", cat: "recrutement", t: "Un nouvel intervenant arrive", f: ["07.5", "07.6", "07.7"],
+    m: [[["nouvel|nouvelle|nouveau|nouveaux|nouvelles"], ["arrive|arriv|commence|demarre|premier jour|premiere semaine|integr|accueil|lundi"]]] },
+  { id: "accueil-materiel", cat: "recrutement", t: "Équiper et former un nouvel intervenant (Ximi Mobile, matériel)", f: ["07.6"],
+    m: [[["ximi mobile|installer ximi|application mobile|materiel|blouse|e learning|elearning"]]], w: 1.3 },
+  // ---- Fin de mois
+  { id: "fin-mois", cat: "mois", t: "C'est la fin du mois", f: ["09.1"], m: [[["fin de mois|fin du mois|cloture|cloturer|facturation|dernier jour du mois|derniers jours du mois"]]], w: 1.2 },
+  { id: "variables", cat: "mois", t: "Compléter le tableau des variables", f: ["09.3"], m: [[["variable|variables"]]], w: 1.3 },
+  // ---- Urgences
+  { id: "astreinte-appel", cat: "urgences", t: "Un appel en dehors des horaires d'ouverture", f: ["10.1", "10.3"],
+    m: [[["astreinte"], ["numero|appel|appelle|telephone|joindre|urgence|client"]], [["apres la fermeture|le soir|la nuit|agence fermee|en dehors des horaires|hors horaires|le week end|le weekend|le dimanche|jour ferie"], ["appel|appelle|telephone|urgence|client|repond"]]], w: 1.2 },
+  { id: "astreinte-tableau", cat: "urgences", t: "Le tableau d'astreinte (dates, échanges)", f: ["10.2"],
+    m: [[["astreinte|astreintes"], ["echang|tableau|planning des|semaine|dates|changer|change"]]], w: 1.25 },
+  { id: "pca", cat: "urgences", t: "L'agence fonctionne en mode dégradé (panne, intempéries, épidémie)", f: ["11.4"],
+    m: [[["panne|informatique|internet coupe|coupure|plus d internet|pas d internet|plus de telephone|ximi ne marche|ximi plante|ximi est en panne|plus de reseau|electricite|intemperie|neige|verglas|inondation|situation degradee|continuite|manque important de personnel"]]], w: 1.1 },
+  // ---- Au quotidien
+  { id: "mails", cat: "quotidien", t: "Traiter les mails de l'agence", f: ["02.1"], m: [[["mail|mails|email|courriel|boite mail|boite de l agence"]]] },
+  { id: "courrier", cat: "quotidien", t: "Classer le courrier, les mails et les factures", f: ["02.4"], m: [[["courrier|ranger|range|classer|classe|ged|facture"]]] },
+  { id: "reunion", cat: "quotidien", t: "Animer l'équipe (réunions, moments collectifs)", f: ["11.5"], m: [[["reunion|reunions|moment collectif|esprit d equipe|animer l equipe|animer les equipes"]]], w: 1.1 },
+  { id: "agences", cat: "quotidien", t: "Les coordonnées des agences", f: ["01.3"],
+    m: [[["adresse|coordonnees|telephone|numero|horaires|boite mail"], ["agence|agences|besancon|dole|champagnole"]]], w: 1.1 },
+  { id: "glossaire", cat: "quotidien", t: "Comprendre un sigle", f: ["01.4"], m: [[["c est quoi|signifie|veut dire|sigle|sigles|definition"]]] },
+  { id: "formulaires", cat: "quotidien", t: "Trouver un formulaire ou un modèle", f: ["A1"], m: [[["formulaire|formulaires|modele|modeles|imprime"]]] },
+  { id: "rib-entreprise", cat: "quotidien", t: "Le RIB de l'entreprise", f: ["A3"], m: [[["rib|iban|coordonnees bancaires"], ["entreprise|agence|cepma|societe|notre"]]], w: 1.3 },
+  { id: "salaires", cat: "recrutement", t: "La grille de salaire", f: ["A2"], m: [[["grille de salaire|salaire horaire|combien payer|taux horaire brut|remuner"]], [["salaire|salaires"], ["adv|am|adm|auxiliaire|intervenant|intervenante|aide a domicile|aide menagere|niveau|grille|embauche"]]], w: 1.3 },
+  { id: "ximi", cat: "quotidien", t: "Se repérer dans Ximi", f: ["01.2"], m: [[["ximi"], ["menu|menus|trouve|ou est|perdu|repere|reperer|utiliser"]]], w: 0.8 }
+];
+const sitById = (id) => SITS.find((s) => s.id === id);
+const SIT_RX = new Map();
+function sitAltRx(a) {
+  if (!SIT_RX.has(a)) { const e = a.replace(/[.*+?^${}()[\]\\]/g, "\\$&"); SIT_RX.set(a, new RegExp("(?:^| )" + e + (a.replace(/ /g, "").length <= 4 ? "s?(?= |$)" : ""))); }
+  return SIT_RX.get(a);
+}
+/* Fiches d'une situation que la personne peut voir */
+function sitFiches(s) { return (s.f || []).filter((id) => getFiche(id) && canSee(id) && !meta(id).archived); }
+function sitFuzzy(a, words) {
+  if (a.includes(" ") || a.length < 7) return 0;
+  const max = a.length >= 9 ? 2 : 1;
+  for (const w of words) { if (w[0] !== a[0] || Math.abs(w.length - a.length) > max + 3) continue; const c = w.slice(0, a.length + 1); if (edit(c, a, max) <= max || edit(w, a, max) <= max) return a.length - 1; }
+  return 0;
+}
+function matchSituation(q) {
+  const nq = " " + norm(q) + " ", words = nq.trim().split(" ").filter((w) => w.length >= 6);
+  let best = null, broad = null;
+  SITS.forEach((s) => {
+    let sc = 0, used = [];
+    s.m.forEach((pat) => {
+      let ps = 0; const u = [];
+      for (const g of pat) {
+        let hit = 0; g[0].split("|").forEach((a) => { if (sitAltRx(a).test(nq) && a.length > hit) hit = a.length; });
+        let alt = ""; g[0].split("|").forEach((a) => { if (a.length === hit && sitAltRx(a).test(nq)) alt = a; });
+        if (!hit) g[0].split("|").forEach((a) => { const h = sitFuzzy(a, words); if (h > hit) { hit = h; alt = a; } });
+        u.push(alt);
+        if (!hit) { ps = 0; break; }
+        ps += 1 + 0.03 * Math.min(hit, 20);
+      }
+      if (ps > sc) { sc = ps; used = u; }
+    });
+    if (!sc) return;
+    sc *= (s.w || 1) * (s.broad ? 0.6 : 1);
+    if (!s.broad && s.f.length && !sitFiches(s).length) return; // fiches non visibles pour ce profil
+    if (s.broad) { if (!broad || sc > broad.score) broad = { sit: s, score: sc, used }; }
+    else if (!best || sc > best.score) best = { sit: s, score: sc, used };
+  });
+  return best || broad;
+}
+
+/* Question hors sujet : un seul mot reconnu (« coûte ») et au moins deux mots que le book ne connaît pas (« vélo électrique ») */
+const SIT_GENERIC = /^(cout|coute|prix|tarif|tarifs|combien ca|combien coute|message|messages|modele|modeles|formulaire|formulaires|imprime|adresse|coordonnees|telephone|numero|horaires|definition|c est quoi|signifie|veut dire|sigle|sigles)$/;
+function offTopic(q, sm) {
+  if (!sm || sm.used.length > 1 || !SIT_GENERIC.test(sm.used[0] || "")) return false;
+  const usedW = new Set(sm.used.join(" ").split(" ").filter(Boolean));
+  const unk = search(q).unknown.filter((w) => w.length >= 4 && !Array.from(usedW).some((u) => w.startsWith(u) || u.startsWith(w)));
+  return unk.length >= 1;
+}
+/* Situation ou fiche ? Une fiche qui correspond clairement et précisément l'emporte sur une situation
+   reconnue par un seul mot (ex. « résilier une téléassistance » → la fiche de résiliation, pas la fiche générale). */
+function useSituation(q, sm) {
+  if (!sm || (sm.sit.broad && sm.score < 1.2) || offTopic(q, sm)) return false;
+  if (sm.sit.broad || sm.used.length > 1) return true;
+  const res = search(q), top = res.results[0];
+  if (!top || sitFiches(sm.sit).includes(top.id)) return true;
+  const conf = confidence(res); if (top.cov < 1 || conf === "weak" || conf === "none") return true;
+  const title = " " + norm(getFiche(top.id).title) + " ";
+  if (conf === "clear" && sitAltRx(sm.used[0] || "").test(title)) return false;
+  // Thème dédié (ex. thème 12 · Téléassistance) : la fiche précise du thème passe avant la fiche générale
+  return !(sm.sit.chap && getFiche(top.id).ch === sm.sit.chap && parseQuery(q).length > 1);
+}
+/* ---------- Rédaction ---------- */
+const lcFirst = (t) => (t ? t.charAt(0).toLowerCase() + t.slice(1) : t);
+const isInfinitive = (t) => /^(?:se |s'|s’)?[a-zàâçéèêëîïôûùü]+(?:er|ir|re|oir)\b/i.test(t) && !/^(?:le|la|les|un|une|des|si|pour|avant|jour)\b/i.test(t);
+const firstSentence = (t, max = 190) => { const s = String(t || ""); const m = s.match(/^.{20,}?[.!?](?=\s|$)/); const x = m ? m[0] : s; return x.length > max ? x.slice(0, max).replace(/\s+\S*$/, "") + "…" : x; };
+function ficheLink(id) { const f = getFiche(id); return `<a href="#/fiche/${id}">${esc(id)} — ${esc(f.title)}</a>`; }
+function ficheRefs(f) {
+  const ids = new Set(); const txt = JSON.stringify(f.blocks || []) + " " + (f.when || "") + " " + (f.why || "");
+  (txt.match(/fiches?\s+(\d{2}\.\d{1,2}|A\d)/g) || []).forEach((m) => { const id = m.replace(/fiches?\s+/, ""); if (id !== f.id && getFiche(id) && canSee(id)) ids.add(id); });
+  return Array.from(ids);
+}
+function stepConnector(i, n) { return i === 0 ? "Commence par" : i === n - 1 ? "Pour finir," : ["Ensuite,", "Puis", "Après,"][(i - 1) % 3]; }
+function stepsAdvice(f, max) {
+  const groups = (f.blocks || []).filter((b) => b.t === "steps" && (b.items || []).length);
+  const all = []; groups.forEach((b) => b.items.forEach((s) => all.push({ s, grp: groups.length > 1 ? b.h || "" : "" })));
+  if (!all.length) return { html: "", n: 0 };
+  const shown = all.slice(0, max); let lastGrp = null;
+  const items = shown.map(({ s, grp }, i) => {
+    let head = "";
+    if (grp && grp !== lastGrp) { head = `<li class="adv-grp" aria-hidden="true">${esc(grp)}</li>`; lastGrp = grp; }
+    const inf = isInfinitive(s.t);
+    const lead = inf ? `<b>${stepConnector(i, all.length)} ${esc(lcFirst(s.t))}</b>` : `<b>${esc(s.t)}</b>`;
+    const det = s.d ? ` — ${linkify(firstSentence(s.d))}` : "";
+    return `${head}<li class="adv-step">${lead}${det}${s.path ? `<span class="adv-path">${pathHtml(s.path)}</span>` : ""}</li>`;
+  }).join("");
+  return { html: `<ol class="adv-steps">${items}</ol>${all.length > shown.length ? `<p class="small muted">… et ${all.length - shown.length} autre${all.length - shown.length > 1 ? "s" : ""} étape${all.length - shown.length > 1 ? "s" : ""}. Je peux te guider une étape à la fois.</p>` : ""}`, n: all.length };
+}
+function adviceCallouts(f, max, skip) {
+  const order = { attention: 0, retenir: 1, astuce: 2, verifier: 3, datee: 4 };
+  const lab = { attention: ["alert", "Attention"], retenir: ["pin", "À retenir"], astuce: ["bulb", "Mon conseil"], verifier: ["alert", "À vérifier"], datee: ["calendar", "Information datée"] };
+  return (f.blocks || []).filter((b) => b.t === "co" && b.k in order && b.x !== skip).sort((a, b) => order[a.k] - order[b.k]).slice(0, max)
+    .map((b) => `<aside class="co ${b.k === "astuce" ? "astuce" : b.k}">${ic(lab[b.k][0])}<div><div class="k">${lab[b.k][1]}</div><p>${linkify(b.x)}</p></div></aside>`).join("");
+}
+function ansMeta(kind, ids) { return `<span hidden data-ans-kind="${kind}" data-ans-fiches="${esc((ids || []).join(","))}"></span>`; }
+function ansActions(fid, q, nSteps) {
+  return `<div class="btns ans-actions">${nSteps >= 2 ? `<a class="btn sm primary" href="#/fiche/${fid}/guide">${ic("compass", "sm")} Me guider pas à pas</a>` : ""}<a class="btn sm ${nSteps >= 2 ? "" : "primary"}" href="#/fiche/${fid}">${ic("book", "sm")} Voir la fiche complète</a><a class="btn sm ghost" href="#/demande/new?f=${encodeURIComponent(fid)}">${ic("send", "sm")} Demander à mon responsable</a></div>
+    <div class="ans-feedback"><span class="small muted">Cette réponse t'a aidé ?</span><button class="linkbtn small" type="button" data-repq="${esc("Réponse peu utile à la question : « " + q + " »")}" data-fiche="${fid}" data-type="unclear">${ic("flag", "sm")} Pas vraiment</button><button class="linkbtn small" type="button" data-repq="${esc("Réponse incorrecte de l'assistant à la question : « " + q + " »")}" data-fiche="${fid}" data-type="incorrect">${ic("alert", "sm")} Elle contient une erreur</button></div>`;
+}
+/* Réponse rédigée en conseils, à partir d'une seule fiche */
+function guideAnswer(fid, q, o) {
+  o = o || {};
+  const f = getFiche(fid), nq = norm(q), parts = [];
+  const isFact = FACT.test(nq) && !/\bcomment\b/.test(nq) && !o.sit;
+  const sitT = o.sit ? lcFirst(o.sit.t).replace(/^j'ai /, "tu as ").replace(/^je /, "tu ") : "";
+  if (o.lead !== false) parts.push(`<p class="ans-lead">${o.sit ? `Pour cette situation — <i>${esc(sitT)}</i> — je te conseille de suivre la fiche ${ficheLink(fid)}.` : `Je te conseille de suivre la fiche ${ficheLink(fid)}.`} ${linkify(f.sum)}</p>`);
+  if (isIncomplete(f)) {
+    parts.push(`<div class="notice warn">${ic("alert")}<div><b>Le book ne détaille pas encore cette procédure.</b><span>Voici ce qui manque : ${f.gaps.map(esc).join(" ")} En attendant, demande à ton responsable.</span></div></div>`);
+    (f.blocks || []).filter((b) => b.t === "list" && b.l).slice(0, 1).forEach((b) => parts.push(`<div class="ans-sec"><h4>${esc(b.h || "Ce que dit le book")}</h4><ul>${b.l.map((x) => `<li>${linkify(x)}</li>`).join("")}</ul></div>`));
+    const refs = ficheRefs(f).slice(0, 4);
+    if (refs.length) parts.push(`<div class="ans-sec"><h4>Fiches liées</h4><ul class="ans-links">${refs.map((r) => `<li>${ficheLink(r)}</li>`).join("")}</ul></div>`);
+    parts.push(ansActions(fid, q, 0)); parts.push(ansMeta("fiche", [fid]));
+    return parts.join("");
+  }
+  if (isFact) {
+    const P = passagesFor(fid, q).list;
+    if (P[0]) parts.push(`<div class="ans-fact"><b>Réponse :</b> ${highlight(P[0].text, passagesFor(fid, q).hits)}<small><a href="#/fiche/${fid}?s=${P[0].a}">${esc(P[0].label || "Voir dans la fiche")} ${ic("right", "sm")}</a></small></div>`);
+  }
+  const facts = [];
+  if (f.when) facts.push(["clock", "Quand", f.when]);
+  if (f.where && !/^Non précisé/.test(f.where)) facts.push(["pin", f.whereL || "Où", f.where]);
+  if (f.who) facts.push(["user", "Qui", f.who]);
+  if (facts.length && !isFact) parts.push(`<dl class="ans-facts">${facts.map(([i, k, v]) => `<div><dt>${ic(i, "sm")} ${esc(k)}</dt><dd>${linkify(firstSentence(v, 160))}</dd></div>`).join("")}</dl>`);
+  const st = stepsAdvice(f, isFact ? 4 : 7);
+  if (st.n) parts.push(`<div class="ans-sec"><h4>${isFact ? "Pour aller plus loin" : "Comment t'y prendre"}</h4>${st.html}</div>`);
+  else (f.blocks || []).filter((b) => b.t === "list" || b.t === "cards" || b.t === "stats").slice(0, 1).forEach((b) => parts.push(`<div class="ans-sec"><h4>${esc(b.h || "L'essentiel")}</h4><ul>${(b.l || []).slice(0, 6).map((x) => `<li>${Array.isArray(x) ? `<b>${esc(x[0])}</b> — ${linkify(x[1])}` : linkify(x)}</li>`).join("")}</ul></div>`));
+  const co = adviceCallouts(f, isFact ? 1 : 3, o.skip); if (co) parts.push(`<div class="ans-sec ans-cos">${co}</div>`);
+  const dn = (f.blocks || []).find((b) => b.t === "done");
+  if (dn && !isFact) parts.push(`<div class="ans-sec ans-done"><h4>${ic("check", "sm")} Tu as terminé quand…</h4><ul>${dn.l.slice(0, 6).map((x) => `<li>${linkify(x)}</li>`).join("")}</ul></div>`);
+  if (f.gaps && f.gaps.length) parts.push(`<div class="ans-sec ans-gap"><h4>${ic("help", "sm")} Ce que le book ne précise pas</h4><p>${f.gaps.map(esc).join(" ")} Pour ce point, demande à ton responsable.</p></div>`);
+  const qs = new Set(parseQuery(q).map((t) => t.s));
+  conflictsFor(fid).forEach((x) => { if (toks(x.terms).map(stem).some((t) => qs.has(t)) || o.sit) parts.push(`<aside class="co conflict">${ic("alert")}<div><div class="k">Le book se contredit — ${esc(x.title)}</div><p>${linkify(x.text)}</p><p class="small">Je ne peux pas trancher : demande au RS ou à la Direction.</p></div></aside>`); });
+  const next = (o.next || []).filter((x) => x !== fid);
+  const refs = next.length ? next : ficheRefs(f).slice(0, 3);
+  if (refs.length) parts.push(`<div class="ans-sec"><h4>${next.length ? "Et ensuite" : "Fiches liées"}</h4><ul class="ans-links">${refs.map((r) => `<li>${ficheLink(r)} <span class="small muted">— ${esc(getFiche(r).sum)}</span></li>`).join("")}</ul></div>`);
+  if (/ximi/i.test((f.where || "") + JSON.stringify(f.blocks || []).slice(0, 3000))) parts.push(`<p class="small muted ximi-note">${ic("info", "sm")} Ces étapes se font dans Ximi : je t'explique comment faire, je n'agis pas dans Ximi à ta place.</p>`);
+  parts.push(ansActions(fid, q, st.n)); parts.push(ansMeta("fiche", [fid]));
+  return parts.join("");
+}
+/* Réponse à une situation : question pour préciser, parcours en plusieurs fiches, ou fiche unique */
+function situationAnswer(s, q) { return situationAnswer0(s, q).replace(/data-ans-kind=/, 'data-ans-src="sit" data-ans-kind='); }
+function situationAnswer0(s, q) {
+  if (s.broad) {
+    const ch = s.choix.map(sitById).filter((c) => c && (!c.f.length || sitFiches(c).length));
+    return `<p class="ans-lead"><b>Je vais t'aider à trouver la bonne procédure.</b> ${esc(s.ask)}</p>
+      <div class="clar sit-choices">${ch.map((c) => `<button type="button" data-sit="${c.id}" data-q="${esc(q)}"><b>${esc(c.t)}</b><span>${c.f.length ? sitFiches(c).map((id) => "Fiche " + id).join(" · ") : "Pas encore dans le book"}</span></button>`).join("")}</div>
+      <p class="small muted">Aucune ne correspond ? Décris ta situation avec d'autres mots, ou <a href="#/demande/new?q=${encodeURIComponent(q)}">demande à ton responsable</a>.</p>${ansMeta("clarify", ch.reduce((a, c) => a.concat(sitFiches(c)), []))}`;
+  }
+  const fs = sitFiches(s);
+  if (!fs.length) {
+    logUnanswered(q);
+    return `<p class="ans-lead"><b>${esc(s.t)} : le book ne décrit pas encore cette situation.</b></p><p>${esc(s.gap || NOT_FOUND)}</p><p>Je préfère ne pas inventer de marche à suivre. Demande à ton responsable : ta question est aussi transmise pour que le book soit complété.</p>
+      <div class="btns"><a class="btn sm primary" href="#/demande/new?q=${encodeURIComponent(q)}">${ic("send", "sm")} Demander de l'aide au responsable</a></div>${ansMeta("none", [])}`;
+  }
+  if (fs.length === 1) return guideAnswer(fs[0], q, { sit: s });
+  const why = s.why && getFiche(s.why[0]) ? ((getFiche(s.why[0]).blocks || []).find((b) => b.t === "co" && b.k === s.why[1]) || {}).x : "";
+  const head = `<p class="ans-lead">Pour cette situation — <i>${esc(lcFirst(s.t))}</i> — le book prévoit ${fs.length} étapes. Je te conseille de les suivre dans cet ordre :</p>
+    <ol class="parcours">${fs.map((id, i) => `<li><span class="pc-n" aria-hidden="true">${i + 1}</span><div><a href="#/fiche/${id}"><b>${esc(getFiche(id).title)}</b></a> <span class="small muted">fiche ${esc(id)}</span><p>${linkify(getFiche(id).sum)}</p></div></li>`).join("")}</ol>
+    ${why ? `<aside class="co retenir">${ic("pin")}<div><div class="k">Pourquoi cet ordre</div><p>${linkify(why)} <span class="small muted">(fiche ${esc(s.why[0])})</span></p></div></aside>` : ""}
+    <p class="ans-lead" style="margin-top:6px"><b>On commence par la première :</b></p>`;
+  return head + guideAnswer(fs[0], q, { sit: s, lead: false, next: fs.slice(1), skip: why }).replace(/data-ans-fiches="[^"]*"/, `data-ans-fiches="${fs.join(",")}"`);
+}
+
+/* ---------- Me guider : une procédure, une étape à la fois ---------- */
+function ficheGuideSteps(f) {
+  const st = []; (f.blocks || []).filter((b) => b.t === "steps").forEach((b) => (b.items || []).forEach((s) => st.push(Object.assign({ grp: b.h || "" }, s))));
+  return st;
+}
+function viewFicheGuide(id, params) {
+  const f = getFiche(id);
+  if (!f || !canSee(id)) return viewNotFound();
+  const st = ficheGuideSteps(f), n = st.length;
+  if (n < 2) return `<div class="empty"><h3>Pas de guide pour cette fiche</h3><p>Cette procédure n'a pas d'étapes détaillées : lis-la en entier.</p><a class="btn primary" href="#/fiche/${id}">${ic("book")} Ouvrir la fiche</a></div>`;
+  const at = Math.max(0, Math.min(n, parseInt(params.e || "0", 10) || 0)), end = at >= n, s = st[at];
+  const dn = (f.blocks || []).find((b) => b.t === "done");
+  const cos = (f.blocks || []).filter((b) => b.t === "co" && (b.k === "attention" || b.k === "retenir"));
+  const intro = at === 0 && !end ? `<div class="g-intro">${f.when ? `<p><b>Quand :</b> ${linkify(f.when)}</p>` : ""}${f.where && !/^Non précisé/.test(f.where) ? `<p><b>${esc(f.whereL || "Où")} :</b> ${linkify(f.where)}</p>` : ""}${cos.slice(0, 1).map((b) => `<aside class="co ${b.k}">${ic(b.k === "retenir" ? "pin" : "alert")}<div><div class="k">${b.k === "retenir" ? "À retenir avant de commencer" : "Attention avant de commencer"}</div><p>${linkify(b.x)}</p></div></aside>`).join("")}</div>` : "";
+  const body = end
+    ? `<div class="g-step g-end" id="gStep"><span class="g-num" aria-hidden="true">${ic("check")}</span><div style="min-width:0"><h2>Tu as parcouru les ${n} étapes.</h2>
+        ${dn ? `<p>Vérifie que tout est bon :</p><div class="done" style="margin:8px 0 0">${dn.l.map((x) => `<label><input type="checkbox"><span>${linkify(x)}</span></label>`).join("")}</div>` : `<p>Relis la fiche si tu as un doute.</p>`}
+        ${f.gaps && f.gaps.length ? `<p class="small" style="margin-top:10px"><b>Le book ne précise pas :</b> ${f.gaps.map(esc).join(" ")} Demande à ton responsable.</p>` : ""}
+        ${ficheRefs(f).length ? `<p style="margin-top:12px"><b>Et ensuite :</b></p><ul class="ans-links">${ficheRefs(f).slice(0, 3).map((r) => `<li>${ficheLink(r)}</li>`).join("")}</ul>` : ""}</div></div>`
+    : `<div class="g-step" id="gStep"><span class="g-num" aria-hidden="true">${at + 1}</span><div style="min-width:0">${s.grp ? `<p class="eyebrow">${esc(s.grp)}</p>` : ""}<h2>${esc(s.t)}</h2>
+        ${s.d ? `<p>${linkify(s.d)}</p>` : ""}${s.l ? `<ul>${s.l.map((x) => `<li>${linkify(x)}</li>`).join("")}</ul>` : ""}${s.path ? `<div>${pathHtml(s.path)}</div>` : ""}${s.f ? fieldsTable(s.f) : ""}${s.tbl ? plainTable(s.tbl) : ""}${s.img ? figHtml(s.img, s.cap, s.narrow) : ""}${s.chk ? `<p class="step-chk">${ic("check", "sm")}<span>${linkify(s.chk)}</span></p>` : ""}</div></div>`;
+  const go = (k) => `#/fiche/${id}/guide?e=${k}`;
+  return `<nav class="crumbs" aria-label="Fil d'Ariane"><a href="#/fiche/${id}">${ic("left", "sm")} Revenir à la fiche ${esc(id)}</a></nav>
+    <header class="task-head"><span class="eyebrow">Me guider · fiche ${esc(id)}</span><h1>${esc(f.title)}</h1></header>
+    ${intro}
+    <div class="g-prog"><span class="g-count" aria-live="polite">${end ? `Guide terminé · ${n} étapes` : `Étape ${at + 1} sur ${n}`}</span><div class="g-dots" aria-hidden="true">${st.map((x, i) => `<i class="${i < at || end ? "on" : i === at ? "cur" : ""}"></i>`).join("")}</div></div>
+    ${body}
+    <div class="g-nav">${at > 0 ? `<a class="btn" href="${go(at - 1)}" data-gf="prev">${ic("left")} Étape précédente</a>` : `<span></span>`}
+      ${end ? `<a class="btn primary" href="#/fiche/${id}">${ic("check")} Terminer</a>` : `<a class="btn primary" href="${go(at + 1)}" data-gf="next">${at === n - 1 ? "Terminer le guide" : "Étape suivante"} ${ic("right")}</a>`}</div>
+    <p class="small muted ximi-note">${ic("info", "sm")}<span>Étapes reprises de la procédure ${esc(id)}. En cas de doute, <a href="#/aide?f=${encodeURIComponent(id)}">demande de l'aide</a>.</span></p>`;
+}
+function ficheGuideMount(root, id, params) {
+  const el = $("#gStep", root), at = parseInt(params.e || "0", 10) || 0, prev = FG_LAST.id === id ? FG_LAST.at : null;
+  FG_LAST = { id, at };
+  if (el && el.animate && prev != null && prev !== at) { const dir = at > prev ? 1 : -1; el.animate(REDUCED() ? [{ opacity: 0 }, { opacity: 1 }] : [{ opacity: 0, transform: `translateX(${dir * 24}px)` }, { opacity: 1, transform: "none" }], { duration: REDUCED() ? 150 : 220, easing: EASE_OUT }); }
+}
+let FG_LAST = { id: null, at: null };
+document.addEventListener("keydown", (e) => {
+  if (e.metaKey || e.ctrlKey || e.altKey || !/^Arrow(Left|Right)$/.test(e.key)) return;
+  if (/input|textarea|select/i.test(document.activeElement.tagName) || $("#overlay")) return;
+  const r = parseHash(); if (r.name !== "fiche" || r.rest[0] !== "guide") return;
+  const a = $(`[data-gf="${e.key === "ArrowRight" ? "next" : "prev"}"]`); if (a) { e.preventDefault(); location.hash = a.getAttribute("href"); }
+});
+
+/* ---------- Page Procédures : « Quelle est ta situation ? » ---------- */
+let SIT_CAT = 0;
+function sitHubSection() {
+  const cats = SIT_CATS.map(([k, i, l]) => [k, i, l, SITS.filter((s) => s.cat === k && !s.broad && (!s.f.length || sitFiches(s).length))]).filter((c) => c[3].length);
+  if (SIT_CAT >= cats.length) SIT_CAT = 0;
+  return `<section class="section" id="sits"><div class="section-h"><h2>Quelle est ta situation ?</h2><span class="small muted">Choisis : je te dis quoi faire, dans l'ordre</span></div>
+    <div class="sit-tabs" role="group" aria-label="Catégories">${cats.map(([k, i, l], n) => `<button type="button" data-sitcat="${n}" aria-pressed="${n === SIT_CAT}">${ic(i, "sm")} ${esc(l)}</button>`).join("")}</div>
+    <div class="situations" id="sitList">${cats[SIT_CAT][3].map((s) => `<a class="sit" href="#/situation/${s.id}">${esc(s.t)}<span class="refs">${s.f.length ? sitFiches(s).map((x) => `<span>${x}</span>`).join("") : `<span>à compléter</span>`}</span></a>`).join("")}</div></section>`;
+}
+function mountSitHub(root) {
+  $$("[data-sitcat]", root).forEach((b) => (b.onclick = () => { SIT_CAT = +b.dataset.sitcat; const sec = $("#sits", root); sec.outerHTML = sitHubSection(); mountSitHub(root); const t = $(`[data-sitcat="${SIT_CAT}"]`, root); if (t) t.focus({ preventScroll: true }); }));
+}
+function viewSituation(id) {
+  const s = sitById(id);
+  if (!s) return viewNotFound();
+  return `<nav class="crumbs" aria-label="Fil d'Ariane"><a href="#/procedures">${ic("left", "sm")} Procédures</a></nav>
+    <h1 style="font-size:28px;margin-bottom:16px">${esc(s.t)}</h1>
+    <section class="answer msg a" aria-label="Accompagnement"><div class="who"><span class="av">${ic("sparkles", "sm")}</span>Ton accompagnement</div><div class="bubble ans" id="ansBody">${situationAnswer(s, s.t)}</div></section>`;
+}
+function situationMount(root) { bindAnswer($("#ansBody", root)); }
+/* Réponse rédigée par l'IA (si activée) : s'ajoute au-dessus de la réponse du book, jamais à sa place */
+const AI_CACHE = new Map();
+function aiText(t) {
+  return esc(t).replace(/\[(\d{2}\.\d{1,2}|A\d)\]/g, (m, id) => (getFiche(id) && canSee(id) ? `<a class="ai-cite" href="#/fiche/${id}">${id}</a>` : m))
+    .split(/\n{2,}/).map((p) => `<p>${p.replace(/\n/g, "<br>")}</p>`).join("");
+}
+async function aiRefine(root, q) {
+  const ab = $("#ansBody", root); if (!ab || !S.aiClaude || !REMOTE || S.aiOff) return;
+  const meta = $("[data-ans-kind]", ab); if (!meta || meta.dataset.ansKind === "clarify") return;
+  const ids = (meta.dataset.ansFiches || "").split(",").filter(Boolean).slice(0, 4);
+  if (!ids.length) return;
+  const box = document.createElement("section"); box.className = "ai-box"; box.setAttribute("aria-live", "polite");
+  box.innerHTML = `<div class="who"><span class="av">${ic("sparkles", "sm")}</span>En bref, rédigé par l'IA</div><div class="ai-body"><div class="skel" style="height:70px;margin:0" aria-hidden="true"></div></div>`;
+  const ans = root.querySelector(".answer"); if (!ans) return; ans.parentNode.insertBefore(box, ans);
+  const key = q + "|" + ids.join(",");
+  try {
+    let out = AI_CACHE.get(key);
+    if (!out) { const { data, error } = await SB.functions.invoke("assistant-ia", { body: { question: q, fiches: ids } }); if (error || !data || !data.text) throw error || new Error("vide"); out = data; AI_CACHE.set(key, out); }
+    if (!document.contains(box)) return;
+    $(".ai-body", box).innerHTML = aiText(out.text) + `<p class="small muted">${ic("info", "sm")} Résumé rédigé par une IA à partir des fiches ${ids.map(esc).join(", ")}. La réponse détaillée du book est juste en dessous : en cas d'écart, c'est la fiche qui fait foi.</p>`;
+  } catch (e) { box.remove(); }
+}
+/* Clics dans une réponse (page de recherche, page situation) */
+function bindAnswer(ab) {
+  if (!ab) return;
+  ab.addEventListener("click", (e) => {
+    const sb = e.target.closest("[data-sit]"); if (sb) { const s = sitById(sb.dataset.sit); if (s) { ab.innerHTML = situationAnswer(s, sb.dataset.q || s.t); ab.scrollIntoView({ block: "start", behavior: REDUCED() ? "auto" : "smooth" }); } return; }
+    const a = e.target.closest("[data-ask]"); if (a) { location.hash = "#/recherche?q=" + encodeURIComponent(a.dataset.ask); return; }
+    const p = e.target.closest("[data-pick]"); if (p) { try { ab.innerHTML = guideAnswer(p.dataset.pick, p.dataset.q, {}); } catch (x) { /* la liste reste affichée */ } return; }
+    const r = e.target.closest("[data-repq]"); if (r) openReport(r.dataset.fiche || null, r.dataset.type || "unclear", r.dataset.repq, "assistant");
+  });
 }
 
 /* ===================== Administration ===================== */
@@ -3244,7 +3707,8 @@ function adminDash() {
       </div>
       <section class="panel"><h2>Réglages</h2>
         <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer"><input type="checkbox" id="aiOff" ${S.aiOff ? "checked" : ""} style="width:20px;height:20px;margin-top:3px;accent-color:var(--brand)"><span><b>Simuler l'assistant indisponible</b><br><span class="small muted">Vérifie que les salariés peuvent toujours consulter le book.</span></span></label>
-        <div class="fld"><span class="lbl">Disposition de la page Procédures</span><div class="radio-cards">${[["A", "Recherche d'abord (recommandée)"], ["B", "Thèmes d'abord"], ["C", "Situations « Je dois… » d'abord"]].map(([k, l]) => `<label><input type="radio" name="hv" value="${k}" ${S.homeVariant === k ? "checked" : ""}> ${l}</label>`).join("")}</div></div>
+        <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;margin-top:10px"><input type="checkbox" id="aiClaude" ${S.aiClaude ? "checked" : ""} style="width:20px;height:20px;margin-top:3px;accent-color:var(--brand)"><span><b>Réponses rédigées par l'IA</b><br><span class="small muted">Une IA reformule la réponse, uniquement à partir des fiches. Demande la mise en service du service « assistant-ia » et d'une clé Anthropic : laisse décoché tant que ce n'est pas fait.</span></span></label>
+        <div class="fld"><span class="lbl">Disposition de la page Procédures</span><div class="radio-cards">${[["A", "Recherche et situations d'abord (recommandée)"], ["B", "Thèmes d'abord"], ["C", "Situations d'abord"]].map(([k, l]) => `<label><input type="radio" name="hv" value="${k}" ${S.homeVariant === k ? "checked" : ""}> ${l}</label>`).join("")}</div></div>
         <div class="fld" ${REMOTE ? "hidden" : ""}><span class="lbl">Données de démonstration</span><button class="btn danger sm" type="button" id="resetBtn">${ic("trash", "sm")} Tout réinitialiser</button><span class="hint" id="resetHint">Efface favoris, modifications et signalements de ce navigateur.</span></div>
       </section>
     </div>`;
@@ -3290,6 +3754,7 @@ async function bkLoad(root) {
 function dashMount(root) {
   fillAdmTodo(); loadAdminCounts(true); bkLoad(root);
   fillDayKpis(root); fillTicketKpis(root); loadTickets().then(() => fillTicketKpis(root));
+  $("#aiClaude", root).onchange = (e) => { const v = e.target.checked; saveSetting("aiClaude", () => { S.aiClaude = v; }, v ? "Réponses de l'IA activées" : "Réponses de l'IA désactivées", "sparkles"); };
   $("#aiOff", root).onchange = (e) => { const v = e.target.checked; saveSetting("aiOff", () => { S.aiOff = v; }, v ? "Assistant marqué indisponible" : "Assistant de nouveau disponible", "sparkles"); };
   $$("input[name=hv]", root).forEach((x) => (x.onchange = () => { const v = x.value; saveSetting("homeVariant", () => { S.homeVariant = v; }, "Disposition de la page Procédures enregistrée"); }));
   const rb = $("#resetBtn", root); let armed = false;
@@ -3757,6 +4222,15 @@ const SYNC = {
       throw new Error(msg);
     }
     if (data && data.error) throw new Error(data.error);
+    // Le nom affiché est celui fixé par le responsable (roles.name) : une personne ne peut pas
+    // se donner le nom d'une autre en modifiant son propre profil.
+    if (action === "list" && data && Array.isArray(data.users)) {
+      try {
+        const rs = await sbq(SB.from("roles").select("user_id,name"), "noms");
+        const nm = {}; rs.forEach((r) => { if (r.name) nm[r.user_id] = r.name; });
+        data.users.forEach((u) => { if (nm[u.id]) { if (u.name && u.name !== nm[u.id]) u.selfName = u.name; u.name = nm[u.id]; } });
+      } catch (e) { /* noms du service des comptes */ }
+    }
     return data;
   },
   async selfPassword(password) {
@@ -3825,7 +4299,7 @@ function applyBookRows(rows, offline) {
   reindex();
   S.content = {};
   ficheRows.forEach((r) => { S.content[r.id] = { published: null, draft: null, versions: [], events: [], archived: r.archived, access: r.access, updated: r.updated, updatedBy: r.updated_by, rev: r.rev, exists: true }; });
-  Object.assign(S, { chapters: {}, newChapters: [], aiOff: false, homeVariant: "A", verified: {}, imports: [] });
+  Object.assign(S, { chapters: {}, newChapters: [], aiOff: false, aiClaude: false, homeVariant: "A", verified: {}, imports: [] });
   setRows.forEach((r) => { S[r.key] = r.value; });
   if (offline) { S.reports = []; IDX = null; }
 }
