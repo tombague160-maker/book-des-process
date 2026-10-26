@@ -449,6 +449,70 @@ table.t td.n { font-variant-numeric: tabular-nums; white-space: nowrap; }
 .subtabs a { padding: 8px 0; color: var(--label-2); font-weight: 500; font-size: .875rem; display: inline-flex; gap: 6px; align-items: center; box-shadow: inset 0 -2px 0 transparent; }
 .subtabs a[aria-current="page"] { color: var(--label); font-weight: 600; box-shadow: inset 0 -2px 0 var(--blue); }
 @media (hover: hover) and (pointer: fine) { .subtabs a:hover { color: var(--label); text-decoration: none; } }
+/* Administration : 4 grands onglets bien distincts, l'onglet actif en corail ; sous-onglets en pastilles */
+.adm-nav { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 0 0 10px; }
+.adm-nav.solo { margin-bottom: 26px; }
+.adm-tab { position: relative; display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 12px 14px; border-radius: 14px; background: #fff; color: var(--sereo-ink); font-weight: 600; font-size: 1.0625rem; line-height: 1.2; box-shadow: inset 0 0 0 2px rgba(56, 107, 110, .3); transition: background-color 160ms var(--ease-out), box-shadow 160ms var(--ease-out); min-width: 0; }
+.adm-tab > span:not(.badge) { min-width: 0; }
+.adm-tab .adm-ic { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; background: var(--sereo-green); color: #fff; flex: none; }
+.adm-tab .badge { margin-left: auto; flex: none; background: var(--sereo-coral-ink); color: #fff; }
+.adm-tab[aria-current] { background: var(--sereo-coral); color: var(--sereo-ink); box-shadow: 0 6px 16px -8px rgba(168, 79, 57, .55); }
+.adm-tab[aria-current] .adm-ic { background: #fff; color: var(--sereo-coral-ink); }
+.adm-tab[aria-current]::after { content: ""; position: absolute; left: 50%; bottom: -9px; width: 16px; height: 16px; margin-left: -8px; background: var(--sereo-coral); transform: rotate(45deg); border-radius: 3px; }
+.adm-nav.solo .adm-tab[aria-current]::after { display: none; }
+.adm-tab[aria-current] .badge { background: #fff; color: var(--sereo-coral-ink); }
+.adm-tab:focus-visible, .adm-sub a:focus-visible { outline: 3px solid var(--sereo-ink); outline-offset: 2px; }
+@media (hover: hover) and (pointer: fine) { .adm-tab:not([aria-current]):hover { text-decoration: none; box-shadow: inset 0 0 0 2px var(--sereo-green); } .adm-tab[aria-current]:hover { text-decoration: none; } .adm-sub a:not([aria-current]):hover { text-decoration: none; box-shadow: inset 0 0 0 1.5px var(--sereo-coral-ink); } }
+.adm-sub { display: flex; flex-wrap: wrap; gap: 8px; padding: 10px; margin: 0 0 28px; border-radius: 14px; background: var(--sereo-coral-tint); box-shadow: inset 0 0 0 1.5px rgba(239, 146, 121, .55); }
+.adm-sub a { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 8px 14px; border-radius: 999px; background: #fff; color: var(--sereo-ink); font-weight: 500; font-size: .9375rem; box-shadow: inset 0 0 0 1px rgba(168, 79, 57, .22); white-space: nowrap; }
+.adm-sub a[aria-current] { background: var(--sereo-coral-ink); color: #fff; font-weight: 600; box-shadow: none; }
+.adm-sub a[aria-current] .badge { background: #fff; color: var(--sereo-coral-ink); }
+.adm-head h1 { font-size: 28px; margin-bottom: 4px; }
+.adm-head .lead { margin-bottom: 20px; font-size: 1rem; color: var(--sereo-ink); }
+.adm .kpi { background: #fff; box-shadow: inset 0 0 0 1.5px var(--sereo-sage-tint-2); }
+.adm .panel { box-shadow: 0 0 0 1.5px var(--sereo-sage-tint-2); }
+.adm .panel h2 { color: var(--sereo-ink); }
+.adm-head .ctx { display: inline-block; margin-bottom: 6px; font-size: .875rem; font-weight: 600; color: var(--sereo-coral-ink); }
+/* Tuiles de la vue d'ensemble : neutres à zéro, corail quand il y a quelque chose à faire */
+.adm-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 0 0 22px; }
+.adm-stat { display: grid; align-content: start; gap: 4px; min-height: 104px; padding: 16px 18px; border-radius: 14px; background: #fff; color: var(--sereo-ink); box-shadow: inset 0 0 0 1.5px var(--sereo-sage-tint-2); }
+.adm-stat b { font-size: 2.125rem; font-weight: 700; line-height: 1.05; letter-spacing: -.02em; color: var(--sereo-green); font-variant-numeric: tabular-nums; }
+.adm-stat span { font-size: .9375rem; line-height: 1.3; }
+.adm-stat.hot { background: var(--sereo-coral-tint); box-shadow: inset 0 0 0 2px var(--sereo-coral); }
+.adm-stat.hot b { color: var(--sereo-coral-ink); }
+.adm-stat.hot span::after { content: " ›"; font-weight: 700; color: var(--sereo-coral-ink); }
+@media (hover: hover) and (pointer: fine) { .adm-stat:hover { text-decoration: none; box-shadow: inset 0 0 0 2px var(--sereo-green); } .adm-stat.hot:hover { box-shadow: inset 0 0 0 2.5px var(--sereo-coral-ink); } .adm-quick a:hover { text-decoration: none; box-shadow: inset 0 0 0 2px var(--sereo-green); } }
+.adm-stat:focus-visible, .adm-quick a:focus-visible { outline: 3px solid var(--sereo-ink); outline-offset: 2px; }
+.adm-quick { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.adm-quick a { display: flex; align-items: center; gap: 10px; min-height: 56px; padding: 10px 12px; border-radius: 12px; background: var(--sereo-sage-tint); color: var(--sereo-ink); font-weight: 600; font-size: .9375rem; line-height: 1.25; }
+.adm-quick a .qi { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 9px; background: var(--sereo-green); color: #fff; flex: none; }
+.adm-quick a.pri { background: var(--sereo-green); color: #fff; }
+.adm-quick a.pri .qi { background: #fff; color: var(--sereo-green); }
+.adm-set label.chk { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; }
+.adm-set label.chk input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--sereo-green); flex: none; }
+.adm .kpi b { color: var(--sereo-green); }
+.adm .kpi.alert b { color: var(--red); }
+.adm .kpi span { color: var(--sereo-ink); }
+@media (max-width: 900px) { .adm-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); } .adm-tab[aria-current]::after { display: none; } .adm-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } .adm-quick { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) {
+  .adm-nav { gap: 8px; }
+  .adm-tab { min-height: 52px; padding: 8px 10px; gap: 8px; font-size: .875rem; }
+  .adm-tab .adm-ic { width: 28px; height: 28px; border-radius: 8px; }
+  .adm-tab .adm-ic svg { width: 16px; height: 16px; }
+  .adm-tab .badge { position: absolute; top: -7px; right: -5px; margin: 0; }
+  .adm-tab > span:not(.badge):not(.adm-ic) { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .adm-stats { gap: 8px; margin-bottom: 18px; }
+  .adm-stat { min-height: 88px; padding: 12px 14px; }
+  .adm-stat b { font-size: 1.75rem; }
+  .adm-stat span { font-size: .875rem; }
+  .adm-quick { gap: 8px; }
+  .adm-quick a { min-height: 52px; font-size: .875rem; padding: 8px 10px; }
+  .adm-sub { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding: 8px; margin-bottom: 20px; }
+  .adm-sub::-webkit-scrollbar { display: none; }
+  .adm-sub a { flex: none; }
+  .adm-head h1 { font-size: 24px; }
+}
+@media (prefers-reduced-motion: reduce) { .adm-tab { transition: none; } }
 .dash-lines { display: grid; margin: 4px 0 14px; }
 .dash-line { display: grid; grid-template-columns: 2.5ch minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 10px 2px; color: var(--label); font-size: .9375rem; }
 .dash-line + .dash-line { box-shadow: inset 0 1px 0 var(--sep); }
@@ -3781,20 +3845,30 @@ const ADMIN_TABS = [
   ["actualites", "news", "Communication", [["actualites", "Actualités"], ["demandes", "Demandes"], ["questions", "Questions sans réponse"], ["signalements", "Signalements"], ["avis", "Avis et idées"]]],
   ["fiches", "book", "Contenu", [["fiches", "Procédures"], ["themes", "Thèmes"], ["documents", "Documents"], ["verification", "Points à vérifier"], ["historique", "Historique"], ["statistiques", "Statistiques"], ["formation", "Formation"], ["integration", "Intégration"]]],
   ["comptes", "userCheck", "Collaborateurs"]];
+let ADM_NAV = "";
 function adminTabs(cur) {
   const group = ADMIN_TABS.find((t) => t[3] && t[3].some(([k]) => k === cur));
   const t = adminTodo(), keys = ["demandes", "questions", "signalements", "avis"];
   const bdg = (k, n) => ` <span class="badge warn" data-adm="${k}">${n || ""}</span>`;
-  return `<nav class="tabs" aria-label="Administration">${ADMIN_TABS.map((x) => { const [k, i, l, sub] = x; const on = sub ? x === group : cur === k;
-      return `<a href="#/admin${k ? "/" + k : ""}" ${on ? 'aria-current="' + (sub ? "true" : "page") + '"' : ""}>${ic(i, "sm")}<span>${l}</span>${sub && sub.some(([y]) => y === "signalements") ? bdg("all", adminTodoTotal()) : ""}</a>`; }).join("")}</nav>
-    ${group ? `<nav class="subtabs" aria-label="${esc(group[2])}">${group[3].map(([k, l]) => `<a href="#/admin${k ? "/" + k : ""}" ${cur === k ? 'aria-current="page"' : ""}>${l}${keys.includes(k) ? bdg(k, t[k]) : ""}</a>`).join("")}</nav>` : ""}`;
+  ADM_NAV = `<nav class="adm-nav${group ? "" : " solo"}" aria-label="Administration">${ADMIN_TABS.map((x) => { const [k, i, l, sub] = x; const on = sub ? x === group : cur === k;
+      return `<a class="adm-tab" href="#/admin${k ? "/" + k : ""}" ${on ? 'aria-current="' + (sub ? "true" : "page") + '"' : ""}><span class="adm-ic" aria-hidden="true">${ic(i)}</span><span>${l}</span>${sub && sub.some(([y]) => y === "signalements") ? bdg("all", adminTodoTotal()) : ""}</a>`; }).join("")}</nav>
+    ${group ? `<nav class="adm-sub" aria-label="${esc(group[2])}">${group[3].map(([k, l]) => `<a href="#/admin${k ? "/" + k : ""}" ${cur === k ? 'aria-current="page"' : ""}>${l}${keys.includes(k) ? bdg(k, t[k]) : ""}</a>`).join("")}</nav>` : ""}`;
+  return ADM_NAV;
 }
+/* Phrases courtes sous le titre de chaque page d'administration */
+const ADM_LEAD = { "": "Ce qui attend une action aujourd'hui.", equipe: "Ce qui est fait, ce qui reste, et les blocages.", routines: "Les tâches qui reviennent chaque jour dans « Ma journée ».",
+  ponctuelles: "Une action pour un jour précis. « Priorité urgente » la fait passer avant la routine.", consignes: "Messages importants, avec une date de fin.", actualites: "Les nouvelles de l'équipe, avec photo, pour une ou plusieurs agences.",
+  demandes: "Les demandes d'aide de l'équipe, à traiter une par une.", questions: "Recherches restées sans réponse : les fiches à créer ou à compléter.", signalements: "Les remarques envoyées depuis les fiches.",
+  avis: "La question du mois et les idées de l'équipe.", statistiques: "Ce que l'équipe consulte et cherche.", themes: "Les cartes de la page Procédures.", documents: "Ajoutez un document : il est vérifié avant toute publication.",
+  verification: "À compléter ou à trancher par la Direction.", formation: "Les tutos vidéo regardés par chaque personne.", integration: "Le parcours « Ma première semaine » des nouvelles personnes.",
+  comptes: "Créer un compte, gérer les accès, définir un nouveau mot de passe." };
 function viewAdmin(r) {
   const sub = r.sub || "";
-  const head = (t, p) => `<h1 style="font-size:30px;margin-bottom:6px">${t}</h1>${p ? `<p class="lead" style="margin-bottom:18px">${p}</p>` : ""}`;
+  const head = (t, p) => { const l = ADM_LEAD[sub] !== undefined ? ADM_LEAD[sub] : p; return `<div class="adm-head"><h1>${t}</h1>${l ? `<p class="lead">${l}</p>` : ""}</div>`; };
   if (sub === "edit" || sub === "new") return editorView(r);
+  ADM_NAV = "";
   let html = "", mount = null;
-  if (sub === "") { html = head("Administration", "Suivez la journée de l'équipe, gérez les routines, les consignes, les procédures et les accès.") + adminTabs("") + adminDash(); mount = dashMount; }
+  if (sub === "") { html = head("Vue d'ensemble", "Suivez la journée de l'équipe, gérez les routines, les consignes, les procédures et les accès.") + adminTabs("") + adminDash(); mount = dashMount; }
   else if (sub === "equipe") { html = head("Équipe du jour", "Ce qui est fait, ce qui reste, et les blocages qui ont besoin de vous. Aucun classement : la progression sert à organiser la journée.") + adminTabs("equipe") + adminTeam(); mount = teamMount; }
   else if (sub === "routines") { html = head("Routines", "Modèles de journée : chaque tâche apparaît dans « Ma journée » des personnes concernées, les jours choisis.") + adminTabs("routines") + adminRoutines(); mount = routinesMount; }
   else if (sub === "routine") { html = head(r.arg === "new" ? "Nouvelle routine" : "Modifier la routine") + viewRoutineEditor(r.arg); mount = (x) => routineEditorMount(x, r.arg); }
@@ -3810,7 +3884,7 @@ function viewAdmin(r) {
   else if (sub === "formation") { html = head("Formation", "Les tutos vidéo regardés par chaque personne.") + adminTabs("formation") + adminFormation(); mount = adminFormationMount; }
   else if (sub === "integration") { html = head("Intégration", "Le parcours « Ma première semaine » des nouvelles personnes.") + adminTabs("integration") + adminIntegration(r); mount = (x) => adminIntegrationMount(x, r); }
   else if (sub === "avis") { html = head("Avis et idées", "La question du mois et les idées envoyées par l'équipe.") + adminTabs("avis") + adminAvis(); mount = (x) => adminAvisMount(x, r.params); }
-  else if (sub === "comptes") { html = head("Gestion des collaborateurs", "Créez un compte pour chaque personne, transmettez-lui son identifiant et son mot de passe, puis gérez ses accès. Vous n'avez jamais besoin de connaître son mot de passe : vous pouvez en définir un nouveau à tout moment.") + adminTabs("comptes") + adminAccounts(); mount = accountsMount; }
+  else if (sub === "comptes") { html = head("Collaborateurs", "Créez un compte pour chaque personne, transmettez-lui son identifiant et son mot de passe, puis gérez ses accès. Vous n'avez jamais besoin de connaître son mot de passe : vous pouvez en définir un nouveau à tout moment.") + adminTabs("comptes") + adminAccounts(); mount = accountsMount; }
   else if (sub === "statistiques") { html = head("Statistiques", "Ce que l'équipe consulte et cherche : pour savoir quelles fiches améliorer en priorité.") + adminTabs("statistiques") + adminStats(); mount = adminStatsMount; }
   else if (sub === "themes") { html = head("Thèmes", "Les cartes de la page Procédures reprennent ces thèmes.") + adminTabs("themes") + adminThemes(); mount = themesAdminMount; }
   else if (sub === "documents") { html = head("Documents", "Ajoutez un document : son contenu est extrait, puis vérifié avant toute publication.") + adminTabs("documents") + adminDocs(); mount = docsMount; }
@@ -3818,6 +3892,7 @@ function viewAdmin(r) {
   else if (sub === "signalements") { html = head("Signalements", "Les remarques envoyées par les salariés depuis les fiches et l'assistant.") + adminTabs("signalements") + adminReports(); mount = reportsMount; }
   else if (sub === "historique") { html = head("Historique des modifications") + adminTabs("historique") + adminHistory(); }
   else html = viewNotFound();
+  if (ADM_NAV && html.includes(ADM_NAV)) html = `<div class="adm">${ADM_NAV}${html.replace(ADM_NAV, "")}</div>`;
   return { html, mount };
 }
 
@@ -3839,32 +3914,28 @@ function adminDash() {
   const drafts = ids.filter((id) => meta(id).hasDraft).length + draftOnlyIds().length;
   const vi = verifItems(), open = vi.filter((x) => !S.verified[x.key]).length, nr = newReports();
   const line = (href, n, one, many, cls) => `<a class="dash-line" href="${href}"><b class="${n && cls ? cls : ""}">${n}</b><span>${n > 1 ? many : one}</span>${ic("right", "sm")}</a>`;
-  return `<div class="kpis" id="dayKpis" style="margin-bottom:14px"><div class="skel" style="height:86px;margin:0" aria-hidden="true"></div></div>
-    <div class="kpis" id="tkKpis" style="margin-bottom:22px"></div>
+  const q = (href, icon, label, main) => `<a class="${main ? "pri" : ""}" href="${href}"><span class="qi" aria-hidden="true">${ic(icon, "sm")}</span><span>${label}</span></a>`;
+  return `<div class="adm-stats" id="dayKpis"><div class="skel" style="height:104px;margin:0;grid-column:1/-1" aria-hidden="true"></div></div>
     <div class="split">
       <div style="display:grid;gap:18px;align-content:start">
         <section class="panel adm-todo" id="admTodo"></section>
-        <section class="panel"><h2>Organiser la journée</h2><div class="btns">
-          <a class="btn primary" href="#/admin/ponctuelle/new">${ic("plus")} Ajouter une tâche ponctuelle</a>
-          <a class="btn" href="#/admin/consigne/new">${ic("info")} Publier une consigne</a>
-          <a class="btn" href="#/admin/routines">${ic("checklist")} Modifier les routines</a></div></section>
-        <section class="panel"><h2>Le book</h2><div class="dash-lines">
-          ${line("#/admin/signalements", nr, "nouveau signalement de l'équipe", "nouveaux signalements de l'équipe", "warn")}
-          ${line("#/admin/fiches?st=draft", drafts, "brouillon de procédure en cours", "brouillons de procédure en cours")}
-          ${line("#/admin/verification", open, "point du book à vérifier", "points du book à vérifier")}</div>
-          <div class="btns"><a class="btn" href="#/admin/new">${ic("plus")} Nouvelle procédure</a><a class="btn ghost" href="#/admin/documents">${ic("upload")} Ajouter un document</a></div></section>
+        <section class="panel"><h2>Actions rapides</h2><div class="adm-quick">
+          ${q("#/admin/ponctuelle/new", "plus", "Tâche ponctuelle", true)}
+          ${q("#/admin/consigne/new", "info", "Consigne")}
+          ${q("#/admin/actualite/new", "news", "Actualité")}
+          ${q("#/admin/routines", "checklist", "Routines")}
+          ${q("#/admin/new", "book", "Nouvelle procédure")}
+          ${q("#/admin/comptes", "userCheck", "Ajouter une personne")}</div></section>
+        <section class="panel"><h2>Le book</h2><div class="dash-lines" style="margin-bottom:0">
+          ${line("#/admin/signalements", nr, "nouveau signalement", "nouveaux signalements", "warn")}
+          ${line("#/admin/fiches?st=draft", drafts, "brouillon en cours", "brouillons en cours")}
+          ${line("#/admin/verification", open, "point à vérifier", "points à vérifier")}</div></section>
         <section class="panel bk" id="bkPanel" aria-labelledby="bkH"><h2 id="bkH">Sauvegarde des données</h2>${REMOTE ? `<p class="small muted" aria-live="polite">Chargement…</p>` : `<p class="small muted">Disponible dans la version en ligne : une copie automatique chaque semaine, à télécharger ici.</p>`}</section>
-        <details class="tlog"><summary>${REMOTE ? "État de l'application" : "Ce que fait ce prototype"}</summary><div class="legend">
-          <div><span class="badge ok">Opérationnel</span><span>Consultation des fiches, recherche tolérante (fautes, accents, synonymes) avec accès direct à la bonne section, assistant sourcé qui n'invente rien, favoris, signalements, brouillons, publication, archivage, historique et droits d'accès appliqués aux pages, à la recherche et à l'assistant.${REMOTE ? " Base commune : les publications et signalements sont partagés et mis à jour en direct sur tous les appareils ; une publication est refusée si la fiche a changé entre-temps. Les favoris restent propres à chaque appareil." : ""}</span></div>
-          ${REMOTE ? "" : `<div><span class="badge warn">Simulé</span><span>Les données restent dans ce navigateur et le profil se change sans connexion : c'est la version de démonstration.</span></div>`}
-          <div><span class="badge grey">Limites</span><span>L'assistant fonctionne en local : il retrouve et cite les passages du book, sans IA générative. Son indisponibilité peut être simulée ci-contre.</span></div>
-          <div><span class="badge grey">À développer</span><span>${REMOTE ? "" : "Base commune et connexion (version en ligne) ; "}IA générative avec les mêmes règles ; extraction des PDF et Word ; statistiques de consultation ; captures d'écran Ximi à insérer.</span></div>
-        </div></details>
       </div>
-      <section class="panel"><h2>Réglages</h2>
-        <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer"><input type="checkbox" id="aiOff" ${S.aiOff ? "checked" : ""} style="width:20px;height:20px;margin-top:3px;accent-color:var(--brand)"><span><b>Simuler l'assistant indisponible</b><br><span class="small muted">Vérifie que les salariés peuvent toujours consulter le book.</span></span></label>
-        <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;margin-top:10px"><input type="checkbox" id="aiClaude" ${S.aiClaude ? "checked" : ""} style="width:20px;height:20px;margin-top:3px;accent-color:var(--brand)"><span><b>Réponses rédigées par l'IA</b><br><span class="small muted">Une IA reformule la réponse, uniquement à partir des fiches. Demande la mise en service du service « assistant-ia » et d'une clé Anthropic : laisse décoché tant que ce n'est pas fait.</span></span></label>
-        <div class="fld"><span class="lbl">Disposition de la page Procédures</span><div class="radio-cards">${[["A", "Recherche et situations d'abord (recommandée)"], ["B", "Thèmes d'abord"], ["C", "Situations d'abord"]].map(([k, l]) => `<label><input type="radio" name="hv" value="${k}" ${S.homeVariant === k ? "checked" : ""}> ${l}</label>`).join("")}</div></div>
+      <section class="panel adm-set"><h2>Réglages</h2>
+        <label class="chk"><input type="checkbox" id="aiOff" ${S.aiOff ? "checked" : ""}><span><b>Assistant en pause</b><br><span class="small muted">Pour tester : l'équipe garde accès aux fiches.</span></span></label>
+        <label class="chk"><input type="checkbox" id="aiClaude" ${S.aiClaude ? "checked" : ""}><span><b>Réponses rédigées par l'IA</b><br><span class="small muted">Seulement une fois l'IA mise en service.</span></span></label>
+        <div class="fld"><span class="lbl">Page Procédures</span><div class="radio-cards">${[["A", "Recherche d'abord (conseillé)"], ["B", "Thèmes d'abord"], ["C", "Situations d'abord"]].map(([k, l]) => `<label><input type="radio" name="hv" value="${k}" ${S.homeVariant === k ? "checked" : ""}> ${l}</label>`).join("")}</div></div>
         <div class="fld" ${REMOTE ? "hidden" : ""}><span class="lbl">Données de démonstration</span><button class="btn danger sm" type="button" id="resetBtn">${ic("trash", "sm")} Tout réinitialiser</button><span class="hint" id="resetHint">Efface favoris, modifications et signalements de ce navigateur.</span></div>
       </section>
     </div>`;
@@ -3909,7 +3980,7 @@ async function bkLoad(root) {
 }
 function dashMount(root) {
   fillAdmTodo(); loadAdminCounts(true); bkLoad(root);
-  fillDayKpis(root); fillTicketKpis(root); loadTickets().then(() => fillTicketKpis(root));
+  fillDayKpis(root); loadTickets().then(() => fillDayKpis(root), () => {});
   $("#aiClaude", root).onchange = (e) => { const v = e.target.checked; saveSetting("aiClaude", () => { S.aiClaude = v; }, v ? "Réponses de l'IA activées" : "Réponses de l'IA désactivées", "sparkles"); };
   $("#aiOff", root).onchange = (e) => { const v = e.target.checked; saveSetting("aiOff", () => { S.aiOff = v; }, v ? "Assistant marqué indisponible" : "Assistant de nouveau disponible", "sparkles"); };
   $$("input[name=hv]", root).forEach((x) => (x.onchange = () => { const v = x.value; saveSetting("homeVariant", () => { S.homeVariant = v; }, "Disposition de la page Procédures enregistrée"); }));
@@ -6825,9 +6896,12 @@ async function fillDayKpis(root) {
     const [rows, qs] = await Promise.all([DB.teamDays(isoDay()), DB.questions()]);
     let bl = 0, done = 0, total = 0; rows.filter((r) => r.day === isoDay()).forEach((r) => { const p = progress(r.items); bl += p.blocked; done += p.done; total += p.total; });
     const nq = new Set(qs.filter((q) => q.status === "new").map((q) => norm(q.q))).size;
-    box.innerHTML = `<a class="kpi" href="#/admin/equipe"><b>${done}/${total}</b><span>actions de l'équipe terminées aujourd'hui</span></a>
-      <a class="kpi ${bl ? "alert" : ""}" href="#/admin/equipe"><b>${bl}</b><span>${bl > 1 ? "tâches bloquées" : "tâche bloquée"} aujourd'hui</span></a>
-      <a class="kpi" href="#/admin/questions"><b>${nq}</b><span>question${nq > 1 ? "s" : ""} sans réponse à traiter</span></a>`;
+    const nd = (TK.list || []).filter((t) => t.status === "new").length;
+    const tile = (href, n, label, hot) => `<a class="adm-stat ${hot ? "hot" : ""}" href="${href}"><b>${n}</b><span>${label}</span></a>`;
+    box.innerHTML = tile("#/admin/equipe", `${done}/${total}`, "actions faites aujourd'hui")
+      + tile("#/admin/equipe", bl, bl > 1 ? "tâches bloquées" : "tâche bloquée", bl > 0)
+      + tile("#/admin/demandes", nd, nd > 1 ? "nouvelles demandes" : "nouvelle demande", nd > 0)
+      + tile("#/admin/questions", nq, nq > 1 ? "questions sans réponse" : "question sans réponse", nq > 0);
   } catch (e) { box.remove(); }
 }
 
@@ -7319,13 +7393,13 @@ function ticketKpis() {
 }
 function fillTicketKpis(root) {
   const box = $("#tkKpis", root || document); if (!box) return;
-  box.innerHTML = ticketKpis().map(([f, n, many, one]) => `<a class="kpi ${f === "bloquant" && n ? "alert" : ""}" href="#/admin/demandes" data-kf="${f}"><b>${n}</b><span>${n > 1 ? many : one}</span></a>`).join("");
+  box.innerHTML = ticketKpis().map(([f, n, many, one]) => `<a class="adm-stat ${(f === "bloquant" || f === "todo") && n ? "hot" : ""}" href="#/admin/demandes" data-kf="${f}"><b>${n}</b><span>${n > 1 ? many : one}</span></a>`).join("");
   $$("[data-kf]", box).forEach((a) => (a.onclick = () => { TKF.f = a.dataset.kf; TKF.q = ""; TKF.cat = ""; TKF.who = ""; }));
 }
 function adminTickets(params) {
   const whos = Array.from(new Map(TK.list.map((t) => [t.user_id, t.author || "?"])).entries());
   const multi = (TK_ADMINS || []).length > 1;
-  return `<div class="kpis" id="tkKpis" style="margin-bottom:18px"></div>
+  return `<div class="adm-stats" id="tkKpis"></div>
     <div class="tk-split ${params.t ? "has-panel" : ""}"><div class="tk-left">
       <form class="search" role="search" id="tkSearch" style="margin-bottom:10px"><label class="sr-only" for="tkQ">Rechercher une demande</label><div class="search-field">${ic("search")}<input id="tkQ" type="search" placeholder="Rechercher : numéro, sujet, demandeur…" value="${esc(TKF.q)}" autocomplete="off"></div></form>
       <div class="chips" role="group" aria-label="Filtrer les demandes" style="margin-bottom:10px">${T_FILTERS.filter(([k]) => k !== "free" || multi).map(([k, l]) => `<button class="chip" type="button" data-tf="${k}" aria-pressed="${TKF.f === k}">${l}</button>`).join("")}</div>
